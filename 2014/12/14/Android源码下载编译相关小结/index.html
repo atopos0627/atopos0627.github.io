@@ -1,0 +1,505 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Android源码下载编译相关小结 | 小智的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xiaozhi">
+    
+    <meta name="description" content="最新的Android源码下载，编译等过程中的完整细节，留下的都是干货。">
+    
+    
+    
+    
+    <link rel="alternative" href="/atom.xml" title="小智的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="小智的博客" title="小智的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="小智的博客">小智的博客</a></h1>
+				<h2 class="blog-motto">技术创造价值 体验无二人生</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">首页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:www.atoposme.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/14/Android源码下载编译相关小结/" title="Android源码下载编译相关小结" itemprop="url">Android源码下载编译相关小结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://www.atoposme.com/about" title="xiaozhi" target="_blank" itemprop="author">xiaozhi</a>
+		
+  <p class="article-time">
+    <time datetime="2014-12-14T11:40:16.000Z" itemprop="datePublished"> 发表于 2014-12-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#编译前环境配置"><span class="toc-number">1.</span> <span class="toc-text">编译前环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备REPO"><span class="toc-number">2.</span> <span class="toc-text">准备REPO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-number">3.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+		
+		</div>
+		
+		<p>最新的Android源码下载，编译等过程中的完整细节，留下的都是干货。</p>
+<a id="more"></a>
+<h3 id="编译前环境配置">编译前环境配置</h3><ul>
+<li>操作系统 Ubuntu 12.04</li>
+<li>硬盘空间 大于9G</li>
+<li><p>Python 2.7, GNU Make 3.81 or 3.82, Git 1.7 or later, and the Oracle (Sun) Java Development Kit version 6.</p>
+<pre><code>sudo apt-<span class="built_in">get</span> install git-core gnupg flex bison gperf build-essential \
+zip curl libc6-<span class="built_in">dev</span> libncurses5-<span class="built_in">dev</span>:i386 x11proto-core-<span class="built_in">dev</span> \
+libx11-<span class="built_in">dev</span>:i386 libreadline6-<span class="built_in">dev</span>:i386 libgl1-mesa-glx:i386 \
+libgl1-mesa-<span class="built_in">dev</span> g++-multilib mingw32 openjdk-<span class="number">6</span>-jdk tofrodos \
+python-markdown libxml2-utils xsltproc zlib1g-<span class="built_in">dev</span>:i386
+</code></pre></li>
+<li><p>为重定向错误的库</p>
+<pre><code>sudo ln -s <span class="regexp">/usr/</span>lib<span class="regexp">/i386-linux-gnu/m</span>esa<span class="regexp">/libGL.so.1 /u</span>sr<span class="regexp">/lib/i</span>386-linux-gnu<span class="regexp">/libGL.so</span>
+</code></pre></li>
+<li><p>采用缓存（可选，但很有利于编译）</p>
+<pre><code>编辑 ~/<span class="class">.bashrc</span> or ~/<span class="class">.profile</span> file 
+添加 export USE_CCACHE=<span class="number">1</span>
+</code></pre></li>
+<li>改变输出路径到其他的文件系统(针对Jelly Bean (4.1) 和更新版本有效)<pre><code><span class="built_in">export</span> OUT_DIR_COMMON_BASE=
+</code></pre></li>
+</ul>
+<h3 id="准备REPO">准备REPO</h3><ul>
+<li><p>下载<a href="http://code.google.com/p/git-repo/downloads" target="_blank" rel="external">REPO</a></p>
+<pre><code>mkdir ~/bin
+export PATH=~/<span class="string">bin:</span>$PATH
+
+curl $ <span class="string">http:</span><span class="comment">//commondatastorage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</span>
+curl <span class="string">https:</span><span class="comment">//dl-ssl.google.com/dl/googlesource/git-repo/repo &gt; ~/bin/repo</span>
+chmod a+x <span class="regexp">~/bin/</span>repo
+</code></pre></li>
+<li><p>初始化        </p>
+<pre><code>修改第五行 https 为 http
+.<span class="regexp">/repo init -u https:/</span><span class="regexp">/android.googlesource.com/</span>platform<span class="regexp">/manifest/</span>+<span class="regexp">/refs/</span>heads/android-<span class="number">5.0</span>.1_r1
+.<span class="regexp">/repo init -u https:/</span><span class="regexp">/android.googlesource.com/</span>platform/manifest -b android-<span class="number">4.4</span>_r1.2.0.1
+</code></pre><h3 id=""> </h3></li>
+</ul>
+<h3 id="参考">参考</h3><ol>
+<li><a href="http://xda-university.com/as-a-developer/getting-started-building-android-from-source" target="_blank" rel="external">getting-started-building-android-from-source</a></li>
+<li><a href="http://www.zhihu.com/question/19759722" target="_blank" rel="external">大牛们是怎么阅读 Android 系统源码的 </a></li>
+<li><a href="https://github.com/rascarlo/android_manifest" target="_blank" rel="external">https://github.com/rascarlo/android_manifest</a></li>
+<li><a href="http://862123204-qq-com.iteye.com/blog/1992973" target="_blank" rel="external">http://862123204-qq-com.iteye.com/blog/1992973</a></li>
+<li><a href="https://android.googlesource.com/platform/manifest" target="_blank" rel="external">https://android.googlesource.com/platform/manifest</a></li>
+<li><a href="https://source.android.com/source/using-repo.html" target="_blank" rel="external">https://source.android.com/source/using-repo.html</a></li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/移动安全/">移动安全</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Android/">Android</a>
+  </div>
+
+</div>
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://www.atoposme.com/2014/12/14/Android源码下载编译相关小结/" data-title="Android源码下载编译相关小结 | 小智的博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/14/Android的ROOTKIT技术和RAT技术研究/" title="Android的ROOTKIT技术和RAT技术研究">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Android的ROOTKIT技术和RAT技术研究</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/11/16/迷茫混乱和坚定自觉/"  title="迷茫混乱和坚定自觉">
+ <strong>下一篇：</strong><br/> 
+ <span>迷茫混乱和坚定自觉
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#编译前环境配置"><span class="toc-number">1.</span> <span class="toc-text">编译前环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备REPO"><span class="toc-number">2.</span> <span class="toc-text">准备REPO</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#"><span class="toc-number">3.</span> <span class="toc-text"> </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/plan/" title="plan">plan<sup>1</sup></a></li>
+		
+			<li><a href="/categories/修行/" title="修行">修行<sup>2</sup></a></li>
+		
+			<li><a href="/categories/家庭文化/" title="家庭文化">家庭文化<sup>1</sup></a></li>
+		
+			<li><a href="/categories/技术/" title="技术">技术<sup>4</sup></a></li>
+		
+			<li><a href="/categories/摄影/" title="摄影">摄影<sup>1</sup></a></li>
+		
+			<li><a href="/categories/日记/" title="日记">日记<sup>2</sup></a></li>
+		
+			<li><a href="/categories/生活/" title="生活">生活<sup>1</sup></a></li>
+		
+			<li><a href="/categories/移动安全/" title="移动安全">移动安全<sup>4</sup></a></li>
+		
+			<li><a href="/categories/育儿/" title="育儿">育儿<sup>1</sup></a></li>
+		
+			<li><a href="/categories/诗/" title="诗">诗<sup>2</sup></a></li>
+		
+			<li><a href="/categories/跑步/" title="跑步">跑步<sup>2</sup></a></li>
+		
+			<li><a href="/categories/麦苗儿/" title="麦苗儿">麦苗儿<sup>3</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/麦苗儿/" title="麦苗儿">麦苗儿<sup>3</sup></a></li>
+		
+			<li><a href="/tags/诗/" title="诗">诗<sup>2</sup></a></li>
+		
+			<li><a href="/tags/github/" title="github">github<sup>2</sup></a></li>
+		
+			<li><a href="/tags/跑步/" title="跑步">跑步<sup>1</sup></a></li>
+		
+			<li><a href="/tags/生活/" title="生活">生活<sup>1</sup></a></li>
+		
+			<li><a href="/tags/育儿/" title="育儿">育儿<sup>1</sup></a></li>
+		
+			<li><a href="/tags/怀孕/" title="怀孕">怀孕<sup>1</sup></a></li>
+		
+			<li><a href="/tags/护理/" title="护理">护理<sup>1</sup></a></li>
+		
+			<li><a href="/tags/摄影/" title="摄影">摄影<sup>1</sup></a></li>
+		
+			<li><a href="/tags/照片/" title="照片">照片<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PowerLiang/" title="PowerLiang">PowerLiang<sup>1</sup></a></li>
+		
+			<li><a href="/tags/目标/" title="目标">目标<sup>1</sup></a></li>
+		
+			<li><a href="/tags/心得/" title="心得">心得<sup>1</sup></a></li>
+		
+			<li><a href="/tags/态度/" title="态度">态度<sup>1</sup></a></li>
+		
+			<li><a href="/tags/技术/" title="技术">技术<sup>1</sup></a></li>
+		
+			<li><a href="/tags/修行/" title="修行">修行<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/博客/" title="博客">博客<sup>1</sup></a></li>
+		
+			<li><a href="/tags/代码管理/" title="代码管理">代码管理<sup>1</sup></a></li>
+		
+			<li><a href="/tags/plan/" title="plan">plan<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://tmd123.com" target="_blank" title="google China">google</a></li>
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello,I&#39;m XiaoZhi in BeiJing <br/>
+			I foucs to enjoy everyday!</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/atopos0627" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2015 
+		
+		<a href="http://www.atoposme.com/about" target="_blank" title="xiaozhi">xiaozhi</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"atopos"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+
+
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<script src="/js/totop.js"></script>
+
+
+
+
+<script type="text/javascript">//中间的代码  
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://": " http://");  
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1252972406'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1252972406%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));  
+</script>  
+  
+  </body>
+</html>
