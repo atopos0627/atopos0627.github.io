@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.atopos.cc/"/>
-  <updated>2017-05-25T10:06:20.000Z</updated>
+  <updated>2017-05-31T08:17:44.000Z</updated>
   <id>http://www.atopos.cc/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.atopos.cc/2017/05/25/%E4%B9%A6%E5%8D%95/"/>
     <id>http://www.atopos.cc/2017/05/25/书单/</id>
     <published>2017-05-25T08:02:00.000Z</published>
-    <updated>2017-05-25T10:06:20.000Z</updated>
+    <updated>2017-05-31T08:17:44.000Z</updated>
     
     <content type="html"><![CDATA[<p>读书是一种生活方式！<br><a id="more"></a></p>
 <h2 id="Mobile_Security">Mobile Security</h2><ul>
@@ -69,6 +69,8 @@
     
       <category term="读书" scheme="http://www.atopos.cc/categories/%E8%AF%BB%E4%B9%A6/"/>
     
+      <category term="书单" scheme="http://www.atopos.cc/categories/%E8%AF%BB%E4%B9%A6/%E4%B9%A6%E5%8D%95/"/>
+    
     
       <category term="书单" scheme="http://www.atopos.cc/tags/%E4%B9%A6%E5%8D%95/"/>
     
@@ -79,7 +81,7 @@
     <link href="http://www.atopos.cc/2017/04/30/%E4%BF%AE%E5%BF%83/"/>
     <id>http://www.atopos.cc/2017/04/30/修心/</id>
     <published>2017-04-30T12:15:00.000Z</published>
-    <updated>2017-05-29T16:14:22.000Z</updated>
+    <updated>2017-05-31T08:16:50.000Z</updated>
     
     <content type="html"><![CDATA[<p>在人生的漫漫旅途中，我经常思考的是：什么才是重要的而需要把握的，什么是应该放下甚至放弃的，如何做到轻松放下，淡定从容？<br><a id="more"></a></p>
 <p>  五一劳动节，二零一七年。劳动者的节日，这是一个应该庆祝的日子，正是因为劳动，才带来了工具，才产生了人类文明。而浩瀚的人类文明长河中，中国传统文化给人带来了很多值得深思的东西。中国传统文化中最核心的一个词，就是修心。</p>
@@ -104,7 +106,9 @@
     
     </summary>
     
-      <category term="随笔" scheme="http://www.atopos.cc/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="文章" scheme="http://www.atopos.cc/categories/%E6%96%87%E7%AB%A0/"/>
+    
+      <category term="随笔" scheme="http://www.atopos.cc/categories/%E6%96%87%E7%AB%A0/%E9%9A%8F%E7%AC%94/"/>
     
     
       <category term="随笔" scheme="http://www.atopos.cc/tags/%E9%9A%8F%E7%AC%94/"/>
@@ -1310,9 +1314,11 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://www.atopos.cc/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="读书" scheme="http://www.atopos.cc/categories/%E8%AF%BB%E4%B9%A6/"/>
     
-      <category term="申论" scheme="http://www.atopos.cc/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%94%B3%E8%AE%BA/"/>
+      <category term="学习笔记" scheme="http://www.atopos.cc/categories/%E8%AF%BB%E4%B9%A6/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="申论" scheme="http://www.atopos.cc/categories/%E8%AF%BB%E4%B9%A6/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%94%B3%E8%AE%BA/"/>
     
     
       <category term="笔记" scheme="http://www.atopos.cc/tags/%E7%AC%94%E8%AE%B0/"/>
@@ -1326,7 +1332,7 @@
     <link href="http://www.atopos.cc/2017/04/14/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.atopos.cc/2017/04/14/信息安全学习笔记/</id>
     <published>2017-04-14T02:04:00.000Z</published>
-    <updated>2017-05-29T16:14:28.000Z</updated>
+    <updated>2017-05-31T08:19:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>信息安全专题的学习笔记.<br><a id="more"></a></p>
 <h2 id="2017-04-14">2017-04-14</h2><p><a href="https://www.inforsec.org/wp/?p=1881" target="_blank" rel="external">中科院软件所&amp;InForSec “软件智能分析”学术沙龙第一次活动预告</a></p>
@@ -1370,10 +1376,14 @@
     
     </summary>
     
-      <category term="信息安全" scheme="http://www.atopos.cc/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+      <category term="技术" scheme="http://www.atopos.cc/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="信息安全" scheme="http://www.atopos.cc/categories/%E6%8A%80%E6%9C%AF/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
     
       <category term="学习日记" scheme="http://www.atopos.cc/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/"/>
+    
+      <category term="信息安全" scheme="http://www.atopos.cc/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
@@ -1382,7 +1392,7 @@
     <link href="http://www.atopos.cc/2016/12/18/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/"/>
     <id>http://www.atopos.cc/2016/12/18/学习日记/</id>
     <published>2016-12-18T08:04:00.000Z</published>
-    <updated>2017-05-31T04:10:20.000Z</updated>
+    <updated>2017-05-31T08:18:46.000Z</updated>
     
     <content type="html"><![CDATA[<p>记录每天的学习心得，零散记录，非总结整理.<br><a id="more"></a></p>
 <h2 id="2016-12-18">2016-12-18</h2><h3 id="睡眠的意义_from_TED">睡眠的意义 from TED</h3><p>人的细胞更新和清理垃圾废物需要淋巴系统，而人脑由于血管的结构导致淋巴系统无法使用，因此有一种脑脊液的物质起到了淋巴系统清理垃圾的作用。而脑脊液在大脑清醒时基本上不工作，只有在睡眠时才会工作。因此，高质量的睡眠可以促进这些脑脊液的工作，清除大脑细胞中的垃圾，反之，睡眠不足或者低质量的睡眠会导致大脑细胞中的废物无法排出，会导致类似老年痴呆症的发生。因此睡眠对于我们头脑的清醒，身体的功能和健康有着非常重要的作用。</p>
@@ -1397,6 +1407,10 @@
     </summary>
     
       <category term="读书" scheme="http://www.atopos.cc/categories/%E8%AF%BB%E4%B9%A6/"/>
+    
+      <category term="读书笔记" scheme="http://www.atopos.cc/categories/%E8%AF%BB%E4%B9%A6/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="日常学习" scheme="http://www.atopos.cc/categories/%E8%AF%BB%E4%B9%A6/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%97%A5%E5%B8%B8%E5%AD%A6%E4%B9%A0/"/>
     
     
       <category term="学习日记" scheme="http://www.atopos.cc/tags/%E5%AD%A6%E4%B9%A0%E6%97%A5%E8%AE%B0/"/>
@@ -1446,6 +1460,8 @@
     
       <category term="健康" scheme="http://www.atopos.cc/categories/%E5%81%A5%E5%BA%B7/"/>
     
+      <category term="疾病" scheme="http://www.atopos.cc/categories/%E5%81%A5%E5%BA%B7/%E7%96%BE%E7%97%85/"/>
+    
     
       <category term="幽门螺旋杆菌" scheme="http://www.atopos.cc/tags/%E5%B9%BD%E9%97%A8%E8%9E%BA%E6%97%8B%E6%9D%86%E8%8F%8C/"/>
     
@@ -1458,7 +1474,7 @@
     <link href="http://www.atopos.cc/2014/11/12/%E6%A4%8D%E7%89%A9%E5%9B%AD%E7%9A%84%E7%BA%A2%E5%A2%99/"/>
     <id>http://www.atopos.cc/2014/11/12/植物园的红墙/</id>
     <published>2014-11-11T23:05:32.000Z</published>
-    <updated>2017-05-25T13:07:49.000Z</updated>
+    <updated>2017-05-31T08:15:36.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题记">题记</h2><p>翻山2个多小时到达植物园，快出来的时候，发现这面红墙。拍下2幅，后期稍作处理。<br><a id="more"></a></p>
 <p><img src="http://atopos.qiniudn.com/个人满意摄影作品/2014-11-09-植物园1.jpg" alt="红墙1"></p>
@@ -1474,7 +1490,9 @@
     
     </summary>
     
-      <category term="摄影" scheme="http://www.atopos.cc/categories/%E6%91%84%E5%BD%B1/"/>
+      <category term="生活" scheme="http://www.atopos.cc/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="摄影" scheme="http://www.atopos.cc/categories/%E7%94%9F%E6%B4%BB/%E6%91%84%E5%BD%B1/"/>
     
     
       <category term="生活" scheme="http://www.atopos.cc/tags/%E7%94%9F%E6%B4%BB/"/>
@@ -1488,7 +1506,7 @@
     <link href="http://www.atopos.cc/2014/09/11/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.atopos.cc/2014/09/11/移动安全学习笔记/</id>
     <published>2014-09-11T09:27:34.000Z</published>
-    <updated>2017-05-25T13:06:14.000Z</updated>
+    <updated>2017-05-31T08:16:12.000Z</updated>
     
     <content type="html"><![CDATA[<p>移动客户端的安全性分析，安全算法和协议的安全性分析，攻击与防护。<br><a id="more"></a></p>
 <h2 id="A_Survey_of_Voice_over_IP_Security_Research(综述了前人的工作—-可查询)">A Survey of Voice over IP Security Research(综述了前人的工作—-可查询)</h2><p><a href="http://www1.cs.columbia.edu/~angelos/Papers/2009/iciss-voip-proof.pdf" target="_blank" rel="external">文献链接</a></p>
@@ -1540,7 +1558,9 @@
     
     </summary>
     
-      <category term="移动安全" scheme="http://www.atopos.cc/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/"/>
+      <category term="技术" scheme="http://www.atopos.cc/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="移动安全" scheme="http://www.atopos.cc/categories/%E6%8A%80%E6%9C%AF/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/"/>
     
     
       <category term="技术" scheme="http://www.atopos.cc/tags/%E6%8A%80%E6%9C%AF/"/>

@@ -48,6 +48,8 @@
             
             <category> 读书 </category>
             
+            <category> 书单 </category>
+            
         </categories>
         
         
@@ -80,6 +82,8 @@
 ]]></content>
       
         <categories>
+            
+            <category> 文章 </category>
             
             <category> 随笔 </category>
             
@@ -1285,6 +1289,8 @@
       
         <categories>
             
+            <category> 读书 </category>
+            
             <category> 学习笔记 </category>
             
             <category> 申论 </category>
@@ -1343,6 +1349,8 @@
       
         <categories>
             
+            <category> 技术 </category>
+            
             <category> 信息安全 </category>
             
         </categories>
@@ -1351,6 +1359,8 @@
         <tags>
             
             <tag> 学习日记 </tag>
+            
+            <tag> 信息安全 </tag>
             
         </tags>
         
@@ -1368,6 +1378,10 @@
         <categories>
             
             <category> 读书 </category>
+            
+            <category> 读书笔记 </category>
+            
+            <category> 日常学习 </category>
             
         </categories>
         
@@ -1415,6 +1429,8 @@
             
             <category> 健康 </category>
             
+            <category> 疾病 </category>
+            
         </categories>
         
         
@@ -1440,6 +1456,8 @@
 ]]></content>
       
         <categories>
+            
+            <category> 生活 </category>
             
             <category> 摄影 </category>
             
@@ -1504,6 +1522,8 @@
 ]]></content>
       
         <categories>
+            
+            <category> 技术 </category>
             
             <category> 移动安全 </category>
             
