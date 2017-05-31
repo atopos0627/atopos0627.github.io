@@ -1285,6 +1285,8 @@
       
         <categories>
             
+            <category> 学习笔记 </category>
+            
             <category> 申论 </category>
             
         </categories>
@@ -1292,7 +1294,9 @@
         
         <tags>
             
-            <tag> 学习日记 </tag>
+            <tag> 笔记 </tag>
+            
+            <tag> 申论 </tag>
             
         </tags>
         
