@@ -104,10 +104,10 @@
 <meta name="description" content="信息安全专题的学习笔记.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="信息安全学习日记">
-<meta property="og:url" content="http://www.atopos.cc/2017/04/14/信息安全学习笔记/index.html">
+<meta property="og:url" content="http://www.atopos.cc/2017/06/16/信息安全学习笔记/index.html">
 <meta property="og:site_name" content="麦苗儿爸的博客">
 <meta property="og:description" content="信息安全专题的学习笔记.">
-<meta property="og:updated_time" content="2017-05-31T08:19:02.000Z">
+<meta property="og:updated_time" content="2013-05-04T04:00:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="信息安全学习日记">
 <meta name="twitter:description" content="信息安全专题的学习笔记.">
@@ -149,7 +149,7 @@
 
 
 
-  <link rel="canonical" href="http://www.atopos.cc/2017/04/14/信息安全学习笔记/"/>
+  <link rel="canonical" href="http://www.atopos.cc/2017/06/16/信息安全学习笔记/"/>
 
 
 
@@ -367,7 +367,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.atopos.cc/2017/04/14/信息安全学习笔记/">
+    <link itemprop="mainEntityOfPage" href="http://www.atopos.cc/2017/06/16/信息安全学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="麦苗儿爸">
@@ -390,13 +390,6 @@
         <div class="post-meta">
           <span class="post-time">
           
-            <span class="post-updated">
-            &nbsp; | &nbsp; 更新于
-            <time itemprop="dateUpdated" datetime="2017-05-31T16:19:02+08:00" content="2017-05-31">
-              2017-05-31
-            </time>
-            </span>
-          
 
             
               <span class="post-meta-item-icon">
@@ -405,8 +398,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-14T10:04:00+08:00">
-                2017-04-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-16T10:04:00+08:00">
+                2017-06-16
               </time>
             
 
@@ -457,7 +450,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/04/14/信息安全学习笔记/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/06/16/信息安全学习笔记/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -466,7 +459,7 @@
 
           
           
-             <span id="/2017/04/14/信息安全学习笔记/" class="leancloud_visitors" data-flag-title="信息安全学习日记">
+             <span id="/2017/06/16/信息安全学习笔记/" class="leancloud_visitors" data-flag-title="信息安全学习日记">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -491,7 +484,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  483
+                  1,541
                 </span>
               
 
@@ -545,8 +538,38 @@
 </tr>
 </tbody>
 </table>
+<h2 id="2017-06-16">2017-06-16</h2><blockquote>
+<p>InfoSec<br>Cyber Security:the journey from Formal Methods, Program Analysis to and Data Analysis</p>
+</blockquote>
+<p>刘杨 新加坡南洋理工大学</p>
+<p>形式化模型检测</p>
+<p>动态验证，二进制代码的漏洞挖掘，无人车的架构，性能，反编译，程序分析</p>
+<p>程序本身  程序的正确性分析 可靠性分析 </p>
+<p>形式化分析：协议的形式化分析，将协议中的一些问题找到。</p>
+<p>模式化：框架，支持开发模型工具，分布式系统，生物系统，无线传感网<br>PAT（Process Analysis Toolkit）2007</p>
+<ol>
+<li>形式化应用在代码中的应用：将实际代码的静态和动态分析，提取出协议的设计代码</li>
+<li>2015年， Securify：完全的形式化建模和验证。3500万人民币经费<br> 看开源CPU的设计，微内核的完整形式化建模和分析，动态监测：做到硬件中。VHDL，CPU指令集进行形式化分析。国际标准的协议分析：有一个漏洞。对应的一个委员会，波音等公司，请到他们公司，国际标准的形式化工作推动。做到硬件中，安全性好，对于rootkit等都有防护作用。</li>
+<li>形式化分析真的有效吗？<ul>
+<li>2014年新加坡公司，对于二进制代码的漏洞挖掘很有兴趣。什么叫漏洞？安全中的bug。漏洞分析有很多技术，好像没有模型检测的方法。250万人民币做。形式化理念进行二进制代码分析：代码的语义非常丰富，LLVV。代码—自动机—-property—状态空间的搜索。一个弱点：状态空间爆炸。 发现不一定靠谱，发现形式化的主要难点：1.数学的model，手动建。2. 模型检测：不scalable的方法。3.domain knowledge，本身的知识。尝试用形势分析的技术：1. 基于二进制代码的相似度匹配代码的相似度检测，克隆检测，漏洞检测，百度的kernel patch不需要多个版本的patch。例如：heartbleed的编译后的二进制代码，语义信息不完整，解决三个难点：。。。。inlining技术：将小函数放入到大函数中，。。Two zero-day vulerablilities（RCE）。 工作：比较basic：patch代码和自身代码比较，得到diff，获取pair，陈凯的3D-CFG，（如果代码改变了，但是函数的语义并没有改变，那么这就是security的patch），找到安全补丁，找到关键的check，找到entrance patch，再下走，找到。。。这样组成一个sructure。可能会发现一些厂商自己悄悄补的patch：CVE。动态分析找漏洞的方法：fuzzing。Skyfire：Data-Driven 。。。问题：fuzz不一定能通过深入到后面的过程，利用大数据的思想，构造一些好的input。爬了很多文本，获取核心功能，再组合形成各种html文件，相关关系没有包含起来，PCSG Learning。</li>
+<li>方向：android的APP的fuzz。智能机器人的fuzz。</li>
+<li>几个博士后：做二进制代码的漏洞挖掘工业界工具。</li>
+<li>恶意代码model+协议model</li>
+<li>几个想法：源码和二进制代码—对应的程序中有意思的片段集中起来。big Data Guided Security Analysis。</li>
+<li>NTU SCSE Cyber Security Lab 2016成立 130个座位 二进制代码分析，network 攻击，无人车从框架设计级别，协议级别做进去。不仅是静态，才是动态的。</li>
+<li>难点：给我一个代码，我知道要fuzz哪个点？</li>
+<li>找不同网站，不同应用去找xml，算法衡量diversity。</li>
+<li>漏洞演化的过程：函数的演变，不同版本的演变。</li>
+<li>二进制代码分析的平台：统一的平台应用各种技术起来。底层信息：硬件信息理解上层信息，map到high level的信息和行为的过程。compiler优化的问题。</li>
+<li>语义的形式化描述：语义：operation symblitcs。基于formal module。形成一个模型，其粒度的需求不一样。 arm的二进制和X86平台，用中间平台搭建。不同应用的考量，效果更好。</li>
+<li>fuzz找的是memory相关的漏洞。逻辑方面的漏洞不太好找。 </li>
+<li>软件工程到网络安全领域，三年时间。</li>
+</ul>
+</li>
+<li></li>
+</ol>
 <hr>
-<p>本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://atopos.cc" target="_blank" rel="external">麦苗儿爸的博客</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://www.atopos.cc/2017/04/14/信息安全学习笔记/">http://www.atopos.cc/2017/04/14/信息安全学习笔记/</a></p>
+<p>本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://atopos.cc" target="_blank" rel="external">麦苗儿爸的博客</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://www.atopos.cc/2017/06/16/信息安全学习笔记/">http://www.atopos.cc/2017/06/16/信息安全学习笔记/</a></p>
 
       
     </div>
@@ -619,8 +642,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/18/学习日记/" rel="next" title="学习日记">
-                <i class="fa fa-chevron-left"></i> 学习日记
+              <a href="/2017/06/13/你回我梦/" rel="next" title="你回我梦">
+                <i class="fa fa-chevron-left"></i> 你回我梦
               </a>
             
           </div>
@@ -628,10 +651,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/14/申论学习笔记精华/" rel="prev" title="申论学习笔记精华">
-                申论学习笔记精华 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -843,7 +862,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-14"><span class="nav-number">1.</span> <span class="nav-text">2017-04-14</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-04-14"><span class="nav-number">1.</span> <span class="nav-text">2017-04-14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-06-16"><span class="nav-number">2.</span> <span class="nav-text">2017-06-16</span></a></li></ol></div>
             
 
           </div>
