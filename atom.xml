@@ -22,8 +22,7 @@
     <published>2017-06-20T07:29:00.000Z</published>
     <updated>2017-06-20T07:29:00.000Z</updated>
     
-    <content type="html"><![CDATA[<p>理想，真的只是高大上的存在，官僚的说辞吗？当然不是，理想应该正名！</p>
-<a id="more"></a>
+    <content type="html"><![CDATA[<p>理想，真的只是高大上的存在，官僚的说辞吗？当然不是，理想应该正名！<br><a id="more"></a></p>
 <p>  在当今中国的大地上，我不知道还有多少人面临着各种各样的痛苦，刚从知乎的帖子上看到计划生育政策强制让七个月大的孩子引产，简直泯灭人性！当你想改变这一切时，你内心的理想是否要蓬勃而出？为人类的解放而奋斗！这真不是口号，而是内心的声音。</p>
 <p>  坚持又是另外一回事，当你离开那个情绪，离开那个片段，你又感受到房子的压力，单位的待遇，发展的瓶颈时，你自我利益的小人又开始躁动，这些其实都是信息流逐渐获取对我们的控制权的表现，信息带着各种观点，揉杂着好奇和迎合，让我们陷入信息的洪流，不停的打旋，无法自拔。</p>
 <p>  该怎么拯救苟且的理想？首先要面对自己，打开心胸，承认自己的过错，原谅自己，修正自己。接下来，把内心的垃圾扔出去，看看自己都变成什么了？精致的利己主义者还是虚无的犬儒主义者。不管自己变成了什么，看看自己到底是不是希望的那样。如果不是，改变自己。然后就简单了，你内心敞亮了，容纳进新的好的东西比如理想的时候，慢慢的放进去，调整好位置，让它舒服的躺在你内心里的沙发上，微笑着看心花怒放。</p>
@@ -37,7 +36,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;理想，真的只是高大上的存在，官僚的说辞吗？当然不是，理想应该正名！&lt;/p&gt;
+      &lt;p&gt;理想，真的只是高大上的存在，官僚的说辞吗？当然不是，理想应该正名！&lt;br&gt;
     
     </summary>
     
@@ -47,6 +46,8 @@
     
     
       <category term="随笔" scheme="http://www.atopos.cc/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="理想" scheme="http://www.atopos.cc/tags/%E7%90%86%E6%83%B3/"/>
     
   </entry>
   
@@ -171,11 +172,11 @@
       <category term="LaTex" scheme="http://www.atopos.cc/categories/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/LaTex/"/>
     
     
+      <category term="slides" scheme="http://www.atopos.cc/tags/slides/"/>
+    
       <category term="MacTex" scheme="http://www.atopos.cc/tags/MacTex/"/>
     
       <category term="moderncv" scheme="http://www.atopos.cc/tags/moderncv/"/>
-    
-      <category term="slides" scheme="http://www.atopos.cc/tags/slides/"/>
     
   </entry>
   
@@ -275,11 +276,11 @@
       <category term="LaTex" scheme="http://www.atopos.cc/categories/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/LaTex/"/>
     
     
-      <category term="简历" scheme="http://www.atopos.cc/tags/%E7%AE%80%E5%8E%86/"/>
-    
       <category term="MacTex" scheme="http://www.atopos.cc/tags/MacTex/"/>
     
       <category term="moderncv" scheme="http://www.atopos.cc/tags/moderncv/"/>
+    
+      <category term="简历" scheme="http://www.atopos.cc/tags/%E7%AE%80%E5%8E%86/"/>
     
   </entry>
   
