@@ -289,10 +289,84 @@
     <link href="http://www.atopos.cc/2017/05/25/%E4%B9%A6%E5%8D%95/"/>
     <id>http://www.atopos.cc/2017/05/25/书单/</id>
     <published>2017-05-25T08:02:00.000Z</published>
-    <updated>2017-05-31T08:17:44.000Z</updated>
+    <updated>2017-06-22T04:41:00.000Z</updated>
     
     <content type="html"><![CDATA[<p>读书是一种生活方式！<br><a id="more"></a></p>
-<h2 id="Mobile_Security">Mobile Security</h2><ul>
+<h2 id="IT领域的书单">IT领域的书单</h2><pre><code>C++编程思想
+Effective C++
+深度探索C++对象模型
+C++语言的设计和演化
+C专家编程
+C陷阱与缺陷
+C语言接口与实现
+Lua程序设计
+Linkers and Loaders
+COM本质论
+Windows核心编程
+深入解析Windows操作系统
+程序员修炼之道
+代码大全
+UNIX编程艺术
+设计模式
+代码优化：有效使用内存
+深入理解计算机系统
+深入理解LINUX内核
+TCP/IP 详解
+
+软件随想录
+黑客与画家
+重来
+UNIX编程艺术
+编程人生
+
+Code Complete 2
+The Mythical <span class="keyword">Man</span>-Month （《人月神话》）
+Code: The Hidden Language <span class="keyword">of</span> Computer Hardware and Software （《编码的奥秘》）
+TAOCP （不解释）
+The Pragmatic Programmer （《程序员修炼之道》）
+Design Patterns （《设计模式》）
+The Structure and Interpretation <span class="keyword">of</span> Computer Programs （《计算机程序的构造和解释》）
+Refactoring （《重构》）
+The C Programming Language
+Introduction to Algorithms （《算法导论》）
+
+
+工程师入门：
+    Code Complete 2
+    程序员修炼之道
+    深入理解计算机系统
+工程师升级：
+    设计模式
+    重构——改善既有代码的设计
+工程师转型：
+    快速软件开发——有效控制与完成进度计划
+    人月神话
+    IT项目管理那些事儿
+    软件随想录
+    最后期限
+    走出软件作坊
+    你的灯亮着吗?——发现问题的真正所在
+
+Algorithms (by Sanjoy Dasgupta, Christos Papadimitriou and Umesh Vazirani)
+Data Structure and Algorithms
+The C Programming Language
+The Design <span class="keyword">of</span> the UNIX Operating System
+Compilers （龙书）
+Computer Architecture: A Quantitative Approach
+Flow
+Outliers (why hard work and luck <span class="keyword">are</span> both important)
+</code></pre><p>关于<a href="http://book.douban.com/doulist/1253169/" target="_blank" rel="external">创新的书籍</a>:</p>
+<pre><code>The Myths <span class="keyword">of</span> Innovation
+The Innovator’s Dilemma
+The Innovator’s Solution
+Crossing the Chasm
+<span class="keyword">Inside</span> Intuit
+盛田昭夫
+杰克·韦尔奇自传
+梦断代码
+Innovation
+浪潮之巅
+</code></pre><h2 id="Mobile_Security">Mobile Security</h2><ul>
 <li><a href="http://www.amazon.com/dp/1782174575/" target="_blank" rel="external">Learning Android Forensics by Rohit Tamma, Donnie Tindall (2015)</a></li>
 <li><a href="http://www.amazon.com/dp/1784390593/" target="_blank" rel="external">Exploring SE for Android by William Confer and William Roberts (2015)</a></li>
 <li><a href="http://www.amazon.com/dp/1118958500/" target="_blank" rel="external">The Mobile Application Hacker’s Handbook by Dominic Chell, Tyrone Erasmus, Shaun Colley and Ollie Whitehouse(2015)</a></li>
@@ -326,6 +400,10 @@
 <li><a href="http://www.amazon.com/dp/1597492981/" target="_blank" rel="external">Mobile Malware Attacks and Defense by Ken Dunham (2008)</a></li>
 <li><a href="http://www.amazon.com/dp/0596153589/" target="_blank" rel="external">iPhone Forensics: Recovering Evidence, Personal Data, and Corporate Assets by Jonathan Zdziarski (2008)</a></li>
 </ul>
+<h2 id="References">References</h2><ol>
+<li><a href="https://stackoverflow.com/questions/1711/what-is-the-single-most-influential-book-every-programmer-should-read" target="_blank" rel="external">程序员必读书单</a></li>
+<li><a href="http://mindhacks.cn/2011/11/04/how-to-interview-a-person-for-two-years/" target="_blank" rel="external">怎样花两年时间去面试一个人</a></li>
+</ol>
 <hr>
 <p>本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://atopos.cc" target="_blank" rel="external">麦苗儿爸的博客</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://www.atopos.cc/2017/05/25/书单/">http://www.atopos.cc/2017/05/25/书单/</a></p>
 ]]></content>
