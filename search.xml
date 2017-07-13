@@ -3,6 +3,84 @@
   
     
     <entry>
+      <title><![CDATA[Mac开发写作等工具集]]></title>
+      <url>/2017/07/10/Mac%E5%BC%80%E5%8F%91%E5%86%99%E4%BD%9C%E7%AD%89%E5%B7%A5%E5%85%B7%E9%9B%86/</url>
+      <content type="html"><![CDATA[<p>长期积累，用的最习惯，使用最方便的工具集合，包括开发IDE，写作工具等等。<br><a id="more"></a></p>
+<h2 id="编程">编程</h2><ol>
+<li><p><a href="伪装成编辑器的操作系统">Emacs</a>  <a href="http://blog.csdn.net/redguardtoo/article/details/7222501" target="_blank" rel="external">一年成为Emacs高手(像神一样使用编辑器)</a></p>
+<blockquote>
+<p>brew install emacs —with-cocoa</p>
+</blockquote>
+</li>
+<li></li>
+</ol>
+<h2 id="开发(MAC)">开发(MAC)</h2><ol>
+<li>python IDE <ul>
+<li>pyCharm Community Edition</li>
+</ul>
+</li>
+<li>C/C++ IDE<ul>
+<li>CLion</li>
+</ul>
+</li>
+<li>Reveal: 极佳的界面调试工具，实时显示界面上各个元素和层级，还能将修改立马反馈到调试的 App 上去。搭配越狱 iPhone 更是学习优秀 App 的利器。</li>
+<li>Sketch: 非常棒的 UI 设计工具，平时自己会在上面做一些自己想法的设计，也会做一些基本的图片编辑制作。</li>
+<li>爬虫：import.io(超越scrapy的傻瓜式爬虫，可结合infogr.am做信息图)</li>
+<li></li>
+</ol>
+<h2 id="团队协作">团队协作</h2><ol>
+<li>Trello 任务分配</li>
+<li>Coding.net 代码管理</li>
+</ol>
+<h2 id="写作">写作</h2><ol>
+<li>Markdown+Latex<ul>
+<li>MWeb</li>
+<li><a href="http://mohu.org/info/symbols/symbols.htm" target="_blank" rel="external">数学符号表</a></li>
+</ul>
+</li>
+<li><p>Org-mode</p>
+<blockquote>
+<p>经常拿来与 Markdown 作对比，但是这显然对 Org-mode 是不公平的，因为它比 Markdown 强太多了。Org-mode 无论是写文档还是写论文都没有问题。而且不仅是一个标记语言，还是强大的 GTD 工具。我一天的大部分时间在干什么都由它来记录、安排。 </p>
+</blockquote>
+</li>
+<li></li>
+</ol>
+<h2 id="阅读">阅读</h2><ol>
+<li>MindNode Pro 整理出思维导图</li>
+<li>Xmind 思维导图</li>
+<li>OmniFocus  转化为行动的事件</li>
+</ol>
+<h2 id="辅助">辅助</h2><ol>
+<li><a href="https://justgetflux.com/" target="_blank" rel="external">f.lux-屏幕亮度调节</a></li>
+<li><a href="https://manico.im/" target="_blank" rel="external">Manico-mac下切换APP</a></li>
+<li><a href="https://pilotmoon.com/popclip/" target="_blank" rel="external">popclip</a></li>
+<li><a href="https://www.alfredapp.com/" target="_blank" rel="external">Alfred-Afred小帽子：通过前人的配置，替代掉了 有道词典、发音工具、开关机、快速搜索、地图、Spotlight等应用。</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/Chromecast" target="_blank" rel="external">Chromecast-将传统电视、显示器等升级为网络电视</a></li>
+</ol>
+<hr>
+<p>本作品采用<a href="http://creativecommons.org/licenses/by/2.5/cn/" target="_blank" rel="external">知识共享署名 2.5 中国大陆许可协议</a>进行许可，欢迎转载，但转载请注明来自<a href="http://atopos.cc" target="_blank" rel="external">麦苗儿爸的博客</a>，并保持转载后文章内容的完整。本人保留所有版权相关权利。<br>本文链接：<a href="http://www.atopos.cc/2017/07/10/Mac开发写作等工具集/">http://www.atopos.cc/2017/07/10/Mac开发写作等工具集/</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 技术 </category>
+            
+            <category> 工具 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> mac </tag>
+            
+            <tag> 工具集 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[如何追求你想要的人生]]></title>
       <url>/2017/07/07/%E5%A6%82%E4%BD%95%E8%BF%BD%E6%B1%82%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84%E4%BA%BA%E7%94%9F/</url>
       <content type="html"><![CDATA[<p>每个人都是独一无二的。追求往往是徒劳。做自己最重要<br><a id="more"></a></p>
