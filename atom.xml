@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.atopos.cc/"/>
-  <updated>2018-05-16T08:45:07.000Z</updated>
+  <updated>2018-05-16T14:24:32.000Z</updated>
   <id>http://www.atopos.cc/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.atopos.cc/2018/05/16/20180516%E5%BF%83%E5%BE%97/"/>
     <id>http://www.atopos.cc/2018/05/16/20180516心得/</id>
     <published>2018-05-16T07:58:00.000Z</published>
-    <updated>2018-05-16T08:45:07.000Z</updated>
+    <updated>2018-05-16T14:24:32.000Z</updated>
     
     <content type="html"><![CDATA[<ul>
 <li>人生方法论（作者：俞敏洪）<ul>
@@ -39,7 +39,9 @@
 <li>财富的意义所在：吴晓波说过，有钱让浅薄的人更浅薄，有钱让更深刻的人更深刻</li>
 <li>帮助别人，传递美好生命。美好和善意都是通过传递得到。</li>
 <li><strong>自信甚至是盲目的自信都比自卑或者犹豫不决更重要。</strong>（俞敏洪和马云的区别）</li>
-<li></li>
+<li>困境或绝境下，要修炼并等待。增加生命的厚度和强度。（鱼缸里的鱼跳出来结果干涸死掉了。穷人和富人的打赌：穷人修炼悟道了。）</li>
+<li>人的生命就像水一样，目标要坚定，得失之间，失面前才可以看到人的胸怀。</li>
+<li>用产生一个问题的思维模式解决这个问题是不可能的。（本人按：其实这就是罗胖所说的跨维攻击）</li>
 </ul>
 </li>
 </ul>
@@ -548,11 +550,11 @@
       <category term="LaTex" scheme="http://www.atopos.cc/categories/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/LaTex/"/>
     
     
-      <category term="slides" scheme="http://www.atopos.cc/tags/slides/"/>
-    
       <category term="MacTex" scheme="http://www.atopos.cc/tags/MacTex/"/>
     
       <category term="moderncv" scheme="http://www.atopos.cc/tags/moderncv/"/>
+    
+      <category term="slides" scheme="http://www.atopos.cc/tags/slides/"/>
     
   </entry>
   
@@ -652,11 +654,11 @@
       <category term="LaTex" scheme="http://www.atopos.cc/categories/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/LaTex/"/>
     
     
+      <category term="简历" scheme="http://www.atopos.cc/tags/%E7%AE%80%E5%8E%86/"/>
+    
       <category term="MacTex" scheme="http://www.atopos.cc/tags/MacTex/"/>
     
       <category term="moderncv" scheme="http://www.atopos.cc/tags/moderncv/"/>
-    
-      <category term="简历" scheme="http://www.atopos.cc/tags/%E7%AE%80%E5%8E%86/"/>
     
   </entry>
   
