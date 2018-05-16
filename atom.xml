@@ -550,11 +550,11 @@
       <category term="LaTex" scheme="http://www.atopos.cc/categories/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/LaTex/"/>
     
     
+      <category term="slides" scheme="http://www.atopos.cc/tags/slides/"/>
+    
       <category term="MacTex" scheme="http://www.atopos.cc/tags/MacTex/"/>
     
       <category term="moderncv" scheme="http://www.atopos.cc/tags/moderncv/"/>
-    
-      <category term="slides" scheme="http://www.atopos.cc/tags/slides/"/>
     
   </entry>
   
@@ -654,11 +654,11 @@
       <category term="LaTex" scheme="http://www.atopos.cc/categories/%E6%8A%80%E6%9C%AF/%E5%B7%A5%E5%85%B7/LaTex/"/>
     
     
-      <category term="简历" scheme="http://www.atopos.cc/tags/%E7%AE%80%E5%8E%86/"/>
-    
       <category term="MacTex" scheme="http://www.atopos.cc/tags/MacTex/"/>
     
       <category term="moderncv" scheme="http://www.atopos.cc/tags/moderncv/"/>
+    
+      <category term="简历" scheme="http://www.atopos.cc/tags/%E7%AE%80%E5%8E%86/"/>
     
   </entry>
   
