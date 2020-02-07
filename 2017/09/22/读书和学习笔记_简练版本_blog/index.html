@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="关于区块链的一些整理 2019年12月 Blockchain（实现了一个带有token的区块链）  本质：保存持续增加的记录的分布式数据库。 问题：分布式数据中如何存储数据 如何增加数据 如何修改数据   解决方案：增加和修改分离。 如同记录log，不断记录新的数据，然后将这些数据记录下来 也即是LinkedList（链表就是最简单的区块链结构）     如何保存数据：数据和节点的管理和操作 定义">
+    <meta name="description" content="北京大学公开课《区块链技术与应用》笔记  2020年2月7日 讲师：肖臻  北大第一次区块链的公开课 我的笔记基本上是流水账，只是作为自己的备用参考，后续有总结  BTC-密码学原理 Cryptographic hash function   Collision resistance  Hash函数的输入空间无限大，输出空间有限，客观存在hash碰撞 没有高效的找到hash碰撞的方法 Collis">
 <meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读书和学习笔记">
 <meta property="og:url" content="http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/index.html">
 <meta property="og:site_name" content="DengShizhi">
-<meta property="og:description" content="关于区块链的一些整理 2019年12月 Blockchain（实现了一个带有token的区块链）  本质：保存持续增加的记录的分布式数据库。 问题：分布式数据中如何存储数据 如何增加数据 如何修改数据   解决方案：增加和修改分离。 如同记录log，不断记录新的数据，然后将这些数据记录下来 也即是LinkedList（链表就是最简单的区块链结构）     如何保存数据：数据和节点的管理和操作 定义">
+<meta property="og:description" content="北京大学公开课《区块链技术与应用》笔记  2020年2月7日 讲师：肖臻  北大第一次区块链的公开课 我的笔记基本上是流水账，只是作为自己的备用参考，后续有总结  BTC-密码学原理 Cryptographic hash function   Collision resistance  Hash函数的输入空间无限大，输出空间有限，客观存在hash碰撞 没有高效的找到hash碰撞的方法 Collis">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/《数学之美》读书笔记思维导图byDSZ.png">
 <meta property="og:image" content="http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/高级项目管理笔记.png">
-<meta property="og:updated_time" content="2020-01-28T08:01:00.000Z">
+<meta property="og:updated_time" content="2020-02-07T03:01:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读书和学习笔记">
-<meta name="twitter:description" content="关于区块链的一些整理 2019年12月 Blockchain（实现了一个带有token的区块链）  本质：保存持续增加的记录的分布式数据库。 问题：分布式数据中如何存储数据 如何增加数据 如何修改数据   解决方案：增加和修改分离。 如同记录log，不断记录新的数据，然后将这些数据记录下来 也即是LinkedList（链表就是最简单的区块链结构）     如何保存数据：数据和节点的管理和操作 定义">
+<meta name="twitter:description" content="北京大学公开课《区块链技术与应用》笔记  2020年2月7日 讲师：肖臻  北大第一次区块链的公开课 我的笔记基本上是流水账，只是作为自己的备用参考，后续有总结  BTC-密码学原理 Cryptographic hash function   Collision resistance  Hash函数的输入空间无限大，输出空间有限，客观存在hash碰撞 没有高效的找到hash碰撞的方法 Collis">
 <meta name="twitter:image" content="http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/《数学之美》读书笔记思维导图byDSZ.png">
     
     
@@ -94,7 +94,551 @@
   <li><a class="icon" href="http://reddit.com/submit?url=http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/&title=读书和学习笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/&title=读书和学习笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/&title=读书和学习笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/&name=读书和学习笔记&description=&lt;h2 id=&quot;关于区块链的一些整理_2019年12月&quot;&gt;关于区块链的一些整理 2019年12月&lt;/h2&gt;&lt;ul&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/&name=读书和学习笔记&description=&lt;h2 id=&quot;北京大学公开课《区块链技术与应用》笔记_2020年2月7日&quot;&gt;北京大学公开课《区块链技术与应用》笔记  2020年2月7日&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;讲师：肖臻 &lt;/li&gt;
+&lt;li&gt;北大第一次区块链的公开课 我的笔记基本上是流水账，只是作为自己的备用参考，后续有总结&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;BTC-密码学原理&quot;&gt;BTC-密码学原理&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Cryptographic hash function &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Collision resistance &lt;ul&gt;
+&lt;li&gt;Hash函数的输入空间无限大，输出空间有限，客观存在hash碰撞&lt;/li&gt;
+&lt;li&gt;没有高效的找到hash碰撞的方法&lt;/li&gt;
+&lt;li&gt;Collision resistence 的作用：保证数据不被篡改，因为数据一篡改，hash值就变化了。&lt;/li&gt;
+&lt;li&gt;理论上，无法证明任何一个hash函数是Collision Resistence，只能从实践上说明&lt;/li&gt;
+&lt;li&gt;但有些hash函数之前是collision resistance，后来证明不是。一个著名的例子：MD5，已经找到可以hash碰撞的方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;hiding（单向函数）&lt;ul&gt;
+&lt;li&gt;输入空间足够大，分布比较均匀&lt;/li&gt;
+&lt;li&gt;当输入空间不是足够大时，实际操作过程中：可以加一个随机数保证足够随机：H(X||nonce)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;collision resistance和hiding这两个性质，形成了一个digital commitment&lt;ul&gt;
+&lt;li&gt;digital equipment of a sealed envelope&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;puzzle friendly（输入的X（X只能一个一个试）对应的预测hash值。）&lt;ul&gt;
+&lt;li&gt;difficult to solve, but easy to verify&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SHA-256:Secure Hash Algorithm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;区块链开户：创建一个公私钥对(public key,private key) 来源于非对称加密算法(asymmetric encryption algorithm)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;aysmmetric encryption algorithm 解决了密钥分发的问题：用公钥加密，用私钥解密&lt;/li&gt;
+&lt;li&gt;公钥—银行账户 私钥—-账户密码&lt;/li&gt;
+&lt;li&gt;用私钥签名，其他人用公钥验证。&lt;/li&gt;
+&lt;li&gt;一个可能的攻击方法：不停的产生公私钥对，和别人的公钥碰撞，如果相同，就可以用私钥将对方的账户偷窃。但这种攻击方法其实不可行，概率极小（比地球爆炸的概率还小）。&lt;/li&gt;
+&lt;li&gt;但前提是一个好的随机源：a good source of randomness。（公私钥的随机源，包括签名时也要有好的随机源）&lt;/li&gt;
+&lt;li&gt;区块链中，一般先hash，再签名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC中的数据结构&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据结构1 &lt;ul&gt;
+&lt;li&gt;用hash指针（hash pointer）代替了普通指针&lt;/li&gt;
+&lt;li&gt;Block chain is a linked list using hash pointers.&lt;/li&gt;
+&lt;li&gt;区块链：genesis bloack &amp;lt;—- H()  &amp;lt;—- H()  &amp;lt;—- H()  &amp;lt;—- H()  &amp;lt;—- most recent block&lt;/li&gt;
+&lt;li&gt;普通链表：可以改变其中一个元素，不改变其他元素。但区块链：改变一个元素，后面的其他元素都会被改变。 只要最后一个hash值，就可以验证前面的区块。&lt;/li&gt;
+&lt;li&gt;tamper-evident log&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;数据结构2 Merkle Tree&lt;ul&gt;
+&lt;li&gt;Merkle Tree 和 Binary Tree 的区别： hash指针代替了普通指针&lt;/li&gt;
+&lt;li&gt;Merkle Tree的数据结构：二叉树&lt;/li&gt;
+&lt;li&gt;block header + block body （轻节点：比如手机上的手机钱包应用只存储 block header；全节点：包括block header + block body ）&lt;/li&gt;
+&lt;li&gt;如何向轻节点证明一笔交易？用到 Merkle proof ：找到交易所在的位置，往上找到根节点（root hash），这个就是Merkle proof，向全节点请求一些hash值。&lt;br&gt;轻节点中只有root hash值，根节点hash值验证通过，则说明这个交易没有被修改。&lt;/li&gt;
+&lt;li&gt;这个证明也叫做Proof of membership 或者 Proof of inclusion，复杂度O(log(n))。证明这个交易不存在呢？即Proof of non-membership，一种方法是把所有的树结构发送给轻节点，判断正确后，检查这个节点不在叶节点中，复杂度为O(n),其他没有更好的办法，但是如果按照交易内容的hash值排序，如果要找的交易做hash，找到处于两者hash之间的两个Markle Tree，验证通过即可证明这个交易不存在，复杂度O(log(n))。这个方法的代价是排序：称为Sorted Merkle Tree。但比特币中没有使用Sorted Merkle Tree，因为比特币中无需证明交易不存在。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;注意：有环的链表都不能使用hash指针，因为会产生循环依赖。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC协议&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;double spending attack：花两次攻击（双花攻击）：因此要向央行验证这个数字货币是否使用过（可行，但这个事中心化方案）。&lt;/li&gt;
+&lt;li&gt;比特币要解决的问题：数字货币的发行（挖矿决定的）；数字货币的有效性。&lt;/li&gt;
+&lt;li&gt;数字货币的有效性：有签名+说明币来源（为了证明货币的合法性）&lt;/li&gt;
+&lt;li&gt;一个转账交易：A—-&amp;gt;B 必须有B的公钥（账号），也必须要知道A的公钥（所有的节点都要知道A的公钥，用于验证）。那么如何知道A的公钥？&lt;/li&gt;
+&lt;li&gt;Block Header（version；hash of previous block header;Merkle root hash;target;nonce;）+block body(transaction list)&lt;/li&gt;
+&lt;li&gt;full node:全节点，保存区块链所有信息，也叫做fully validating node&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;light node:轻节点，只保存block header&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如何保证账本的统一性：分布式共识 distributed consensus。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个方法是全局hash表 维护一个 distributed hash table&lt;/li&gt;
+&lt;li&gt;分布式系统的一些结论：有很多impossibility result，其中最著名的是FLP impossibility result。&lt;ul&gt;
+&lt;li&gt;asynchronous系统：（异步系统：网络传输时延没有上限的系统）即使只有一个节点是faulty，也没法达成共识&lt;/li&gt;
+&lt;li&gt;CAP Theorem（CAP是分布式系统的三个性质：Consistency，Avalability，Partition tolerance）：只能满足两个&lt;/li&gt;
+&lt;li&gt;分布式共识的一个著名协议：Paxos，如果达成共识，一定是一致性的（consistency），但有可能Paxos一直不能达成共识&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;比特币中的共识协议：Consensus in BitCoin&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;去中心化货币解决两个问题：1. 谁能合法发行货币 2. 交易的合法性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;交易的合法性&lt;ul&gt;
+&lt;li&gt;hyperledger fabric 联盟链协议：基于投票是可行的，因为大多数成员没有恶意的&lt;/li&gt;
+&lt;li&gt;比特币系统中不是这样的，因为产生公私钥对是不需要批准的。&lt;/li&gt;
+&lt;li&gt;sybil attack 女巫攻击：一个节点不断产生公私钥对，超过51%的数量，就能通过投票控制区块链。&lt;/li&gt;
+&lt;li&gt;比特币系统的解决方法：也是用投票的方法，但用的是计算力来投票。计算：穷尽4 bytes nonce：满足H(block header)&amp;lt;= target，则获得了记账权。&lt;/li&gt;
+&lt;li&gt;forking attack 分叉攻击&lt;/li&gt;
+&lt;li&gt;longest valid chain:被选择的区块，丢弃的区块：orphan block&lt;/li&gt;
+&lt;li&gt;争夺记账权的好处：获得记账权的节点有一定权力：决定哪些交易可以被写到区块里。但这个不是主要动力，因为设计者希望合法交易都可以写到区块链中。区块奖励 block reward&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;铸币权&lt;ul&gt;
+&lt;li&gt;唯一一个产生货币的交易：coinbase transaction 例子：50 BTC —-&amp;gt; 25 BTC —-&amp;gt; 12.5 BTC(21万个区块后，大约4年时间区块奖励减半。每隔10分钟产生一个区块，21万✖️10分钟=4年时间)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;共识的内容：指的是区块链中的交易内容&lt;/li&gt;
+&lt;li&gt;基于算力的投票：hash rate（计算nonce的速度）作为投票的权重。如何避免sybil attack：创建账户，并不能增加hash rate的能力。&lt;/li&gt;
+&lt;li&gt;争夺记账权的说法：挖矿 mining digital gold，争夺记账权的节点：矿工miner。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC实现&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;transaction-based ledger&lt;/li&gt;
+&lt;li&gt;维护一个数据结构：UTXO：Unspent Transaction Output。全节点在内存中维护UTXO的目的：检查double spending。&lt;/li&gt;
+&lt;li&gt;一个交易可以有多个输入（每个输入都要有签名），有多个输出，但要满足：total inputs = total outputs&lt;/li&gt;
+&lt;li&gt;比特币中的另一个激励机制：transaction fee，交易费。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;account-based ledger&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Bernoulli trial：a random experiment with binary outcome&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;一连串的Bernoulli trial构成了Bernoulli process：a sequence of independent Bernoulli trials。&lt;ul&gt;
+&lt;li&gt;Bernoulli process的一个特征：无记忆性 memoryless，指的是做了多次实验，下一次成功的概率和之前的无关，仍然一致。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Bernoulli process可以用poisson process近似。实验的次数很多，每次的实验成功的概率很小。我们关心的是：出块时间，理论推导出出快时间符合指数分布expontial distribution。&lt;br&gt;process free：指的是以前的工作并不影响后面找nounce的概率。如果process free不成立，算力强的矿工会产生不成比例的优势，是挖矿公平的保证。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;比特币的数量每隔4年（每21万个区块）减半，产生一个几何级数 geometric series: 21万✖️50+21万✖️25+21万✖️12.5+…=21万✖️50✖️(1+1/2+1/4+…)=2100万&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Bitcoin is secured by mining。挖矿没有实际意义，但能保证比特币的安全性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;比特币的安全性分析&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;double spending attack：M-&amp;gt;A这个交易先之行，后M-&amp;gt;M’，然后将这个作为最长合法链。&lt;/li&gt;
+&lt;li&gt;forking attack&lt;/li&gt;
+&lt;li&gt;防范这种攻击的方法：多几次确认， confirmation： one confirmation，。。。，six confirmation。六个confirmation，平均一个块十分钟，这个就是一个小时&lt;/li&gt;
+&lt;li&gt;irrevocable ledger：凡是写入区块链的内容都永远改不了。&lt;/li&gt;
+&lt;li&gt;zero confirmation：&lt;/li&gt;
+&lt;li&gt;selfish mining：挖矿，挖到一个区块，不急着发布，藏着一条链，分叉攻击的手段，只有当：恶意节点和其他同伙的算力超过51%才有可能成功。&lt;br&gt;selfish mining的两个目的：1是获得常用（比如取消某一个交易）  2 是减少竞争（一次发布2个区块，别人挖到的块就失效了）。风险是有可能失败&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC网络 The Bitcoin Network&lt;/p&gt;
+&lt;h2 id=&quot;application_layer：_Bitcoin_Block_chain&quot;&gt;application layer： Bitcoin Block chain &lt;/h2&gt;&lt;p&gt;network layer： p2p Overlay Network&lt;br&gt;（简单的p2p网络，没有所谓的超级节点super node，或者master node。&lt;br&gt; 有一个seed node，它会告诉你其他节点，tcp通信用于穿透防火墙&lt;/p&gt;
+&lt;h2 id=&quot;当你退出时，直接退出，当其他节点没有收到你的信息时，就会删除你这个节点）&quot;&gt; 当你退出时，直接退出，当其他节点没有收到你的信息时，就会删除你这个节点）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;比特币的设计原则是：简单，鲁棒。而不是高效。  simple,robust but not efficient&lt;br&gt;flooding 节点第一次收到洪流消息后，节点把这个传输给其他节点，同时记录下这个消息我已经收到过了，下次再收到这个消息，就不转发给其他邻居节点。&lt;/li&gt;
+&lt;li&gt;best effort：有的节点不转发一些合法交易，有的节点转发一些不合法交易&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC-挖矿难度&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;H(block header)&amp;lt;=target SHA-256 输入空间2^256&lt;/li&gt;
+&lt;li&gt;1_target： difficulty=1时的目标阈值 target&lt;/li&gt;
+&lt;li&gt;difficulty = (difficulty - 1_target)/target&lt;/li&gt;
+&lt;li&gt;产生区块的时间越短，就会产生分叉，分叉的后果：就是恶意节点集中算力增加自己的区块，导致攻击。&lt;br&gt;而以太坊的区块时间是15秒，产生一个新的共识协议：ghost协议：分叉的orphan block会得到一些奖励uncle reward。&lt;/li&gt;
+&lt;li&gt;出块时间无论多长，但都要保持稳定。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如何修改挖矿难度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每隔2016个区块就调整一次挖矿难度，大约是2个星期的时间。2016✖️10分钟/60/24=14天。&lt;/li&gt;
+&lt;li&gt;目标阈值(实际比特币代码中使用的是目标阈值)：target = target✖️actual time/expected time  expected time：2016✖️10分钟 actual time：time spent mining the last 2016 blocks（实际产生2016个区块的时间）注意：阈值一次调整最大不超过4倍，，最小是1/4，防止系统出现意外情况。&lt;/li&gt;
+&lt;li&gt;挖矿难度：next_difficulty = previous_difficulty✖️expected time(2 weeks)/actual time&lt;/li&gt;
+&lt;li&gt;问题：当恶意节点不调整这个target，通不过nBits的区块合法性检测。target 256 bytes ，nBits 4bytes&lt;/li&gt;
+&lt;li&gt;以太坊是可以自己修改自己产生的区块时间，比比特不复杂得多。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;比特币系统的总算力的变化情况&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC-挖矿&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;全节点&lt;ul&gt;
+&lt;li&gt;一直在线&lt;/li&gt;
+&lt;li&gt;在本地硬盘上维护完整的区块链信息&lt;/li&gt;
+&lt;li&gt;在内存中维护UTXO集合，以便快速检验交易的正确性&lt;/li&gt;
+&lt;li&gt;监听比特币网络上的交易信息，验证每个交易的合法性&lt;/li&gt;
+&lt;li&gt;决定哪些交易会被打包到区块里&lt;/li&gt;
+&lt;li&gt;监听别的矿工挖出来的区块，验证其合法性&lt;/li&gt;
+&lt;li&gt;挖矿&lt;ul&gt;
+&lt;li&gt;决定沿着哪条链挖下去？（最长合法链）&lt;/li&gt;
+&lt;li&gt;当出现等长的分叉时，选择哪一个分叉？（最先听到的那个分叉）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;轻节点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不是一直在线&lt;/li&gt;
+&lt;li&gt;不用保存整个区块链，只要保存每个区块的块头（与都保存相比，差出1000倍）&lt;/li&gt;
+&lt;li&gt;不用保存全部交易，只保存与自己有关的交易&lt;/li&gt;
+&lt;li&gt;无法检验大多数交易的合法性，只能检验与自己相关的那些交易的合法性&lt;/li&gt;
+&lt;li&gt;无法检测网上发布的区块的正确性&lt;/li&gt;
+&lt;li&gt;可以验证挖矿的难度&lt;/li&gt;
+&lt;li&gt;只能检测哪个是最长链，不知道哪个是最长合法链&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;比特币上的安全性（类似银行给拥有合法身份的人钱）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;密码学的保证：随机源足够随机&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;共识机制：只给合法身份的人&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CPU—&amp;gt;GPU(浮点运算是深度学习需要的)—&amp;gt;ASIC：Application Sepcific Intergrated Circus（mining puzzle）一个芯片设计给一个加密货币&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设计Alternative mining puzzle：抗ASIC resistance。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;挖矿的趋势：大型矿池的出现。pool manager + miner + miner+ miner+ miner。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pool manager：全节点的功能；miner：只计算hash值&lt;/li&gt;
+&lt;li&gt;解决收入不稳定的问题：因为挖矿太难了，所以降低挖矿难度即可：share = almost valid block。根据矿工提交的share数目，分配工作量&lt;/li&gt;
+&lt;li&gt;问题1:不可能偷区块奖励。因为除了nonce，还有其他域的值需要调整（coinbase中有收款人的地址=矿主的地址）。&lt;/li&gt;
+&lt;li&gt;问题2: 可能捣乱吗？挖到一个正确的区块，扔掉，谁也得不到了。分红别人挖到的块。&lt;/li&gt;
+&lt;li&gt;大型矿池的一个弊病：当有人控制了大型矿池，吸引一些不明真相的群众，这样就能发动51%的攻击：攻击包括分叉攻击；Boycott：发现包含某个交易后就分叉，如果拥有51%算力，就可以将分叉的区块链作为最长合法链，这样别的节点也不包含这些交易了，因为包含了就分叉。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;BTC-比特币脚本&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只有堆栈，没有C语言那些全局变量，动态数组等。&lt;/li&gt;
+&lt;li&gt;P2PKH(Pay to Public Key Hash)最常用的&lt;/li&gt;
+&lt;li&gt;P2SH(Pay to script hash)最复杂的一种：其中一个应用场景是：对多重签名的支持&lt;/li&gt;
+&lt;li&gt;Proof of Burn：不管输入脚本是什么，输出到Return都会返回。两种应用场景：1.销毁比特币，可以得到一些小币种AltCoin(Alternative Coin)。2.digital commitment（专利内容做hash，证明当时已经知道这个知识了）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC-分叉&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fork的几种情况&lt;/li&gt;
+&lt;li&gt;同时挖到矿，临时分叉 state fork&lt;/li&gt;
+&lt;li&gt;分叉攻击 forking attack（deliberate fork）&lt;/li&gt;
+&lt;li&gt;修改协议，有些节点不修改 protocal fork：根据协议修改的：&lt;ul&gt;
+&lt;li&gt;hard fork ：例子：block size limit 1M字节 1个交易250字节，1000000/250=4000个交易/每个交易 4000/60/10=7 tx/sec。只要旧节点不更新软件，这个分叉就不会消失，所以叫硬分叉。实际的例子：以太坊：ETH 分叉为ETH 和 ETC ，为了防止回放，加上了一个chain ID&lt;/li&gt;
+&lt;li&gt;soft fork：新的协议下，有些合法的交易变得不合法了。旧节点不更新，白挖矿了，但不会产生永久的分叉。&lt;br&gt;实际例子：当给域赋予一些新的意义时，coinbase（铸币域）前8字节可以作为extra nonce ，调整挖矿难度：4字节+8字节=2^96。&lt;br&gt;比特币历史上的一个著名例子：P2SH：Pay to Script Hash 。旧节点只验证 redeem script是否正确，新节点才验证第二阶段的验证。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;小结：&lt;ul&gt;
+&lt;li&gt;soft fork：当超过算力51%的节点都更新了软件，就不会产生硬分叉。&lt;/li&gt;
+&lt;li&gt;hard fork：必须所有的节点更新软件，才不会产生永久性的分叉。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC-问答&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;转账交易不需要对方账户在线&lt;/li&gt;
+&lt;li&gt;如果你账户的私钥丢失了，怎么办？私钥丢失了，账户的钱就取不出来了。著名例子：Mt.Gox，翻译为门头沟&lt;/li&gt;
+&lt;li&gt;如果私钥泄漏了怎么办？尽快转账到自己的另外一个账户。&lt;/li&gt;
+&lt;li&gt;如果转账的时候，写错了地址怎么办？没有办法，没法取消已经发布的交易&lt;/li&gt;
+&lt;li&gt;如果转账的地址不存在，这是不友好的，因为需要一直存在UTXO中&lt;/li&gt;
+&lt;li&gt;矿工偷nonce问题：别的矿工发布的nonce，其他矿工偷过来作为自己找到的，不能。因为有coinbase域中有矿工的收款地址，Merkle Tree就通不过。&lt;/li&gt;
+&lt;li&gt;交易费不用知道矿工：因为total inputs&amp;gt;total outputs，差值就是交易费。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC-匿名性 anonymity&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pseudonymity &lt;/li&gt;
+&lt;li&gt;多个公私钥对可能会关联在一起，分析比特币钱包的交易生成方式即可搞清楚关联方式&lt;/li&gt;
+&lt;li&gt;资金转入转出都会引起注意，这是和实体世界相关联。&lt;/li&gt;
+&lt;li&gt;(研究) 信用卡数据公开，但隐私保护去除了姓名和性别，卡号等，但通过行为，比如什么时间买了什么东西，很快就可以将这个人和信用卡关联起来。比特币的所有交易都是公开的。&lt;/li&gt;
+&lt;li&gt;silk road（ebay for illegal drugs）比特币支付+TOR 洋葱路由 （网络层）。这个老板2，3年后被抓（几万个比特币都没有使用，旧金山被抓，可能是由于一台电脑上登陆了实际账户和虚拟账户）。&lt;/li&gt;
+&lt;li&gt;如何提高匿名性？&lt;br&gt;application layer（应用层保证匿名性：coin mixing 没有信用度很高的coin mixing服务。在线钱包：将大家的比特币混合）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;network layer（首先，保证网络层的匿名性：学术界有很多解决方案，一般是多路径转发的方法，TOR）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;零知识证明：是指一方（证明者）向另一方（验证者）证明一个陈述是正确的，而无需透露除该陈述是正确外的任何信息。&lt;/li&gt;
+&lt;li&gt;零知识证明的数学基础是同态隐藏。&lt;/li&gt;
+&lt;li&gt;不碰撞：x,y不同，E(x)和E(y)不同（逆否命题一定成立：如果E(x)=E(y)，那么x=y）&lt;/li&gt;
+&lt;li&gt;不可逆：给定E(x)的值，无法推出x的值 （类似hash函数的hiding property）&lt;/li&gt;
+&lt;li&gt;同态运算：同态加法+同态乘法+扩展到多项式&lt;/li&gt;
+&lt;li&gt;盲签原理：在不知道内容的情况进行签名&lt;/li&gt;
+&lt;li&gt;零币和零钞：专门为匿名性设计的加密货币。协议层就融合了匿名化处理。&lt;/li&gt;
+&lt;li&gt;零币：类似于混币处理。&lt;/li&gt;
+&lt;li&gt;零钞：zk-SNARKs。但都没有解决和实体交互的匿名性问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;BTC-思考&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;hash指针如何传播？实际使用时，其实没有指针，只有hash。那如何找到区块呢？区块链是存在key value的数据库level DB中。&lt;/li&gt;
+&lt;li&gt;区块恋：私钥分成两块，一人保存一块。问题是：降低了安全性，2^256 —-&amp;gt; 2^128；永久存储在UTXO中。可以用多重签名的方法-MULTISIG。&lt;/li&gt;
+&lt;li&gt;分布式共识：分布式系统中，理论上证明达成共识不可能的。为什么比特币能够绕过分布式共识的那些不可能结论？实际上的模型修改下，就不是理论上的模型了。比特币就是这样做的，不要被学术界的思维限制，不要被程序员的思维限制。&lt;/li&gt;
+&lt;li&gt;比特币的稀缺性：早期挖矿的收益高。货币总量固定不适合做货币，一个好的货币需要有通货膨胀功能。&lt;/li&gt;
+&lt;li&gt;量子计算：首先量子计算离实际使用还很远。而且这个对传统金融业的冲击更大，还有量子加密算法。地址（公钥—hash再转换）—-&amp;gt;生成私钥，量子计算能从公钥算出来私钥。&lt;br&gt;最好的做法：进行一次交易后，将地址中的钱全部转走，或者转给自己另一个账户，好处有二：增强了安全性；隐私保护。&lt;br&gt;公钥最好也不要随便泄漏。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊概述&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比特币：区块链1.0；以太坊：区块链2.0&lt;/li&gt;
+&lt;li&gt;以太坊的改进：&lt;/li&gt;
+&lt;li&gt;出块时间：10分钟—15秒，并设计了对应的共识协议GHOST协议&lt;/li&gt;
+&lt;li&gt;mining puzzle：导致挖矿设备的专业化（ASIC芯片的挖矿机，与去中心化的理念不符）。ASIC resistance。&lt;/li&gt;
+&lt;li&gt;用权益证明代替工作量证明。proof of work —-&amp;gt; proof of stake。类似股份，投票&lt;/li&gt;
+&lt;li&gt;增加了智能合约的支持：smart contract。&lt;br&gt;去中心化的货币——&amp;gt;去中心化的合约，合同。&lt;br&gt;BitCoin：decentralized currency。BTC 最小单位：Satoshi&lt;br&gt;Ethereum：decentralized contract。ETH 最小单位：Wei&lt;/li&gt;
+&lt;li&gt;去中心化的合同有什么好处？去中心化的货币有什么好处？跨国转账。&lt;br&gt;技术上保证从一开始合同就不能违约。区块链的一个特点就是不可篡改。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊的账户模式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比特币的模型：基于交易；以太坊的模型：基于账户的模型account-based ledger。这个好处：double spending ，天然防御作用。弱点：replay attack&lt;/li&gt;
+&lt;li&gt;普通外部账户（公私钥）：externally owned account：balance（余额） nonce（计数器，使用账户的次数）&lt;/li&gt;
+&lt;li&gt;smart contract account（智能合约账户）：不能主动发起交易，发起交易需要普通账户发起。balance nonce code storage &lt;/li&gt;
+&lt;li&gt;为什么要创建以太坊？Vitalik创始人。比特币是基于交易的，隐私性比较好。智能合约：用稳定的身份，基于account的模型，保持稳定。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊的数据结构：状态树&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;账户地址到账户状态的映射：地址160bits，一般表示为40个16进制的数；状态：state。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;hash表（键值对）？如果证明自己的余额，Merkle Tree。比特币基于交易的Merkle Tree，一个区块上限4000个，一般是几百个到几千个。而基于账户的以太坊，每创建一个账户，就会重新构建一个Merkle Tree，数量级大量增加。&lt;br&gt;只维护一个Merkle Tree，Merkle Tree没有好的查找插入方法，Merkle Tree需要排序吗？不排序查找速度很慢，不排序导致状态不一致，各个全节点算出来的Merkle hash不一样，而比特币中是发布区块的节点唯一确定的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;trie（来自retrieval信息检索）字典前缀树： 字符串。&lt;br&gt;branding factor &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;特点1: 0-f 加一个结束标志符。地址为40个16进制数&lt;/li&gt;
+&lt;li&gt;特点2：key值越长，查找的复杂度越大，&lt;/li&gt;
+&lt;li&gt;特点3：hash表有可能有碰撞，trie不会出现碰撞，只要地址不一样，一定不一样&lt;/li&gt;
+&lt;li&gt;特地4：不同的节点构造出来的trie结构是一样的。&lt;/li&gt;
+&lt;li&gt;特点5：更新的局部性很好。因为只要更改局部的即可。&lt;/li&gt;
+&lt;li&gt;Patricia Tree/Trie 经过压缩的trie 路径压缩：好处是Tree的高度降低，内存访问速度增加。&lt;/li&gt;
+&lt;li&gt;地址160bits，地址分布非常稀疏，目的是为了防止碰撞&lt;/li&gt;
+&lt;li&gt;MPT Merkle Patricia tree &lt;/li&gt;
+&lt;li&gt;和PT的区别在于：加入了hash指针&lt;/li&gt;
+&lt;li&gt;Modified MPT：extension node  branch node leaf node&lt;/li&gt;
+&lt;li&gt;保存历史状态：因为智能合约的以太坊是图灵完备的，因此推算前一个状态是不可能的，无法形成回滚 roll back&lt;/li&gt;
+&lt;li&gt;以太坊中有三个树：状态树（key valus）=（地址，），交易树，收据树&lt;/li&gt;
+&lt;li&gt;状态树：key-地址，value-序列化：RLP：Recursive Length Prefix （极简主义，序列化的方法） nested array of bytes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊：交易树 收据树&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bloom filter数据结构：支持高效查找：某个指定元素是否在这个集合中。（元素做hash，映射到一个向量中） &lt;/li&gt;
+&lt;li&gt;轻节点：通过块头的Merkle hash过滤掉大多数，再到少部分中去找。&lt;/li&gt;
+&lt;li&gt;以太坊的运行过程可以看作是一个交易驱动的状态机。状态：所有账户的状态，交易：每次发布区块时包含的交易。&lt;/li&gt;
+&lt;li&gt;比特币也可以看作一个交易驱动的状态机。状态：UTXO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊：共识机制 GHOST协议&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;motivation：以太坊的分叉很多（相比于比特币），那么矿池获得最长合法链的概率不成比例的增加，centralization bias。&lt;/li&gt;
+&lt;li&gt;GHOST协议：没有成为最长合法链的区块orphan block或者stale block，也有区块奖励。以太坊中称为uncle block。&lt;/li&gt;
+&lt;li&gt;Uncle block可以得到7/8✖️3ETH。包括Uncle block的区块链可以得到1/32✖️3+3，而且最多可以包括2个Uncle block。&lt;/li&gt;
+&lt;li&gt;合法的Uncle block 最多7代，7/8，6/8，5/8，4/8，3/8，2/8。Uncle reward&lt;/li&gt;
+&lt;li&gt;把Uncle block添加进来，要不要执行交易？不执行，可能和主链上的交易冲突。&lt;/li&gt;
+&lt;li&gt;分叉后第二，三，个区块怎么办？以太坊规定：只要分叉第一个区块才能得到奖励。因为forking attack的代价便宜很多，因为攻击成了，就回滚达到攻击目的，如果不成就被招安得到奖励。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-挖矿算法（bug bounty）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Block chain is secured by mining&lt;/li&gt;
+&lt;li&gt;one cpu，one vote—-中本聪&lt;/li&gt;
+&lt;li&gt;因此，后面的挖矿算法要保证 ASIC resistance，增加对puzzle求解对内存的需求 memory hard mining puzzle，怎么设计呢？著名的例子 LiteCoin：用的是scrypt，128K内存&lt;/li&gt;
+&lt;li&gt;好处：增加了对内存的访问需求，memory-hard&lt;/li&gt;
+&lt;li&gt;坏处：对轻节点也是memory-hard。&lt;/li&gt;
+&lt;li&gt;而puzzle设计的原则：difficult to solve，but easy to verify。&lt;/li&gt;
+&lt;li&gt;LiteCoin和比特币的差别：1 puzzle难题不同 2 出快时间2分半，是比特币的四倍。除此之外，基本一样。&lt;/li&gt;
+&lt;li&gt;ethash（以太坊使用的puzzle）：&lt;/li&gt;
+&lt;li&gt;两个数据集 16M cache 1G dataset，DAG（定期增长）&lt;/li&gt;
+&lt;li&gt;16M cache：seed 经过变换产生一个伪随机数，再hash产生下一个伪随机数。。。&lt;/li&gt;
+&lt;li&gt;1G dataset：伪随机位置寻找256次，找到一个数放到第一个位置，&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;block header nonce 一次读取128个位置，计算得到一个位置，包括相邻元素也读取出来，循环64次，每次读取2个元素，因此是128个元素&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;伪代码分析：每隔30000个块会重新生成seed（对原来的seed做hash值），并且利用新的seed生成新的cache。cache的初始大小为16M，每隔30000个块重新生成时增大初始大小的1/128—-128K。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;目前以太坊挖矿基本上是GPU，起到了ASIC resistance的作用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-难度调整&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;黄皮书和代码都有不一致的地方，这里以代码为依据&lt;/li&gt;
+&lt;li&gt;D(H)=max(D0,P(H)Hd+xs2)+epston P(H)Hd：父区块 D0=131072&lt;/li&gt;
+&lt;li&gt;难度炸弹：PoW向PoS转换。工作量证明向权益证明转换。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;问题是PoS有很多问题不好解决，无法上线，而难度越大，出块时间越长，15秒—16秒—-17秒，因此，向后回调了300万个区块。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊的四个阶段：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Frontier&lt;/li&gt;
+&lt;li&gt;Homestead&lt;/li&gt;
+&lt;li&gt;Metropolis &lt;ul&gt;
+&lt;li&gt;Byzantium(难度回调在此阶段中，在EIP（Ethereum Improvement Proposal）中决定，同时把Block Reward 从5个ETH将为3个ETH) BIP（BitCoin Improvement Proposal）&lt;/li&gt;
+&lt;li&gt;Constantinople&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-Proof of Stake&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比特币一个诟病：浪费电 KHW THW（Tero watt hours）&lt;/li&gt;
+&lt;li&gt;比特币：每年能耗70THW，每个交易的能耗是1014KWH。比特币每年挖矿的总收入60亿美元&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊：每年能耗20THW，每个交易的能耗是67KWH。因为出块时间短，虽然还有智能合约。每年挖矿的总收入50亿美元，费用是24亿美元&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PoS：proof of stake&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;挖矿-设备多-算力大-挖矿多-收益多：所以挖矿取决于钱，拼钱&lt;/li&gt;
+&lt;li&gt;virtual mining，相比较proof of work，好处有&lt;ul&gt;
+&lt;li&gt;能耗更少，环境污染小，温室气体排放少&lt;/li&gt;
+&lt;li&gt;不是加密货币的闭环，因为矿机是用加密货币之外的法币购买的。发动攻击，所需的资源可以从外部获得，比如购买矿机。比如AltCoin，对这种小币攻击很容易，而且致命性的，Infanticide。&lt;/li&gt;
+&lt;li&gt;有的采用混合模型：也要挖矿，挖矿的难度和你持有币多少相关，持有币越多，挖矿难度越小。这个设计也有问题：持有币最多的人，挖矿最容易。有的币会锁定一段时间，Proof of Deposit&lt;/li&gt;
+&lt;li&gt;基于权益证明有很多挑战：&lt;ul&gt;
+&lt;li&gt;一 nothing at stake：上面链可以挖，下面链也可以挖矿&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;以太坊中的权益证明协议是：Casper the friendly Finality Gadget（FFG）：引入一个概念Validator，推动链达成共识，形成共识&lt;ul&gt;
+&lt;li&gt;two-phase commit：Prepare Message 2/3 Commit Message 2/3 &lt;/li&gt;
+&lt;li&gt;以太坊中权益证明：50个区块=1个epoch，连续两个epoch投票都是2/3，才算有效&lt;/li&gt;
+&lt;li&gt;验证者，验证会得到奖励，跟挖矿得到奖励一样。相应的，不作为的验证者，没收部分保证金，乱作为的验证，没收全部保证金，销毁。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Finality是否可能被推翻？权益证明不成熟，工作量证明经历了历史的考验&lt;/li&gt;
+&lt;li&gt;EOS 柚子：采用的就是权益证明，DPOS共识协议：Delegated Proof of Stake：选举出一些超级节点，再投票。。。&lt;/li&gt;
+&lt;li&gt;工作量证明的一些好处：提供了一种将电能转换为钱的方式。电不好存储和传输，偏远地区清洁能源的电，不好传输到电主网中，因此可以用挖矿将电能转换为比特币，存储和传输就容易了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-智能合约（以太坊的精髓）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;什么是智能合约？是运行在区块链上的一段代码，代码的逻辑定义了合约的内容。&lt;/li&gt;
+&lt;li&gt;智能合约的账户保存了合约当前的运行状态：&lt;/li&gt;
+&lt;li&gt;balance 当前余额&lt;/li&gt;
+&lt;li&gt;nonce 交易次数&lt;/li&gt;
+&lt;li&gt;code 合约代码&lt;/li&gt;
+&lt;li&gt;storage 存储，数据结构是一棵MPT&lt;/li&gt;
+&lt;li&gt;Solidity 是常用的语言，类似JavaScript&lt;/li&gt;
+&lt;li&gt;强类型语言 address 特殊类型&lt;/li&gt;
+&lt;li&gt;建议：construct 构造函数&lt;/li&gt;
+&lt;li&gt;外部账户可以调用智能合约&lt;/li&gt;
+&lt;li&gt;一个合约调用另一个合约的函数？&lt;/li&gt;
+&lt;li&gt;直接调用&lt;/li&gt;
+&lt;li&gt;代理调用 delegatecall()&lt;/li&gt;
+&lt;li&gt;fallback()函数&lt;/li&gt;
+&lt;li&gt;不调用任何函数，就调用fallback函数，若没有这个函数，则抛出异常&lt;/li&gt;
+&lt;li&gt;智能合约的创建和运行&lt;/li&gt;
+&lt;li&gt;运行在EVM(Ethereum Virtual Machine)， World Wide Computer 256位。比如：增加JVM，加强一致性。&lt;/li&gt;
+&lt;li&gt;智能合约是个Turning-complete Programming Model&lt;ul&gt;
+&lt;li&gt;出现死循环怎么办？没有办法，这个是Halting Problem，不是NPC问题（可以解的），复杂度是指数级。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;汽油费gas fee，由发起交易的人支付&lt;/li&gt;
+&lt;li&gt;EVM中不同指令消耗的汽油费是不一样的（比如hash运算gas fee高）&lt;/li&gt;
+&lt;li&gt;错误处理&lt;/li&gt;
+&lt;li&gt;会产生回滚，回到交易执行之前的状态&lt;/li&gt;
+&lt;li&gt;assert语句：判断内部条件&lt;/li&gt;
+&lt;li&gt;require语句：判断外部条件&lt;/li&gt;
+&lt;li&gt;revert语句：无条件抛出异常，回滚状态变动&lt;/li&gt;
+&lt;li&gt;嵌套调用&lt;/li&gt;
+&lt;li&gt;直接调用：会产生连锁回滚&lt;/li&gt;
+&lt;li&gt;call调用：就不会产生连锁回滚&lt;/li&gt;
+&lt;li&gt;全节点维护三个数据结构：状态树，交易树，收据树。状态的修改都是在修改本地的数据结构。&lt;/li&gt;
+&lt;li&gt;先执行再挖矿！执行完交易后，更新三个数据结构，更新3个roothash，再尝试nonce，挖矿。&lt;/li&gt;
+&lt;li&gt;gas fee是给那些发布智能合约的矿工的一种补偿，但如果没发布的矿工，什么补偿都没有，就是“陪太子读书”。&lt;/li&gt;
+&lt;li&gt;有没有一些区块，不独立验证交易的合法性。这样会导致区块链的安全问题。因为区块链的安全性取决于每个全节点独立验证交易的安全性。而这些全节点不可能不验证交易的合法性，因为根hash值不对了，就没法发布区块了。（先执行交易，再更新三棵树）&lt;/li&gt;
+&lt;li&gt;问题：智能合约的错误，要不要也发布到区块链中去？要！错误的交易也要发布到区块链中去，形成共识，才能获得汽油费。&lt;/li&gt;
+&lt;li&gt;问题：智能合约支持多核并行处理吗？可以的。solidity不支持多线程。&lt;/li&gt;
+&lt;li&gt;多线程：寄存器是自己的，大部分是共享的，多线程会导致访问内存的不确定，这个和以太坊是交易驱动的状态机相违背，因为所有全节点都要验证，因此状态的转换是确定的。&lt;/li&gt;
+&lt;li&gt;三种函数 发起转账&lt;/li&gt;
+&lt;li&gt;transfer 会发生连锁回滚&lt;/li&gt;
+&lt;li&gt;send 返回false，不会发生连锁回滚&lt;/li&gt;
+&lt;li&gt;call.value(uint256 amount) 返回false，不会发生连锁回滚。区别：把剩下的所有汽油都发过去&lt;/li&gt;
+&lt;li&gt;auctionE nd() bid() 函数。&lt;/li&gt;
+&lt;li&gt;重入攻击（Re-entrancy Attack）：你调用的合约有可能再调用你这个合约，所以先清除状态，再执行操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-TheDAO&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DAO Decentralized Autonomous Organization 去中心化的自治组织&lt;/li&gt;
+&lt;li&gt;2016年5月出现：The DAO。众筹，民主投票决定。&lt;/li&gt;
+&lt;li&gt;DAC Decentralized Autonomous Corporation&lt;/li&gt;
+&lt;li&gt;取回资金：splitDAO childDAO 唯一路径：只能拆分成childDAO，取出来。&lt;/li&gt;
+&lt;li&gt;拆分的理念：符合民主的理念，就是不是少数服从多数，少数也可以拆分出来。&lt;/li&gt;
+&lt;li&gt;问题出现在splitDAO的代码实现上：先把余额清零，再转账。（重入攻击）子基金有28天的锁定期。&lt;/li&gt;
+&lt;li&gt;出现两派：1.too big to fail 补救 2. code is law 不补就&lt;/li&gt;
+&lt;li&gt;软件升级：软分叉。增加了一个规则：DAO相关的交易都是非法的交易，但这个有一个bug：非代码bug，而是功能bug，没有收取汽油费，因此导致攻击（不消耗汽油费，恶意节点不断产生这种交易，新升级的节点受不了都回到旧版本） &lt;/li&gt;
+&lt;li&gt;通过软件升级的方法，把DAO智能合约上的所有资金强行转到新的智能合约上，这个新的智能合约只有一个功能：退钱，D币转换为以太币。硬分叉：因为旧矿工认为这个交易是非法交易。最后通过投票支持了硬分叉。&lt;/li&gt;
+&lt;li&gt;硬分叉：新链是 ETH 旧链 ETC Ethereum Classic 上交易所。一直存活在现在。两条链同时存在有一个问题：重放攻击，新链上的交易可以放到旧链上，反之亦然。因此增加了ChainID。&lt;/li&gt;
+&lt;li&gt;问题：为什么不能针对黑客账户进行退？而是都按照所有账户的方式处理。因为这个bug不可以修改，智能合约只能作废。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-反思&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;智能合约其实就是自动执行的合约，Is smart contract really smart? &lt;/li&gt;
+&lt;li&gt;反思1 Smart contract is anything but smart.&lt;/li&gt;
+&lt;li&gt;反思2 Irrevocability is a double ledged sword&lt;/li&gt;
+&lt;li&gt;反思3 nothing is irrevocable（18修正案—21修正案 大街上饮酒，车里的人都不能喝酒 是违法的 open container laws）&lt;/li&gt;
+&lt;li&gt;反思4 Is solidity the right programming language？ 语言设计：solidity语言，调用时，违法直觉，是调用fallback函数。有人建议：使用函数式语言。康奈尔大学 函数式编程语言 Ocaml，做的工作是：formal verification。形式化证明这个代码只能实现这个功能。&lt;/li&gt;
+&lt;li&gt;智能合约的语言具有什么样的表达能力？图灵完备，还是中间语言。&lt;/li&gt;
+&lt;li&gt;有可能的解决方法：模板&lt;/li&gt;
+&lt;li&gt;开源的好处：大家监督，增加公信力。不容易产生漏洞。但为什么这么多人看着，还出现漏洞，有人称为Many eyeball fallacy。所以，开源的不一定安全。&lt;/li&gt;
+&lt;li&gt;What does decentralization mean？最后是投票，也有矿工留在旧链。&lt;/li&gt;
+&lt;li&gt;分叉是去中心化的体现。&lt;/li&gt;
+&lt;li&gt;decentralized ！= distributed&lt;/li&gt;
+&lt;li&gt;状态机 state machine 是为了容错！最早的应用场景是mission critical application；airtraffic control；stock exchange；space shuttle。以前这种情况下机器都很少，个位数。&lt;/li&gt;
+&lt;li&gt;智能合约是用来编写控制逻辑的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-美链 Beauty chain&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在美莲上做ICO。 Initial Coin Offering&lt;/li&gt;
+&lt;li&gt;没有自己的区块链，代币的发行，转账都是通过调用智能合约中的函数来完成。&lt;/li&gt;
+&lt;li&gt;ERC 20是以太坊上发行代币的一个标准，规范了所有发行代币的合约应该实现的功能和遵循的接口 ERC Ethereum Request for Comments&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;代码分析： uint256 amount = uint256(cnt) * _value. 溢出，amount 很小，但转账时依然很大，因此导致系统中凭空产生了很多的代币。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;反思1:应该检查溢出 比如：math库中，都是 a=b*c assert(a/c == b),加法减法都调用的是库，而乘法没有使用库。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;总结（应用上）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;退款不是取消之前的交易，而是发起一个新的交易。&lt;/li&gt;
+&lt;li&gt;法律保护？没有司法保护，美国信用卡在2个月内申诉，最多50美元的损失。比特币没有这个保护。&lt;/li&gt;
+&lt;li&gt;比特币本来就没有必要和已有支付方式的竞争&lt;/li&gt;
+&lt;li&gt;加密货币应该用在已有支付方式解决不是很好的场景。Internet使得信息传输很容易，支付则难很多。 World Wide Currency 支付和信息传播联系在一起。&lt;/li&gt;
+&lt;li&gt;有人说：下一代互联网是Internet of value。Information can flow freely on the Internet，but payment cannot。趋势：价值交换和信息传播渠道相互融合。&lt;/li&gt;
+&lt;li&gt;有人说：加密货币的支付效率很低。&lt;/li&gt;
+&lt;li&gt;加密货币本来就不是和以前支付方式竞争&lt;/li&gt;
+&lt;li&gt;随着区块链的技术发展，共识协议改进，支付效率不断提高：比特币每秒7个交易，有的货币号称每秒达到100万个交易&lt;/li&gt;
+&lt;li&gt;最重要的一点：效率的好处应该在当前的历史环境下。电报Telegram在中国使用很长时间，因为没有更高效的方式。&lt;/li&gt;
+&lt;li&gt;智能合约的质疑：为啥不用法律合同，自然语言编写，智能合约是用程序编写的。Software is eating the world&lt;/li&gt;
+&lt;li&gt;ATM机是物理世界的智能合约，ATM刚开始出现故障&lt;/li&gt;
+&lt;li&gt;软件改变世界，这是一个大趋势&lt;/li&gt;
+&lt;li&gt;但，智能合约也不能解决所有问题。Democracy is the worst form of Government except for all those other forms that have been tried from time to time&lt;/li&gt;
+&lt;li&gt;Is decentralization always a good thing? 去中心化不能解决所有问题，&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;敲重点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不要被学术界的思维限制，不要被程序员的思维限制。&lt;/li&gt;
+&lt;li&gt;推荐书单：货币金融学&lt;/li&gt;
+&lt;li&gt;code is law （代码写到区块链中，是不能被更改的）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;参考资料&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;《Bitcoin and Cryptocurrency Technologies A Comprehensive Introduction》&lt;/li&gt;
+&lt;li&gt;以太坊白皮书、黄皮书、源代码&lt;/li&gt;
+&lt;li&gt;Sodility文档&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;关于区块链的一些整理_2019年12月&quot;&gt;关于区块链的一些整理 2019年12月&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Blockchain（实现了一个带有token的区块链）&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;本质：保存持续增加的记录的分布式数据库。&lt;/li&gt;
@@ -706,7 +1250,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于区块链的一些整理_2019年12月"><span class="toc-number">1.</span> <span class="toc-text">关于区块链的一些整理 2019年12月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#《数学之美》_吴军_2017年12月"><span class="toc-number">2.</span> <span class="toc-text">《数学之美》 吴军 2017年12月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级项目管理培训_2017年6月14日"><span class="toc-number">3.</span> <span class="toc-text">高级项目管理培训 2017年6月14日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#礼悟会员课程：“艾比克英语”创始人陈序讲座_2019年11月"><span class="toc-number">4.</span> <span class="toc-text">礼悟会员课程：“艾比克英语”创始人陈序讲座 2019年11月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#叩响英语学习大门（九个方面）"><span class="toc-number">5.</span> <span class="toc-text">叩响英语学习大门（九个方面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频访谈_“美国奥数总教练罗博深访谈”_2019年10月18日"><span class="toc-number">6.</span> <span class="toc-text">视频访谈 “美国奥数总教练罗博深访谈”  2019年10月18日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#书《为何家会伤人》_2019年10月"><span class="toc-number">7.</span> <span class="toc-text">书《为何家会伤人》 2019年10月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频课程《Learning_How_to_Learn》2017年9月22日"><span class="toc-number">8.</span> <span class="toc-text">视频课程《Learning How to Learn》2017年9月22日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一周_什么是学习"><span class="toc-number">8.1.</span> <span class="toc-text">第一周 什么是学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#集中思维和发散思维"><span class="toc-number">8.1.1.</span> <span class="toc-text">集中思维和发散思维</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Robert_Bilder博士就创造力与问题解决能力进行的访谈"><span class="toc-number">8.1.2.</span> <span class="toc-text">Robert Bilder博士就创造力与问题解决能力进行的访谈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#《八步半轻松写作》作者达芙妮_www-publicationcoach-com"><span class="toc-number">8.1.3.</span> <span class="toc-text">《八步半轻松写作》作者达芙妮 www.publicationcoach.com</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Benny_Lewis_爱尔兰多语种达人_全职语言黑客_memorise-com_助记法_APP：Anki"><span class="toc-number">8.1.4.</span> <span class="toc-text">Benny Lewis 爱尔兰多语种达人 全职语言黑客 memorise.com 助记法 APP：Anki</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二周_组块"><span class="toc-number">8.2.</span> <span class="toc-text">第二周 组块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三周_拖延症和记忆"><span class="toc-number">8.3.</span> <span class="toc-text">第三周 拖延症和记忆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORID学习和实践_2018年06月28日"><span class="toc-number">9.</span> <span class="toc-text">ORID学习和实践 2018年06月28日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID是什么"><span class="toc-number">9.1.</span> <span class="toc-text">ORID是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID有什么用"><span class="toc-number">9.2.</span> <span class="toc-text">ORID有什么用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版"><span class="toc-number">9.3.</span> <span class="toc-text">模版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID_升级版"><span class="toc-number">9.4.</span> <span class="toc-text">ORID 升级版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实践"><span class="toc-number">9.5.</span> <span class="toc-text">实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果和体会"><span class="toc-number">9.6.</span> <span class="toc-text">效果和体会</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">9.7.</span> <span class="toc-text">参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#幽门螺旋杆菌治疗_2016年10月21日"><span class="toc-number">10.</span> <span class="toc-text">幽门螺旋杆菌治疗 2016年10月21日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四联疗法_PPI+抗生素"><span class="toc-number">10.1.</span> <span class="toc-text">四联疗法 PPI+抗生素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Notice"><span class="toc-number">10.2.</span> <span class="toc-text">Notice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#references"><span class="toc-number">10.3.</span> <span class="toc-text">references</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#癌症相关_2013-08-04_12:00:00"><span class="toc-number">11.</span> <span class="toc-text">癌症相关 2013-08-04 12:00:00</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#饮食注意"><span class="toc-number">11.1.</span> <span class="toc-text">饮食注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XELOX方案"><span class="toc-number">11.2.</span> <span class="toc-text">XELOX方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考-1"><span class="toc-number">11.3.</span> <span class="toc-text">参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#健康相关"><span class="toc-number">12.</span> <span class="toc-text">健康相关</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#北京大学公开课《区块链技术与应用》笔记_2020年2月7日"><span class="toc-number">1.</span> <span class="toc-text">北京大学公开课《区块链技术与应用》笔记  2020年2月7日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BTC-密码学原理"><span class="toc-number">1.1.</span> <span class="toc-text">BTC-密码学原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#application_layer：_Bitcoin_Block_chain"><span class="toc-number">2.</span> <span class="toc-text">application layer： Bitcoin Block chain </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当你退出时，直接退出，当其他节点没有收到你的信息时，就会删除你这个节点）"><span class="toc-number">3.</span> <span class="toc-text"> 当你退出时，直接退出，当其他节点没有收到你的信息时，就会删除你这个节点）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于区块链的一些整理_2019年12月"><span class="toc-number">4.</span> <span class="toc-text">关于区块链的一些整理 2019年12月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#《数学之美》_吴军_2017年12月"><span class="toc-number">5.</span> <span class="toc-text">《数学之美》 吴军 2017年12月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级项目管理培训_2017年6月14日"><span class="toc-number">6.</span> <span class="toc-text">高级项目管理培训 2017年6月14日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#礼悟会员课程：“艾比克英语”创始人陈序讲座_2019年11月"><span class="toc-number">7.</span> <span class="toc-text">礼悟会员课程：“艾比克英语”创始人陈序讲座 2019年11月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#叩响英语学习大门（九个方面）"><span class="toc-number">8.</span> <span class="toc-text">叩响英语学习大门（九个方面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频访谈_“美国奥数总教练罗博深访谈”_2019年10月18日"><span class="toc-number">9.</span> <span class="toc-text">视频访谈 “美国奥数总教练罗博深访谈”  2019年10月18日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#书《为何家会伤人》_2019年10月"><span class="toc-number">10.</span> <span class="toc-text">书《为何家会伤人》 2019年10月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频课程《Learning_How_to_Learn》2017年9月22日"><span class="toc-number">11.</span> <span class="toc-text">视频课程《Learning How to Learn》2017年9月22日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一周_什么是学习"><span class="toc-number">11.1.</span> <span class="toc-text">第一周 什么是学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#集中思维和发散思维"><span class="toc-number">11.1.1.</span> <span class="toc-text">集中思维和发散思维</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Robert_Bilder博士就创造力与问题解决能力进行的访谈"><span class="toc-number">11.1.2.</span> <span class="toc-text">Robert Bilder博士就创造力与问题解决能力进行的访谈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#《八步半轻松写作》作者达芙妮_www-publicationcoach-com"><span class="toc-number">11.1.3.</span> <span class="toc-text">《八步半轻松写作》作者达芙妮 www.publicationcoach.com</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Benny_Lewis_爱尔兰多语种达人_全职语言黑客_memorise-com_助记法_APP：Anki"><span class="toc-number">11.1.4.</span> <span class="toc-text">Benny Lewis 爱尔兰多语种达人 全职语言黑客 memorise.com 助记法 APP：Anki</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二周_组块"><span class="toc-number">11.2.</span> <span class="toc-text">第二周 组块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三周_拖延症和记忆"><span class="toc-number">11.3.</span> <span class="toc-text">第三周 拖延症和记忆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORID学习和实践_2018年06月28日"><span class="toc-number">12.</span> <span class="toc-text">ORID学习和实践 2018年06月28日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID是什么"><span class="toc-number">12.1.</span> <span class="toc-text">ORID是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID有什么用"><span class="toc-number">12.2.</span> <span class="toc-text">ORID有什么用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版"><span class="toc-number">12.3.</span> <span class="toc-text">模版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID_升级版"><span class="toc-number">12.4.</span> <span class="toc-text">ORID 升级版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实践"><span class="toc-number">12.5.</span> <span class="toc-text">实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果和体会"><span class="toc-number">12.6.</span> <span class="toc-text">效果和体会</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">12.7.</span> <span class="toc-text">参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#幽门螺旋杆菌治疗_2016年10月21日"><span class="toc-number">13.</span> <span class="toc-text">幽门螺旋杆菌治疗 2016年10月21日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四联疗法_PPI+抗生素"><span class="toc-number">13.1.</span> <span class="toc-text">四联疗法 PPI+抗生素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Notice"><span class="toc-number">13.2.</span> <span class="toc-text">Notice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#references"><span class="toc-number">13.3.</span> <span class="toc-text">references</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#癌症相关_2013-08-04_12:00:00"><span class="toc-number">14.</span> <span class="toc-text">癌症相关 2013-08-04 12:00:00</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#饮食注意"><span class="toc-number">14.1.</span> <span class="toc-text">饮食注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XELOX方案"><span class="toc-number">14.2.</span> <span class="toc-text">XELOX方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考-1"><span class="toc-number">14.3.</span> <span class="toc-text">参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#健康相关"><span class="toc-number">15.</span> <span class="toc-text">健康相关</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -732,7 +1276,7 @@
       
         <time datetime="2017-09-22T08:09:00.000Z" itemprop="datePublished">2017-09-22</time>
         
-        (Updated: <time datetime="2020-01-28T08:01:00.000Z" itemprop="dateModified">2020-01-28</time>)
+        (Updated: <time datetime="2020-02-07T03:01:00.000Z" itemprop="dateModified">2020-02-07</time>)
         
       
     </div>
@@ -757,7 +1301,551 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="关于区块链的一些整理_2019年12月">关于区块链的一些整理 2019年12月</h2><ul>
+    <h2 id="北京大学公开课《区块链技术与应用》笔记_2020年2月7日">北京大学公开课《区块链技术与应用》笔记  2020年2月7日</h2><ul>
+<li>讲师：肖臻 </li>
+<li>北大第一次区块链的公开课 我的笔记基本上是流水账，只是作为自己的备用参考，后续有总结</li>
+</ul>
+<h3 id="BTC-密码学原理">BTC-密码学原理</h3><ol>
+<li><p>Cryptographic hash function </p>
+<ul>
+<li>Collision resistance <ul>
+<li>Hash函数的输入空间无限大，输出空间有限，客观存在hash碰撞</li>
+<li>没有高效的找到hash碰撞的方法</li>
+<li>Collision resistence 的作用：保证数据不被篡改，因为数据一篡改，hash值就变化了。</li>
+<li>理论上，无法证明任何一个hash函数是Collision Resistence，只能从实践上说明</li>
+<li>但有些hash函数之前是collision resistance，后来证明不是。一个著名的例子：MD5，已经找到可以hash碰撞的方法。</li>
+</ul>
+</li>
+<li>hiding（单向函数）<ul>
+<li>输入空间足够大，分布比较均匀</li>
+<li>当输入空间不是足够大时，实际操作过程中：可以加一个随机数保证足够随机：H(X||nonce)</li>
+</ul>
+</li>
+<li>collision resistance和hiding这两个性质，形成了一个digital commitment<ul>
+<li>digital equipment of a sealed envelope</li>
+</ul>
+</li>
+<li>puzzle friendly（输入的X（X只能一个一个试）对应的预测hash值。）<ul>
+<li>difficult to solve, but easy to verify</li>
+</ul>
+</li>
+<li>SHA-256:Secure Hash Algorithm</li>
+</ul>
+</li>
+<li><p>区块链开户：创建一个公私钥对(public key,private key) 来源于非对称加密算法(asymmetric encryption algorithm)</p>
+<ul>
+<li>aysmmetric encryption algorithm 解决了密钥分发的问题：用公钥加密，用私钥解密</li>
+<li>公钥—银行账户 私钥—-账户密码</li>
+<li>用私钥签名，其他人用公钥验证。</li>
+<li>一个可能的攻击方法：不停的产生公私钥对，和别人的公钥碰撞，如果相同，就可以用私钥将对方的账户偷窃。但这种攻击方法其实不可行，概率极小（比地球爆炸的概率还小）。</li>
+<li>但前提是一个好的随机源：a good source of randomness。（公私钥的随机源，包括签名时也要有好的随机源）</li>
+<li>区块链中，一般先hash，再签名</li>
+</ul>
+</li>
+<li><p>BTC中的数据结构</p>
+<ul>
+<li>数据结构1 <ul>
+<li>用hash指针（hash pointer）代替了普通指针</li>
+<li>Block chain is a linked list using hash pointers.</li>
+<li>区块链：genesis bloack &lt;—- H()  &lt;—- H()  &lt;—- H()  &lt;—- H()  &lt;—- most recent block</li>
+<li>普通链表：可以改变其中一个元素，不改变其他元素。但区块链：改变一个元素，后面的其他元素都会被改变。 只要最后一个hash值，就可以验证前面的区块。</li>
+<li>tamper-evident log</li>
+</ul>
+</li>
+<li>数据结构2 Merkle Tree<ul>
+<li>Merkle Tree 和 Binary Tree 的区别： hash指针代替了普通指针</li>
+<li>Merkle Tree的数据结构：二叉树</li>
+<li>block header + block body （轻节点：比如手机上的手机钱包应用只存储 block header；全节点：包括block header + block body ）</li>
+<li>如何向轻节点证明一笔交易？用到 Merkle proof ：找到交易所在的位置，往上找到根节点（root hash），这个就是Merkle proof，向全节点请求一些hash值。<br>轻节点中只有root hash值，根节点hash值验证通过，则说明这个交易没有被修改。</li>
+<li>这个证明也叫做Proof of membership 或者 Proof of inclusion，复杂度O(log(n))。证明这个交易不存在呢？即Proof of non-membership，一种方法是把所有的树结构发送给轻节点，判断正确后，检查这个节点不在叶节点中，复杂度为O(n),其他没有更好的办法，但是如果按照交易内容的hash值排序，如果要找的交易做hash，找到处于两者hash之间的两个Markle Tree，验证通过即可证明这个交易不存在，复杂度O(log(n))。这个方法的代价是排序：称为Sorted Merkle Tree。但比特币中没有使用Sorted Merkle Tree，因为比特币中无需证明交易不存在。</li>
+</ul>
+</li>
+<li>注意：有环的链表都不能使用hash指针，因为会产生循环依赖。</li>
+</ul>
+</li>
+<li><p>BTC协议</p>
+<ul>
+<li>double spending attack：花两次攻击（双花攻击）：因此要向央行验证这个数字货币是否使用过（可行，但这个事中心化方案）。</li>
+<li>比特币要解决的问题：数字货币的发行（挖矿决定的）；数字货币的有效性。</li>
+<li>数字货币的有效性：有签名+说明币来源（为了证明货币的合法性）</li>
+<li>一个转账交易：A—-&gt;B 必须有B的公钥（账号），也必须要知道A的公钥（所有的节点都要知道A的公钥，用于验证）。那么如何知道A的公钥？</li>
+<li>Block Header（version；hash of previous block header;Merkle root hash;target;nonce;）+block body(transaction list)</li>
+<li>full node:全节点，保存区块链所有信息，也叫做fully validating node</li>
+<li><p>light node:轻节点，只保存block header</p>
+</li>
+<li><p>如何保证账本的统一性：分布式共识 distributed consensus。</p>
+<ul>
+<li>一个方法是全局hash表 维护一个 distributed hash table</li>
+<li>分布式系统的一些结论：有很多impossibility result，其中最著名的是FLP impossibility result。<ul>
+<li>asynchronous系统：（异步系统：网络传输时延没有上限的系统）即使只有一个节点是faulty，也没法达成共识</li>
+<li>CAP Theorem（CAP是分布式系统的三个性质：Consistency，Avalability，Partition tolerance）：只能满足两个</li>
+<li>分布式共识的一个著名协议：Paxos，如果达成共识，一定是一致性的（consistency），但有可能Paxos一直不能达成共识</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>比特币中的共识协议：Consensus in BitCoin</p>
+<ul>
+<li>去中心化货币解决两个问题：1. 谁能合法发行货币 2. 交易的合法性</li>
+</ul>
+<ol>
+<li>交易的合法性<ul>
+<li>hyperledger fabric 联盟链协议：基于投票是可行的，因为大多数成员没有恶意的</li>
+<li>比特币系统中不是这样的，因为产生公私钥对是不需要批准的。</li>
+<li>sybil attack 女巫攻击：一个节点不断产生公私钥对，超过51%的数量，就能通过投票控制区块链。</li>
+<li>比特币系统的解决方法：也是用投票的方法，但用的是计算力来投票。计算：穷尽4 bytes nonce：满足H(block header)&lt;= target，则获得了记账权。</li>
+<li>forking attack 分叉攻击</li>
+<li>longest valid chain:被选择的区块，丢弃的区块：orphan block</li>
+<li>争夺记账权的好处：获得记账权的节点有一定权力：决定哪些交易可以被写到区块里。但这个不是主要动力，因为设计者希望合法交易都可以写到区块链中。区块奖励 block reward</li>
+</ul>
+</li>
+<li>铸币权<ul>
+<li>唯一一个产生货币的交易：coinbase transaction 例子：50 BTC —-&gt; 25 BTC —-&gt; 12.5 BTC(21万个区块后，大约4年时间区块奖励减半。每隔10分钟产生一个区块，21万✖️10分钟=4年时间)</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>共识的内容：指的是区块链中的交易内容</li>
+<li>基于算力的投票：hash rate（计算nonce的速度）作为投票的权重。如何避免sybil attack：创建账户，并不能增加hash rate的能力。</li>
+<li>争夺记账权的说法：挖矿 mining digital gold，争夺记账权的节点：矿工miner。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>BTC实现</p>
+<ul>
+<li>transaction-based ledger</li>
+<li>维护一个数据结构：UTXO：Unspent Transaction Output。全节点在内存中维护UTXO的目的：检查double spending。</li>
+<li>一个交易可以有多个输入（每个输入都要有签名），有多个输出，但要满足：total inputs = total outputs</li>
+<li>比特币中的另一个激励机制：transaction fee，交易费。</li>
+<li><p>account-based ledger</p>
+</li>
+<li><p>Bernoulli trial：a random experiment with binary outcome</p>
+</li>
+<li>一连串的Bernoulli trial构成了Bernoulli process：a sequence of independent Bernoulli trials。<ul>
+<li>Bernoulli process的一个特征：无记忆性 memoryless，指的是做了多次实验，下一次成功的概率和之前的无关，仍然一致。</li>
+</ul>
+</li>
+<li><p>Bernoulli process可以用poisson process近似。实验的次数很多，每次的实验成功的概率很小。我们关心的是：出块时间，理论推导出出快时间符合指数分布expontial distribution。<br>process free：指的是以前的工作并不影响后面找nounce的概率。如果process free不成立，算力强的矿工会产生不成比例的优势，是挖矿公平的保证。</p>
+</li>
+<li><p>比特币的数量每隔4年（每21万个区块）减半，产生一个几何级数 geometric series: 21万✖️50+21万✖️25+21万✖️12.5+…=21万✖️50✖️(1+1/2+1/4+…)=2100万</p>
+</li>
+<li><p>Bitcoin is secured by mining。挖矿没有实际意义，但能保证比特币的安全性。</p>
+</li>
+<li><p>比特币的安全性分析</p>
+<ul>
+<li>double spending attack：M-&gt;A这个交易先之行，后M-&gt;M’，然后将这个作为最长合法链。</li>
+<li>forking attack</li>
+<li>防范这种攻击的方法：多几次确认， confirmation： one confirmation，。。。，six confirmation。六个confirmation，平均一个块十分钟，这个就是一个小时</li>
+<li>irrevocable ledger：凡是写入区块链的内容都永远改不了。</li>
+<li>zero confirmation：</li>
+<li>selfish mining：挖矿，挖到一个区块，不急着发布，藏着一条链，分叉攻击的手段，只有当：恶意节点和其他同伙的算力超过51%才有可能成功。<br>selfish mining的两个目的：1是获得常用（比如取消某一个交易）  2 是减少竞争（一次发布2个区块，别人挖到的块就失效了）。风险是有可能失败</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>BTC网络 The Bitcoin Network</p>
+<h2 id="application_layer：_Bitcoin_Block_chain">application layer： Bitcoin Block chain </h2><p>network layer： p2p Overlay Network<br>（简单的p2p网络，没有所谓的超级节点super node，或者master node。<br> 有一个seed node，它会告诉你其他节点，tcp通信用于穿透防火墙</p>
+<h2 id="当你退出时，直接退出，当其他节点没有收到你的信息时，就会删除你这个节点）"> 当你退出时，直接退出，当其他节点没有收到你的信息时，就会删除你这个节点）</h2><ul>
+<li>比特币的设计原则是：简单，鲁棒。而不是高效。  simple,robust but not efficient<br>flooding 节点第一次收到洪流消息后，节点把这个传输给其他节点，同时记录下这个消息我已经收到过了，下次再收到这个消息，就不转发给其他邻居节点。</li>
+<li>best effort：有的节点不转发一些合法交易，有的节点转发一些不合法交易</li>
+</ul>
+</li>
+<li><p>BTC-挖矿难度</p>
+<ul>
+<li>H(block header)&lt;=target SHA-256 输入空间2^256</li>
+<li>1_target： difficulty=1时的目标阈值 target</li>
+<li>difficulty = (difficulty - 1_target)/target</li>
+<li>产生区块的时间越短，就会产生分叉，分叉的后果：就是恶意节点集中算力增加自己的区块，导致攻击。<br>而以太坊的区块时间是15秒，产生一个新的共识协议：ghost协议：分叉的orphan block会得到一些奖励uncle reward。</li>
+<li>出块时间无论多长，但都要保持稳定。</li>
+<li><p>如何修改挖矿难度：</p>
+<ul>
+<li>每隔2016个区块就调整一次挖矿难度，大约是2个星期的时间。2016✖️10分钟/60/24=14天。</li>
+<li>目标阈值(实际比特币代码中使用的是目标阈值)：target = target✖️actual time/expected time  expected time：2016✖️10分钟 actual time：time spent mining the last 2016 blocks（实际产生2016个区块的时间）注意：阈值一次调整最大不超过4倍，，最小是1/4，防止系统出现意外情况。</li>
+<li>挖矿难度：next_difficulty = previous_difficulty✖️expected time(2 weeks)/actual time</li>
+<li>问题：当恶意节点不调整这个target，通不过nBits的区块合法性检测。target 256 bytes ，nBits 4bytes</li>
+<li>以太坊是可以自己修改自己产生的区块时间，比比特不复杂得多。</li>
+</ul>
+</li>
+<li><p>比特币系统的总算力的变化情况</p>
+</li>
+</ul>
+</li>
+<li><p>BTC-挖矿</p>
+<ul>
+<li>全节点<ul>
+<li>一直在线</li>
+<li>在本地硬盘上维护完整的区块链信息</li>
+<li>在内存中维护UTXO集合，以便快速检验交易的正确性</li>
+<li>监听比特币网络上的交易信息，验证每个交易的合法性</li>
+<li>决定哪些交易会被打包到区块里</li>
+<li>监听别的矿工挖出来的区块，验证其合法性</li>
+<li>挖矿<ul>
+<li>决定沿着哪条链挖下去？（最长合法链）</li>
+<li>当出现等长的分叉时，选择哪一个分叉？（最先听到的那个分叉）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>轻节点</p>
+<ul>
+<li>不是一直在线</li>
+<li>不用保存整个区块链，只要保存每个区块的块头（与都保存相比，差出1000倍）</li>
+<li>不用保存全部交易，只保存与自己有关的交易</li>
+<li>无法检验大多数交易的合法性，只能检验与自己相关的那些交易的合法性</li>
+<li>无法检测网上发布的区块的正确性</li>
+<li>可以验证挖矿的难度</li>
+<li>只能检测哪个是最长链，不知道哪个是最长合法链</li>
+</ul>
+</li>
+<li><p>比特币上的安全性（类似银行给拥有合法身份的人钱）</p>
+<ul>
+<li>密码学的保证：随机源足够随机</li>
+<li><p>共识机制：只给合法身份的人</p>
+</li>
+<li><p>CPU—&gt;GPU(浮点运算是深度学习需要的)—&gt;ASIC：Application Sepcific Intergrated Circus（mining puzzle）一个芯片设计给一个加密货币</p>
+</li>
+<li><p>设计Alternative mining puzzle：抗ASIC resistance。</p>
+</li>
+<li><p>挖矿的趋势：大型矿池的出现。pool manager + miner + miner+ miner+ miner。</p>
+<ul>
+<li>pool manager：全节点的功能；miner：只计算hash值</li>
+<li>解决收入不稳定的问题：因为挖矿太难了，所以降低挖矿难度即可：share = almost valid block。根据矿工提交的share数目，分配工作量</li>
+<li>问题1:不可能偷区块奖励。因为除了nonce，还有其他域的值需要调整（coinbase中有收款人的地址=矿主的地址）。</li>
+<li>问题2: 可能捣乱吗？挖到一个正确的区块，扔掉，谁也得不到了。分红别人挖到的块。</li>
+<li>大型矿池的一个弊病：当有人控制了大型矿池，吸引一些不明真相的群众，这样就能发动51%的攻击：攻击包括分叉攻击；Boycott：发现包含某个交易后就分叉，如果拥有51%算力，就可以将分叉的区块链作为最长合法链，这样别的节点也不包含这些交易了，因为包含了就分叉。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>BTC-比特币脚本</p>
+<ul>
+<li>只有堆栈，没有C语言那些全局变量，动态数组等。</li>
+<li>P2PKH(Pay to Public Key Hash)最常用的</li>
+<li>P2SH(Pay to script hash)最复杂的一种：其中一个应用场景是：对多重签名的支持</li>
+<li>Proof of Burn：不管输入脚本是什么，输出到Return都会返回。两种应用场景：1.销毁比特币，可以得到一些小币种AltCoin(Alternative Coin)。2.digital commitment（专利内容做hash，证明当时已经知道这个知识了）</li>
+</ul>
+</li>
+<li><p>BTC-分叉</p>
+<ul>
+<li>fork的几种情况</li>
+<li>同时挖到矿，临时分叉 state fork</li>
+<li>分叉攻击 forking attack（deliberate fork）</li>
+<li>修改协议，有些节点不修改 protocal fork：根据协议修改的：<ul>
+<li>hard fork ：例子：block size limit 1M字节 1个交易250字节，1000000/250=4000个交易/每个交易 4000/60/10=7 tx/sec。只要旧节点不更新软件，这个分叉就不会消失，所以叫硬分叉。实际的例子：以太坊：ETH 分叉为ETH 和 ETC ，为了防止回放，加上了一个chain ID</li>
+<li>soft fork：新的协议下，有些合法的交易变得不合法了。旧节点不更新，白挖矿了，但不会产生永久的分叉。<br>实际例子：当给域赋予一些新的意义时，coinbase（铸币域）前8字节可以作为extra nonce ，调整挖矿难度：4字节+8字节=2^96。<br>比特币历史上的一个著名例子：P2SH：Pay to Script Hash 。旧节点只验证 redeem script是否正确，新节点才验证第二阶段的验证。</li>
+</ul>
+</li>
+<li>小结：<ul>
+<li>soft fork：当超过算力51%的节点都更新了软件，就不会产生硬分叉。</li>
+<li>hard fork：必须所有的节点更新软件，才不会产生永久性的分叉。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>BTC-问答</p>
+<ul>
+<li>转账交易不需要对方账户在线</li>
+<li>如果你账户的私钥丢失了，怎么办？私钥丢失了，账户的钱就取不出来了。著名例子：Mt.Gox，翻译为门头沟</li>
+<li>如果私钥泄漏了怎么办？尽快转账到自己的另外一个账户。</li>
+<li>如果转账的时候，写错了地址怎么办？没有办法，没法取消已经发布的交易</li>
+<li>如果转账的地址不存在，这是不友好的，因为需要一直存在UTXO中</li>
+<li>矿工偷nonce问题：别的矿工发布的nonce，其他矿工偷过来作为自己找到的，不能。因为有coinbase域中有矿工的收款地址，Merkle Tree就通不过。</li>
+<li>交易费不用知道矿工：因为total inputs&gt;total outputs，差值就是交易费。</li>
+</ul>
+</li>
+<li><p>BTC-匿名性 anonymity</p>
+<ul>
+<li>pseudonymity </li>
+<li>多个公私钥对可能会关联在一起，分析比特币钱包的交易生成方式即可搞清楚关联方式</li>
+<li>资金转入转出都会引起注意，这是和实体世界相关联。</li>
+<li>(研究) 信用卡数据公开，但隐私保护去除了姓名和性别，卡号等，但通过行为，比如什么时间买了什么东西，很快就可以将这个人和信用卡关联起来。比特币的所有交易都是公开的。</li>
+<li>silk road（ebay for illegal drugs）比特币支付+TOR 洋葱路由 （网络层）。这个老板2，3年后被抓（几万个比特币都没有使用，旧金山被抓，可能是由于一台电脑上登陆了实际账户和虚拟账户）。</li>
+<li>如何提高匿名性？<br>application layer（应用层保证匿名性：coin mixing 没有信用度很高的coin mixing服务。在线钱包：将大家的比特币混合）</li>
+</ul>
+<hr>
+<p>network layer（首先，保证网络层的匿名性：学术界有很多解决方案，一般是多路径转发的方法，TOR）</p>
+<ul>
+<li>零知识证明：是指一方（证明者）向另一方（验证者）证明一个陈述是正确的，而无需透露除该陈述是正确外的任何信息。</li>
+<li>零知识证明的数学基础是同态隐藏。</li>
+<li>不碰撞：x,y不同，E(x)和E(y)不同（逆否命题一定成立：如果E(x)=E(y)，那么x=y）</li>
+<li>不可逆：给定E(x)的值，无法推出x的值 （类似hash函数的hiding property）</li>
+<li>同态运算：同态加法+同态乘法+扩展到多项式</li>
+<li>盲签原理：在不知道内容的情况进行签名</li>
+<li>零币和零钞：专门为匿名性设计的加密货币。协议层就融合了匿名化处理。</li>
+<li>零币：类似于混币处理。</li>
+<li>零钞：zk-SNARKs。但都没有解决和实体交互的匿名性问题。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<ol>
+<li><p>BTC-思考</p>
+<ol>
+<li>hash指针如何传播？实际使用时，其实没有指针，只有hash。那如何找到区块呢？区块链是存在key value的数据库level DB中。</li>
+<li>区块恋：私钥分成两块，一人保存一块。问题是：降低了安全性，2^256 —-&gt; 2^128；永久存储在UTXO中。可以用多重签名的方法-MULTISIG。</li>
+<li>分布式共识：分布式系统中，理论上证明达成共识不可能的。为什么比特币能够绕过分布式共识的那些不可能结论？实际上的模型修改下，就不是理论上的模型了。比特币就是这样做的，不要被学术界的思维限制，不要被程序员的思维限制。</li>
+<li>比特币的稀缺性：早期挖矿的收益高。货币总量固定不适合做货币，一个好的货币需要有通货膨胀功能。</li>
+<li>量子计算：首先量子计算离实际使用还很远。而且这个对传统金融业的冲击更大，还有量子加密算法。地址（公钥—hash再转换）—-&gt;生成私钥，量子计算能从公钥算出来私钥。<br>最好的做法：进行一次交易后，将地址中的钱全部转走，或者转给自己另一个账户，好处有二：增强了安全性；隐私保护。<br>公钥最好也不要随便泄漏。</li>
+</ol>
+</li>
+<li><p>以太坊概述</p>
+<ul>
+<li>比特币：区块链1.0；以太坊：区块链2.0</li>
+<li>以太坊的改进：</li>
+<li>出块时间：10分钟—15秒，并设计了对应的共识协议GHOST协议</li>
+<li>mining puzzle：导致挖矿设备的专业化（ASIC芯片的挖矿机，与去中心化的理念不符）。ASIC resistance。</li>
+<li>用权益证明代替工作量证明。proof of work —-&gt; proof of stake。类似股份，投票</li>
+<li>增加了智能合约的支持：smart contract。<br>去中心化的货币——&gt;去中心化的合约，合同。<br>BitCoin：decentralized currency。BTC 最小单位：Satoshi<br>Ethereum：decentralized contract。ETH 最小单位：Wei</li>
+<li>去中心化的合同有什么好处？去中心化的货币有什么好处？跨国转账。<br>技术上保证从一开始合同就不能违约。区块链的一个特点就是不可篡改。</li>
+</ul>
+</li>
+<li><p>以太坊的账户模式</p>
+<ul>
+<li>比特币的模型：基于交易；以太坊的模型：基于账户的模型account-based ledger。这个好处：double spending ，天然防御作用。弱点：replay attack</li>
+<li>普通外部账户（公私钥）：externally owned account：balance（余额） nonce（计数器，使用账户的次数）</li>
+<li>smart contract account（智能合约账户）：不能主动发起交易，发起交易需要普通账户发起。balance nonce code storage </li>
+<li>为什么要创建以太坊？Vitalik创始人。比特币是基于交易的，隐私性比较好。智能合约：用稳定的身份，基于account的模型，保持稳定。</li>
+</ul>
+</li>
+<li><p>以太坊的数据结构：状态树</p>
+<ul>
+<li>账户地址到账户状态的映射：地址160bits，一般表示为40个16进制的数；状态：state。</li>
+<li><p>hash表（键值对）？如果证明自己的余额，Merkle Tree。比特币基于交易的Merkle Tree，一个区块上限4000个，一般是几百个到几千个。而基于账户的以太坊，每创建一个账户，就会重新构建一个Merkle Tree，数量级大量增加。<br>只维护一个Merkle Tree，Merkle Tree没有好的查找插入方法，Merkle Tree需要排序吗？不排序查找速度很慢，不排序导致状态不一致，各个全节点算出来的Merkle hash不一样，而比特币中是发布区块的节点唯一确定的。</p>
+</li>
+<li><p>trie（来自retrieval信息检索）字典前缀树： 字符串。<br>branding factor </p>
+</li>
+<li>特点1: 0-f 加一个结束标志符。地址为40个16进制数</li>
+<li>特点2：key值越长，查找的复杂度越大，</li>
+<li>特点3：hash表有可能有碰撞，trie不会出现碰撞，只要地址不一样，一定不一样</li>
+<li>特地4：不同的节点构造出来的trie结构是一样的。</li>
+<li>特点5：更新的局部性很好。因为只要更改局部的即可。</li>
+<li>Patricia Tree/Trie 经过压缩的trie 路径压缩：好处是Tree的高度降低，内存访问速度增加。</li>
+<li>地址160bits，地址分布非常稀疏，目的是为了防止碰撞</li>
+<li>MPT Merkle Patricia tree </li>
+<li>和PT的区别在于：加入了hash指针</li>
+<li>Modified MPT：extension node  branch node leaf node</li>
+<li>保存历史状态：因为智能合约的以太坊是图灵完备的，因此推算前一个状态是不可能的，无法形成回滚 roll back</li>
+<li>以太坊中有三个树：状态树（key valus）=（地址，），交易树，收据树</li>
+<li>状态树：key-地址，value-序列化：RLP：Recursive Length Prefix （极简主义，序列化的方法） nested array of bytes</li>
+</ul>
+</li>
+<li><p>以太坊：交易树 收据树</p>
+<ul>
+<li>bloom filter数据结构：支持高效查找：某个指定元素是否在这个集合中。（元素做hash，映射到一个向量中） </li>
+<li>轻节点：通过块头的Merkle hash过滤掉大多数，再到少部分中去找。</li>
+<li>以太坊的运行过程可以看作是一个交易驱动的状态机。状态：所有账户的状态，交易：每次发布区块时包含的交易。</li>
+<li>比特币也可以看作一个交易驱动的状态机。状态：UTXO</li>
+</ul>
+</li>
+<li><p>以太坊：共识机制 GHOST协议</p>
+<ul>
+<li>motivation：以太坊的分叉很多（相比于比特币），那么矿池获得最长合法链的概率不成比例的增加，centralization bias。</li>
+<li>GHOST协议：没有成为最长合法链的区块orphan block或者stale block，也有区块奖励。以太坊中称为uncle block。</li>
+<li>Uncle block可以得到7/8✖️3ETH。包括Uncle block的区块链可以得到1/32✖️3+3，而且最多可以包括2个Uncle block。</li>
+<li>合法的Uncle block 最多7代，7/8，6/8，5/8，4/8，3/8，2/8。Uncle reward</li>
+<li>把Uncle block添加进来，要不要执行交易？不执行，可能和主链上的交易冲突。</li>
+<li>分叉后第二，三，个区块怎么办？以太坊规定：只要分叉第一个区块才能得到奖励。因为forking attack的代价便宜很多，因为攻击成了，就回滚达到攻击目的，如果不成就被招安得到奖励。</li>
+</ul>
+</li>
+<li><p>ETH-挖矿算法（bug bounty）</p>
+<ul>
+<li>Block chain is secured by mining</li>
+<li>one cpu，one vote—-中本聪</li>
+<li>因此，后面的挖矿算法要保证 ASIC resistance，增加对puzzle求解对内存的需求 memory hard mining puzzle，怎么设计呢？著名的例子 LiteCoin：用的是scrypt，128K内存</li>
+<li>好处：增加了对内存的访问需求，memory-hard</li>
+<li>坏处：对轻节点也是memory-hard。</li>
+<li>而puzzle设计的原则：difficult to solve，but easy to verify。</li>
+<li>LiteCoin和比特币的差别：1 puzzle难题不同 2 出快时间2分半，是比特币的四倍。除此之外，基本一样。</li>
+<li>ethash（以太坊使用的puzzle）：</li>
+<li>两个数据集 16M cache 1G dataset，DAG（定期增长）</li>
+<li>16M cache：seed 经过变换产生一个伪随机数，再hash产生下一个伪随机数。。。</li>
+<li>1G dataset：伪随机位置寻找256次，找到一个数放到第一个位置，</li>
+<li><p>block header nonce 一次读取128个位置，计算得到一个位置，包括相邻元素也读取出来，循环64次，每次读取2个元素，因此是128个元素</p>
+</li>
+<li><p>伪代码分析：每隔30000个块会重新生成seed（对原来的seed做hash值），并且利用新的seed生成新的cache。cache的初始大小为16M，每隔30000个块重新生成时增大初始大小的1/128—-128K。</p>
+</li>
+<li><p>目前以太坊挖矿基本上是GPU，起到了ASIC resistance的作用。</p>
+</li>
+</ul>
+</li>
+<li><p>ETH-难度调整</p>
+<ul>
+<li>黄皮书和代码都有不一致的地方，这里以代码为依据</li>
+<li>D(H)=max(D0,P(H)Hd+xs2)+epston P(H)Hd：父区块 D0=131072</li>
+<li>难度炸弹：PoW向PoS转换。工作量证明向权益证明转换。</li>
+<li><p>问题是PoS有很多问题不好解决，无法上线，而难度越大，出块时间越长，15秒—16秒—-17秒，因此，向后回调了300万个区块。</p>
+</li>
+<li><p>以太坊的四个阶段：</p>
+</li>
+<li>Frontier</li>
+<li>Homestead</li>
+<li>Metropolis <ul>
+<li>Byzantium(难度回调在此阶段中，在EIP（Ethereum Improvement Proposal）中决定，同时把Block Reward 从5个ETH将为3个ETH) BIP（BitCoin Improvement Proposal）</li>
+<li>Constantinople</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ETH-Proof of Stake</p>
+<ul>
+<li>比特币一个诟病：浪费电 KHW THW（Tero watt hours）</li>
+<li>比特币：每年能耗70THW，每个交易的能耗是1014KWH。比特币每年挖矿的总收入60亿美元</li>
+<li><p>以太坊：每年能耗20THW，每个交易的能耗是67KWH。因为出块时间短，虽然还有智能合约。每年挖矿的总收入50亿美元，费用是24亿美元</p>
+</li>
+<li><p>PoS：proof of stake</p>
+</li>
+<li>挖矿-设备多-算力大-挖矿多-收益多：所以挖矿取决于钱，拼钱</li>
+<li>virtual mining，相比较proof of work，好处有<ul>
+<li>能耗更少，环境污染小，温室气体排放少</li>
+<li>不是加密货币的闭环，因为矿机是用加密货币之外的法币购买的。发动攻击，所需的资源可以从外部获得，比如购买矿机。比如AltCoin，对这种小币攻击很容易，而且致命性的，Infanticide。</li>
+<li>有的采用混合模型：也要挖矿，挖矿的难度和你持有币多少相关，持有币越多，挖矿难度越小。这个设计也有问题：持有币最多的人，挖矿最容易。有的币会锁定一段时间，Proof of Deposit</li>
+<li>基于权益证明有很多挑战：<ul>
+<li>一 nothing at stake：上面链可以挖，下面链也可以挖矿</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>以太坊中的权益证明协议是：Casper the friendly Finality Gadget（FFG）：引入一个概念Validator，推动链达成共识，形成共识<ul>
+<li>two-phase commit：Prepare Message 2/3 Commit Message 2/3 </li>
+<li>以太坊中权益证明：50个区块=1个epoch，连续两个epoch投票都是2/3，才算有效</li>
+<li>验证者，验证会得到奖励，跟挖矿得到奖励一样。相应的，不作为的验证者，没收部分保证金，乱作为的验证，没收全部保证金，销毁。</li>
+</ul>
+</li>
+<li>Finality是否可能被推翻？权益证明不成熟，工作量证明经历了历史的考验</li>
+<li>EOS 柚子：采用的就是权益证明，DPOS共识协议：Delegated Proof of Stake：选举出一些超级节点，再投票。。。</li>
+<li>工作量证明的一些好处：提供了一种将电能转换为钱的方式。电不好存储和传输，偏远地区清洁能源的电，不好传输到电主网中，因此可以用挖矿将电能转换为比特币，存储和传输就容易了。</li>
+</ul>
+</li>
+<li><p>ETH-智能合约（以太坊的精髓）</p>
+<ul>
+<li>什么是智能合约？是运行在区块链上的一段代码，代码的逻辑定义了合约的内容。</li>
+<li>智能合约的账户保存了合约当前的运行状态：</li>
+<li>balance 当前余额</li>
+<li>nonce 交易次数</li>
+<li>code 合约代码</li>
+<li>storage 存储，数据结构是一棵MPT</li>
+<li>Solidity 是常用的语言，类似JavaScript</li>
+<li>强类型语言 address 特殊类型</li>
+<li>建议：construct 构造函数</li>
+<li>外部账户可以调用智能合约</li>
+<li>一个合约调用另一个合约的函数？</li>
+<li>直接调用</li>
+<li>代理调用 delegatecall()</li>
+<li>fallback()函数</li>
+<li>不调用任何函数，就调用fallback函数，若没有这个函数，则抛出异常</li>
+<li>智能合约的创建和运行</li>
+<li>运行在EVM(Ethereum Virtual Machine)， World Wide Computer 256位。比如：增加JVM，加强一致性。</li>
+<li>智能合约是个Turning-complete Programming Model<ul>
+<li>出现死循环怎么办？没有办法，这个是Halting Problem，不是NPC问题（可以解的），复杂度是指数级。</li>
+</ul>
+</li>
+<li>汽油费gas fee，由发起交易的人支付</li>
+<li>EVM中不同指令消耗的汽油费是不一样的（比如hash运算gas fee高）</li>
+<li>错误处理</li>
+<li>会产生回滚，回到交易执行之前的状态</li>
+<li>assert语句：判断内部条件</li>
+<li>require语句：判断外部条件</li>
+<li>revert语句：无条件抛出异常，回滚状态变动</li>
+<li>嵌套调用</li>
+<li>直接调用：会产生连锁回滚</li>
+<li>call调用：就不会产生连锁回滚</li>
+<li>全节点维护三个数据结构：状态树，交易树，收据树。状态的修改都是在修改本地的数据结构。</li>
+<li>先执行再挖矿！执行完交易后，更新三个数据结构，更新3个roothash，再尝试nonce，挖矿。</li>
+<li>gas fee是给那些发布智能合约的矿工的一种补偿，但如果没发布的矿工，什么补偿都没有，就是“陪太子读书”。</li>
+<li>有没有一些区块，不独立验证交易的合法性。这样会导致区块链的安全问题。因为区块链的安全性取决于每个全节点独立验证交易的安全性。而这些全节点不可能不验证交易的合法性，因为根hash值不对了，就没法发布区块了。（先执行交易，再更新三棵树）</li>
+<li>问题：智能合约的错误，要不要也发布到区块链中去？要！错误的交易也要发布到区块链中去，形成共识，才能获得汽油费。</li>
+<li>问题：智能合约支持多核并行处理吗？可以的。solidity不支持多线程。</li>
+<li>多线程：寄存器是自己的，大部分是共享的，多线程会导致访问内存的不确定，这个和以太坊是交易驱动的状态机相违背，因为所有全节点都要验证，因此状态的转换是确定的。</li>
+<li>三种函数 发起转账</li>
+<li>transfer 会发生连锁回滚</li>
+<li>send 返回false，不会发生连锁回滚</li>
+<li>call.value(uint256 amount) 返回false，不会发生连锁回滚。区别：把剩下的所有汽油都发过去</li>
+<li>auctionE nd() bid() 函数。</li>
+<li>重入攻击（Re-entrancy Attack）：你调用的合约有可能再调用你这个合约，所以先清除状态，再执行操作</li>
+</ul>
+</li>
+<li><p>ETH-TheDAO</p>
+<ul>
+<li>DAO Decentralized Autonomous Organization 去中心化的自治组织</li>
+<li>2016年5月出现：The DAO。众筹，民主投票决定。</li>
+<li>DAC Decentralized Autonomous Corporation</li>
+<li>取回资金：splitDAO childDAO 唯一路径：只能拆分成childDAO，取出来。</li>
+<li>拆分的理念：符合民主的理念，就是不是少数服从多数，少数也可以拆分出来。</li>
+<li>问题出现在splitDAO的代码实现上：先把余额清零，再转账。（重入攻击）子基金有28天的锁定期。</li>
+<li>出现两派：1.too big to fail 补救 2. code is law 不补就</li>
+<li>软件升级：软分叉。增加了一个规则：DAO相关的交易都是非法的交易，但这个有一个bug：非代码bug，而是功能bug，没有收取汽油费，因此导致攻击（不消耗汽油费，恶意节点不断产生这种交易，新升级的节点受不了都回到旧版本） </li>
+<li>通过软件升级的方法，把DAO智能合约上的所有资金强行转到新的智能合约上，这个新的智能合约只有一个功能：退钱，D币转换为以太币。硬分叉：因为旧矿工认为这个交易是非法交易。最后通过投票支持了硬分叉。</li>
+<li>硬分叉：新链是 ETH 旧链 ETC Ethereum Classic 上交易所。一直存活在现在。两条链同时存在有一个问题：重放攻击，新链上的交易可以放到旧链上，反之亦然。因此增加了ChainID。</li>
+<li>问题：为什么不能针对黑客账户进行退？而是都按照所有账户的方式处理。因为这个bug不可以修改，智能合约只能作废。</li>
+</ul>
+</li>
+<li><p>ETH-反思</p>
+<ul>
+<li>智能合约其实就是自动执行的合约，Is smart contract really smart? </li>
+<li>反思1 Smart contract is anything but smart.</li>
+<li>反思2 Irrevocability is a double ledged sword</li>
+<li>反思3 nothing is irrevocable（18修正案—21修正案 大街上饮酒，车里的人都不能喝酒 是违法的 open container laws）</li>
+<li>反思4 Is solidity the right programming language？ 语言设计：solidity语言，调用时，违法直觉，是调用fallback函数。有人建议：使用函数式语言。康奈尔大学 函数式编程语言 Ocaml，做的工作是：formal verification。形式化证明这个代码只能实现这个功能。</li>
+<li>智能合约的语言具有什么样的表达能力？图灵完备，还是中间语言。</li>
+<li>有可能的解决方法：模板</li>
+<li>开源的好处：大家监督，增加公信力。不容易产生漏洞。但为什么这么多人看着，还出现漏洞，有人称为Many eyeball fallacy。所以，开源的不一定安全。</li>
+<li>What does decentralization mean？最后是投票，也有矿工留在旧链。</li>
+<li>分叉是去中心化的体现。</li>
+<li>decentralized ！= distributed</li>
+<li>状态机 state machine 是为了容错！最早的应用场景是mission critical application；airtraffic control；stock exchange；space shuttle。以前这种情况下机器都很少，个位数。</li>
+<li>智能合约是用来编写控制逻辑的。</li>
+</ul>
+</li>
+<li><p>ETH-美链 Beauty chain</p>
+<ul>
+<li>在美莲上做ICO。 Initial Coin Offering</li>
+<li>没有自己的区块链，代币的发行，转账都是通过调用智能合约中的函数来完成。</li>
+<li>ERC 20是以太坊上发行代币的一个标准，规范了所有发行代币的合约应该实现的功能和遵循的接口 ERC Ethereum Request for Comments</li>
+<li><p>代码分析： uint256 amount = uint256(cnt) * _value. 溢出，amount 很小，但转账时依然很大，因此导致系统中凭空产生了很多的代币。</p>
+</li>
+<li><p>反思1:应该检查溢出 比如：math库中，都是 a=b*c assert(a/c == b),加法减法都调用的是库，而乘法没有使用库。</p>
+</li>
+</ul>
+</li>
+<li><p>总结（应用上）</p>
+<ul>
+<li>退款不是取消之前的交易，而是发起一个新的交易。</li>
+<li>法律保护？没有司法保护，美国信用卡在2个月内申诉，最多50美元的损失。比特币没有这个保护。</li>
+<li>比特币本来就没有必要和已有支付方式的竞争</li>
+<li>加密货币应该用在已有支付方式解决不是很好的场景。Internet使得信息传输很容易，支付则难很多。 World Wide Currency 支付和信息传播联系在一起。</li>
+<li>有人说：下一代互联网是Internet of value。Information can flow freely on the Internet，but payment cannot。趋势：价值交换和信息传播渠道相互融合。</li>
+<li>有人说：加密货币的支付效率很低。</li>
+<li>加密货币本来就不是和以前支付方式竞争</li>
+<li>随着区块链的技术发展，共识协议改进，支付效率不断提高：比特币每秒7个交易，有的货币号称每秒达到100万个交易</li>
+<li>最重要的一点：效率的好处应该在当前的历史环境下。电报Telegram在中国使用很长时间，因为没有更高效的方式。</li>
+<li>智能合约的质疑：为啥不用法律合同，自然语言编写，智能合约是用程序编写的。Software is eating the world</li>
+<li>ATM机是物理世界的智能合约，ATM刚开始出现故障</li>
+<li>软件改变世界，这是一个大趋势</li>
+<li>但，智能合约也不能解决所有问题。Democracy is the worst form of Government except for all those other forms that have been tried from time to time</li>
+<li>Is decentralization always a good thing? 去中心化不能解决所有问题，</li>
+</ul>
+</li>
+<li><p>敲重点</p>
+<ul>
+<li>不要被学术界的思维限制，不要被程序员的思维限制。</li>
+<li>推荐书单：货币金融学</li>
+<li>code is law （代码写到区块链中，是不能被更改的）</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>参考资料</li>
+</ul>
+<ol>
+<li>《Bitcoin and Cryptocurrency Technologies A Comprehensive Introduction》</li>
+<li>以太坊白皮书、黄皮书、源代码</li>
+<li>Sodility文档</li>
+</ol>
+<h2 id="关于区块链的一些整理_2019年12月">关于区块链的一些整理 2019年12月</h2><ul>
 <li><p>Blockchain（实现了一个带有token的区块链）</p>
 <ul>
 <li>本质：保存持续增加的记录的分布式数据库。</li>
@@ -1441,7 +2529,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于区块链的一些整理_2019年12月"><span class="toc-number">1.</span> <span class="toc-text">关于区块链的一些整理 2019年12月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#《数学之美》_吴军_2017年12月"><span class="toc-number">2.</span> <span class="toc-text">《数学之美》 吴军 2017年12月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级项目管理培训_2017年6月14日"><span class="toc-number">3.</span> <span class="toc-text">高级项目管理培训 2017年6月14日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#礼悟会员课程：“艾比克英语”创始人陈序讲座_2019年11月"><span class="toc-number">4.</span> <span class="toc-text">礼悟会员课程：“艾比克英语”创始人陈序讲座 2019年11月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#叩响英语学习大门（九个方面）"><span class="toc-number">5.</span> <span class="toc-text">叩响英语学习大门（九个方面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频访谈_“美国奥数总教练罗博深访谈”_2019年10月18日"><span class="toc-number">6.</span> <span class="toc-text">视频访谈 “美国奥数总教练罗博深访谈”  2019年10月18日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#书《为何家会伤人》_2019年10月"><span class="toc-number">7.</span> <span class="toc-text">书《为何家会伤人》 2019年10月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频课程《Learning_How_to_Learn》2017年9月22日"><span class="toc-number">8.</span> <span class="toc-text">视频课程《Learning How to Learn》2017年9月22日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一周_什么是学习"><span class="toc-number">8.1.</span> <span class="toc-text">第一周 什么是学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#集中思维和发散思维"><span class="toc-number">8.1.1.</span> <span class="toc-text">集中思维和发散思维</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Robert_Bilder博士就创造力与问题解决能力进行的访谈"><span class="toc-number">8.1.2.</span> <span class="toc-text">Robert Bilder博士就创造力与问题解决能力进行的访谈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#《八步半轻松写作》作者达芙妮_www-publicationcoach-com"><span class="toc-number">8.1.3.</span> <span class="toc-text">《八步半轻松写作》作者达芙妮 www.publicationcoach.com</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Benny_Lewis_爱尔兰多语种达人_全职语言黑客_memorise-com_助记法_APP：Anki"><span class="toc-number">8.1.4.</span> <span class="toc-text">Benny Lewis 爱尔兰多语种达人 全职语言黑客 memorise.com 助记法 APP：Anki</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二周_组块"><span class="toc-number">8.2.</span> <span class="toc-text">第二周 组块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三周_拖延症和记忆"><span class="toc-number">8.3.</span> <span class="toc-text">第三周 拖延症和记忆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORID学习和实践_2018年06月28日"><span class="toc-number">9.</span> <span class="toc-text">ORID学习和实践 2018年06月28日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID是什么"><span class="toc-number">9.1.</span> <span class="toc-text">ORID是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID有什么用"><span class="toc-number">9.2.</span> <span class="toc-text">ORID有什么用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版"><span class="toc-number">9.3.</span> <span class="toc-text">模版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID_升级版"><span class="toc-number">9.4.</span> <span class="toc-text">ORID 升级版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实践"><span class="toc-number">9.5.</span> <span class="toc-text">实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果和体会"><span class="toc-number">9.6.</span> <span class="toc-text">效果和体会</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">9.7.</span> <span class="toc-text">参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#幽门螺旋杆菌治疗_2016年10月21日"><span class="toc-number">10.</span> <span class="toc-text">幽门螺旋杆菌治疗 2016年10月21日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四联疗法_PPI+抗生素"><span class="toc-number">10.1.</span> <span class="toc-text">四联疗法 PPI+抗生素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Notice"><span class="toc-number">10.2.</span> <span class="toc-text">Notice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#references"><span class="toc-number">10.3.</span> <span class="toc-text">references</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#癌症相关_2013-08-04_12:00:00"><span class="toc-number">11.</span> <span class="toc-text">癌症相关 2013-08-04 12:00:00</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#饮食注意"><span class="toc-number">11.1.</span> <span class="toc-text">饮食注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XELOX方案"><span class="toc-number">11.2.</span> <span class="toc-text">XELOX方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考-1"><span class="toc-number">11.3.</span> <span class="toc-text">参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#健康相关"><span class="toc-number">12.</span> <span class="toc-text">健康相关</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#北京大学公开课《区块链技术与应用》笔记_2020年2月7日"><span class="toc-number">1.</span> <span class="toc-text">北京大学公开课《区块链技术与应用》笔记  2020年2月7日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BTC-密码学原理"><span class="toc-number">1.1.</span> <span class="toc-text">BTC-密码学原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#application_layer：_Bitcoin_Block_chain"><span class="toc-number">2.</span> <span class="toc-text">application layer： Bitcoin Block chain </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#当你退出时，直接退出，当其他节点没有收到你的信息时，就会删除你这个节点）"><span class="toc-number">3.</span> <span class="toc-text"> 当你退出时，直接退出，当其他节点没有收到你的信息时，就会删除你这个节点）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于区块链的一些整理_2019年12月"><span class="toc-number">4.</span> <span class="toc-text">关于区块链的一些整理 2019年12月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#《数学之美》_吴军_2017年12月"><span class="toc-number">5.</span> <span class="toc-text">《数学之美》 吴军 2017年12月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高级项目管理培训_2017年6月14日"><span class="toc-number">6.</span> <span class="toc-text">高级项目管理培训 2017年6月14日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#礼悟会员课程：“艾比克英语”创始人陈序讲座_2019年11月"><span class="toc-number">7.</span> <span class="toc-text">礼悟会员课程：“艾比克英语”创始人陈序讲座 2019年11月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#叩响英语学习大门（九个方面）"><span class="toc-number">8.</span> <span class="toc-text">叩响英语学习大门（九个方面）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频访谈_“美国奥数总教练罗博深访谈”_2019年10月18日"><span class="toc-number">9.</span> <span class="toc-text">视频访谈 “美国奥数总教练罗博深访谈”  2019年10月18日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#书《为何家会伤人》_2019年10月"><span class="toc-number">10.</span> <span class="toc-text">书《为何家会伤人》 2019年10月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视频课程《Learning_How_to_Learn》2017年9月22日"><span class="toc-number">11.</span> <span class="toc-text">视频课程《Learning How to Learn》2017年9月22日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一周_什么是学习"><span class="toc-number">11.1.</span> <span class="toc-text">第一周 什么是学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#集中思维和发散思维"><span class="toc-number">11.1.1.</span> <span class="toc-text">集中思维和发散思维</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Robert_Bilder博士就创造力与问题解决能力进行的访谈"><span class="toc-number">11.1.2.</span> <span class="toc-text">Robert Bilder博士就创造力与问题解决能力进行的访谈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#《八步半轻松写作》作者达芙妮_www-publicationcoach-com"><span class="toc-number">11.1.3.</span> <span class="toc-text">《八步半轻松写作》作者达芙妮 www.publicationcoach.com</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Benny_Lewis_爱尔兰多语种达人_全职语言黑客_memorise-com_助记法_APP：Anki"><span class="toc-number">11.1.4.</span> <span class="toc-text">Benny Lewis 爱尔兰多语种达人 全职语言黑客 memorise.com 助记法 APP：Anki</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二周_组块"><span class="toc-number">11.2.</span> <span class="toc-text">第二周 组块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第三周_拖延症和记忆"><span class="toc-number">11.3.</span> <span class="toc-text">第三周 拖延症和记忆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORID学习和实践_2018年06月28日"><span class="toc-number">12.</span> <span class="toc-text">ORID学习和实践 2018年06月28日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID是什么"><span class="toc-number">12.1.</span> <span class="toc-text">ORID是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID有什么用"><span class="toc-number">12.2.</span> <span class="toc-text">ORID有什么用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模版"><span class="toc-number">12.3.</span> <span class="toc-text">模版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ORID_升级版"><span class="toc-number">12.4.</span> <span class="toc-text">ORID 升级版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实践"><span class="toc-number">12.5.</span> <span class="toc-text">实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果和体会"><span class="toc-number">12.6.</span> <span class="toc-text">效果和体会</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考"><span class="toc-number">12.7.</span> <span class="toc-text">参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#幽门螺旋杆菌治疗_2016年10月21日"><span class="toc-number">13.</span> <span class="toc-text">幽门螺旋杆菌治疗 2016年10月21日</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四联疗法_PPI+抗生素"><span class="toc-number">13.1.</span> <span class="toc-text">四联疗法 PPI+抗生素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Notice"><span class="toc-number">13.2.</span> <span class="toc-text">Notice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#references"><span class="toc-number">13.3.</span> <span class="toc-text">references</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#癌症相关_2013-08-04_12:00:00"><span class="toc-number">14.</span> <span class="toc-text">癌症相关 2013-08-04 12:00:00</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#饮食注意"><span class="toc-number">14.1.</span> <span class="toc-text">饮食注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XELOX方案"><span class="toc-number">14.2.</span> <span class="toc-text">XELOX方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考-1"><span class="toc-number">14.3.</span> <span class="toc-text">参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#健康相关"><span class="toc-number">15.</span> <span class="toc-text">健康相关</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -1455,7 +2543,551 @@
   <li><a class="icon" href="http://reddit.com/submit?url=http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/&title=读书和学习笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/&title=读书和学习笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="http://digg.com/submit?url=http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/&title=读书和学习笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/&name=读书和学习笔记&description=&lt;h2 id=&quot;关于区块链的一些整理_2019年12月&quot;&gt;关于区块链的一些整理 2019年12月&lt;/h2&gt;&lt;ul&gt;
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.atopos.cc/2017/09/22/读书和学习笔记_简练版本_blog/&name=读书和学习笔记&description=&lt;h2 id=&quot;北京大学公开课《区块链技术与应用》笔记_2020年2月7日&quot;&gt;北京大学公开课《区块链技术与应用》笔记  2020年2月7日&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;讲师：肖臻 &lt;/li&gt;
+&lt;li&gt;北大第一次区块链的公开课 我的笔记基本上是流水账，只是作为自己的备用参考，后续有总结&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;BTC-密码学原理&quot;&gt;BTC-密码学原理&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Cryptographic hash function &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Collision resistance &lt;ul&gt;
+&lt;li&gt;Hash函数的输入空间无限大，输出空间有限，客观存在hash碰撞&lt;/li&gt;
+&lt;li&gt;没有高效的找到hash碰撞的方法&lt;/li&gt;
+&lt;li&gt;Collision resistence 的作用：保证数据不被篡改，因为数据一篡改，hash值就变化了。&lt;/li&gt;
+&lt;li&gt;理论上，无法证明任何一个hash函数是Collision Resistence，只能从实践上说明&lt;/li&gt;
+&lt;li&gt;但有些hash函数之前是collision resistance，后来证明不是。一个著名的例子：MD5，已经找到可以hash碰撞的方法。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;hiding（单向函数）&lt;ul&gt;
+&lt;li&gt;输入空间足够大，分布比较均匀&lt;/li&gt;
+&lt;li&gt;当输入空间不是足够大时，实际操作过程中：可以加一个随机数保证足够随机：H(X||nonce)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;collision resistance和hiding这两个性质，形成了一个digital commitment&lt;ul&gt;
+&lt;li&gt;digital equipment of a sealed envelope&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;puzzle friendly（输入的X（X只能一个一个试）对应的预测hash值。）&lt;ul&gt;
+&lt;li&gt;difficult to solve, but easy to verify&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;SHA-256:Secure Hash Algorithm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;区块链开户：创建一个公私钥对(public key,private key) 来源于非对称加密算法(asymmetric encryption algorithm)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;aysmmetric encryption algorithm 解决了密钥分发的问题：用公钥加密，用私钥解密&lt;/li&gt;
+&lt;li&gt;公钥—银行账户 私钥—-账户密码&lt;/li&gt;
+&lt;li&gt;用私钥签名，其他人用公钥验证。&lt;/li&gt;
+&lt;li&gt;一个可能的攻击方法：不停的产生公私钥对，和别人的公钥碰撞，如果相同，就可以用私钥将对方的账户偷窃。但这种攻击方法其实不可行，概率极小（比地球爆炸的概率还小）。&lt;/li&gt;
+&lt;li&gt;但前提是一个好的随机源：a good source of randomness。（公私钥的随机源，包括签名时也要有好的随机源）&lt;/li&gt;
+&lt;li&gt;区块链中，一般先hash，再签名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC中的数据结构&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;数据结构1 &lt;ul&gt;
+&lt;li&gt;用hash指针（hash pointer）代替了普通指针&lt;/li&gt;
+&lt;li&gt;Block chain is a linked list using hash pointers.&lt;/li&gt;
+&lt;li&gt;区块链：genesis bloack &amp;lt;—- H()  &amp;lt;—- H()  &amp;lt;—- H()  &amp;lt;—- H()  &amp;lt;—- most recent block&lt;/li&gt;
+&lt;li&gt;普通链表：可以改变其中一个元素，不改变其他元素。但区块链：改变一个元素，后面的其他元素都会被改变。 只要最后一个hash值，就可以验证前面的区块。&lt;/li&gt;
+&lt;li&gt;tamper-evident log&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;数据结构2 Merkle Tree&lt;ul&gt;
+&lt;li&gt;Merkle Tree 和 Binary Tree 的区别： hash指针代替了普通指针&lt;/li&gt;
+&lt;li&gt;Merkle Tree的数据结构：二叉树&lt;/li&gt;
+&lt;li&gt;block header + block body （轻节点：比如手机上的手机钱包应用只存储 block header；全节点：包括block header + block body ）&lt;/li&gt;
+&lt;li&gt;如何向轻节点证明一笔交易？用到 Merkle proof ：找到交易所在的位置，往上找到根节点（root hash），这个就是Merkle proof，向全节点请求一些hash值。&lt;br&gt;轻节点中只有root hash值，根节点hash值验证通过，则说明这个交易没有被修改。&lt;/li&gt;
+&lt;li&gt;这个证明也叫做Proof of membership 或者 Proof of inclusion，复杂度O(log(n))。证明这个交易不存在呢？即Proof of non-membership，一种方法是把所有的树结构发送给轻节点，判断正确后，检查这个节点不在叶节点中，复杂度为O(n),其他没有更好的办法，但是如果按照交易内容的hash值排序，如果要找的交易做hash，找到处于两者hash之间的两个Markle Tree，验证通过即可证明这个交易不存在，复杂度O(log(n))。这个方法的代价是排序：称为Sorted Merkle Tree。但比特币中没有使用Sorted Merkle Tree，因为比特币中无需证明交易不存在。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;注意：有环的链表都不能使用hash指针，因为会产生循环依赖。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC协议&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;double spending attack：花两次攻击（双花攻击）：因此要向央行验证这个数字货币是否使用过（可行，但这个事中心化方案）。&lt;/li&gt;
+&lt;li&gt;比特币要解决的问题：数字货币的发行（挖矿决定的）；数字货币的有效性。&lt;/li&gt;
+&lt;li&gt;数字货币的有效性：有签名+说明币来源（为了证明货币的合法性）&lt;/li&gt;
+&lt;li&gt;一个转账交易：A—-&amp;gt;B 必须有B的公钥（账号），也必须要知道A的公钥（所有的节点都要知道A的公钥，用于验证）。那么如何知道A的公钥？&lt;/li&gt;
+&lt;li&gt;Block Header（version；hash of previous block header;Merkle root hash;target;nonce;）+block body(transaction list)&lt;/li&gt;
+&lt;li&gt;full node:全节点，保存区块链所有信息，也叫做fully validating node&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;light node:轻节点，只保存block header&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如何保证账本的统一性：分布式共识 distributed consensus。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个方法是全局hash表 维护一个 distributed hash table&lt;/li&gt;
+&lt;li&gt;分布式系统的一些结论：有很多impossibility result，其中最著名的是FLP impossibility result。&lt;ul&gt;
+&lt;li&gt;asynchronous系统：（异步系统：网络传输时延没有上限的系统）即使只有一个节点是faulty，也没法达成共识&lt;/li&gt;
+&lt;li&gt;CAP Theorem（CAP是分布式系统的三个性质：Consistency，Avalability，Partition tolerance）：只能满足两个&lt;/li&gt;
+&lt;li&gt;分布式共识的一个著名协议：Paxos，如果达成共识，一定是一致性的（consistency），但有可能Paxos一直不能达成共识&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;比特币中的共识协议：Consensus in BitCoin&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;去中心化货币解决两个问题：1. 谁能合法发行货币 2. 交易的合法性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;交易的合法性&lt;ul&gt;
+&lt;li&gt;hyperledger fabric 联盟链协议：基于投票是可行的，因为大多数成员没有恶意的&lt;/li&gt;
+&lt;li&gt;比特币系统中不是这样的，因为产生公私钥对是不需要批准的。&lt;/li&gt;
+&lt;li&gt;sybil attack 女巫攻击：一个节点不断产生公私钥对，超过51%的数量，就能通过投票控制区块链。&lt;/li&gt;
+&lt;li&gt;比特币系统的解决方法：也是用投票的方法，但用的是计算力来投票。计算：穷尽4 bytes nonce：满足H(block header)&amp;lt;= target，则获得了记账权。&lt;/li&gt;
+&lt;li&gt;forking attack 分叉攻击&lt;/li&gt;
+&lt;li&gt;longest valid chain:被选择的区块，丢弃的区块：orphan block&lt;/li&gt;
+&lt;li&gt;争夺记账权的好处：获得记账权的节点有一定权力：决定哪些交易可以被写到区块里。但这个不是主要动力，因为设计者希望合法交易都可以写到区块链中。区块奖励 block reward&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;铸币权&lt;ul&gt;
+&lt;li&gt;唯一一个产生货币的交易：coinbase transaction 例子：50 BTC —-&amp;gt; 25 BTC —-&amp;gt; 12.5 BTC(21万个区块后，大约4年时间区块奖励减半。每隔10分钟产生一个区块，21万✖️10分钟=4年时间)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;共识的内容：指的是区块链中的交易内容&lt;/li&gt;
+&lt;li&gt;基于算力的投票：hash rate（计算nonce的速度）作为投票的权重。如何避免sybil attack：创建账户，并不能增加hash rate的能力。&lt;/li&gt;
+&lt;li&gt;争夺记账权的说法：挖矿 mining digital gold，争夺记账权的节点：矿工miner。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC实现&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;transaction-based ledger&lt;/li&gt;
+&lt;li&gt;维护一个数据结构：UTXO：Unspent Transaction Output。全节点在内存中维护UTXO的目的：检查double spending。&lt;/li&gt;
+&lt;li&gt;一个交易可以有多个输入（每个输入都要有签名），有多个输出，但要满足：total inputs = total outputs&lt;/li&gt;
+&lt;li&gt;比特币中的另一个激励机制：transaction fee，交易费。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;account-based ledger&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Bernoulli trial：a random experiment with binary outcome&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;一连串的Bernoulli trial构成了Bernoulli process：a sequence of independent Bernoulli trials。&lt;ul&gt;
+&lt;li&gt;Bernoulli process的一个特征：无记忆性 memoryless，指的是做了多次实验，下一次成功的概率和之前的无关，仍然一致。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Bernoulli process可以用poisson process近似。实验的次数很多，每次的实验成功的概率很小。我们关心的是：出块时间，理论推导出出快时间符合指数分布expontial distribution。&lt;br&gt;process free：指的是以前的工作并不影响后面找nounce的概率。如果process free不成立，算力强的矿工会产生不成比例的优势，是挖矿公平的保证。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;比特币的数量每隔4年（每21万个区块）减半，产生一个几何级数 geometric series: 21万✖️50+21万✖️25+21万✖️12.5+…=21万✖️50✖️(1+1/2+1/4+…)=2100万&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Bitcoin is secured by mining。挖矿没有实际意义，但能保证比特币的安全性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;比特币的安全性分析&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;double spending attack：M-&amp;gt;A这个交易先之行，后M-&amp;gt;M’，然后将这个作为最长合法链。&lt;/li&gt;
+&lt;li&gt;forking attack&lt;/li&gt;
+&lt;li&gt;防范这种攻击的方法：多几次确认， confirmation： one confirmation，。。。，six confirmation。六个confirmation，平均一个块十分钟，这个就是一个小时&lt;/li&gt;
+&lt;li&gt;irrevocable ledger：凡是写入区块链的内容都永远改不了。&lt;/li&gt;
+&lt;li&gt;zero confirmation：&lt;/li&gt;
+&lt;li&gt;selfish mining：挖矿，挖到一个区块，不急着发布，藏着一条链，分叉攻击的手段，只有当：恶意节点和其他同伙的算力超过51%才有可能成功。&lt;br&gt;selfish mining的两个目的：1是获得常用（比如取消某一个交易）  2 是减少竞争（一次发布2个区块，别人挖到的块就失效了）。风险是有可能失败&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC网络 The Bitcoin Network&lt;/p&gt;
+&lt;h2 id=&quot;application_layer：_Bitcoin_Block_chain&quot;&gt;application layer： Bitcoin Block chain &lt;/h2&gt;&lt;p&gt;network layer： p2p Overlay Network&lt;br&gt;（简单的p2p网络，没有所谓的超级节点super node，或者master node。&lt;br&gt; 有一个seed node，它会告诉你其他节点，tcp通信用于穿透防火墙&lt;/p&gt;
+&lt;h2 id=&quot;当你退出时，直接退出，当其他节点没有收到你的信息时，就会删除你这个节点）&quot;&gt; 当你退出时，直接退出，当其他节点没有收到你的信息时，就会删除你这个节点）&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;比特币的设计原则是：简单，鲁棒。而不是高效。  simple,robust but not efficient&lt;br&gt;flooding 节点第一次收到洪流消息后，节点把这个传输给其他节点，同时记录下这个消息我已经收到过了，下次再收到这个消息，就不转发给其他邻居节点。&lt;/li&gt;
+&lt;li&gt;best effort：有的节点不转发一些合法交易，有的节点转发一些不合法交易&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC-挖矿难度&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;H(block header)&amp;lt;=target SHA-256 输入空间2^256&lt;/li&gt;
+&lt;li&gt;1_target： difficulty=1时的目标阈值 target&lt;/li&gt;
+&lt;li&gt;difficulty = (difficulty - 1_target)/target&lt;/li&gt;
+&lt;li&gt;产生区块的时间越短，就会产生分叉，分叉的后果：就是恶意节点集中算力增加自己的区块，导致攻击。&lt;br&gt;而以太坊的区块时间是15秒，产生一个新的共识协议：ghost协议：分叉的orphan block会得到一些奖励uncle reward。&lt;/li&gt;
+&lt;li&gt;出块时间无论多长，但都要保持稳定。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;如何修改挖矿难度：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每隔2016个区块就调整一次挖矿难度，大约是2个星期的时间。2016✖️10分钟/60/24=14天。&lt;/li&gt;
+&lt;li&gt;目标阈值(实际比特币代码中使用的是目标阈值)：target = target✖️actual time/expected time  expected time：2016✖️10分钟 actual time：time spent mining the last 2016 blocks（实际产生2016个区块的时间）注意：阈值一次调整最大不超过4倍，，最小是1/4，防止系统出现意外情况。&lt;/li&gt;
+&lt;li&gt;挖矿难度：next_difficulty = previous_difficulty✖️expected time(2 weeks)/actual time&lt;/li&gt;
+&lt;li&gt;问题：当恶意节点不调整这个target，通不过nBits的区块合法性检测。target 256 bytes ，nBits 4bytes&lt;/li&gt;
+&lt;li&gt;以太坊是可以自己修改自己产生的区块时间，比比特不复杂得多。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;比特币系统的总算力的变化情况&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC-挖矿&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;全节点&lt;ul&gt;
+&lt;li&gt;一直在线&lt;/li&gt;
+&lt;li&gt;在本地硬盘上维护完整的区块链信息&lt;/li&gt;
+&lt;li&gt;在内存中维护UTXO集合，以便快速检验交易的正确性&lt;/li&gt;
+&lt;li&gt;监听比特币网络上的交易信息，验证每个交易的合法性&lt;/li&gt;
+&lt;li&gt;决定哪些交易会被打包到区块里&lt;/li&gt;
+&lt;li&gt;监听别的矿工挖出来的区块，验证其合法性&lt;/li&gt;
+&lt;li&gt;挖矿&lt;ul&gt;
+&lt;li&gt;决定沿着哪条链挖下去？（最长合法链）&lt;/li&gt;
+&lt;li&gt;当出现等长的分叉时，选择哪一个分叉？（最先听到的那个分叉）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;轻节点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不是一直在线&lt;/li&gt;
+&lt;li&gt;不用保存整个区块链，只要保存每个区块的块头（与都保存相比，差出1000倍）&lt;/li&gt;
+&lt;li&gt;不用保存全部交易，只保存与自己有关的交易&lt;/li&gt;
+&lt;li&gt;无法检验大多数交易的合法性，只能检验与自己相关的那些交易的合法性&lt;/li&gt;
+&lt;li&gt;无法检测网上发布的区块的正确性&lt;/li&gt;
+&lt;li&gt;可以验证挖矿的难度&lt;/li&gt;
+&lt;li&gt;只能检测哪个是最长链，不知道哪个是最长合法链&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;比特币上的安全性（类似银行给拥有合法身份的人钱）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;密码学的保证：随机源足够随机&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;共识机制：只给合法身份的人&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CPU—&amp;gt;GPU(浮点运算是深度学习需要的)—&amp;gt;ASIC：Application Sepcific Intergrated Circus（mining puzzle）一个芯片设计给一个加密货币&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;设计Alternative mining puzzle：抗ASIC resistance。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;挖矿的趋势：大型矿池的出现。pool manager + miner + miner+ miner+ miner。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pool manager：全节点的功能；miner：只计算hash值&lt;/li&gt;
+&lt;li&gt;解决收入不稳定的问题：因为挖矿太难了，所以降低挖矿难度即可：share = almost valid block。根据矿工提交的share数目，分配工作量&lt;/li&gt;
+&lt;li&gt;问题1:不可能偷区块奖励。因为除了nonce，还有其他域的值需要调整（coinbase中有收款人的地址=矿主的地址）。&lt;/li&gt;
+&lt;li&gt;问题2: 可能捣乱吗？挖到一个正确的区块，扔掉，谁也得不到了。分红别人挖到的块。&lt;/li&gt;
+&lt;li&gt;大型矿池的一个弊病：当有人控制了大型矿池，吸引一些不明真相的群众，这样就能发动51%的攻击：攻击包括分叉攻击；Boycott：发现包含某个交易后就分叉，如果拥有51%算力，就可以将分叉的区块链作为最长合法链，这样别的节点也不包含这些交易了，因为包含了就分叉。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;BTC-比特币脚本&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;只有堆栈，没有C语言那些全局变量，动态数组等。&lt;/li&gt;
+&lt;li&gt;P2PKH(Pay to Public Key Hash)最常用的&lt;/li&gt;
+&lt;li&gt;P2SH(Pay to script hash)最复杂的一种：其中一个应用场景是：对多重签名的支持&lt;/li&gt;
+&lt;li&gt;Proof of Burn：不管输入脚本是什么，输出到Return都会返回。两种应用场景：1.销毁比特币，可以得到一些小币种AltCoin(Alternative Coin)。2.digital commitment（专利内容做hash，证明当时已经知道这个知识了）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC-分叉&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fork的几种情况&lt;/li&gt;
+&lt;li&gt;同时挖到矿，临时分叉 state fork&lt;/li&gt;
+&lt;li&gt;分叉攻击 forking attack（deliberate fork）&lt;/li&gt;
+&lt;li&gt;修改协议，有些节点不修改 protocal fork：根据协议修改的：&lt;ul&gt;
+&lt;li&gt;hard fork ：例子：block size limit 1M字节 1个交易250字节，1000000/250=4000个交易/每个交易 4000/60/10=7 tx/sec。只要旧节点不更新软件，这个分叉就不会消失，所以叫硬分叉。实际的例子：以太坊：ETH 分叉为ETH 和 ETC ，为了防止回放，加上了一个chain ID&lt;/li&gt;
+&lt;li&gt;soft fork：新的协议下，有些合法的交易变得不合法了。旧节点不更新，白挖矿了，但不会产生永久的分叉。&lt;br&gt;实际例子：当给域赋予一些新的意义时，coinbase（铸币域）前8字节可以作为extra nonce ，调整挖矿难度：4字节+8字节=2^96。&lt;br&gt;比特币历史上的一个著名例子：P2SH：Pay to Script Hash 。旧节点只验证 redeem script是否正确，新节点才验证第二阶段的验证。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;小结：&lt;ul&gt;
+&lt;li&gt;soft fork：当超过算力51%的节点都更新了软件，就不会产生硬分叉。&lt;/li&gt;
+&lt;li&gt;hard fork：必须所有的节点更新软件，才不会产生永久性的分叉。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC-问答&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;转账交易不需要对方账户在线&lt;/li&gt;
+&lt;li&gt;如果你账户的私钥丢失了，怎么办？私钥丢失了，账户的钱就取不出来了。著名例子：Mt.Gox，翻译为门头沟&lt;/li&gt;
+&lt;li&gt;如果私钥泄漏了怎么办？尽快转账到自己的另外一个账户。&lt;/li&gt;
+&lt;li&gt;如果转账的时候，写错了地址怎么办？没有办法，没法取消已经发布的交易&lt;/li&gt;
+&lt;li&gt;如果转账的地址不存在，这是不友好的，因为需要一直存在UTXO中&lt;/li&gt;
+&lt;li&gt;矿工偷nonce问题：别的矿工发布的nonce，其他矿工偷过来作为自己找到的，不能。因为有coinbase域中有矿工的收款地址，Merkle Tree就通不过。&lt;/li&gt;
+&lt;li&gt;交易费不用知道矿工：因为total inputs&amp;gt;total outputs，差值就是交易费。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BTC-匿名性 anonymity&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pseudonymity &lt;/li&gt;
+&lt;li&gt;多个公私钥对可能会关联在一起，分析比特币钱包的交易生成方式即可搞清楚关联方式&lt;/li&gt;
+&lt;li&gt;资金转入转出都会引起注意，这是和实体世界相关联。&lt;/li&gt;
+&lt;li&gt;(研究) 信用卡数据公开，但隐私保护去除了姓名和性别，卡号等，但通过行为，比如什么时间买了什么东西，很快就可以将这个人和信用卡关联起来。比特币的所有交易都是公开的。&lt;/li&gt;
+&lt;li&gt;silk road（ebay for illegal drugs）比特币支付+TOR 洋葱路由 （网络层）。这个老板2，3年后被抓（几万个比特币都没有使用，旧金山被抓，可能是由于一台电脑上登陆了实际账户和虚拟账户）。&lt;/li&gt;
+&lt;li&gt;如何提高匿名性？&lt;br&gt;application layer（应用层保证匿名性：coin mixing 没有信用度很高的coin mixing服务。在线钱包：将大家的比特币混合）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;network layer（首先，保证网络层的匿名性：学术界有很多解决方案，一般是多路径转发的方法，TOR）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;零知识证明：是指一方（证明者）向另一方（验证者）证明一个陈述是正确的，而无需透露除该陈述是正确外的任何信息。&lt;/li&gt;
+&lt;li&gt;零知识证明的数学基础是同态隐藏。&lt;/li&gt;
+&lt;li&gt;不碰撞：x,y不同，E(x)和E(y)不同（逆否命题一定成立：如果E(x)=E(y)，那么x=y）&lt;/li&gt;
+&lt;li&gt;不可逆：给定E(x)的值，无法推出x的值 （类似hash函数的hiding property）&lt;/li&gt;
+&lt;li&gt;同态运算：同态加法+同态乘法+扩展到多项式&lt;/li&gt;
+&lt;li&gt;盲签原理：在不知道内容的情况进行签名&lt;/li&gt;
+&lt;li&gt;零币和零钞：专门为匿名性设计的加密货币。协议层就融合了匿名化处理。&lt;/li&gt;
+&lt;li&gt;零币：类似于混币处理。&lt;/li&gt;
+&lt;li&gt;零钞：zk-SNARKs。但都没有解决和实体交互的匿名性问题。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;BTC-思考&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;hash指针如何传播？实际使用时，其实没有指针，只有hash。那如何找到区块呢？区块链是存在key value的数据库level DB中。&lt;/li&gt;
+&lt;li&gt;区块恋：私钥分成两块，一人保存一块。问题是：降低了安全性，2^256 —-&amp;gt; 2^128；永久存储在UTXO中。可以用多重签名的方法-MULTISIG。&lt;/li&gt;
+&lt;li&gt;分布式共识：分布式系统中，理论上证明达成共识不可能的。为什么比特币能够绕过分布式共识的那些不可能结论？实际上的模型修改下，就不是理论上的模型了。比特币就是这样做的，不要被学术界的思维限制，不要被程序员的思维限制。&lt;/li&gt;
+&lt;li&gt;比特币的稀缺性：早期挖矿的收益高。货币总量固定不适合做货币，一个好的货币需要有通货膨胀功能。&lt;/li&gt;
+&lt;li&gt;量子计算：首先量子计算离实际使用还很远。而且这个对传统金融业的冲击更大，还有量子加密算法。地址（公钥—hash再转换）—-&amp;gt;生成私钥，量子计算能从公钥算出来私钥。&lt;br&gt;最好的做法：进行一次交易后，将地址中的钱全部转走，或者转给自己另一个账户，好处有二：增强了安全性；隐私保护。&lt;br&gt;公钥最好也不要随便泄漏。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊概述&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比特币：区块链1.0；以太坊：区块链2.0&lt;/li&gt;
+&lt;li&gt;以太坊的改进：&lt;/li&gt;
+&lt;li&gt;出块时间：10分钟—15秒，并设计了对应的共识协议GHOST协议&lt;/li&gt;
+&lt;li&gt;mining puzzle：导致挖矿设备的专业化（ASIC芯片的挖矿机，与去中心化的理念不符）。ASIC resistance。&lt;/li&gt;
+&lt;li&gt;用权益证明代替工作量证明。proof of work —-&amp;gt; proof of stake。类似股份，投票&lt;/li&gt;
+&lt;li&gt;增加了智能合约的支持：smart contract。&lt;br&gt;去中心化的货币——&amp;gt;去中心化的合约，合同。&lt;br&gt;BitCoin：decentralized currency。BTC 最小单位：Satoshi&lt;br&gt;Ethereum：decentralized contract。ETH 最小单位：Wei&lt;/li&gt;
+&lt;li&gt;去中心化的合同有什么好处？去中心化的货币有什么好处？跨国转账。&lt;br&gt;技术上保证从一开始合同就不能违约。区块链的一个特点就是不可篡改。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊的账户模式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比特币的模型：基于交易；以太坊的模型：基于账户的模型account-based ledger。这个好处：double spending ，天然防御作用。弱点：replay attack&lt;/li&gt;
+&lt;li&gt;普通外部账户（公私钥）：externally owned account：balance（余额） nonce（计数器，使用账户的次数）&lt;/li&gt;
+&lt;li&gt;smart contract account（智能合约账户）：不能主动发起交易，发起交易需要普通账户发起。balance nonce code storage &lt;/li&gt;
+&lt;li&gt;为什么要创建以太坊？Vitalik创始人。比特币是基于交易的，隐私性比较好。智能合约：用稳定的身份，基于account的模型，保持稳定。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊的数据结构：状态树&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;账户地址到账户状态的映射：地址160bits，一般表示为40个16进制的数；状态：state。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;hash表（键值对）？如果证明自己的余额，Merkle Tree。比特币基于交易的Merkle Tree，一个区块上限4000个，一般是几百个到几千个。而基于账户的以太坊，每创建一个账户，就会重新构建一个Merkle Tree，数量级大量增加。&lt;br&gt;只维护一个Merkle Tree，Merkle Tree没有好的查找插入方法，Merkle Tree需要排序吗？不排序查找速度很慢，不排序导致状态不一致，各个全节点算出来的Merkle hash不一样，而比特币中是发布区块的节点唯一确定的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;trie（来自retrieval信息检索）字典前缀树： 字符串。&lt;br&gt;branding factor &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;特点1: 0-f 加一个结束标志符。地址为40个16进制数&lt;/li&gt;
+&lt;li&gt;特点2：key值越长，查找的复杂度越大，&lt;/li&gt;
+&lt;li&gt;特点3：hash表有可能有碰撞，trie不会出现碰撞，只要地址不一样，一定不一样&lt;/li&gt;
+&lt;li&gt;特地4：不同的节点构造出来的trie结构是一样的。&lt;/li&gt;
+&lt;li&gt;特点5：更新的局部性很好。因为只要更改局部的即可。&lt;/li&gt;
+&lt;li&gt;Patricia Tree/Trie 经过压缩的trie 路径压缩：好处是Tree的高度降低，内存访问速度增加。&lt;/li&gt;
+&lt;li&gt;地址160bits，地址分布非常稀疏，目的是为了防止碰撞&lt;/li&gt;
+&lt;li&gt;MPT Merkle Patricia tree &lt;/li&gt;
+&lt;li&gt;和PT的区别在于：加入了hash指针&lt;/li&gt;
+&lt;li&gt;Modified MPT：extension node  branch node leaf node&lt;/li&gt;
+&lt;li&gt;保存历史状态：因为智能合约的以太坊是图灵完备的，因此推算前一个状态是不可能的，无法形成回滚 roll back&lt;/li&gt;
+&lt;li&gt;以太坊中有三个树：状态树（key valus）=（地址，），交易树，收据树&lt;/li&gt;
+&lt;li&gt;状态树：key-地址，value-序列化：RLP：Recursive Length Prefix （极简主义，序列化的方法） nested array of bytes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊：交易树 收据树&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bloom filter数据结构：支持高效查找：某个指定元素是否在这个集合中。（元素做hash，映射到一个向量中） &lt;/li&gt;
+&lt;li&gt;轻节点：通过块头的Merkle hash过滤掉大多数，再到少部分中去找。&lt;/li&gt;
+&lt;li&gt;以太坊的运行过程可以看作是一个交易驱动的状态机。状态：所有账户的状态，交易：每次发布区块时包含的交易。&lt;/li&gt;
+&lt;li&gt;比特币也可以看作一个交易驱动的状态机。状态：UTXO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊：共识机制 GHOST协议&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;motivation：以太坊的分叉很多（相比于比特币），那么矿池获得最长合法链的概率不成比例的增加，centralization bias。&lt;/li&gt;
+&lt;li&gt;GHOST协议：没有成为最长合法链的区块orphan block或者stale block，也有区块奖励。以太坊中称为uncle block。&lt;/li&gt;
+&lt;li&gt;Uncle block可以得到7/8✖️3ETH。包括Uncle block的区块链可以得到1/32✖️3+3，而且最多可以包括2个Uncle block。&lt;/li&gt;
+&lt;li&gt;合法的Uncle block 最多7代，7/8，6/8，5/8，4/8，3/8，2/8。Uncle reward&lt;/li&gt;
+&lt;li&gt;把Uncle block添加进来，要不要执行交易？不执行，可能和主链上的交易冲突。&lt;/li&gt;
+&lt;li&gt;分叉后第二，三，个区块怎么办？以太坊规定：只要分叉第一个区块才能得到奖励。因为forking attack的代价便宜很多，因为攻击成了，就回滚达到攻击目的，如果不成就被招安得到奖励。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-挖矿算法（bug bounty）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Block chain is secured by mining&lt;/li&gt;
+&lt;li&gt;one cpu，one vote—-中本聪&lt;/li&gt;
+&lt;li&gt;因此，后面的挖矿算法要保证 ASIC resistance，增加对puzzle求解对内存的需求 memory hard mining puzzle，怎么设计呢？著名的例子 LiteCoin：用的是scrypt，128K内存&lt;/li&gt;
+&lt;li&gt;好处：增加了对内存的访问需求，memory-hard&lt;/li&gt;
+&lt;li&gt;坏处：对轻节点也是memory-hard。&lt;/li&gt;
+&lt;li&gt;而puzzle设计的原则：difficult to solve，but easy to verify。&lt;/li&gt;
+&lt;li&gt;LiteCoin和比特币的差别：1 puzzle难题不同 2 出快时间2分半，是比特币的四倍。除此之外，基本一样。&lt;/li&gt;
+&lt;li&gt;ethash（以太坊使用的puzzle）：&lt;/li&gt;
+&lt;li&gt;两个数据集 16M cache 1G dataset，DAG（定期增长）&lt;/li&gt;
+&lt;li&gt;16M cache：seed 经过变换产生一个伪随机数，再hash产生下一个伪随机数。。。&lt;/li&gt;
+&lt;li&gt;1G dataset：伪随机位置寻找256次，找到一个数放到第一个位置，&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;block header nonce 一次读取128个位置，计算得到一个位置，包括相邻元素也读取出来，循环64次，每次读取2个元素，因此是128个元素&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;伪代码分析：每隔30000个块会重新生成seed（对原来的seed做hash值），并且利用新的seed生成新的cache。cache的初始大小为16M，每隔30000个块重新生成时增大初始大小的1/128—-128K。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;目前以太坊挖矿基本上是GPU，起到了ASIC resistance的作用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-难度调整&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;黄皮书和代码都有不一致的地方，这里以代码为依据&lt;/li&gt;
+&lt;li&gt;D(H)=max(D0,P(H)Hd+xs2)+epston P(H)Hd：父区块 D0=131072&lt;/li&gt;
+&lt;li&gt;难度炸弹：PoW向PoS转换。工作量证明向权益证明转换。&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;问题是PoS有很多问题不好解决，无法上线，而难度越大，出块时间越长，15秒—16秒—-17秒，因此，向后回调了300万个区块。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊的四个阶段：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Frontier&lt;/li&gt;
+&lt;li&gt;Homestead&lt;/li&gt;
+&lt;li&gt;Metropolis &lt;ul&gt;
+&lt;li&gt;Byzantium(难度回调在此阶段中，在EIP（Ethereum Improvement Proposal）中决定，同时把Block Reward 从5个ETH将为3个ETH) BIP（BitCoin Improvement Proposal）&lt;/li&gt;
+&lt;li&gt;Constantinople&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-Proof of Stake&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;比特币一个诟病：浪费电 KHW THW（Tero watt hours）&lt;/li&gt;
+&lt;li&gt;比特币：每年能耗70THW，每个交易的能耗是1014KWH。比特币每年挖矿的总收入60亿美元&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;以太坊：每年能耗20THW，每个交易的能耗是67KWH。因为出块时间短，虽然还有智能合约。每年挖矿的总收入50亿美元，费用是24亿美元&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PoS：proof of stake&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;挖矿-设备多-算力大-挖矿多-收益多：所以挖矿取决于钱，拼钱&lt;/li&gt;
+&lt;li&gt;virtual mining，相比较proof of work，好处有&lt;ul&gt;
+&lt;li&gt;能耗更少，环境污染小，温室气体排放少&lt;/li&gt;
+&lt;li&gt;不是加密货币的闭环，因为矿机是用加密货币之外的法币购买的。发动攻击，所需的资源可以从外部获得，比如购买矿机。比如AltCoin，对这种小币攻击很容易，而且致命性的，Infanticide。&lt;/li&gt;
+&lt;li&gt;有的采用混合模型：也要挖矿，挖矿的难度和你持有币多少相关，持有币越多，挖矿难度越小。这个设计也有问题：持有币最多的人，挖矿最容易。有的币会锁定一段时间，Proof of Deposit&lt;/li&gt;
+&lt;li&gt;基于权益证明有很多挑战：&lt;ul&gt;
+&lt;li&gt;一 nothing at stake：上面链可以挖，下面链也可以挖矿&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;以太坊中的权益证明协议是：Casper the friendly Finality Gadget（FFG）：引入一个概念Validator，推动链达成共识，形成共识&lt;ul&gt;
+&lt;li&gt;two-phase commit：Prepare Message 2/3 Commit Message 2/3 &lt;/li&gt;
+&lt;li&gt;以太坊中权益证明：50个区块=1个epoch，连续两个epoch投票都是2/3，才算有效&lt;/li&gt;
+&lt;li&gt;验证者，验证会得到奖励，跟挖矿得到奖励一样。相应的，不作为的验证者，没收部分保证金，乱作为的验证，没收全部保证金，销毁。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Finality是否可能被推翻？权益证明不成熟，工作量证明经历了历史的考验&lt;/li&gt;
+&lt;li&gt;EOS 柚子：采用的就是权益证明，DPOS共识协议：Delegated Proof of Stake：选举出一些超级节点，再投票。。。&lt;/li&gt;
+&lt;li&gt;工作量证明的一些好处：提供了一种将电能转换为钱的方式。电不好存储和传输，偏远地区清洁能源的电，不好传输到电主网中，因此可以用挖矿将电能转换为比特币，存储和传输就容易了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-智能合约（以太坊的精髓）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;什么是智能合约？是运行在区块链上的一段代码，代码的逻辑定义了合约的内容。&lt;/li&gt;
+&lt;li&gt;智能合约的账户保存了合约当前的运行状态：&lt;/li&gt;
+&lt;li&gt;balance 当前余额&lt;/li&gt;
+&lt;li&gt;nonce 交易次数&lt;/li&gt;
+&lt;li&gt;code 合约代码&lt;/li&gt;
+&lt;li&gt;storage 存储，数据结构是一棵MPT&lt;/li&gt;
+&lt;li&gt;Solidity 是常用的语言，类似JavaScript&lt;/li&gt;
+&lt;li&gt;强类型语言 address 特殊类型&lt;/li&gt;
+&lt;li&gt;建议：construct 构造函数&lt;/li&gt;
+&lt;li&gt;外部账户可以调用智能合约&lt;/li&gt;
+&lt;li&gt;一个合约调用另一个合约的函数？&lt;/li&gt;
+&lt;li&gt;直接调用&lt;/li&gt;
+&lt;li&gt;代理调用 delegatecall()&lt;/li&gt;
+&lt;li&gt;fallback()函数&lt;/li&gt;
+&lt;li&gt;不调用任何函数，就调用fallback函数，若没有这个函数，则抛出异常&lt;/li&gt;
+&lt;li&gt;智能合约的创建和运行&lt;/li&gt;
+&lt;li&gt;运行在EVM(Ethereum Virtual Machine)， World Wide Computer 256位。比如：增加JVM，加强一致性。&lt;/li&gt;
+&lt;li&gt;智能合约是个Turning-complete Programming Model&lt;ul&gt;
+&lt;li&gt;出现死循环怎么办？没有办法，这个是Halting Problem，不是NPC问题（可以解的），复杂度是指数级。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;汽油费gas fee，由发起交易的人支付&lt;/li&gt;
+&lt;li&gt;EVM中不同指令消耗的汽油费是不一样的（比如hash运算gas fee高）&lt;/li&gt;
+&lt;li&gt;错误处理&lt;/li&gt;
+&lt;li&gt;会产生回滚，回到交易执行之前的状态&lt;/li&gt;
+&lt;li&gt;assert语句：判断内部条件&lt;/li&gt;
+&lt;li&gt;require语句：判断外部条件&lt;/li&gt;
+&lt;li&gt;revert语句：无条件抛出异常，回滚状态变动&lt;/li&gt;
+&lt;li&gt;嵌套调用&lt;/li&gt;
+&lt;li&gt;直接调用：会产生连锁回滚&lt;/li&gt;
+&lt;li&gt;call调用：就不会产生连锁回滚&lt;/li&gt;
+&lt;li&gt;全节点维护三个数据结构：状态树，交易树，收据树。状态的修改都是在修改本地的数据结构。&lt;/li&gt;
+&lt;li&gt;先执行再挖矿！执行完交易后，更新三个数据结构，更新3个roothash，再尝试nonce，挖矿。&lt;/li&gt;
+&lt;li&gt;gas fee是给那些发布智能合约的矿工的一种补偿，但如果没发布的矿工，什么补偿都没有，就是“陪太子读书”。&lt;/li&gt;
+&lt;li&gt;有没有一些区块，不独立验证交易的合法性。这样会导致区块链的安全问题。因为区块链的安全性取决于每个全节点独立验证交易的安全性。而这些全节点不可能不验证交易的合法性，因为根hash值不对了，就没法发布区块了。（先执行交易，再更新三棵树）&lt;/li&gt;
+&lt;li&gt;问题：智能合约的错误，要不要也发布到区块链中去？要！错误的交易也要发布到区块链中去，形成共识，才能获得汽油费。&lt;/li&gt;
+&lt;li&gt;问题：智能合约支持多核并行处理吗？可以的。solidity不支持多线程。&lt;/li&gt;
+&lt;li&gt;多线程：寄存器是自己的，大部分是共享的，多线程会导致访问内存的不确定，这个和以太坊是交易驱动的状态机相违背，因为所有全节点都要验证，因此状态的转换是确定的。&lt;/li&gt;
+&lt;li&gt;三种函数 发起转账&lt;/li&gt;
+&lt;li&gt;transfer 会发生连锁回滚&lt;/li&gt;
+&lt;li&gt;send 返回false，不会发生连锁回滚&lt;/li&gt;
+&lt;li&gt;call.value(uint256 amount) 返回false，不会发生连锁回滚。区别：把剩下的所有汽油都发过去&lt;/li&gt;
+&lt;li&gt;auctionE nd() bid() 函数。&lt;/li&gt;
+&lt;li&gt;重入攻击（Re-entrancy Attack）：你调用的合约有可能再调用你这个合约，所以先清除状态，再执行操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-TheDAO&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DAO Decentralized Autonomous Organization 去中心化的自治组织&lt;/li&gt;
+&lt;li&gt;2016年5月出现：The DAO。众筹，民主投票决定。&lt;/li&gt;
+&lt;li&gt;DAC Decentralized Autonomous Corporation&lt;/li&gt;
+&lt;li&gt;取回资金：splitDAO childDAO 唯一路径：只能拆分成childDAO，取出来。&lt;/li&gt;
+&lt;li&gt;拆分的理念：符合民主的理念，就是不是少数服从多数，少数也可以拆分出来。&lt;/li&gt;
+&lt;li&gt;问题出现在splitDAO的代码实现上：先把余额清零，再转账。（重入攻击）子基金有28天的锁定期。&lt;/li&gt;
+&lt;li&gt;出现两派：1.too big to fail 补救 2. code is law 不补就&lt;/li&gt;
+&lt;li&gt;软件升级：软分叉。增加了一个规则：DAO相关的交易都是非法的交易，但这个有一个bug：非代码bug，而是功能bug，没有收取汽油费，因此导致攻击（不消耗汽油费，恶意节点不断产生这种交易，新升级的节点受不了都回到旧版本） &lt;/li&gt;
+&lt;li&gt;通过软件升级的方法，把DAO智能合约上的所有资金强行转到新的智能合约上，这个新的智能合约只有一个功能：退钱，D币转换为以太币。硬分叉：因为旧矿工认为这个交易是非法交易。最后通过投票支持了硬分叉。&lt;/li&gt;
+&lt;li&gt;硬分叉：新链是 ETH 旧链 ETC Ethereum Classic 上交易所。一直存活在现在。两条链同时存在有一个问题：重放攻击，新链上的交易可以放到旧链上，反之亦然。因此增加了ChainID。&lt;/li&gt;
+&lt;li&gt;问题：为什么不能针对黑客账户进行退？而是都按照所有账户的方式处理。因为这个bug不可以修改，智能合约只能作废。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-反思&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;智能合约其实就是自动执行的合约，Is smart contract really smart? &lt;/li&gt;
+&lt;li&gt;反思1 Smart contract is anything but smart.&lt;/li&gt;
+&lt;li&gt;反思2 Irrevocability is a double ledged sword&lt;/li&gt;
+&lt;li&gt;反思3 nothing is irrevocable（18修正案—21修正案 大街上饮酒，车里的人都不能喝酒 是违法的 open container laws）&lt;/li&gt;
+&lt;li&gt;反思4 Is solidity the right programming language？ 语言设计：solidity语言，调用时，违法直觉，是调用fallback函数。有人建议：使用函数式语言。康奈尔大学 函数式编程语言 Ocaml，做的工作是：formal verification。形式化证明这个代码只能实现这个功能。&lt;/li&gt;
+&lt;li&gt;智能合约的语言具有什么样的表达能力？图灵完备，还是中间语言。&lt;/li&gt;
+&lt;li&gt;有可能的解决方法：模板&lt;/li&gt;
+&lt;li&gt;开源的好处：大家监督，增加公信力。不容易产生漏洞。但为什么这么多人看着，还出现漏洞，有人称为Many eyeball fallacy。所以，开源的不一定安全。&lt;/li&gt;
+&lt;li&gt;What does decentralization mean？最后是投票，也有矿工留在旧链。&lt;/li&gt;
+&lt;li&gt;分叉是去中心化的体现。&lt;/li&gt;
+&lt;li&gt;decentralized ！= distributed&lt;/li&gt;
+&lt;li&gt;状态机 state machine 是为了容错！最早的应用场景是mission critical application；airtraffic control；stock exchange；space shuttle。以前这种情况下机器都很少，个位数。&lt;/li&gt;
+&lt;li&gt;智能合约是用来编写控制逻辑的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ETH-美链 Beauty chain&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在美莲上做ICO。 Initial Coin Offering&lt;/li&gt;
+&lt;li&gt;没有自己的区块链，代币的发行，转账都是通过调用智能合约中的函数来完成。&lt;/li&gt;
+&lt;li&gt;ERC 20是以太坊上发行代币的一个标准，规范了所有发行代币的合约应该实现的功能和遵循的接口 ERC Ethereum Request for Comments&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;代码分析： uint256 amount = uint256(cnt) * _value. 溢出，amount 很小，但转账时依然很大，因此导致系统中凭空产生了很多的代币。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;反思1:应该检查溢出 比如：math库中，都是 a=b*c assert(a/c == b),加法减法都调用的是库，而乘法没有使用库。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;总结（应用上）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;退款不是取消之前的交易，而是发起一个新的交易。&lt;/li&gt;
+&lt;li&gt;法律保护？没有司法保护，美国信用卡在2个月内申诉，最多50美元的损失。比特币没有这个保护。&lt;/li&gt;
+&lt;li&gt;比特币本来就没有必要和已有支付方式的竞争&lt;/li&gt;
+&lt;li&gt;加密货币应该用在已有支付方式解决不是很好的场景。Internet使得信息传输很容易，支付则难很多。 World Wide Currency 支付和信息传播联系在一起。&lt;/li&gt;
+&lt;li&gt;有人说：下一代互联网是Internet of value。Information can flow freely on the Internet，but payment cannot。趋势：价值交换和信息传播渠道相互融合。&lt;/li&gt;
+&lt;li&gt;有人说：加密货币的支付效率很低。&lt;/li&gt;
+&lt;li&gt;加密货币本来就不是和以前支付方式竞争&lt;/li&gt;
+&lt;li&gt;随着区块链的技术发展，共识协议改进，支付效率不断提高：比特币每秒7个交易，有的货币号称每秒达到100万个交易&lt;/li&gt;
+&lt;li&gt;最重要的一点：效率的好处应该在当前的历史环境下。电报Telegram在中国使用很长时间，因为没有更高效的方式。&lt;/li&gt;
+&lt;li&gt;智能合约的质疑：为啥不用法律合同，自然语言编写，智能合约是用程序编写的。Software is eating the world&lt;/li&gt;
+&lt;li&gt;ATM机是物理世界的智能合约，ATM刚开始出现故障&lt;/li&gt;
+&lt;li&gt;软件改变世界，这是一个大趋势&lt;/li&gt;
+&lt;li&gt;但，智能合约也不能解决所有问题。Democracy is the worst form of Government except for all those other forms that have been tried from time to time&lt;/li&gt;
+&lt;li&gt;Is decentralization always a good thing? 去中心化不能解决所有问题，&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;敲重点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不要被学术界的思维限制，不要被程序员的思维限制。&lt;/li&gt;
+&lt;li&gt;推荐书单：货币金融学&lt;/li&gt;
+&lt;li&gt;code is law （代码写到区块链中，是不能被更改的）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;参考资料&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;《Bitcoin and Cryptocurrency Technologies A Comprehensive Introduction》&lt;/li&gt;
+&lt;li&gt;以太坊白皮书、黄皮书、源代码&lt;/li&gt;
+&lt;li&gt;Sodility文档&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;关于区块链的一些整理_2019年12月&quot;&gt;关于区块链的一些整理 2019年12月&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Blockchain（实现了一个带有token的区块链）&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;本质：保存持续增加的记录的分布式数据库。&lt;/li&gt;
