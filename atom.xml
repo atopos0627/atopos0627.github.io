@@ -90,7 +90,7 @@
 </li>
 <li>Script model in Bitcoin <ul>
 <li>only stack: LIFO, Last In First Out. <a href="https://zh.wikipedia.org/wiki/%E5%A0%86%E6%A0%88" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E5%A0%86%E6%A0%88</a></li>
-<li>P2PKH(Pay to Public Key Hash) is most common. P2PKH: <sig> <pubk> DUP HASH160 <pubkhash> EQUALVERIFY CHECKSIG ref:</pubkhash></pubk></sig></li>
+<li>P2PKH(Pay to Public Key Hash) is most common. P2PKH: <sig> <pubk> DUP HASH160 <pubkhash> EQUALVERIFY CHECKSIG </pubkhash></pubk></sig></li>
 <li>P2SH(Pay to script hash): used in MultiSig. P2SH: HASH160 PUSHDATA(goal script hash) EQUAL ref:<a href="https://en.bitcoin.it/wiki/Pay_to_script_hash" target="_blank" rel="noopener">https://en.bitcoin.it/wiki/Pay_to_script_hash</a></li>
 <li>Proof of Burn: First scene：Burn Bitcoin and get some AltCoins(Alternative Coin). Second scene: digital commitment(hash the commitment content)</li>
 <li>ref <a href="https://en.bitcoin.it/wiki/Script" target="_blank" rel="noopener">https://en.bitcoin.it/wiki/Script</a></li>
