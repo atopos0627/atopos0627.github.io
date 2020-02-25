@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-24  1重新生成每个算法的总结图，重新整理文章，并发布   我的思考（持续更） 共识算法的分类根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类[^ 1 ]:  Proof of X类 投票直接形成共识的BFT类 选举代理人间接参与共识的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DengShizhi">
+<meta property="og:url" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/index.html">
+<meta property="og:site_name" content="DengShizhi">
+<meta property="og:description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-24  1重新生成每个算法的总结图，重新整理文章，并发布   我的思考（持续更） 共识算法的分类根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类[^ 1 ]:  Proof of X类 投票直接形成共识的BFT类 选举代理人间接参与共识的">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结_我的思考.png">
+<meta property="og:image" content="http://www.atopos.cc/Volumes/区块链研究_2020/00_doc/mywork_Blockchain_2020/assets/区块链的共识算法总结-分成四类.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-分类标准.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-PoX类.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/assets/区块链的共识算法总结-PoW.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-PoS.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-PoA.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-PoA.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-Casper.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-Ouroboros.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-PoSV.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-otherPoX.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-BFT类共识机制.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-代理类共识机制.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结-DAG类共识机制.png">
+<meta property="og:updated_time" content="2020-02-25T13:44:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DengShizhi">
+<meta name="twitter:description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-24  1重新生成每个算法的总结图，重新整理文章，并发布   我的思考（持续更） 共识算法的分类根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类[^ 1 ]:  Proof of X类 投票直接形成共识的BFT类 选举代理人间接参与共识的">
+<meta name="twitter:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/assets/区块链的共识算法总结_我的思考.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>DengShizhi</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">archives</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/02/25/区块链和云计算/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/02/07/Story of Block Chain_Release/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.atopos.cc/2020/02/24/区块链的共识算法/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&text="><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&title="><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&is_video=false&description="><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://www.atopos.cc/2020/02/24/区块链的共识算法/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&title="><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&title="><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&title="><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&title="><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&name=&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#区块链的共识算法"><span class="toc-number">1.</span> <span class="toc-text">区块链的共识算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#我的思考（持续更）"><span class="toc-number">1.1.</span> <span class="toc-text">我的思考（持续更）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#共识算法的分类"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">共识算法的分类</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">DengShizhi</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-02-24T01:29:38.000Z" itemprop="datePublished">2020-02-24</time>
+        
+        (Updated: <time datetime="2020-02-25T13:44:33.000Z" itemprop="dateModified">2020-02-25</time>)
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="区块链的共识算法">区块链的共识算法</h1><p>创建时间：2020年2月18日</p>
+<p>更新时间：2020年2月26日</p>
+<p>作者：ShizhiDeng</p>
+<p>更新内容：</p>
+<ul>
+<li><p>2020-02-24 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">重新生成每个算法的总结图，重新整理文章，并发布</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="我的思考（持续更）">我的思考（持续更）</h2><p><img src="assets/区块链的共识算法总结_我的思考.png" alt="区块链的共识算法总结_我的思考"></p>
+<h4 id="共识算法的分类">共识算法的分类</h4><p>根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类[^ 1 ]:</p>
+<ul>
+<li>Proof of X类</li>
+<li>投票直接形成共识的BFT类</li>
+<li>选举代理人间接参与共识的代理类</li>
+<li>舍弃传统区块概念的DAG类共识</li>
+</ul>
+<p>整体分类图见下：</p>
+<p><img src="/Volumes/区块链研究_2020/00_doc/mywork_Blockchain_2020/assets/区块链的共识算法总结-分成四类.png" alt="区块链的共识算法总结-分成四类"></p>
+<p>共识机制的分类标准见下：</p>
+<p><img src="assets/区块链的共识算法总结-分类标准.png" alt="区块链的共识算法总结-分类标准"></p>
+<ol>
+<li>Proof of X类共识机制<br>节点获得记账权的概率与该节点拥有某种资源的比例相关，并且这种资源是难以垄断的，同时需要一个能够快速验证某个节点确实拥有这部分资源的算法。<br>该类共识算法有PoW、PoS、PoA/PoSV/Casper、PoST/Proof of Authority：</li>
+</ol>
+<p><img src="assets/区块链的共识算法总结-PoX类.png" alt="区块链的共识算法总结-PoX类"></p>
+<p>   针对PoX类共识机制，分别对上述几种算法总结如下：</p>
+<ul>
+<li>PoW<br><img src="../assets/区块链的共识算法总结-PoW.png" alt="区块链的共识算法总结-PoW"></li>
+<li>PoS<br><img src="assets/区块链的共识算法总结-PoS.png" alt="区块链的共识算法总结-PoS"></li>
+<li>PoA<br><img src="assets/区块链的共识算法总结-PoA.png" alt="区块链的共识算法总结-PoA"></li>
+<li>PoA<br><img src="assets/区块链的共识算法总结-PoA.png" alt="区块链的共识算法总结-PoA"></li>
+<li>Casper<br><img src="assets/区块链的共识算法总结-Casper.png" alt="区块链的共识算法总结-Casper"></li>
+<li>Ouroboros<br><img src="assets/区块链的共识算法总结-Ouroboros.png" alt="区块链的共识算法总结-Ouroboros"></li>
+<li>PoSV<br><img src="assets/区块链的共识算法总结-PoSV.png" alt="区块链的共识算法总结-PoSV"></li>
+<li>其他PoX<br><img src="assets/区块链的共识算法总结-otherPoX.png" alt="区块链的共识算法总结-otherPoX"></li>
+</ul>
+<ol>
+<li><p>投票直接形成共识的BFT类<br>该类共识算法有pBFT、dBFT和FBA：<br><img src="assets/区块链的共识算法总结-BFT类共识机制.png" alt="区块链的共识算法总结-BFT类共识机制"></p>
+</li>
+<li><p>选举代理人间接参与共识的代理类<br>该类共识算法有DPoS和DPoS-BFT：<br><img src="assets/区块链的共识算法总结-代理类共识机制.png" alt="区块链的共识算法总结-代理类共识机制"></p>
+</li>
+<li><p>舍弃传统区块概念的DAG类共识<br>该类共识算法有如下特点：<br><img src="assets/区块链的共识算法总结-DAG类共识机制.png" alt="区块链的共识算法总结-DAG类共识机制"></p>
+</li>
+</ol>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">archives</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#区块链的共识算法"><span class="toc-number">1.</span> <span class="toc-text">区块链的共识算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#我的思考（持续更）"><span class="toc-number">1.1.</span> <span class="toc-text">我的思考（持续更）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#共识算法的分类"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">共识算法的分类</span></a></li></ol></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.atopos.cc/2020/02/24/区块链的共识算法/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&text="><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&title="><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&is_video=false&description="><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=&body=Check out this article: http://www.atopos.cc/2020/02/24/区块链的共识算法/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&title="><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&title="><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&title="><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&title="><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.atopos.cc/2020/02/24/区块链的共识算法/&name=&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 DengShizhi
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">archives</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-101731332-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

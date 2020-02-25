@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.atopos.cc/"/>
-  <updated>2020-02-09T14:14:00.000Z</updated>
+  <updated>2020-02-25T13:43:03.000Z</updated>
   <id>http://www.atopos.cc/</id>
   
   <author>
@@ -14,6 +14,118 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://www.atopos.cc/2020/02/25/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%92%8C%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    <id>http://www.atopos.cc/2020/02/25/区块链和云计算/</id>
+    <published>2020-02-25T08:15:09.000Z</published>
+    <updated>2020-02-25T13:43:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="区块链和云计算">区块链和云计算</h1><p>创建时间：2020年2月25日</p>
+<p>更新时间：2020年2月25日</p>
+<p>作者：ShizhiDeng</p>
+<p>更新内容：</p>
+<ul>
+<li><p>2020-02-25 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">阅读文献</span><br><span class="line">1. ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</span><br><span class="line">2. Blockchain as a Service for IoT</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="文献调研">文献调研</h2><ol>
+<li><p>ProvChain[^ 1 ]</p>
+<p>云数据的溯源问题：利用区块链技术，提出了一个去中心化和可信云数据溯源架构，将数据嵌入到区块链交易中，达到(1)溯源元数据采集(2)溯源元数据存储(3)溯源元数据验证。结果证明ProvChain为云存储应用提供了很多安全特性：包括防篡改来源，用户隐私和可靠性。</p>
+</li>
+<li><p>Blockchain as a Service for IoT [^ 2 ]<br>利用区块链的分布式和去中心化特征，区块链用于管理设备配置、存储传感器用于微支付。部署区块链技术的关键挑战是托管位置。 本文评估了作为托管平台的云和fog服务。</p>
+</li>
+<li></li>
+<li></li>
+</ol>
+<p>Cloud data provenance is metadata that records the history of the creation and operations performed on a cloud data object. Secure data provenance is crucial for data accountability, forensics and privacy. In this paper, we propose a decentralized and trusted cloud data provenance architecture using blockchain technology. Blockchain-based data provenance can provide tamper-proof records, enable the transparency of data accountability in the cloud, and help to enhance the privacy and availability of the provenance data. We make use of the cloud storage scenario and choose the cloud file as a data unit to detect user operations for collecting provenance data. We design and implement ProvChain, an architecture to collect and verify cloud data provenance, by embedding the provenance data into blockchain transactions. ProvChain operates mainly in three phases: (1) provenance data collection, (2) provenance data storage, and (3) provenance data validation. Results from performance evaluation demonstrate that ProvChain provides security features including tamper-proof provenance, user privacy and reliability with low overhead for the cloud storage applications.</p>
+<p>[^ 1 ]: <a href="https://www.researchgate.net/profile/Sachin_Shetty11/publication/317182541_ProvChain_A_Blockchain-Based_Data_Provenance_Architecture_in_Cloud_Environment_with_Enhanced_Privacy_and_Availability/links/5a832cd7aca272d6501c3a6f/ProvChain-A-Blockchain-Based-Data-Provenance-Architecture-in-Cloud-Environment-with-Enhanced-Privacy-and-Availability.pdf" target="_blank" rel="noopener">ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</a><br>[^ 2 ]: <a href="https://www.researchgate.net/profile/Mayra_Samaniego/publication/316732772_Blockchain_as_a_Service_for_IoT/links/5e1785474585159aa4c2d771/Blockchain-as-a-Service-for-IoT.pdf" target="_blank" rel="noopener">Blockchain as a Service for IoT</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;区块链和云计算&quot;&gt;区块链和云计算&lt;/h1&gt;&lt;p&gt;创建时间：2020年2月25日&lt;/p&gt;
+&lt;p&gt;更新时间：2020年2月25日&lt;/p&gt;
+&lt;p&gt;作者：ShizhiDeng&lt;/p&gt;
+&lt;p&gt;更新内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;2020-02-25 &lt;/p&gt;
+&lt;fi
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://www.atopos.cc/2020/02/24/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95/"/>
+    <id>http://www.atopos.cc/2020/02/24/区块链的共识算法/</id>
+    <published>2020-02-24T01:29:38.000Z</published>
+    <updated>2020-02-25T13:44:33.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="区块链的共识算法">区块链的共识算法</h1><p>创建时间：2020年2月18日</p>
+<p>更新时间：2020年2月26日</p>
+<p>作者：ShizhiDeng</p>
+<p>更新内容：</p>
+<ul>
+<li><p>2020-02-24 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">重新生成每个算法的总结图，重新整理文章，并发布</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="我的思考（持续更）">我的思考（持续更）</h2><p><img src="assets/区块链的共识算法总结_我的思考.png" alt="区块链的共识算法总结_我的思考"></p>
+<h4 id="共识算法的分类">共识算法的分类</h4><p>根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类[^ 1 ]:</p>
+<ul>
+<li>Proof of X类</li>
+<li>投票直接形成共识的BFT类</li>
+<li>选举代理人间接参与共识的代理类</li>
+<li>舍弃传统区块概念的DAG类共识</li>
+</ul>
+<p>整体分类图见下：</p>
+<p><img src="/Volumes/区块链研究_2020/00_doc/mywork_Blockchain_2020/assets/区块链的共识算法总结-分成四类.png" alt="区块链的共识算法总结-分成四类"></p>
+<p>共识机制的分类标准见下：</p>
+<p><img src="assets/区块链的共识算法总结-分类标准.png" alt="区块链的共识算法总结-分类标准"></p>
+<ol>
+<li>Proof of X类共识机制<br>节点获得记账权的概率与该节点拥有某种资源的比例相关，并且这种资源是难以垄断的，同时需要一个能够快速验证某个节点确实拥有这部分资源的算法。<br>该类共识算法有PoW、PoS、PoA/PoSV/Casper、PoST/Proof of Authority：</li>
+</ol>
+<p><img src="assets/区块链的共识算法总结-PoX类.png" alt="区块链的共识算法总结-PoX类"></p>
+<p>   针对PoX类共识机制，分别对上述几种算法总结如下：</p>
+<ul>
+<li>PoW<br><img src="../assets/区块链的共识算法总结-PoW.png" alt="区块链的共识算法总结-PoW"></li>
+<li>PoS<br><img src="assets/区块链的共识算法总结-PoS.png" alt="区块链的共识算法总结-PoS"></li>
+<li>PoA<br><img src="assets/区块链的共识算法总结-PoA.png" alt="区块链的共识算法总结-PoA"></li>
+<li>PoA<br><img src="assets/区块链的共识算法总结-PoA.png" alt="区块链的共识算法总结-PoA"></li>
+<li>Casper<br><img src="assets/区块链的共识算法总结-Casper.png" alt="区块链的共识算法总结-Casper"></li>
+<li>Ouroboros<br><img src="assets/区块链的共识算法总结-Ouroboros.png" alt="区块链的共识算法总结-Ouroboros"></li>
+<li>PoSV<br><img src="assets/区块链的共识算法总结-PoSV.png" alt="区块链的共识算法总结-PoSV"></li>
+<li>其他PoX<br><img src="assets/区块链的共识算法总结-otherPoX.png" alt="区块链的共识算法总结-otherPoX"></li>
+</ul>
+<ol>
+<li><p>投票直接形成共识的BFT类<br>该类共识算法有pBFT、dBFT和FBA：<br><img src="assets/区块链的共识算法总结-BFT类共识机制.png" alt="区块链的共识算法总结-BFT类共识机制"></p>
+</li>
+<li><p>选举代理人间接参与共识的代理类<br>该类共识算法有DPoS和DPoS-BFT：<br><img src="assets/区块链的共识算法总结-代理类共识机制.png" alt="区块链的共识算法总结-代理类共识机制"></p>
+</li>
+<li><p>舍弃传统区块概念的DAG类共识<br>该类共识算法有如下特点：<br><img src="assets/区块链的共识算法总结-DAG类共识机制.png" alt="区块链的共识算法总结-DAG类共识机制"></p>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;区块链的共识算法&quot;&gt;区块链的共识算法&lt;/h1&gt;&lt;p&gt;创建时间：2020年2月18日&lt;/p&gt;
+&lt;p&gt;更新时间：2020年2月26日&lt;/p&gt;
+&lt;p&gt;作者：ShizhiDeng&lt;/p&gt;
+&lt;p&gt;更新内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;2020-02-24 &lt;/p&gt;
+&lt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>The Story of Block Chain</title>
@@ -300,7 +412,7 @@
 <p>最后，做自己最重要。模仿只是模仿，自己的特色才能让你真正成为你自己。</p>
 <p>认知决定你的高度，视野决定你的广度，忘记追求，做最好的自己，其实你的人生就是你想要的！</p>
 <h2 id="人生的架构图_2017-07-21_11:39:00">人生的架构图 2017-07-21 11:39:00</h2><p>人生的道路其实也不过如此，最重要的是了生死，知自己，不要自我设限。</p>
-<p><img src="assets/随笔/了生死.png" alt="了生死"></p>
+<p><img src="了生死.png" alt="了生死"></p>
 ]]></content>
     
     <summary type="html">
