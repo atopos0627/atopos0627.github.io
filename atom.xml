@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.atopos.cc/"/>
-  <updated>2020-02-25T13:43:03.000Z</updated>
+  <updated>2020-02-25T14:07:48.000Z</updated>
   <id>http://www.atopos.cc/</id>
   
   <author>
@@ -20,9 +20,10 @@
     <link href="http://www.atopos.cc/2020/02/25/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%92%8C%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
     <id>http://www.atopos.cc/2020/02/25/区块链和云计算/</id>
     <published>2020-02-25T08:15:09.000Z</published>
-    <updated>2020-02-25T13:43:03.000Z</updated>
+    <updated>2020-02-25T14:07:48.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="区块链和云计算">区块链和云计算</h1><p>创建时间：2020年2月25日</p>
+    <content type="html"><![CDATA[<p>title: 区块链和云计算<br>date: 2020-02-25 16:09:00<br>updated: 2020-02-25 12:01:00<br>categories: [区块链,云计算]<br>tags: [区块链]</p>
+<h1 id="区块链和云计算">区块链和云计算</h1><p>创建时间：2020年2月25日</p>
 <p>更新时间：2020年2月25日</p>
 <p>作者：ShizhiDeng</p>
 <p>更新内容：</p>
@@ -37,22 +38,14 @@
 </li>
 <li><p>Blockchain as a Service for IoT [^ 2 ]<br>利用区块链的分布式和去中心化特征，区块链用于管理设备配置、存储传感器用于微支付。部署区块链技术的关键挑战是托管位置。 本文评估了作为托管平台的云和fog服务。</p>
 </li>
-<li></li>
-<li></li>
 </ol>
-<p>Cloud data provenance is metadata that records the history of the creation and operations performed on a cloud data object. Secure data provenance is crucial for data accountability, forensics and privacy. In this paper, we propose a decentralized and trusted cloud data provenance architecture using blockchain technology. Blockchain-based data provenance can provide tamper-proof records, enable the transparency of data accountability in the cloud, and help to enhance the privacy and availability of the provenance data. We make use of the cloud storage scenario and choose the cloud file as a data unit to detect user operations for collecting provenance data. We design and implement ProvChain, an architecture to collect and verify cloud data provenance, by embedding the provenance data into blockchain transactions. ProvChain operates mainly in three phases: (1) provenance data collection, (2) provenance data storage, and (3) provenance data validation. Results from performance evaluation demonstrate that ProvChain provides security features including tamper-proof provenance, user privacy and reliability with low overhead for the cloud storage applications.</p>
-<p>[^ 1 ]: <a href="https://www.researchgate.net/profile/Sachin_Shetty11/publication/317182541_ProvChain_A_Blockchain-Based_Data_Provenance_Architecture_in_Cloud_Environment_with_Enhanced_Privacy_and_Availability/links/5a832cd7aca272d6501c3a6f/ProvChain-A-Blockchain-Based-Data-Provenance-Architecture-in-Cloud-Environment-with-Enhanced-Privacy-and-Availability.pdf" target="_blank" rel="noopener">ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</a><br>[^ 2 ]: <a href="https://www.researchgate.net/profile/Mayra_Samaniego/publication/316732772_Blockchain_as_a_Service_for_IoT/links/5e1785474585159aa4c2d771/Blockchain-as-a-Service-for-IoT.pdf" target="_blank" rel="noopener">Blockchain as a Service for IoT</a></p>
+<p>[^ 1 ]: <a href="https://www.researchgate.net/profile/Sachin_Shetty11/publication/317182541_ProvChain_A_Blockchain-Based_Data_Provenance_Architecture_in_Cloud_Environment_with_Enhanced_Privacy_and_Availability/links/5a832cd7aca272d6501c3a6f/ProvChain-A-Blockchain-Based-Data-Provenance-Architecture-in-Cloud-Environment-with-Enhanced-Privacy-and-Availability.pdf" target="_blank" rel="noopener">ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</a><br>[^ 2 ]: [Blockchain as a Service for IoT](</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;区块链和云计算&quot;&gt;区块链和云计算&lt;/h1&gt;&lt;p&gt;创建时间：2020年2月25日&lt;/p&gt;
-&lt;p&gt;更新时间：2020年2月25日&lt;/p&gt;
-&lt;p&gt;作者：ShizhiDeng&lt;/p&gt;
-&lt;p&gt;更新内容：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;2020-02-25 &lt;/p&gt;
-&lt;fi
+      &lt;p&gt;title: 区块链和云计算&lt;br&gt;date: 2020-02-25 16:09:00&lt;br&gt;updated: 2020-02-25 12:01:00&lt;br&gt;categories: [区块链,云计算]&lt;br&gt;tags: [区块链]&lt;/p&gt;
+&lt;h1 id=&quot;区块链和云计算&quot;&gt;
     
     </summary>
     
@@ -64,9 +57,10 @@
     <link href="http://www.atopos.cc/2020/02/24/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95/"/>
     <id>http://www.atopos.cc/2020/02/24/区块链的共识算法/</id>
     <published>2020-02-24T01:29:38.000Z</published>
-    <updated>2020-02-25T14:01:18.000Z</updated>
+    <updated>2020-02-25T14:10:32.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="区块链的共识算法">区块链的共识算法</h1><p>创建时间：2020年2月18日</p>
+    <content type="html"><![CDATA[<p>title: 区块链的共识算法<br>date: 2020-02-25 16:09:00<br>updated: 2020-02-25 12:01:00<br>categories: [区块链,共识算法]<br>tags: [区块链,共识算法]</p>
+<h1 id="区块链的共识算法">区块链的共识算法</h1><p>创建时间：2020年2月18日</p>
 <p>更新时间：2020年2月26日</p>
 <p>作者：ShizhiDeng</p>
 <p>更新内容：</p>
@@ -84,7 +78,7 @@
 <li>舍弃传统区块概念的DAG类共识</li>
 </ul>
 <p>整体分类图见下：</p>
-<p><img src="/Volumes/区块链研究_2020/00_doc/mywork_Blockchain_2020/区块链的共识算法总结-分成四类.png" alt="区块链的共识算法总结-分成四类"></p>
+<p><img src="区块链的共识算法总结-all.png" alt="区块链的共识算法总结-分成四类"></p>
 <p>共识机制的分类标准见下：</p>
 <p><img src="区块链的共识算法总结-分类标准.png" alt="区块链的共识算法总结-分类标准"></p>
 <ol>
@@ -114,13 +108,8 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;区块链的共识算法&quot;&gt;区块链的共识算法&lt;/h1&gt;&lt;p&gt;创建时间：2020年2月18日&lt;/p&gt;
-&lt;p&gt;更新时间：2020年2月26日&lt;/p&gt;
-&lt;p&gt;作者：ShizhiDeng&lt;/p&gt;
-&lt;p&gt;更新内容：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;2020-02-24 &lt;/p&gt;
-&lt;
+      &lt;p&gt;title: 区块链的共识算法&lt;br&gt;date: 2020-02-25 16:09:00&lt;br&gt;updated: 2020-02-25 12:01:00&lt;br&gt;categories: [区块链,共识算法]&lt;br&gt;tags: [区块链,共识算法]&lt;/p&gt;
+&lt;h1 id=&quot;区块
     
     </summary>
     

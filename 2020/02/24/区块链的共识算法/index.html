@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-24  1重新生成每个算法的总结图，重新整理文章，并发布   我的思考（持续更） 共识算法的分类根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类[^ 1 ]:  Proof of X类 投票直接形成共识的BFT类 选举代理人间接参与共识的">
+    <meta name="description" content="title: 区块链的共识算法date: 2020-02-25 16:09:00updated: 2020-02-25 12:01:00categories: [区块链,共识算法]tags: [区块链,共识算法] 区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-24  1重新生成每个算法的总结图，重新整理文章">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DengShizhi">
 <meta property="og:url" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/index.html">
 <meta property="og:site_name" content="DengShizhi">
-<meta property="og:description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-24  1重新生成每个算法的总结图，重新整理文章，并发布   我的思考（持续更） 共识算法的分类根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类[^ 1 ]:  Proof of X类 投票直接形成共识的BFT类 选举代理人间接参与共识的">
+<meta property="og:description" content="title: 区块链的共识算法date: 2020-02-25 16:09:00updated: 2020-02-25 12:01:00categories: [区块链,共识算法]tags: [区块链,共识算法] 区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-24  1重新生成每个算法的总结图，重新整理文章">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/区块链的共识算法总结_我的思考.png">
-<meta property="og:image" content="http://www.atopos.cc/Volumes/区块链研究_2020/00_doc/mywork_Blockchain_2020/区块链的共识算法总结-分成四类.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/区块链的共识算法总结-all.png">
 <meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/区块链的共识算法总结-分类标准.png">
 <meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/区块链的共识算法总结-PoX类.png">
 <meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/区块链的共识算法总结-PoW.png">
@@ -28,10 +28,10 @@
 <meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/区块链的共识算法总结-BFT类共识机制.png">
 <meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/区块链的共识算法总结-代理类共识机制.png">
 <meta property="og:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/区块链的共识算法总结-DAG类共识机制.png">
-<meta property="og:updated_time" content="2020-02-25T14:01:18.000Z">
+<meta property="og:updated_time" content="2020-02-25T14:10:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DengShizhi">
-<meta name="twitter:description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-24  1重新生成每个算法的总结图，重新整理文章，并发布   我的思考（持续更） 共识算法的分类根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类[^ 1 ]:  Proof of X类 投票直接形成共识的BFT类 选举代理人间接参与共识的">
+<meta name="twitter:description" content="title: 区块链的共识算法date: 2020-02-25 16:09:00updated: 2020-02-25 12:01:00categories: [区块链,共识算法]tags: [区块链,共识算法] 区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-24  1重新生成每个算法的总结图，重新整理文章">
 <meta name="twitter:image" content="http://www.atopos.cc/2020/02/24/区块链的共识算法/区块链的共识算法总结_我的思考.png">
     
     
@@ -139,7 +139,7 @@
       
         <time datetime="2020-02-24T01:29:38.000Z" itemprop="datePublished">2020-02-24</time>
         
-        (Updated: <time datetime="2020-02-25T14:01:18.000Z" itemprop="dateModified">2020-02-25</time>)
+        (Updated: <time datetime="2020-02-25T14:10:32.000Z" itemprop="dateModified">2020-02-25</time>)
         
       
     </div>
@@ -154,7 +154,8 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="区块链的共识算法">区块链的共识算法</h1><p>创建时间：2020年2月18日</p>
+    <p>title: 区块链的共识算法<br>date: 2020-02-25 16:09:00<br>updated: 2020-02-25 12:01:00<br>categories: [区块链,共识算法]<br>tags: [区块链,共识算法]</p>
+<h1 id="区块链的共识算法">区块链的共识算法</h1><p>创建时间：2020年2月18日</p>
 <p>更新时间：2020年2月26日</p>
 <p>作者：ShizhiDeng</p>
 <p>更新内容：</p>
@@ -172,7 +173,7 @@
 <li>舍弃传统区块概念的DAG类共识</li>
 </ul>
 <p>整体分类图见下：</p>
-<p><img src="/Volumes/区块链研究_2020/00_doc/mywork_Blockchain_2020/区块链的共识算法总结-分成四类.png" alt="区块链的共识算法总结-分成四类"></p>
+<p><img src="区块链的共识算法总结-all.png" alt="区块链的共识算法总结-分成四类"></p>
 <p>共识机制的分类标准见下：</p>
 <p><img src="区块链的共识算法总结-分类标准.png" alt="区块链的共识算法总结-分类标准"></p>
 <ol>
