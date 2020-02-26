@@ -42,10 +42,9 @@
     </entry>
     
     <entry>
-      <title></title>
-      <url>/2020/02/24/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95/</url>
-      <content type="html"><![CDATA[<p>title: 区块链的共识算法<br>date: 2020-02-25 16:09:00<br>updated: 2020-02-26 18:01:00<br>categories: [区块链,共识算法]<br>tags: [区块链,共识算法]</p>
-<h1 id="区块链的共识算法">区块链的共识算法</h1><p>创建时间：2020年2月18日</p>
+      <title><![CDATA[区块链的共识算法]]></title>
+      <url>/2020/02/25/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="区块链的共识算法">区块链的共识算法</h1><p>创建时间：2020年2月18日</p>
 <p>更新时间：2020年2月26日</p>
 <p>作者：ShizhiDeng</p>
 <p>更新内容：</p>
@@ -211,6 +210,22 @@
 <h2 id="共识机制对比">共识机制对比</h2><p><img src="区块链的共识算法对比.png" alt="截屏2020-02-26下午6.36.41"></p>
 ]]></content>
       
+        <categories>
+            
+            <category> 区块链 </category>
+            
+            <category> 共识算法 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 区块链 </tag>
+            
+            <tag> 共识算法 </tag>
+            
+        </tags>
         
     </entry>
     
