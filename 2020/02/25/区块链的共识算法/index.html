@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-25  1重新生成每个算法的总结图，重新整理文章，并发布  2020-02-26 1231. 投票直接形成共识的BFT类2. 选举代理人间接参与共识的代理类3. DAG类共识   我的思考（持续更）节点有相应的概率被选为某个区块的生产者(取得记账权)，在符合一定">
+    <meta name="description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-25  1重新生成每个算法的总结图，重新整理文章，并发布  2020-02-26 1231. 投票直接形成共识的BFT类2. 选举代理人间接参与共识的代理类3. DAG类共识  2020-02-27  12345  1. 我的思考更新  2. 增加共识算法的分类">
 <meta name="keywords" content="区块链,共识算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="区块链的共识算法">
 <meta property="og:url" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/index.html">
 <meta property="og:site_name" content="DengShizhi">
-<meta property="og:description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-25  1重新生成每个算法的总结图，重新整理文章，并发布  2020-02-26 1231. 投票直接形成共识的BFT类2. 选举代理人间接参与共识的代理类3. DAG类共识   我的思考（持续更）节点有相应的概率被选为某个区块的生产者(取得记账权)，在符合一定">
+<meta property="og:description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-25  1重新生成每个算法的总结图，重新整理文章，并发布  2020-02-26 1231. 投票直接形成共识的BFT类2. 选举代理人间接参与共识的代理类3. DAG类共识  2020-02-27  12345  1. 我的思考更新  2. 增加共识算法的分类">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/区块链的共识算法总结_我的思考.png">
 <meta property="og:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/区块链的共识算法总结-all.png">
@@ -35,10 +35,15 @@
 <meta property="og:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/区块链的共识算法总结-DPoS_BFT.png">
 <meta property="og:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/区块链的共识算法总结-DAG类共识机制.png">
 <meta property="og:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/区块链的共识算法对比.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/Consensus%20in%20Hyperledger%20Fabric.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/Consensus%20in%20Hyperledger%20Indy.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/Consensus%20in%20Hyperledger%20Indy2.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/Consensus%20in%20Hyperledger%20Iroha.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/Consensus%20in%20Hyperledger%20Iroha2.png">
 <meta property="og:updated_time" content="2020-02-26T10:01:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="区块链的共识算法">
-<meta name="twitter:description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-25  1重新生成每个算法的总结图，重新整理文章，并发布  2020-02-26 1231. 投票直接形成共识的BFT类2. 选举代理人间接参与共识的代理类3. DAG类共识   我的思考（持续更）节点有相应的概率被选为某个区块的生产者(取得记账权)，在符合一定">
+<meta name="twitter:description" content="区块链的共识算法创建时间：2020年2月18日 更新时间：2020年2月26日 作者：ShizhiDeng 更新内容：  2020-02-25  1重新生成每个算法的总结图，重新整理文章，并发布  2020-02-26 1231. 投票直接形成共识的BFT类2. 选举代理人间接参与共识的代理类3. DAG类共识  2020-02-27  12345  1. 我的思考更新  2. 增加共识算法的分类">
 <meta name="twitter:image" content="http://www.atopos.cc/2020/02/25/区块链的共识算法/区块链的共识算法总结_我的思考.png">
     
     
@@ -93,7 +98,7 @@
         <li><a class="icon" href="/2020/02/25/区块链和云计算/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2020/02/07/Story of Block Chain_Release/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2020/02/14/Technical Analysis of Hyperledger/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -120,7 +125,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#区块链的共识算法"><span class="toc-number">1.</span> <span class="toc-text">区块链的共识算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#我的思考（持续更）"><span class="toc-number">1.1.</span> <span class="toc-text">我的思考（持续更）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#共识算法的分类"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">共识算法的分类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4类共识机制简析"><span class="toc-number">1.2.</span> <span class="toc-text">4类共识机制简析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共识机制对比"><span class="toc-number">1.3.</span> <span class="toc-text">共识机制对比</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#区块链的共识算法"><span class="toc-number">1.</span> <span class="toc-text">区块链的共识算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#我的思考（持续更）"><span class="toc-number">1.1.</span> <span class="toc-text">我的思考（持续更）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共识算法的分类方法1"><span class="toc-number">1.2.</span> <span class="toc-text">共识算法的分类方法1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4类共识机制简析"><span class="toc-number">1.3.</span> <span class="toc-text">4类共识机制简析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共识机制对比"><span class="toc-number">1.4.</span> <span class="toc-text">共识机制对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共识算法的分类方法2[^_2_]"><span class="toc-number">1.5.</span> <span class="toc-text">共识算法的分类方法2[^ 2 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consensus_in_Hyperledger_Fabric(Kafka_in_Fabric_v1)[^_2_][^_3_][^_4_]"><span class="toc-number">1.6.</span> <span class="toc-text">Consensus in Hyperledger Fabric(Kafka in Fabric v1)[^ 2 ][^ 3 ][^ 4 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consensus_in_Hyperledger_Indy_(based_on_RBFT)"><span class="toc-number">1.7.</span> <span class="toc-text">Consensus in Hyperledger Indy (based on RBFT)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consensus_in_Hyperledger_Iroha(Sumeragi:based_on_BFT)"><span class="toc-number">1.8.</span> <span class="toc-text">Consensus in Hyperledger Iroha(Sumeragi:based on BFT)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consensus_in_Hyperledger_Sawtooth(based_on_PoET)"><span class="toc-number">1.9.</span> <span class="toc-text">Consensus in Hyperledger Sawtooth(based on PoET)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Paxos"><span class="toc-number">1.10.</span> <span class="toc-text">Paxos</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -181,12 +186,37 @@
 </li>
 <li><p>2020-02-26</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 投票直接形成共识的BFT类</span><br><span class="line">2. 选举代理人间接参与共识的代理类</span><br><span class="line">3. DAG类共识</span><br></pre></td></tr></table></figure>
+<ul>
+<li>2020-02-27</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  1. 我的思考更新</span><br><span class="line">  2. 增加共识算法的分类方法2 更新hyperledger部分</span><br><span class="line">  3. Consensus in Hyperledger Fabric(Kafka in Fabric v1)</span><br><span class="line">4. Consensus in Hyperledger Indy (based on RBFT)</span><br><span class="line">  5. Consensus in Hyperledger Iroha(Sumeragi:based on BFT)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="我的思考（持续更）">我的思考（持续更）</h2><p>节点有相应的概率被选为某个区块的生产者(取得记账权)，在符合一定规则的前提下，由该节点决定区块的内容，再经其 他节点验证。生产合法区块的节点通常可以获得一定的激励。</p>
-<p>共识算法：解决一致性问题</p>
+<h2 id="我的思考（持续更）">我的思考（持续更）</h2><ul>
+<li>Why consensus?<br>The goal of consensus is to generate an agreement on the order and to validate the correctness of the set of transactions that constitute the block.<ul>
+<li>agreement of transaction</li>
+<li>validation of transaction</li>
+</ul>
+</li>
+<li>Core function of consensus<ul>
+<li>Confirms the correctness of all transactions in a proposed block.</li>
+<li>Agrees on order and correctness and hence on results of execution (implies agreement on global state).</li>
+<li>Interfaces and depends on smart-contract layer to verify correctness of an ordered set of transactions in a block.</li>
+</ul>
+</li>
+<li><p>Consensus Properties[^ 2 ]</p>
+<ul>
+<li>Safety: each node is guaranteed the same sequence of inputs and results in the same output on each node. (同一个输入，得到同一个输出)</li>
+<li>Liveness: each non-faulty node will eventually receive every submitted transaction, assuming that communication does not fail.</li>
+</ul>
+</li>
+<li><p>节点有相应的概率被选为某个区块的生产者(取得记账权)，在符合一定规则的前提下，由该节点决定区块的内容，再经其 他节点验证。生产合法区块的节点通常可以获得一定的激励。</p>
+</li>
+<li><p>共识算法：解决一致性问题</p>
+</li>
+</ul>
 <p><img src="区块链的共识算法总结_我的思考.png" alt="区块链的共识算法总结_我的思考"></p>
-<h4 id="共识算法的分类">共识算法的分类</h4><p>根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类[^ 1 ]:</p>
+<h2 id="共识算法的分类方法1">共识算法的分类方法1</h2><p>根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类<a href="[主流区块链共识机制的简介与比较](http://pdf.dfcfw.com/pdf/H3_AP201812271279983589_1.pdf)">^ 1 </a>:</p>
 <ul>
 <li>Proof of X类</li>
 <li>投票直接形成共识的BFT类</li>
@@ -335,6 +365,74 @@
 </li>
 </ol>
 <h2 id="共识机制对比">共识机制对比</h2><p><img src="区块链的共识算法对比.png" alt="截屏2020-02-26下午6.36.41"></p>
+<h2 id="共识算法的分类方法2[^_2_]">共识算法的分类方法2[^ 2 ]</h2><ul>
+<li>lottery-based algorithms<ul>
+<li>advantages: scale to a large number of nodes since the winner of the lottery proposes a block and transmits it to the rest<br>of the network for validation. </li>
+<li>disadvantages: lead to forking when two “winners” propose a block. fork must be resolved, which results in a longer time to finality.</li>
+</ul>
+</li>
+<li>voting-based algorithms<ul>
+<li>advantages: low-latency finality</li>
+<li>disadvantages: the more nodes that exist on the network, the more time it takes to reach consensus. This results in a trade-off between scalability and speed.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Consensus_in_Hyperledger_Fabric(Kafka_in_Fabric_v1)[^_2_][^_3_][^_4_]">Consensus in Hyperledger Fabric(Kafka in Fabric v1)[^ 2 ][^ 3 ][^ 4 ]</h2><ul>
+<li>Consensus in Hyperledger Fabric is broken out into 3 phases:<ol>
+<li>Endorsement: Endorsement is driven by policy (eg m out of n signatures) upon which participants endorse a transaction.</li>
+<li>Ordering: Ordering phase accepts the endorsed transactions and agrees to the order to be committed to the ledger.</li>
+<li>Validation: Validation takes a block of ordered transactions and validates the correctness of the results, including checking endorsement policy and double-spending.</li>
+</ol>
+</li>
+<li>ILLUSTRATION OF ONE POSSIBLE TRANSACTION FLOW(COMMON-CASE PATH) IN HYPERLEDGER FABRIC<br><img src="Consensus in Hyperledger Fabric.png" alt="截屏2020-02-27下午4.56.35"></li>
+<li>可插拔的共识服务：pluggable consensus service<ul>
+<li>the ordering service API allows plugging in BFT-based agreement algorithms</li>
+</ul>
+</li>
+<li>The ordering service API consists of two basic operations: broadcast and deliver.<ul>
+<li>broadcast(blob)</li>
+<li>deliver(seqno, prevhash, blob)</li>
+</ul>
+</li>
+<li>Multiple ordering plugins are being developed currently, including BFT Smart, Simplified Byzantine Fault Tolerance (SBFT), Honey Badger of BFT, etc.</li>
+<li>Fabric v1, Apache Kafka is provided out-of-the-box as a reference implementation.</li>
+</ul>
+<h2 id="Consensus_in_Hyperledger_Indy_(based_on_RBFT)">Consensus in Hyperledger Indy (based on RBFT)</h2><ul>
+<li>Consensus in Hyperledger Indy is based on Redundant Byzantine Fault Tolerance (RBFT)</li>
+<li>Like PBFT, RBFT needs at least 3f+1 nodes to handle f faulty nodes. </li>
+<li>RBFT overview:<br><img src="Consensus in Hyperledger Indy.png" alt="截屏2020-02-27下午5.23.15"></li>
+<li>RBFT protocol steps:<br><img src="Consensus in Hyperledger Indy2.png" alt="截屏2020-02-27下午5.24.33"></li>
+</ul>
+<h2 id="Consensus_in_Hyperledger_Iroha(Sumeragi:based_on_BFT)">Consensus in Hyperledger Iroha(Sumeragi:based on BFT)</h2><ul>
+<li>Insipered by B-Chain Algorithm described by Duan, Meling, Peisert, &amp; Zhang (2014).</li>
+<li>Concept of a global order over validating peers and sets A and B of peers, where A consists of the first 2f+1 peers and B consists of the remainder.<br><img src="Consensus in Hyperledger Iroha.png" alt="截屏2020-02-27下午5.30.17"></li>
+<li>The order of processing nodes is determined based on the server reputation system called hijiri. </li>
+<li>The case of a failure in the proxy tail is shown in Figure below<br><img src="Consensus in Hyperledger Iroha2.png" alt="截屏2020-02-27下午5.35.24"></li>
+<li>Consensus in Sumeragi is performed on individual transactions and on the global state resulting from the application of the transaction. When a validating peer receives a transaction over the network, it performs the following steps in order:<ol>
+<li>Validate the signature (or signatures, in the case of multi-signature transactions) of the transaction.</li>
+<li>Validate the contents of the transaction, where applicable. For example, transfer transactions must leave the payer’s account with a non-negative balance.</li>
+<li>Temporarily apply the transaction to the ledger. This involves updating the Merkle root of the global state.</li>
+<li>Sign the updated Merkle root and the hash of the transaction contents.</li>
+<li>Broadcast the tuple, which is a finite ordered list of transactions.</li>
+<li>When syncing nodes with each other, valid parts of the Merkle tree are shared until the roots match.</li>
+</ol>
+</li>
+</ul>
+<h2 id="Consensus_in_Hyperledger_Sawtooth(based_on_PoET)">Consensus in Hyperledger Sawtooth(based on PoET)</h2><ul>
+<li>PoET: Proof of Elapsed Time </li>
+<li>Hyperledger Sawtooth facilitates pluggable consensus for both lottery and voting algorithms. </li>
+<li>Default algorithm: lottery-based, Nakamoto consensus algorithm called PoET. </li>
+<li>PoET uses a lottery for leader election based on a guaranteed wait time provided through a Trusted Execution Environment (TEE) (Sandell, Bowman, &amp; Shah, 2016). The current implementation of Hyperledger Sawtooth builds on a TEE provided by Intel’s Software Guard Extensions (SGX). </li>
+<li>A good lottery function satisfies:<ul>
+<li>Fairness - The function should distribute leader election across the broadest possible population of participants.</li>
+<li>Investment - The cost of controlling the leader election process should be proportional to the value gained from it.</li>
+<li>Verification - It should be relatively simple for all participants to verify that the leader was legitimately selected.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Paxos">Paxos</h2><p>[^ 2 ]: Hyperledger Architecture, Volume 1 Introduction to Hyperledger Business Blockchain Design Philosophy and Consensus</p>
+<p>[^ 3 ]: <a href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html" target="_blank" rel="noopener">Fabric Transaction Flow</a></p>
+<p>[^ 4 ]: <a href="https://www.skcript.com/svr/consensus-hyperledger-fabric/" target="_blank" rel="noopener">The Ultimate Guide to Consensus in Hyperledger Fabric</a></p>
 
   </div>
 </article>
@@ -356,7 +454,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#区块链的共识算法"><span class="toc-number">1.</span> <span class="toc-text">区块链的共识算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#我的思考（持续更）"><span class="toc-number">1.1.</span> <span class="toc-text">我的思考（持续更）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#共识算法的分类"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">共识算法的分类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4类共识机制简析"><span class="toc-number">1.2.</span> <span class="toc-text">4类共识机制简析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共识机制对比"><span class="toc-number">1.3.</span> <span class="toc-text">共识机制对比</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#区块链的共识算法"><span class="toc-number">1.</span> <span class="toc-text">区块链的共识算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#我的思考（持续更）"><span class="toc-number">1.1.</span> <span class="toc-text">我的思考（持续更）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共识算法的分类方法1"><span class="toc-number">1.2.</span> <span class="toc-text">共识算法的分类方法1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4类共识机制简析"><span class="toc-number">1.3.</span> <span class="toc-text">4类共识机制简析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共识机制对比"><span class="toc-number">1.4.</span> <span class="toc-text">共识机制对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#共识算法的分类方法2[^_2_]"><span class="toc-number">1.5.</span> <span class="toc-text">共识算法的分类方法2[^ 2 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consensus_in_Hyperledger_Fabric(Kafka_in_Fabric_v1)[^_2_][^_3_][^_4_]"><span class="toc-number">1.6.</span> <span class="toc-text">Consensus in Hyperledger Fabric(Kafka in Fabric v1)[^ 2 ][^ 3 ][^ 4 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consensus_in_Hyperledger_Indy_(based_on_RBFT)"><span class="toc-number">1.7.</span> <span class="toc-text">Consensus in Hyperledger Indy (based on RBFT)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consensus_in_Hyperledger_Iroha(Sumeragi:based_on_BFT)"><span class="toc-number">1.8.</span> <span class="toc-text">Consensus in Hyperledger Iroha(Sumeragi:based on BFT)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Consensus_in_Hyperledger_Sawtooth(based_on_PoET)"><span class="toc-number">1.9.</span> <span class="toc-text">Consensus in Hyperledger Sawtooth(based on PoET)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Paxos"><span class="toc-number">1.10.</span> <span class="toc-text">Paxos</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

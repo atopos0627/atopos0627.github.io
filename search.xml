@@ -89,12 +89,37 @@
 </li>
 <li><p>2020-02-26</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 投票直接形成共识的BFT类</span><br><span class="line">2. 选举代理人间接参与共识的代理类</span><br><span class="line">3. DAG类共识</span><br></pre></td></tr></table></figure>
+<ul>
+<li>2020-02-27</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  1. 我的思考更新</span><br><span class="line">  2. 增加共识算法的分类方法2 更新hyperledger部分</span><br><span class="line">  3. Consensus in Hyperledger Fabric(Kafka in Fabric v1)</span><br><span class="line">4. Consensus in Hyperledger Indy (based on RBFT)</span><br><span class="line">  5. Consensus in Hyperledger Iroha(Sumeragi:based on BFT)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="我的思考（持续更）">我的思考（持续更）</h2><p>节点有相应的概率被选为某个区块的生产者(取得记账权)，在符合一定规则的前提下，由该节点决定区块的内容，再经其 他节点验证。生产合法区块的节点通常可以获得一定的激励。</p>
-<p>共识算法：解决一致性问题</p>
+<h2 id="我的思考（持续更）">我的思考（持续更）</h2><ul>
+<li>Why consensus?<br>The goal of consensus is to generate an agreement on the order and to validate the correctness of the set of transactions that constitute the block.<ul>
+<li>agreement of transaction</li>
+<li>validation of transaction</li>
+</ul>
+</li>
+<li>Core function of consensus<ul>
+<li>Confirms the correctness of all transactions in a proposed block.</li>
+<li>Agrees on order and correctness and hence on results of execution (implies agreement on global state).</li>
+<li>Interfaces and depends on smart-contract layer to verify correctness of an ordered set of transactions in a block.</li>
+</ul>
+</li>
+<li><p>Consensus Properties[^ 2 ]</p>
+<ul>
+<li>Safety: each node is guaranteed the same sequence of inputs and results in the same output on each node. (同一个输入，得到同一个输出)</li>
+<li>Liveness: each non-faulty node will eventually receive every submitted transaction, assuming that communication does not fail.</li>
+</ul>
+</li>
+<li><p>节点有相应的概率被选为某个区块的生产者(取得记账权)，在符合一定规则的前提下，由该节点决定区块的内容，再经其 他节点验证。生产合法区块的节点通常可以获得一定的激励。</p>
+</li>
+<li><p>共识算法：解决一致性问题</p>
+</li>
+</ul>
 <p><img src="区块链的共识算法总结_我的思考.png" alt="区块链的共识算法总结_我的思考"></p>
-<h4 id="共识算法的分类">共识算法的分类</h4><p>根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类[^ 1 ]:</p>
+<h2 id="共识算法的分类方法1">共识算法的分类方法1</h2><p>根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类<a href="[主流区块链共识机制的简介与比较](http://pdf.dfcfw.com/pdf/H3_AP201812271279983589_1.pdf)">^ 1 </a>:</p>
 <ul>
 <li>Proof of X类</li>
 <li>投票直接形成共识的BFT类</li>
@@ -243,6 +268,74 @@
 </li>
 </ol>
 <h2 id="共识机制对比">共识机制对比</h2><p><img src="区块链的共识算法对比.png" alt="截屏2020-02-26下午6.36.41"></p>
+<h2 id="共识算法的分类方法2[^_2_]">共识算法的分类方法2[^ 2 ]</h2><ul>
+<li>lottery-based algorithms<ul>
+<li>advantages: scale to a large number of nodes since the winner of the lottery proposes a block and transmits it to the rest<br>of the network for validation. </li>
+<li>disadvantages: lead to forking when two “winners” propose a block. fork must be resolved, which results in a longer time to finality.</li>
+</ul>
+</li>
+<li>voting-based algorithms<ul>
+<li>advantages: low-latency finality</li>
+<li>disadvantages: the more nodes that exist on the network, the more time it takes to reach consensus. This results in a trade-off between scalability and speed.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Consensus_in_Hyperledger_Fabric(Kafka_in_Fabric_v1)[^_2_][^_3_][^_4_]">Consensus in Hyperledger Fabric(Kafka in Fabric v1)[^ 2 ][^ 3 ][^ 4 ]</h2><ul>
+<li>Consensus in Hyperledger Fabric is broken out into 3 phases:<ol>
+<li>Endorsement: Endorsement is driven by policy (eg m out of n signatures) upon which participants endorse a transaction.</li>
+<li>Ordering: Ordering phase accepts the endorsed transactions and agrees to the order to be committed to the ledger.</li>
+<li>Validation: Validation takes a block of ordered transactions and validates the correctness of the results, including checking endorsement policy and double-spending.</li>
+</ol>
+</li>
+<li>ILLUSTRATION OF ONE POSSIBLE TRANSACTION FLOW(COMMON-CASE PATH) IN HYPERLEDGER FABRIC<br><img src="Consensus in Hyperledger Fabric.png" alt="截屏2020-02-27下午4.56.35"></li>
+<li>可插拔的共识服务：pluggable consensus service<ul>
+<li>the ordering service API allows plugging in BFT-based agreement algorithms</li>
+</ul>
+</li>
+<li>The ordering service API consists of two basic operations: broadcast and deliver.<ul>
+<li>broadcast(blob)</li>
+<li>deliver(seqno, prevhash, blob)</li>
+</ul>
+</li>
+<li>Multiple ordering plugins are being developed currently, including BFT Smart, Simplified Byzantine Fault Tolerance (SBFT), Honey Badger of BFT, etc.</li>
+<li>Fabric v1, Apache Kafka is provided out-of-the-box as a reference implementation.</li>
+</ul>
+<h2 id="Consensus_in_Hyperledger_Indy_(based_on_RBFT)">Consensus in Hyperledger Indy (based on RBFT)</h2><ul>
+<li>Consensus in Hyperledger Indy is based on Redundant Byzantine Fault Tolerance (RBFT)</li>
+<li>Like PBFT, RBFT needs at least 3f+1 nodes to handle f faulty nodes. </li>
+<li>RBFT overview:<br><img src="Consensus in Hyperledger Indy.png" alt="截屏2020-02-27下午5.23.15"></li>
+<li>RBFT protocol steps:<br><img src="Consensus in Hyperledger Indy2.png" alt="截屏2020-02-27下午5.24.33"></li>
+</ul>
+<h2 id="Consensus_in_Hyperledger_Iroha(Sumeragi:based_on_BFT)">Consensus in Hyperledger Iroha(Sumeragi:based on BFT)</h2><ul>
+<li>Insipered by B-Chain Algorithm described by Duan, Meling, Peisert, &amp; Zhang (2014).</li>
+<li>Concept of a global order over validating peers and sets A and B of peers, where A consists of the first 2f+1 peers and B consists of the remainder.<br><img src="Consensus in Hyperledger Iroha.png" alt="截屏2020-02-27下午5.30.17"></li>
+<li>The order of processing nodes is determined based on the server reputation system called hijiri. </li>
+<li>The case of a failure in the proxy tail is shown in Figure below<br><img src="Consensus in Hyperledger Iroha2.png" alt="截屏2020-02-27下午5.35.24"></li>
+<li>Consensus in Sumeragi is performed on individual transactions and on the global state resulting from the application of the transaction. When a validating peer receives a transaction over the network, it performs the following steps in order:<ol>
+<li>Validate the signature (or signatures, in the case of multi-signature transactions) of the transaction.</li>
+<li>Validate the contents of the transaction, where applicable. For example, transfer transactions must leave the payer’s account with a non-negative balance.</li>
+<li>Temporarily apply the transaction to the ledger. This involves updating the Merkle root of the global state.</li>
+<li>Sign the updated Merkle root and the hash of the transaction contents.</li>
+<li>Broadcast the tuple, which is a finite ordered list of transactions.</li>
+<li>When syncing nodes with each other, valid parts of the Merkle tree are shared until the roots match.</li>
+</ol>
+</li>
+</ul>
+<h2 id="Consensus_in_Hyperledger_Sawtooth(based_on_PoET)">Consensus in Hyperledger Sawtooth(based on PoET)</h2><ul>
+<li>PoET: Proof of Elapsed Time </li>
+<li>Hyperledger Sawtooth facilitates pluggable consensus for both lottery and voting algorithms. </li>
+<li>Default algorithm: lottery-based, Nakamoto consensus algorithm called PoET. </li>
+<li>PoET uses a lottery for leader election based on a guaranteed wait time provided through a Trusted Execution Environment (TEE) (Sandell, Bowman, &amp; Shah, 2016). The current implementation of Hyperledger Sawtooth builds on a TEE provided by Intel’s Software Guard Extensions (SGX). </li>
+<li>A good lottery function satisfies:<ul>
+<li>Fairness - The function should distribute leader election across the broadest possible population of participants.</li>
+<li>Investment - The cost of controlling the leader election process should be proportional to the value gained from it.</li>
+<li>Verification - It should be relatively simple for all participants to verify that the leader was legitimately selected.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Paxos">Paxos</h2><p>[^ 2 ]: Hyperledger Architecture, Volume 1 Introduction to Hyperledger Business Blockchain Design Philosophy and Consensus</p>
+<p>[^ 3 ]: <a href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html" target="_blank" rel="noopener">Fabric Transaction Flow</a></p>
+<p>[^ 4 ]: <a href="https://www.skcript.com/svr/consensus-hyperledger-fabric/" target="_blank" rel="noopener">The Ultimate Guide to Consensus in Hyperledger Fabric</a></p>
 ]]></content>
       
         <categories>
@@ -259,6 +352,185 @@
             <tag> 区块链 </tag>
             
             <tag> 共识算法 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Technical Analysis of Hyperledger]]></title>
+      <url>/2020/02/14/Technical%20Analysis%20of%20Hyperledger/</url>
+      <content type="html"><![CDATA[<h1 id="Technical_Analysis_of_Hyperledger">Technical Analysis of Hyperledger</h1><p>CreateDate: 2020-02-14<br>UpdateDate: 2020-02-27<br>Author: ShizhiDeng<br>Update content:</p>
+<ul>
+<li><p>2020-02-27</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">完成Hyperledger技术分析多个主题：比如基本信息、技术架构、技术分析之解决的</span><br><span class="line">问题1：在分布式数据库中如何分享数据。</span><br><span class="line">问题2:如何实现Hyperledger的模块化特性。</span><br><span class="line">问题3：Hyperledger如何实现交易的一致性和有效性，也就是共识算法的技术细节</span><br><span class="line"></span><br><span class="line">参考文献</span><br><span class="line">1. An Introduction to Hyperledger</span><br><span class="line">2. Hyperledger Architecture, Volume 1 Introduction to Hyperledger Business Blockchain Design Philosophy and Consensus</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Some_basic_information_about_Hyperledger[^_1_][^_2_]">Some basic information about Hyperledger[^ 1 ][^ 2 ]</h2><ul>
+<li>What is Hyperledger<br>  Hyperledger is an open source collaborative effort created to advance cross-industry blockchain technologies. It is a global collaboration, hosted by The Linux Foundation, including leaders in finance, banking, Internet of Things, supply chains, manufacturing, and Technology.</li>
+<li>Some numbers about Hyperledger<br>  Hyperledger began in 2015.<br>  As of publication date, Hyperledger has more than 230 organizations as members—from Airbus to VMware—as well as 10 projects with 3.6 million lines of code, 10 active working groups, and close to 28,000 participants who have come to 110+ meetups around the world. Through 2017, the project was mentioned in the press an average of 1,500 times a month.</li>
+<li>Current Hyperledger projects: Frameworks and Tools<br>The Hyperledger greenhouse structure is shown in the figure 1 as following:<br><img src="THE HYPERLEDGER GREENHOUSE STRUCTURE.png" alt="THE HYPERLEDGER GREENHOUSE STRUCTURE" style="zoom:40%;"></li>
+<li><p>Hyperledger Design Philosophy<br>  We recognize that different enterprise scenarios have different requirements for confirmation times, decentralization, trust, and other issues, and that each issue represents a potential “optimization point” for the technology.<br>  All Hyperledger projects follow the same design philosophy. All our projects must be:</p>
+<ul>
+<li>Modular</li>
+<li>Highly secure</li>
+<li>Interoperable</li>
+<li>Cryptocurrency-agnostic</li>
+<li><p>Complete with APIs</p>
+<p><img src="THE HYPERLEDGER DESIGN PHILOSOPHY.png" alt="THE HYPERLEDGER DESIGN PHILOSOPHY" style="zoom: 50%;"></p>
+</li>
+</ul>
+</li>
+<li>Hyperledger Goals[^ 3 ]<ul>
+<li>Create enterprise grade, open source, distributed ledger frameworks &amp; code bases to support business transactions.</li>
+<li>Provide neutral, open, &amp; community-driven infrastructures supported by technical and business governance.</li>
+<li>Build technical communities to develop blockchain and shared ledger POCs, use cases, field trials and deployments.</li>
+<li>Educate the public about the market opportunity for blockchain technology.</li>
+<li>Promote our community of communities taking a toolkit approach with many platforms and frameworks.</li>
+</ul>
+</li>
+<li>Why open source for blockchain?<ul>
+<li>Competitive features and capabilities</li>
+<li>No vendor lock-in, so customers can easily switch</li>
+<li>High-quality solutions</li>
+<li>The ability to customize and fix bugs, through access to source code</li>
+<li>Lower total cost of ownership</li>
+<li>some popular open source projects:Linux,Apache web server,MySQL,Fiox</li>
+</ul>
+</li>
+<li>Application scenario of Hyperledger<ul>
+<li>Banking—applying for a loan</li>
+<li>Financial services—post-trade processing</li>
+<li>Healthcare—credentialing physicians</li>
+<li>IT—managing portable identities</li>
+<li>Supply chain management—tracking fish from ocean to table</li>
+</ul>
+</li>
+</ul>
+<h2 id="Current_Hyperledger_projects">Current Hyperledger projects</h2><ul>
+<li><p>Current Hyperledger projects: Frameworks<br>  Hyperledger incubates and promotes a range of business blockchain technologies, including:</p>
+<ul>
+<li>Distributed ledger frameworks</li>
+<li>Smart contract engines</li>
+<li>Client libraries</li>
+<li>Graphical interfaces</li>
+<li>Utility libraries</li>
+<li><p>Sample applications</p>
+<p>Summary of Hyperledger Frameworks:</p>
+<p>| Hyperledger Frameworks |                         Description                          |<br>| :——————————: | :—————————————————————————————: |<br>|   HYPERLEDGER BURROW   | A modular blockchain client with a permissioned smart contract interpreter developed in part to the specifications of the Ethereum Virtual Machine (EVM). |<br>|   HYPERLEDGER FABRIC   | A platform for building distributed ledger solutions with a modular architecture that delivers a high degree of confidentiality, flexibility, resiliency, and scalability. This enables solutions developed with Fabric to be adapted for any industry. |<br>|    HYPERLEDGER INDY    | A distributed ledger that provides tools, libraries, and reusable components purpose-built for decentralized identity. |<br>|   HYPERLEDGER IROHA    | A blockchain framework designed to be simple and easy to incorporate into enterprise infrastructure projects. |<br>|  HYPERLEDGER SAWTOOTH  | A modular platform for building, deploying, and running distributed ledgers. Sawtooth features a new type of consensus, proof of elapsed time (PoET) which consumes far fewer resources than proof of work (PoW). |</p>
+</li>
+</ul>
+</li>
+<li><p>Current Hyperledger projects: Tools<br>Hyperledger incubates and promotes a range of business blockchain technologies, including tools and utility libraries.</p>
+<p>The Hyperledger strategy encourages the re-use of common building blocks, enables rapid innovation of components, and promotes interoperability between projects.</p>
+<p>Summary of Hyperledger Tools:</p>
+<p>| Hyperledger Frameworks |                         Description                          |<br>| :——————————: | :—————————————————————————————: |<br>|  HYPERLEDGER CALIPER   | A blockchain benchmark tool that measures the performance of any blockchain by using a set of predefined use cases. |<br>|   HYPERLEDGER CELLO    | A set of tools to bring the on-demand deployment model to the blockchain ecosystem with automated ways to provision and manage blockchain operations that reduce effort. |<br>|  HYPERLEDGER COMPOSER  | An open development toolset and framework to make developing blockchain applications easier. |<br>|  HYPERLEDGER EXPLORER  | A dashboard for viewing information on the network, including blocks, node logs, statistics, smart contracts, and transactions. |<br>|   HYPERLEDGER QUILT    | A set of tools that offer interoperability by implementing ILP, which is primarily a payments protocol designed to transfer value across distributed and non-distributed ledgers. |</p>
+</li>
+</ul>
+<h2 id="Technology_of_Hyperleger">Technology of Hyperleger</h2><p>All Hyperledger projects follow a design philosophy that includes a modular extensible approach, interoperability, an emphasis on highly secure solutions, a token-agnostic approach with no native cryptocurrency, and the development of a rich and easy-to- use Application Programming Interface (API). The Hyperledger Architecture WG has distinguished the following business blockchain components:</p>
+<ul>
+<li>Consensus Layer - Responsible for generating an agreement on the order and confirming the correctness of the set of transactions that constitute a block.</li>
+<li>Smart Contract Layer - Responsible for processing transaction requests and determining if transactions are valid by executing business logic.<ul>
+<li>Hyperledger Burrow - Smart contract application engine</li>
+<li>Hyperledger Fabric - Chaincode</li>
+<li>Hyperledger Indy - None</li>
+<li>Hyperledger Iroha2 - Chaincode</li>
+<li>Hyperledger Sawtooth - Transaction familiesc</li>
+</ul>
+</li>
+<li>Communication Layer - Responsible for peer-to-peer message transport between the nodes that participate in a shared ledger instance.</li>
+<li>Data Store Abstraction - Allows different data-stores to be used by other modules.</li>
+<li>Crypto Abstraction - Allows different crypto algorithms or modules to be swapped out without affecting other modules.</li>
+<li>Identity Services - Enables the establishment of a root of trust during setup of a blockchain instance, the enrollment and registration of identities or system entities during network operation, and the management of changes like drops, adds, and revocations. Also, provides authentication and authorization.</li>
+<li>Policy Services - Responsible for policy management of various policies specified in the system, such as the endorsement policy, consensus policy, or group management policy. It interfaces and depends on other modules to enforce the various policies.</li>
+<li>APIs - Enables clients and applications to interface to blockchains.</li>
+<li><p>Interoperation - Supports the interoperation between different blockchain instances.</p>
+<p><img src="Hyperledger.png" alt="Hyperledger"></p>
+</li>
+</ul>
+<h2 id="Possible_improvement_in_Hyperledger">Possible improvement in Hyperledger</h2><ul>
+<li>The future of blockchain(Hyperledger Participants’ opinion)<ul>
+<li>modular</li>
+<li>open-source </li>
+<li>easy to use. </li>
+</ul>
+</li>
+</ul>
+<h2 id="Hyperledger_design_philosophy_for_permissioned_blockchain_networks[^_5_]">Hyperledger design philosophy for permissioned blockchain networks[^ 5 ]</h2><h2 id="Hyperledger_consensus_technical_analysis[^_5_]">Hyperledger consensus technical analysis[^ 5 ]</h2><ul>
+<li></li>
+</ul>
+<h2 id="approach_optimizes_the_development_of_flexible,_interoperable_enterprise_blockchain_technologies">approach optimizes the development of flexible, interoperable enterprise blockchain technologies</h2><h2 id="a_generalized_reference_architecture_for_consensus">a generalized reference architecture for consensus</h2><h2 id="Technical_Analysis">Technical Analysis</h2><p>The road of technical analysis accord to following route. Especially, the problems that I list below are common and basic:</p>
+<ol>
+<li>What is the problem?</li>
+<li>Technical solution of the problem.</li>
+<li>Evaluation of the solution.</li>
+<li>My solution and thinking into the problem. </li>
+</ol>
+<h3 id="Problem1:share_data_in_a_distributed_database">Problem1:share data in a distributed database</h3><ul>
+<li><p>Problem description: Many people will want to share data in a distributed database, but no single owner will be trusted by every user.</p>
+</li>
+<li><p>Solution: distributed ledger technology (DLT). </p>
+</li>
+<li><p>Difficulty: Security,privacy and performance are incompatible.So no one blockchain will work best for all applications.It suggests that we’ll need a variety of different blockchains that can all communicate and interact seamlessly. </p>
+</li>
+<li><p>The concerns according to above analysis: modular and interoperable.</p>
+</li>
+</ul>
+<h3 id="Problem2:_How_to_achieve_the_modular_feature_of_a_blockchain">Problem2: How to achieve the modular feature of a blockchain</h3><ol>
+<li>Solution1: work by Hyperledger <ul>
+<li>分层：包括共识层、智能合约层、通信层、数据存储抽象、加密抽象、认证服务、策略服务、API、交互操作等</li>
+<li>针对私有链business blockchain，hyperledger共识层也分成了两部分：1. Ordering of transactions 2. Validating transactions</li>
+</ul>
+</li>
+</ol>
+<h3 id="Problem3:_How_to_achieve_the_interoperable_feature_of_a_blockchain">Problem3: How to achieve the interoperable feature of a blockchain</h3><h3 id="Problem4:_How_to_achieve_the_agreement_of_transaction_and_validation_of_transaction_in_Hyperledger?">Problem4: How to achieve the agreement of transaction and validation of transaction in Hyperledger?</h3><ul>
+<li>Solution: Consensus in Hyperledger frameworks.</li>
+<li>Consensus(Hyperledger business blockchain frameworks) is divided to two seperate activities: <ol>
+<li>Ordering of transactions </li>
+<li>Validating transactions</li>
+</ol>
+</li>
+<li>The consensus process flow:<ol>
+<li>receiving the transactions from the client application. </li>
+<li>ordering service: order transactions<ul>
+<li>can be implemented in different ways: a centralized service(development and testing) and distributed protocols(different network and node fault models)</li>
+<li>confidentiality of the transactions: the transaction content can be hashed or encrypted.</li>
+<li>Transactions are submitted via an interface to the ordering service.</li>
+</ul>
+</li>
+<li>validate transactions: consensus depends on the smart contract layer(because it contains the business logic behind what makes a transaction valid.)<ul>
+<li>validation errors: <ol>
+<li>syntax errors: invalid inputs, unverifiable signature, and repeated transaction (due to error or replay attacks) </li>
+<li>logic errors:  policy driven whether to continue processing or not. (Example: result in double-spend or versioning control failure. )</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="Problem2:interoperability_of_different_blockchains">Problem2:interoperability of different blockchains</h3><p>Problem description: We’ll find merit in many different blockchains.In many scenarios,different blockchains need communication with each other.</p>
+<p>Solution: </p>
+<h2 id="References">References</h2><p>[^ 2 ]: <a href="https://www.hyperledger.org/wp-content/uploads/2018/08/HL_Whitepaper_IntroductiontoHyperledger.pdf" target="_blank" rel="noopener">An Introduction to Hyperledger</a>Hyperledger介绍，基本信息，目标，当前项目，应用场景等。</p>
+<p>[^ 3 ]: <a href="https://www.hyperledger.org/wp-content/uploads/2018/02/Hyperledger-Overview_February-2018-2.pdf" target="_blank" rel="noopener">Hyperledger Overview</a>介绍内容的总结PPT</p>
+<p>[^ 4 ]: <a href="https://developer.ibm.com/cn/tv/2017/blockchain-and-hyperledger/" target="_blank" rel="noopener">开源技术微讲堂：区块链和 HyperLedger 系列</a></p>
+<p>[^ 5 ]: Hyperledger Architecture, Volume 1 Introduction to Hyperledger Business Blockchain Design Philosophy and Consensus</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 区块链 </category>
+            
+            <category> Hyperledger </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 区块链 </tag>
+            
+            <tag> Hyperledger </tag>
             
         </tags>
         

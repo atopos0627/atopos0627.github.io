@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Technical Analysis of HyperledgerCreateDate: 2020-02-14UpdateDate: 2020-02-27Author: ShizhiDengUpdate content:  2020-02-27 12345678完成Hyperledger技术分析多个主题：比如基本信息、技术架构、技术分析之解决的问题1：在分布式数据库中如何分享数据。问题2:如何实现">
+<meta name="keywords" content="区块链,Hyperledger">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Technical Analysis of Hyperledger">
+<meta property="og:url" content="http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/index.html">
+<meta property="og:site_name" content="DengShizhi">
+<meta property="og:description" content="Technical Analysis of HyperledgerCreateDate: 2020-02-14UpdateDate: 2020-02-27Author: ShizhiDengUpdate content:  2020-02-27 12345678完成Hyperledger技术分析多个主题：比如基本信息、技术架构、技术分析之解决的问题1：在分布式数据库中如何分享数据。问题2:如何实现">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/14/Technical%20Analysis%20of%20Hyperledger/THE%20HYPERLEDGER%20GREENHOUSE%20STRUCTURE.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/14/Technical%20Analysis%20of%20Hyperledger/THE%20HYPERLEDGER%20DESIGN%20PHILOSOPHY.png">
+<meta property="og:image" content="http://www.atopos.cc/2020/02/14/Technical%20Analysis%20of%20Hyperledger/Hyperledger.png">
+<meta property="og:updated_time" content="2020-02-27T09:51:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Technical Analysis of Hyperledger">
+<meta name="twitter:description" content="Technical Analysis of HyperledgerCreateDate: 2020-02-14UpdateDate: 2020-02-27Author: ShizhiDengUpdate content:  2020-02-27 12345678完成Hyperledger技术分析多个主题：比如基本信息、技术架构、技术分析之解决的问题1：在分布式数据库中如何分享数据。问题2:如何实现">
+<meta name="twitter:image" content="http://www.atopos.cc/2020/02/14/Technical%20Analysis%20of%20Hyperledger/THE%20HYPERLEDGER%20GREENHOUSE%20STRUCTURE.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Technical Analysis of Hyperledger</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">archives</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/02/25/区块链的共识算法/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/02/07/Story of Block Chain_Release/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&text=Technical Analysis of Hyperledger"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&title=Technical Analysis of Hyperledger"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&is_video=false&description=Technical Analysis of Hyperledger"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Technical Analysis of Hyperledger&body=Check out this article: http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&title=Technical Analysis of Hyperledger"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&title=Technical Analysis of Hyperledger"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&title=Technical Analysis of Hyperledger"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&title=Technical Analysis of Hyperledger"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&name=Technical Analysis of Hyperledger&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Technical_Analysis_of_Hyperledger"><span class="toc-number">1.</span> <span class="toc-text">Technical Analysis of Hyperledger</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Some_basic_information_about_Hyperledger[^_1_][^_2_]"><span class="toc-number">1.1.</span> <span class="toc-text">Some basic information about Hyperledger[^ 1 ][^ 2 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Current_Hyperledger_projects"><span class="toc-number">1.2.</span> <span class="toc-text">Current Hyperledger projects</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Technology_of_Hyperleger"><span class="toc-number">1.3.</span> <span class="toc-text">Technology of Hyperleger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Possible_improvement_in_Hyperledger"><span class="toc-number">1.4.</span> <span class="toc-text">Possible improvement in Hyperledger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hyperledger_design_philosophy_for_permissioned_blockchain_networks[^_5_]"><span class="toc-number">1.5.</span> <span class="toc-text">Hyperledger design philosophy for permissioned blockchain networks[^ 5 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hyperledger_consensus_technical_analysis[^_5_]"><span class="toc-number">1.6.</span> <span class="toc-text">Hyperledger consensus technical analysis[^ 5 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#approach_optimizes_the_development_of_flexible,_interoperable_enterprise_blockchain_technologies"><span class="toc-number">1.7.</span> <span class="toc-text">approach optimizes the development of flexible, interoperable enterprise blockchain technologies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a_generalized_reference_architecture_for_consensus"><span class="toc-number">1.8.</span> <span class="toc-text">a generalized reference architecture for consensus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Technical_Analysis"><span class="toc-number">1.9.</span> <span class="toc-text">Technical Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem1:share_data_in_a_distributed_database"><span class="toc-number">1.9.1.</span> <span class="toc-text">Problem1:share data in a distributed database</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem2:_How_to_achieve_the_modular_feature_of_a_blockchain"><span class="toc-number">1.9.2.</span> <span class="toc-text">Problem2: How to achieve the modular feature of a blockchain</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem3:_How_to_achieve_the_interoperable_feature_of_a_blockchain"><span class="toc-number">1.9.3.</span> <span class="toc-text">Problem3: How to achieve the interoperable feature of a blockchain</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem4:_How_to_achieve_the_agreement_of_transaction_and_validation_of_transaction_in_Hyperledger?"><span class="toc-number">1.9.4.</span> <span class="toc-text">Problem4: How to achieve the agreement of transaction and validation of transaction in Hyperledger?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem2:interoperability_of_different_blockchains"><span class="toc-number">1.9.5.</span> <span class="toc-text">Problem2:interoperability of different blockchains</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">1.10.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Technical Analysis of Hyperledger
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">DengShizhi</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-02-14T11:21:00.000Z" itemprop="datePublished">2020-02-14</time>
+        
+        (Updated: <time datetime="2020-02-27T09:51:00.000Z" itemprop="dateModified">2020-02-27</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/区块链/">区块链</a> › <a class="category-link" href="/categories/区块链/Hyperledger/">Hyperledger</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Hyperledger/">Hyperledger</a>, <a class="tag-link" href="/tags/区块链/">区块链</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="Technical_Analysis_of_Hyperledger">Technical Analysis of Hyperledger</h1><p>CreateDate: 2020-02-14<br>UpdateDate: 2020-02-27<br>Author: ShizhiDeng<br>Update content:</p>
+<ul>
+<li><p>2020-02-27</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">完成Hyperledger技术分析多个主题：比如基本信息、技术架构、技术分析之解决的</span><br><span class="line">问题1：在分布式数据库中如何分享数据。</span><br><span class="line">问题2:如何实现Hyperledger的模块化特性。</span><br><span class="line">问题3：Hyperledger如何实现交易的一致性和有效性，也就是共识算法的技术细节</span><br><span class="line"></span><br><span class="line">参考文献</span><br><span class="line">1. An Introduction to Hyperledger</span><br><span class="line">2. Hyperledger Architecture, Volume 1 Introduction to Hyperledger Business Blockchain Design Philosophy and Consensus</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Some_basic_information_about_Hyperledger[^_1_][^_2_]">Some basic information about Hyperledger[^ 1 ][^ 2 ]</h2><ul>
+<li>What is Hyperledger<br>  Hyperledger is an open source collaborative effort created to advance cross-industry blockchain technologies. It is a global collaboration, hosted by The Linux Foundation, including leaders in finance, banking, Internet of Things, supply chains, manufacturing, and Technology.</li>
+<li>Some numbers about Hyperledger<br>  Hyperledger began in 2015.<br>  As of publication date, Hyperledger has more than 230 organizations as members—from Airbus to VMware—as well as 10 projects with 3.6 million lines of code, 10 active working groups, and close to 28,000 participants who have come to 110+ meetups around the world. Through 2017, the project was mentioned in the press an average of 1,500 times a month.</li>
+<li>Current Hyperledger projects: Frameworks and Tools<br>The Hyperledger greenhouse structure is shown in the figure 1 as following:<br><img src="THE HYPERLEDGER GREENHOUSE STRUCTURE.png" alt="THE HYPERLEDGER GREENHOUSE STRUCTURE" style="zoom:40%;"></li>
+<li><p>Hyperledger Design Philosophy<br>  We recognize that different enterprise scenarios have different requirements for confirmation times, decentralization, trust, and other issues, and that each issue represents a potential “optimization point” for the technology.<br>  All Hyperledger projects follow the same design philosophy. All our projects must be:</p>
+<ul>
+<li>Modular</li>
+<li>Highly secure</li>
+<li>Interoperable</li>
+<li>Cryptocurrency-agnostic</li>
+<li><p>Complete with APIs</p>
+<p><img src="THE HYPERLEDGER DESIGN PHILOSOPHY.png" alt="THE HYPERLEDGER DESIGN PHILOSOPHY" style="zoom: 50%;"></p>
+</li>
+</ul>
+</li>
+<li>Hyperledger Goals[^ 3 ]<ul>
+<li>Create enterprise grade, open source, distributed ledger frameworks &amp; code bases to support business transactions.</li>
+<li>Provide neutral, open, &amp; community-driven infrastructures supported by technical and business governance.</li>
+<li>Build technical communities to develop blockchain and shared ledger POCs, use cases, field trials and deployments.</li>
+<li>Educate the public about the market opportunity for blockchain technology.</li>
+<li>Promote our community of communities taking a toolkit approach with many platforms and frameworks.</li>
+</ul>
+</li>
+<li>Why open source for blockchain?<ul>
+<li>Competitive features and capabilities</li>
+<li>No vendor lock-in, so customers can easily switch</li>
+<li>High-quality solutions</li>
+<li>The ability to customize and fix bugs, through access to source code</li>
+<li>Lower total cost of ownership</li>
+<li>some popular open source projects:Linux,Apache web server,MySQL,Fiox</li>
+</ul>
+</li>
+<li>Application scenario of Hyperledger<ul>
+<li>Banking—applying for a loan</li>
+<li>Financial services—post-trade processing</li>
+<li>Healthcare—credentialing physicians</li>
+<li>IT—managing portable identities</li>
+<li>Supply chain management—tracking fish from ocean to table</li>
+</ul>
+</li>
+</ul>
+<h2 id="Current_Hyperledger_projects">Current Hyperledger projects</h2><ul>
+<li><p>Current Hyperledger projects: Frameworks<br>  Hyperledger incubates and promotes a range of business blockchain technologies, including:</p>
+<ul>
+<li>Distributed ledger frameworks</li>
+<li>Smart contract engines</li>
+<li>Client libraries</li>
+<li>Graphical interfaces</li>
+<li>Utility libraries</li>
+<li><p>Sample applications</p>
+<p>Summary of Hyperledger Frameworks:</p>
+<p>| Hyperledger Frameworks |                         Description                          |<br>| :——————————: | :—————————————————————————————: |<br>|   HYPERLEDGER BURROW   | A modular blockchain client with a permissioned smart contract interpreter developed in part to the specifications of the Ethereum Virtual Machine (EVM). |<br>|   HYPERLEDGER FABRIC   | A platform for building distributed ledger solutions with a modular architecture that delivers a high degree of confidentiality, flexibility, resiliency, and scalability. This enables solutions developed with Fabric to be adapted for any industry. |<br>|    HYPERLEDGER INDY    | A distributed ledger that provides tools, libraries, and reusable components purpose-built for decentralized identity. |<br>|   HYPERLEDGER IROHA    | A blockchain framework designed to be simple and easy to incorporate into enterprise infrastructure projects. |<br>|  HYPERLEDGER SAWTOOTH  | A modular platform for building, deploying, and running distributed ledgers. Sawtooth features a new type of consensus, proof of elapsed time (PoET) which consumes far fewer resources than proof of work (PoW). |</p>
+</li>
+</ul>
+</li>
+<li><p>Current Hyperledger projects: Tools<br>Hyperledger incubates and promotes a range of business blockchain technologies, including tools and utility libraries.</p>
+<p>The Hyperledger strategy encourages the re-use of common building blocks, enables rapid innovation of components, and promotes interoperability between projects.</p>
+<p>Summary of Hyperledger Tools:</p>
+<p>| Hyperledger Frameworks |                         Description                          |<br>| :——————————: | :—————————————————————————————: |<br>|  HYPERLEDGER CALIPER   | A blockchain benchmark tool that measures the performance of any blockchain by using a set of predefined use cases. |<br>|   HYPERLEDGER CELLO    | A set of tools to bring the on-demand deployment model to the blockchain ecosystem with automated ways to provision and manage blockchain operations that reduce effort. |<br>|  HYPERLEDGER COMPOSER  | An open development toolset and framework to make developing blockchain applications easier. |<br>|  HYPERLEDGER EXPLORER  | A dashboard for viewing information on the network, including blocks, node logs, statistics, smart contracts, and transactions. |<br>|   HYPERLEDGER QUILT    | A set of tools that offer interoperability by implementing ILP, which is primarily a payments protocol designed to transfer value across distributed and non-distributed ledgers. |</p>
+</li>
+</ul>
+<h2 id="Technology_of_Hyperleger">Technology of Hyperleger</h2><p>All Hyperledger projects follow a design philosophy that includes a modular extensible approach, interoperability, an emphasis on highly secure solutions, a token-agnostic approach with no native cryptocurrency, and the development of a rich and easy-to- use Application Programming Interface (API). The Hyperledger Architecture WG has distinguished the following business blockchain components:</p>
+<ul>
+<li>Consensus Layer - Responsible for generating an agreement on the order and confirming the correctness of the set of transactions that constitute a block.</li>
+<li>Smart Contract Layer - Responsible for processing transaction requests and determining if transactions are valid by executing business logic.<ul>
+<li>Hyperledger Burrow - Smart contract application engine</li>
+<li>Hyperledger Fabric - Chaincode</li>
+<li>Hyperledger Indy - None</li>
+<li>Hyperledger Iroha2 - Chaincode</li>
+<li>Hyperledger Sawtooth - Transaction familiesc</li>
+</ul>
+</li>
+<li>Communication Layer - Responsible for peer-to-peer message transport between the nodes that participate in a shared ledger instance.</li>
+<li>Data Store Abstraction - Allows different data-stores to be used by other modules.</li>
+<li>Crypto Abstraction - Allows different crypto algorithms or modules to be swapped out without affecting other modules.</li>
+<li>Identity Services - Enables the establishment of a root of trust during setup of a blockchain instance, the enrollment and registration of identities or system entities during network operation, and the management of changes like drops, adds, and revocations. Also, provides authentication and authorization.</li>
+<li>Policy Services - Responsible for policy management of various policies specified in the system, such as the endorsement policy, consensus policy, or group management policy. It interfaces and depends on other modules to enforce the various policies.</li>
+<li>APIs - Enables clients and applications to interface to blockchains.</li>
+<li><p>Interoperation - Supports the interoperation between different blockchain instances.</p>
+<p><img src="Hyperledger.png" alt="Hyperledger"></p>
+</li>
+</ul>
+<h2 id="Possible_improvement_in_Hyperledger">Possible improvement in Hyperledger</h2><ul>
+<li>The future of blockchain(Hyperledger Participants’ opinion)<ul>
+<li>modular</li>
+<li>open-source </li>
+<li>easy to use. </li>
+</ul>
+</li>
+</ul>
+<h2 id="Hyperledger_design_philosophy_for_permissioned_blockchain_networks[^_5_]">Hyperledger design philosophy for permissioned blockchain networks[^ 5 ]</h2><h2 id="Hyperledger_consensus_technical_analysis[^_5_]">Hyperledger consensus technical analysis[^ 5 ]</h2><ul>
+<li></li>
+</ul>
+<h2 id="approach_optimizes_the_development_of_flexible,_interoperable_enterprise_blockchain_technologies">approach optimizes the development of flexible, interoperable enterprise blockchain technologies</h2><h2 id="a_generalized_reference_architecture_for_consensus">a generalized reference architecture for consensus</h2><h2 id="Technical_Analysis">Technical Analysis</h2><p>The road of technical analysis accord to following route. Especially, the problems that I list below are common and basic:</p>
+<ol>
+<li>What is the problem?</li>
+<li>Technical solution of the problem.</li>
+<li>Evaluation of the solution.</li>
+<li>My solution and thinking into the problem. </li>
+</ol>
+<h3 id="Problem1:share_data_in_a_distributed_database">Problem1:share data in a distributed database</h3><ul>
+<li><p>Problem description: Many people will want to share data in a distributed database, but no single owner will be trusted by every user.</p>
+</li>
+<li><p>Solution: distributed ledger technology (DLT). </p>
+</li>
+<li><p>Difficulty: Security,privacy and performance are incompatible.So no one blockchain will work best for all applications.It suggests that we’ll need a variety of different blockchains that can all communicate and interact seamlessly. </p>
+</li>
+<li><p>The concerns according to above analysis: modular and interoperable.</p>
+</li>
+</ul>
+<h3 id="Problem2:_How_to_achieve_the_modular_feature_of_a_blockchain">Problem2: How to achieve the modular feature of a blockchain</h3><ol>
+<li>Solution1: work by Hyperledger <ul>
+<li>分层：包括共识层、智能合约层、通信层、数据存储抽象、加密抽象、认证服务、策略服务、API、交互操作等</li>
+<li>针对私有链business blockchain，hyperledger共识层也分成了两部分：1. Ordering of transactions 2. Validating transactions</li>
+</ul>
+</li>
+</ol>
+<h3 id="Problem3:_How_to_achieve_the_interoperable_feature_of_a_blockchain">Problem3: How to achieve the interoperable feature of a blockchain</h3><h3 id="Problem4:_How_to_achieve_the_agreement_of_transaction_and_validation_of_transaction_in_Hyperledger?">Problem4: How to achieve the agreement of transaction and validation of transaction in Hyperledger?</h3><ul>
+<li>Solution: Consensus in Hyperledger frameworks.</li>
+<li>Consensus(Hyperledger business blockchain frameworks) is divided to two seperate activities: <ol>
+<li>Ordering of transactions </li>
+<li>Validating transactions</li>
+</ol>
+</li>
+<li>The consensus process flow:<ol>
+<li>receiving the transactions from the client application. </li>
+<li>ordering service: order transactions<ul>
+<li>can be implemented in different ways: a centralized service(development and testing) and distributed protocols(different network and node fault models)</li>
+<li>confidentiality of the transactions: the transaction content can be hashed or encrypted.</li>
+<li>Transactions are submitted via an interface to the ordering service.</li>
+</ul>
+</li>
+<li>validate transactions: consensus depends on the smart contract layer(because it contains the business logic behind what makes a transaction valid.)<ul>
+<li>validation errors: <ol>
+<li>syntax errors: invalid inputs, unverifiable signature, and repeated transaction (due to error or replay attacks) </li>
+<li>logic errors:  policy driven whether to continue processing or not. (Example: result in double-spend or versioning control failure. )</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="Problem2:interoperability_of_different_blockchains">Problem2:interoperability of different blockchains</h3><p>Problem description: We’ll find merit in many different blockchains.In many scenarios,different blockchains need communication with each other.</p>
+<p>Solution: </p>
+<h2 id="References">References</h2><p>[^ 2 ]: <a href="https://www.hyperledger.org/wp-content/uploads/2018/08/HL_Whitepaper_IntroductiontoHyperledger.pdf" target="_blank" rel="noopener">An Introduction to Hyperledger</a>Hyperledger介绍，基本信息，目标，当前项目，应用场景等。</p>
+<p>[^ 3 ]: <a href="https://www.hyperledger.org/wp-content/uploads/2018/02/Hyperledger-Overview_February-2018-2.pdf" target="_blank" rel="noopener">Hyperledger Overview</a>介绍内容的总结PPT</p>
+<p>[^ 4 ]: <a href="https://developer.ibm.com/cn/tv/2017/blockchain-and-hyperledger/" target="_blank" rel="noopener">开源技术微讲堂：区块链和 HyperLedger 系列</a></p>
+<p>[^ 5 ]: Hyperledger Architecture, Volume 1 Introduction to Hyperledger Business Blockchain Design Philosophy and Consensus</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">archives</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Technical_Analysis_of_Hyperledger"><span class="toc-number">1.</span> <span class="toc-text">Technical Analysis of Hyperledger</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Some_basic_information_about_Hyperledger[^_1_][^_2_]"><span class="toc-number">1.1.</span> <span class="toc-text">Some basic information about Hyperledger[^ 1 ][^ 2 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Current_Hyperledger_projects"><span class="toc-number">1.2.</span> <span class="toc-text">Current Hyperledger projects</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Technology_of_Hyperleger"><span class="toc-number">1.3.</span> <span class="toc-text">Technology of Hyperleger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Possible_improvement_in_Hyperledger"><span class="toc-number">1.4.</span> <span class="toc-text">Possible improvement in Hyperledger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hyperledger_design_philosophy_for_permissioned_blockchain_networks[^_5_]"><span class="toc-number">1.5.</span> <span class="toc-text">Hyperledger design philosophy for permissioned blockchain networks[^ 5 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hyperledger_consensus_technical_analysis[^_5_]"><span class="toc-number">1.6.</span> <span class="toc-text">Hyperledger consensus technical analysis[^ 5 ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#approach_optimizes_the_development_of_flexible,_interoperable_enterprise_blockchain_technologies"><span class="toc-number">1.7.</span> <span class="toc-text">approach optimizes the development of flexible, interoperable enterprise blockchain technologies</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#a_generalized_reference_architecture_for_consensus"><span class="toc-number">1.8.</span> <span class="toc-text">a generalized reference architecture for consensus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Technical_Analysis"><span class="toc-number">1.9.</span> <span class="toc-text">Technical Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem1:share_data_in_a_distributed_database"><span class="toc-number">1.9.1.</span> <span class="toc-text">Problem1:share data in a distributed database</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem2:_How_to_achieve_the_modular_feature_of_a_blockchain"><span class="toc-number">1.9.2.</span> <span class="toc-text">Problem2: How to achieve the modular feature of a blockchain</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem3:_How_to_achieve_the_interoperable_feature_of_a_blockchain"><span class="toc-number">1.9.3.</span> <span class="toc-text">Problem3: How to achieve the interoperable feature of a blockchain</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem4:_How_to_achieve_the_agreement_of_transaction_and_validation_of_transaction_in_Hyperledger?"><span class="toc-number">1.9.4.</span> <span class="toc-text">Problem4: How to achieve the agreement of transaction and validation of transaction in Hyperledger?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Problem2:interoperability_of_different_blockchains"><span class="toc-number">1.9.5.</span> <span class="toc-text">Problem2:interoperability of different blockchains</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">1.10.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&text=Technical Analysis of Hyperledger"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&title=Technical Analysis of Hyperledger"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&is_video=false&description=Technical Analysis of Hyperledger"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Technical Analysis of Hyperledger&body=Check out this article: http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&title=Technical Analysis of Hyperledger"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&title=Technical Analysis of Hyperledger"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&title=Technical Analysis of Hyperledger"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&title=Technical Analysis of Hyperledger"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://www.atopos.cc/2020/02/14/Technical Analysis of Hyperledger/&name=Technical Analysis of Hyperledger&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 DengShizhi
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives">archives</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<!-- clipboard -->
+
+  <script src="/lib/clipboard/clipboard.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight .code pre").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      target: function(trigger) {
+        return trigger.nextElementSibling;
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-101731332-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
