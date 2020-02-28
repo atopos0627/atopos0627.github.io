@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.atopos.cc/"/>
-  <updated>2020-02-26T11:21:00.000Z</updated>
+  <updated>2020-02-28T10:01:00.000Z</updated>
   <id>http://www.atopos.cc/</id>
   
   <author>
@@ -14,6 +14,130 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>跨链的技术实现研究</title>
+    <link href="http://www.atopos.cc/2020/02/28/%E8%B7%A8%E9%93%BE%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%A0%94%E7%A9%B6/"/>
+    <id>http://www.atopos.cc/2020/02/28/跨链的技术实现研究/</id>
+    <published>2020-02-28T01:09:00.000Z</published>
+    <updated>2020-02-28T10:01:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="跨链的技术实现研究">跨链的技术实现研究</h1><p>创建时间：2020年2月28日<br>更新时间：2020年2月28日<br>作者：ShizhiDeng<br>更新内容：</p>
+<ul>
+<li><p>2020-02-28 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 总结区块链扩容的三种方法：代议制、分层和分片，分片的四个难题和解决方案</span><br><span class="line">2. 区块链领域待解决的问题 Scalability Isolatability Developability  Governance  Applicability</span><br><span class="line">3. 区块链领域待解决问题的解决方案：一致性(canonicality)和有效性(validity)的分离</span><br><span class="line"></span><br><span class="line">参考文献：</span><br><span class="line">https://www.polkaworld.org/articles/mo-zi-chang-wen-shuo-tou-polkadotjia-gou-shang </span><br><span class="line">https://www.polkaworld.org/articles/mo-zi-chang-wen-shuo-tou-polkadotjia-gou-xia</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="区块链的扩容方案^_1">区块链的扩容方案<a href="https://www.polkaworld.org/articles/mo-zi-chang-wen-shuo-tou-polkadotjia-gou-shang" target="_blank" rel="noopener">^ 1 </a></h2><ul>
+<li>问题描述：区块链扩容问题，指的是能不能把 DApp 和中心化互联网应用的成本差距，从 100 万倍拉近到 10 万倍，1 万倍，甚至 1 千倍。同时仍然保持去信任、无许可和抗审查这三大好处。</li>
+<li><p>答案：方法有三类，也就是区块链扩容的三个思路——代议制、分层和分片</p>
+<ul>
+<li>第一个扩容思路——代议制<ul>
+<li>原理：代议制是人民选出代表，再由代表来议定法律或者重大决议。代议制提升决策效率有两个原因，第一是参与共识的人数大为减少，第二是代表通常是专职政治家，他们有更多的资源和知识来议定国家大事。</li>
+<li>采用代议制的区块链：用代议制的方式来做区块链扩容，最典型的是采用 DPoS 共识的 EOS。EOS 通证的持有者选出超级节点，21 个超级节点轮流出块。跟以太坊相比，参与共识的计算机数量下降了 3 个数量级。</li>
+<li>如果把是大部分身家都用加密货币来做长期价值存储，我首选比特币。如果是小额支付，或者打麻将、掷骰子，用 EOS 当然也没问题。在区块链世界，从去中心化程度最高的比特币和以太坊，到中心化程度最低的 EOS 和波场。</li>
+</ul>
+</li>
+<li>第二种扩容思路 —— 分层<ul>
+<li>原理：分层也称为二层扩容或者链下扩容，就是把一部分交易放到在区块链以外执行，同时仍然保障交易安全。</li>
+<li>技术划分：分层有状态通道和侧链（实现层面很类似）两类技术。还有一类二层技术，是把计算密集型任务转移到链下执行。</li>
+<li>侧链技术<ul>
+<li>SPV 是 Simplified Payment Verification 简单支付验证的缩写。为了让计算和存储能力有限的设备能够使用比特币的问题，才有了 SPV，或者叫轻客户端或者轻节点。（比如：手机钱包就是轻节点，使用了Merkle树）</li>
+<li>侧链方案就是把主链资产通证锁定，在侧链上对应地创造出通证承兑汇票，汇票交易在侧链执行，在侧链上得到汇票的人可以兑换主链通证。</li>
+<li>举例：以太坊 Plasma MVP 侧链方案，注意侧链本也是区块链，它有自己的共识协议和矿工，侧链采用的共识是 PoA 权威证明，就是一个 Operator 说了算，由它记账出块。PoA 当然不是唯一选择，Loom 的 Plasma 侧链采用的 DPoS 共识。侧链区块的区块头，都会由 Operator 提交给主链的 Plasma 合约。不论侧链一个区块含有多少笔交易，是 1 千笔还是 1 万笔，主链只发生了记录区块头一笔交易。所以主链上的 Plasma 合约，相当于是侧链的 SPV 轻节点，它存储了区块头，从而可以验证侧链交易是否存在。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第三种扩容思路 —— 分片<ul>
+<li>原理：别让所有的节点都执行所有的交易。把节点分成很多组，或者说分成很多片。多个分片可以并行处理交易，总体的处理能力就提高了。当然还需要一条特殊的链来看管所有的分片，这条一般称之为主链。</li>
+<li>分片扩容的基本思路非常简单，但实际做起来则面临很多复杂难题。<ul>
+<li>难题1:验证人选择。</li>
+<li>难题1的解决方案：验证人随机动态分组。<ul>
+<li>解决的方法是，分片的验证人分组不是固定的，而是随机选取，而且每隔一段时间就重新分组。这样恶意的验证人不能事先知道自己被分到哪个组，而贸然发送攻击会受到惩罚，因此系统的安全性就不会随着分片数量上升线性的下降。</li>
+<li>验证者随机动态分组的关键，是要有可靠的随机数，随机数一直是计算机科学中复杂而有趣的问题。去中心化地拜占庭容错地产生可靠随机数难度非常大，也是区块链研究的热点问题。</li>
+</ul>
+</li>
+<li>难题2:跨片交易完整性。</li>
+<li>难题2的解决方案：概率最终性==&gt;明确最终性。<ul>
+<li>分布式交易的完整性或者原子性：一个跨链交易要引起两条链乃至多条链的状态改变，而且这些改变要么都成功，要么都不成功，不存在中间状态。这跟企业计算里分布式交易的概念上非常类似。比如：从建行转账1万到农行，建行减去1万，农行增加1万，同时成功或者同时失败。</li>
+<li>这个问题在区块链中的复杂性：没有明确最终性（finality），就是交易打包到区块，有可能回滚，就是撤销。</li>
+<li>解决方法：要有机制让区块具有明确的最终性，不能含糊。</li>
+</ul>
+</li>
+<li>难题3：最终性 VS 活性</li>
+<li>难题3的解决方案：混合共识：出块和敲定（finalize）分开。<ul>
+<li>finalize 就是使区块具有最终性；liveness：出块停止了，或者说区块链丧失了活性 liveness。</li>
+<li>例如：Cosmos 的 Tentermint 共识，以太坊 2.0 和 Polkadot。</li>
+<li>解决方法：混合共识。节点可以继续出块，但没有足够的验证人，不能敲定，等达到条件再敲定。混合共识可以让个别节点轮番速度出块，敲定过程可以慢点。</li>
+</ul>
+</li>
+<li>难题4:交易有效性<ul>
+<li>交易有效性问题就是防止无效交易进入区块，成为区块链维护的历史真相的一部分。</li>
+</ul>
+</li>
+<li>难题4的解决方案：举报奖励。<br>例如：分片1上的诚实节点举报分片1上的区块B是恶意的。系统接受了举报，就会惩罚分片 1 里的恶意验证人，没收他们质押的通证，并向举报者提供奖励。所以为什么有的区块链，验证人要收回质押的通证，都需要等几个月。主要的原因就是给举报和证实举报留出足够的时间。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>三个扩容思路，每个都有多种实现，代表性项目如下。</p>
+<ul>
+<li>代议制扩容的代表是 EOS 和波场。</li>
+<li>分层扩容分为状态通道和侧链两个分支，状态通道的方案有 Celer Network、Counterfactual 等，侧链有 Loom、OmiseGo 等。</li>
+<li>分片的三个典型方案：Serenity、Polkadot 和 Cosmos 。</li>
+</ul>
+</li>
+</ul>
+<h2 id="区块链领域待解决的问题[^_2_]">区块链领域待解决的问题[^ 2 ]</h2><ol>
+<li>伸缩性(Scalability):全球范围内花费了多少计算、带宽和存储的资源，来处理单个交易?峰值情况下能处理多少交易? Polkadot</li>
+<li>隔离性(Isolatability):多参与方对于应用的差异化需求，能否在同一个框架下接近最优程度地满足? Polkadot</li>
+<li>开发性(Developability):工具的工作效果有多好?APIs是否已满足开发者的需求?教程资料是否可用?是否集成权力?</li>
+<li>治理性(Governance):网络是否保留了能够随着时间进化和适应的灵活性?制定决策能否高度地包容、合理和透明，来提供去中心化系统的高效领导力。</li>
+<li>应用性(Applicability):技术是否真的解决了用户的刚性需求?是否需要其他的中间件来嫁接真实的应用?</li>
+</ol>
+<h2 id="区块链领域待解决问题的解决方案[^_2_]">区块链领域待解决问题的解决方案[^ 2 ]</h2><ul>
+<li>波卡链的工作：针对上述问题1和问题2做了很多工作。扩展性 (extensibilty)和伸缩性(scalability)</li>
+<li>波卡认为针对一致性(canonicality)和有效性(validity)绑定的太紧密了。波卡的工作是提出了异构的多链架构，能从本质上把两者拆开。</li>
+<li>工作1:解耦底层的共识。<ul>
+<li>目标：分离一致性(canonicality)和有效性(validity)，同时保证基本功能（安全性和传输性）。或者说： 从状态转换中解耦底层的共识。</li>
+<li>方法：原生的支持内核可扩展(core extensibilty)的可行性方法。Polkadot的方法。</li>
+<li>前人方法1：更复杂的可伸缩方案：Chain fibers(by 以太坊的Max Kaye)。创造了：单个中继链(relay-chain)和多个同构链，可以透明地跨链执行的先例。退相干性(Decoherence)通过交易延迟(latency)来实现，这就使需要更长时间，来处理需要协调系统多个部分的交易。</li>
+<li>前人方法2:其他人的方法，功能性的解决而非本质层面的解决。归结为：丢弃或减少状态机全局相关性的系统、试图通过同构分片提供全局相关性的单例状态机系统、目标仅是异构性 (heterogeneity)的系统。</li>
+<li>前人工作3（没有全局状态的系统：Factom）:公证通(Factom)演示了个没有有效性的一致性系统，能够高效地记载数据。可以被看做是一个可伸缩的方案，严格上来说它只解决了很少的问题。</li>
+<li>前人工作4（没有全局状态的系统：Tangle）:Tangle 是个关于共识系统的概念性尝试。不把交易排序再打包到区块中，而是通过串联的共识得出一个全局的一致性状态改变排序，它在很大程度上抛弃了高度结构化的排序 想法，而是推出一个有向无环图</li>
+</ul>
+</li>
+<li>工作2：<ul>
+<li>目标：可伸缩性(scalability)问题</li>
+<li>思路：对这两个问题分而治之</li>
+<li>方法：通过非信任节点的激励机制，弱化他们的内生绑定关系。</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<p>[^ 2 ]:POLKADOT: VISION FOR A HETEROGENEOUS MULTI-CHAIN FRAMEWORK</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;跨链的技术实现研究&quot;&gt;跨链的技术实现研究&lt;/h1&gt;&lt;p&gt;创建时间：2020年2月28日&lt;br&gt;更新时间：2020年2月28日&lt;br&gt;作者：ShizhiDeng&lt;br&gt;更新内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;2020-02-28 &lt;/p&gt;
+&lt;figure cla
+    
+    </summary>
+    
+      <category term="区块链" scheme="http://www.atopos.cc/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+    
+      <category term="区块链" scheme="http://www.atopos.cc/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="跨链" scheme="http://www.atopos.cc/tags/%E8%B7%A8%E9%93%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>主流区块链的技术分析</title>
