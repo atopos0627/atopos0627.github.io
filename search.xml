@@ -3,6 +3,111 @@
   
     
     <entry>
+      <title><![CDATA[扩容和跨链通信协议的综述]]></title>
+      <url>/2020/03/19/%E6%89%A9%E5%AE%B9%E5%92%8C%E8%B7%A8%E9%93%BE%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%BB%BC%E8%BF%B0/</url>
+      <content type="html"><![CDATA[<h1 id="扩容和跨链通信协议的综述">扩容和跨链通信协议的综述</h1><h2 id="扩容">扩容</h2><p>拥堵的区块链网络俨然已经无法满足基本的交易需求，扩容势在必行。扩容指的是区块链领域内如何在“更短的时间实现更多的交易”，增强区块链的可扩展性（scalability）。可扩展性是指系统、网络或进程处理越来越多的工作的能力，或者适应增长而扩展的潜力。</p>
+<p>为了整体了解扩容技术的思路，先分析影响扩容的因素和瓶颈，目前，主流对区块链技术的逻辑架构分层是三层结构：Layer 0，Layer 1和Layer 2。<br>Layer 0： 是节点之间互相传递信息的通信层（传输层）。<br>Layer 1： 是多层结构（网络层，数据层，共识层），其核心是共识层。<br>Layer 2： 是搭建在 Layer 1 上的链层（合约层，应用层）。</p>
+<p>传输层：为区块链提供底层数据传输支撑。<br>数据层：封装了底层数据区块、链式结构、哈希函数、Merkle树、非对称加密和时间戳等技术，是区块链底层的数据结构。<br>网络层：包括分布式组网机制、数据传播机制和数据验证机制等。<br>共识层：封装了各类共识算法，解决在决策权分散的分布式系统中的共识问题，如 PoW、PoS、DPoS 和 BFT 类共识。<br>激励层：主要包括发行机制和分配机制等，解决对守约节点的奖励和对违约节点的惩罚问题。<br>合约层：封装各类脚本代码、算法机制和智能合约等，是区块链可编程特性的基础。<br>应用层：封装了区块链的各种应用场景和案例，如可编程货币、可编程金融和可编程社会等即搭建在应用层上。</p>
+<h3 id="Layer_1_扩容">Layer 1 扩容</h3><p>第 1 层扩容，即链上（On-Chain）扩容，通过优化、改进公链基本协议提升扩展性。具体包括数据层改进方案、网络层改进方案和共识层改进方案。</p>
+<h4 id="数据层改进方案">数据层改进方案</h4><p>通过提高区块的有效容量扩容：包括增加区块容量、分离交易数据从而提升有效区块容量、修改数据结构链式结构为网状结构等思路，即扩块、隔离验证（SegWit，segregated witness）和有向无环图（DAG，Directed Acyclic Graph）等方案。</p>
+<h5 id="扩块">扩块</h5><p>扩块方案即增加区块容量，从而单个区块包含的交易数量相应增加，实现扩容目的。以 BCH 为例，2017 年 BCH 区块大小提升至 8M，今年 5 月又再次提升至 32M。从理论上说，在平均区块间隔固定的情况下，网络 TPS 上限与区块大小成正比，BCH 今年九月进行的压力测试也证明其单个区块的交易承载能力高于 BTC。但由于之前提到的节点处理能力、算力中心化等问题，区块的大小不能无节制随意扩大。因此这种方式一方面对于效率提升有限，另一方面存在可能导致算力中心化的问题。</p>
+<h5 id="隔离验证（SegWit，segregated_witness）">隔离验证（SegWit，segregated witness）</h5><p>被打包进区块的交易数据包括数字签名（scriptSig）和其他交易信息，数字签名便占用了全部交易数据 60-70% 的空间，但是数字签名仅仅在验证阶段需要。隔离见证即隔离（segregate）数字签名（witness）与其他交易数据，提升单个区块所能容纳的交易数量，通过“缩小”交易数据变相扩大了区块大小，如 BTC 就是采用了隔离见证的扩容方式。同扩块方案一样，隔离见证对于处理效率的提升也是有限度的。</p>
+<h5 id="有向无环图（DAG，Directed_Acyclic_Graph）">有向无环图（DAG，Directed Acyclic Graph）</h5><p>DAG 是无回路的有向图，即从一个顶点沿着若干边前进（有向），但永远不能回到原点（无环）。以 IOTA 为例，节点发起交易时只需要找到网络中的任意两笔交易，验证它们的合法性，指向它们并广播到网络。这笔交易会以同样的方式被验证，被验证的次数越多，交易的状态就越稳定。<br>DAG 避免了因网络延迟和数据同步造成的时间浪费，可以做到高并发，存在的主要问题包括双花和影子链攻击等。</p>
+<h4 id="网络层改进方案">网络层改进方案</h4><h5 id="分片（Sharding）">分片（Sharding）</h5><p>分片是指将区块链分成不同部分，即多个分片，分片可以并行处理事务，从而提升了单位时间内处理交易的数量。</p>
+<p>Serenity、Polkadot 和 Cosmos都是分片的思路。</p>
+<h4 id="共识层改进方案">共识层改进方案</h4><p>共识算法本质上是解决三个问题：</p>
+<ol>
+<li>Who can propose the next change?</li>
+<li>Which set of changes is final?</li>
+<li>What happens if someone breaks the rules?</li>
+</ol>
+<p>大多数共识算法的瓶颈在于第1个问题和第2个问题即出块和敲定的紧耦合。</p>
+<p>共识层的改进方案包括拜占庭容错（BFT，Byzantine Fault Tolerance）类共识、非 BFT 类共识、混合共识（Hybird Consensus）和其他改进方案。</p>
+<h5 id="BFT_类共识">BFT 类共识</h5><p>不同于非 BFT 类共识的间接达成共识（即参与者并非直接决定共识的具体内容），BFT 类共识下，参与者通过投票决定共识内容直接达成共识，在参与者数量不是很多的情况下（一般 BFT 网络直接参与共识的节点在 100 个以内），TPS 可以达到 10000。</p>
+<p>非 BFT 类共识下存在分叉可能，以 BTC 为例，通常需要 6 个区块才能以很高的概率确认某个交易被网络确认，而在 BFT 共识下，达成一致的共识不会被丢弃，因此 BFT 的响应时间（交易从提出到被确认的时间）也明显优于非 BFT 类共识。BFT 类共识的主要问题在于网络规模、容错率等方面。</p>
+<h5 id="非_BFT_类共识">非 BFT 类共识</h5><p>通过降低共识算法复杂度和减少传播节点数量等方式减少验证时间、传播时间及形成共识时间，能够显著提升处理效率。</p>
+<p>PoS （Proof of Stake，权益证明）。相比于 PoW （Proof of Work，工作量证明），PoS 以权益（持有通证数量×通证持有时间）代替算力决定区块记账权，减少了 PoW 工作量证明过程的能源消耗，在一定程度上解决了可扩展性问题。但是又带来了马太效应、记账激励、无利害关系攻击（Nothing-at-Stake attack）等新的问题。</p>
+<p>DPoS （Delegeted Proof of Stake，委托权益证明）。DPoS 在 PoS 的基础上将记账人的角色专业化，通证持有人通过权益选出多个授权代表（EOS 有 21 个“超级节点”，Bitshares 有 101 位代表，理论上单数节点均可），授权代表轮流记账。这种共识下效率得到了明显提升，但是牺牲了非中心化。</p>
+<h5 id="混合共识">混合共识</h5><p>顾名思义，混合共识指结合了多种方式的共识机制。</p>
+<p>如 Elastico 采用工作量证明+拜占庭容错协议，2-hop 采用工作量证明+权益证明机制，Algorand 采用权益证明+拜占庭容错协议， Casper 采用了 PoW+PoS，EOS 采用了 DPoS+BFT。</p>
+<h5 id="其他共识修改方案">其他共识修改方案</h5><p>动态共识算法：目前,区块链大多只存在一种共识算法,当然也有的区块链采用两种或者多种共识算法串行运行的机制，即混合共识。单个共识机制或者多个共识机制的串行模式都会受到某些攻击威胁，因此设计动态的共识算法是未来的可能改进方向之一。</p>
+<p>算法和其他技术的结合：比如Prism，修改数据结构为有向无环图DAG，利用空间换时间的方法，同时产生多条链，再利用设计的投票机制确定最终链，实现了出块和敲定的分离。利用1000个虚拟机，可达到70000TPS。</p>
+<h3 id="Layer_2_扩容">Layer 2 扩容</h3><h4 id="状态通道">状态通道</h4><p>状态通道解决方案通过将链下交互和链上清算隔离开，能够在保障一定程度的非中心化和资产安全性的同时，实现速度更快、费用更低的交易。从一般到特殊分为通用状态通道、状态通道和支付通道三个层次。</p>
+<p>状态通道的扩容原理主要是链下交互、链上清算，避免将每一笔小额交易都放在链上进行，只需要把最终的状态提交到链上即可，减轻了链上的工作量。当双方均无异议可以很快完成清算，实现即时终结性（Instant Finality），此外由于在通道内进行链下交易，可实现较快的交易速度、较低的手续费，以及较好的隐私性。</p>
+<p>闪电网络（Lighting Network）和雷电网络（Raiden Network）就是采用了状态通道方案。典型的项目还有 Perun Network（支持链下智能合约的执行）、FunFair（基于状态通道的对赌游戏）。</p>
+<p>相比于链上扩容方案，状态通道巧妙地将链上和链下的职能分开，采用该方案无需改变公链结构，结合了链上的安全性和非中心化特性以及，链下的扩展性，但从整体生态来说，由于链上链下通信过程中可能存在的问题，状态通道依然属于安全性、非中心化和扩展性的一种新平衡。相比于其他链下扩容方案，状态通道的隐私性较好，可做到即时性，尤其适合于固定双方的高频互动，其劣势在于需要中间节点”垫付”资金、要求节点实时在线或需引入第三方来监督。</p>
+<p>状态通道中的状态指的是区块链账本当前的样子，包括账户名称（或 UTXO 模型的地址）、余额（或 UTXO 模型下的未花费交易输出）、合约数据等。<br>状态通道是在两方或多方之间开辟一条链下通道来进行状态交换，以实现较低的手续费和即时到账等特性。<br>利用状态通道交易的流程一般为：</p>
+<ol>
+<li>交易方在链上锁定一定量的资产，在区块链上记录并开辟状态通道；</li>
+<li>在通道内进行相互交易和状态更新，但不提交到链上；</li>
+<li>当任一方想要关闭通道时，提交最终状态到区块链上进行清算。若另一方有异议，可在规定时间内申请链上仲裁。</li>
+</ol>
+<h4 id="侧链">侧链</h4><p>侧链这一概念是相对主链而言的，通过将部分操作转移到侧链以解决主链的性能和功能瓶颈等问题。</p>
+<p>Plasma是典型的侧链思路，Plasma 是运行在根链（ETH 主链）上的一系列智能合约。Plasma 区块链为树状结构，每个分支为一条子链，一般情况下只将子链区块头的哈希值提交到根链，用于验证区块有效性。当有欺诈证明被提交到根链，区块会回滚并且惩罚区块创建者。由于根链只需要处理子链的少量提交，根链的交易负荷有效降低。</p>
+<p>侧链与状态通道的主要区别在于并非所有参与者都要在线更新状态，参与者也不需要把数据提交到根链执行和确认。<br>类似于法院体系中下级法院可同时处理多起案件，上级法院监督下级法院，当有人质疑下级法院的判决可以上诉。</p>
+<h4 id="跨链">跨链</h4><p>相比于侧链，跨链的概念更加广泛，跨链方案的主要目的是实现资产、状态等跨链转移交换，链与链之间不仅仅是主侧的关系。</p>
+<p>利用跨链技术实现区块链网络的方案有：Serenity、Polkadot 和 Cosmos。</p>
+<p>以 Cosmos 为例，其网络由 Hub （枢纽）和 Zone（分区）两部分组成，每个分区可以拥有多种通证，分区之间通过枢纽进行交易，因此跨链方案除了能够实现资产、状态的跨链转移交换，也可将链上交易转移至链下进行从而减轻链上交易处理压力。</p>
+<p>Cosmos 基于 Tendermint 共识，支持交易快速处理。Tendermint 共识过程与 BFT 类共识类似，开始时节点对新一轮的区块进行提议，合格的提议区块在预投票（Prevote）环节获得 2/3 以上投票则进入预认可（Precommit）环节，再次获得 2/3 以上的预认可后即获得正式认可（Commit）。</p>
+<h4 id="链下计算">链下计算</h4><p>链下计算最初针对 ETH 提出，由于 ETH 存在区块 GasLimit，计算量较大的交易消耗 gas 较多将导致拥堵（比如单个区块只能打包一笔交易）甚至无法执行（单笔交易消耗 gas 超过区块 GasLimit）。链下计算的思路是将复杂的交易放到链下执行，执行结果提交回链上，减轻链上处理压力。</p>
+<p>采用此类扩容方案的有：Truebit。</p>
+<h3 id="Layer_0_扩容">Layer 0 扩容</h3><p>Layer 0 扩容区别于 Layer 1，是因为通信层与共识层的差异。共识层是区块链的创造物，是去中心化的关键，而通信层则是互联网产物，是成熟产品。在区块链项目中，通信层是共识层的底层，服务于共识层。<br>Layer 0 扩容通过优化区块链底层数据传输协议提升区块链可扩展性，不改变区块链的上层架构。<br>Layer 0 扩容的重要技术包括：CDN和SDWAN。<br>目前采用此类方案的有：Marlin，bloXroute。</p>
+<p>例如bloXroute 通过提升节点间区块传播速度，从而在保证非中心化和安全性的基础上显著提升链上可扩展性。该项目通过提供 BDN （Blockchain Distribution Network，区块链分布网络）提升节点之间通讯的速度，改善节点同步情况，各节点通过 bloXroute 提供的 服务器接入 BDN 网络，运行网关作为区块链应用程序和 BDN 的中间媒介。</p>
+<h2 id="跨链技术">跨链技术</h2><p>在Layer 2 扩容中我们就讨论过跨链扩容，但跨链技术不仅仅能做扩容，跨链技术被认为是区块链领域发展的圣杯,是实现链联网的核心关键技术。</p>
+<p>跨链技术指的是跨区块链的通信和交互。跨链最基本的意义就是要实现价值的流通，解决不同链之间的价值孤岛问题。同时，跨链技术是区块链实现互联互通(interoperability)、提升可扩展性(scalability)的重要技术手段。通过可靠的跨链交易，能够在去中心化经济中实现真正的网络效应。</p>
+<p>通过跨链技术，可以实现以下目标：</p>
+<ol>
+<li>不同区块链之间的资产转移<br>尽管第三方交易平台能够提供不同区块链项目资产的转移与交换,但第三方交易平台的引入带来了新的中心化节点,不可避免地存在资产安全性、可信任性等问题.跨链确保了是用技术而非机构或人来提供安全、可靠、高效的链上资产转移途径。</li>
+<li>实现区块链资产的留置<br>类似于金融和法律领域的财产留置,区块链资产能够实现链上锁定冻结, 并设定某个区块链上的资产锁定条件、解锁条件,还可以与其他链的特定事件/行为进行关联;</li>
+<li>读取和验证其他链的状态或事件<br>自以太坊区块链问世以来,基于区块链的智能合约得到快速发展.在某个区块链上部署的智能合约,触发其执行的条件可能需要依赖于其他链的信息和数据,跨链数据访问在该应用场景中具有关键作用;</li>
+<li>提升区块链交易处理能力<br>区块链的可扩展性三难题基本法则表明,区块链只能兼顾去中心性、可扩展性和安全性中的两项。跨链通信是提供更高扩展性的技术路线之一.</li>
+</ol>
+<p>区块链应用场景的不断拓展以及区块链互联互通的潜在需求,促进了跨链技术的持续创新和进步.根据跨链技术的演进和实现方式,以太坊的创始人 Buterin 曾经总结了 3 类跨链技术——公证人机制(notary schemes)、侧链/中继(sidechains/relays)、哈希锁定(Hash-locking)。</p>
+<ul>
+<li><p>基于公证人机制的项目</p>
+<p>Interledger 早期版本以公证人机制为主实现不同类型账本的连接;Corda 的特色在于提供更安全的公证人选择(交易参与方共同指定)和操作模式(运行共识机制).</p>
+</li>
+<li><p>基于侧链(中继)的项目</p>
+<p>这类项目占比较高,其中,Pegged Sidechains 是侧链最初的技术原型,提出了双向楔入的概念</p>
+<p>RootStock,Elements 基于 BTC 侧链提供增强式智能合约功能。</p>
+<p>BTCRelay 与 Loom 均为基于 ETH 区块链的侧链,前者提供跨 BTC 与 ETH 的资产交换及智能合约应用,后者侧重构建基于 ETH 的分布式应用 DApp 开发部署环境。</p>
+<p>Lisk 则是通过搭建自有链提供 DApp 开发平台。</p>
+<p>Plasma 及其变种 Minimal Viable Plasma,Plasma Cash 设计了集成主链与侧链的树形分层网络框架。</p>
+<p>Polkadot 和 Cosmos 则分别设计了 Relay chain-Bridges-Parachains 结构和 Hub-Zone 结构的跨链网络基础平台。</p>
+</li>
+<li><p>基于哈希锁定机制的项目</p>
+<p>Nolan’s atomic transfers 为哈希锁定的技术原型。</p>
+<p>Zcash XCAT 已成功演示了 ZEC 和 BTC 的跨链交易。</p>
+<p>Lightning Network 致力于成为 BTC 主流链下扩容方案,上线版本已运行上千个主网节点和上万个通道,验证了技术的可行性。</p>
+</li>
+</ul>
+<p>系统内部跨链指跨链技术支持在区块链系统内部的子链(如 nano 区块链内部的账户链、ETH 区块链内部 的 sharding 链、rchain 中在不同命名空间运行的独立区块链)跨链。</p>
+<p>系统间跨链指支持不同区块链项目之间的跨链(如 BTCRelay 实现 ETH 与 BTC 的跨链、cosmos 原则上支持所有符合 cosmos 协议的区块链互联等)。</p>
+<p>跨链作用范围目前以区块链内部以及不同区块链之间为主,提供区块链与传统系统或协议之间交互的跨链项目较少 (interledger 支持分布式和传统中心化账本互联).</p>
+<p>跨链技术在不同时期也呈现出各自的特点.比特币区块链时代期间,主要提出了跨链的几种技术原型,并重点针对BTC区块链容量限制及交易手续费高等问题,发展出闪电网络、Pegged Sidechains等项目或技术;后比特币区块链时代时期,侧重于面向更多种应用场景,例如实现链上资产互换(去中心化交易所)、增强区块链系统的互操作性和可升级性、提供小型区块链系统(包括私有链、联盟链)的安全保障和价值传递等,探索具有更强扩展性的通用跨链技术.</p>
+<p>总体而言,跨链技术还处于发展过程中,部分跨链技术目前仅公布了技术思路构想,并正在研发或在区块链测试网中开展局部实验阶段,还没有完全实现方案中所列出的各项功能指标和技术特性,因此对跨链技术的安全性、效率、性能、资源消耗等方面开展横向评估较困难.从公开的白皮书或技术报告来看,上述跨链技术有些为基础协议型,有些为开发设计模式,有些是某区块链的侧链,或仅用于有限个区块链之间互联等,各跨链技术不适于通过同一维度进行分类.</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 区块链 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 区块链 </tag>
+            
+            <tag> 跨链 </tag>
+            
+            <tag> 扩容 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[跨链的技术实现研究]]></title>
       <url>/2020/02/28/%E8%B7%A8%E9%93%BE%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%A0%94%E7%A9%B6/</url>
       <content type="html"><![CDATA[<h1 id="跨链的技术实现研究">跨链的技术实现研究</h1><p>创建时间：2020年2月28日<br>更新时间：2020年2月28日<br>作者：ShizhiDeng<br>更新内容：</p>
@@ -144,45 +249,6 @@
         <categories>
             
             <category> 区块链 </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> 区块链 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[区块链和云计算]]></title>
-      <url>/2020/02/25/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%92%8C%E4%BA%91%E8%AE%A1%E7%AE%97/</url>
-      <content type="html"><![CDATA[<h1 id="区块链和云计算">区块链和云计算</h1><p>创建时间：2020年2月25日</p>
-<p>更新时间：2020年2月25日</p>
-<p>作者：ShizhiDeng</p>
-<p>更新内容：</p>
-<ul>
-<li><p>2020-02-25 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">阅读文献</span><br><span class="line">1. ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</span><br><span class="line">2. Blockchain as a Service for IoT</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="文献调研">文献调研</h2><ol>
-<li><p>ProvChain[^ 1 ]</p>
-<p>云数据的溯源问题：利用区块链技术，提出了一个去中心化和可信云数据溯源架构，将数据嵌入到区块链交易中，达到(1)溯源元数据采集(2)溯源元数据存储(3)溯源元数据验证。结果证明ProvChain为云存储应用提供了很多安全特性：包括防篡改来源，用户隐私和可靠性。</p>
-</li>
-<li><p>Blockchain as a Service for IoT [^ 2 ]<br>利用区块链的分布式和去中心化特征，区块链用于管理设备配置、存储传感器用于微支付。部署区块链技术的关键挑战是托管位置。 本文评估了作为托管平台的云和fog服务。</p>
-</li>
-</ol>
-<p>[^ 1 ]: <a href="https://www.researchgate.net/profile/Sachin_Shetty11/publication/317182541_ProvChain_A_Blockchain-Based_Data_Provenance_Architecture_in_Cloud_Environment_with_Enhanced_Privacy_and_Availability/links/5a832cd7aca272d6501c3a6f/ProvChain-A-Blockchain-Based-Data-Provenance-Architecture-in-Cloud-Environment-with-Enhanced-Privacy-and-Availability.pdf" target="_blank" rel="noopener">ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</a><br>[^ 2 ]: [Blockchain as a Service for IoT](</p>
-]]></content>
-      
-        <categories>
-            
-            <category> 区块链 </category>
-            
-            <category> 云计算 </category>
             
         </categories>
         
@@ -471,6 +537,45 @@
             <tag> 区块链 </tag>
             
             <tag> 共识算法 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[区块链和云计算]]></title>
+      <url>/2020/02/25/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%92%8C%E4%BA%91%E8%AE%A1%E7%AE%97/</url>
+      <content type="html"><![CDATA[<h1 id="区块链和云计算">区块链和云计算</h1><p>创建时间：2020年2月25日</p>
+<p>更新时间：2020年2月25日</p>
+<p>作者：ShizhiDeng</p>
+<p>更新内容：</p>
+<ul>
+<li><p>2020-02-25 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">阅读文献</span><br><span class="line">1. ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</span><br><span class="line">2. Blockchain as a Service for IoT</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="文献调研">文献调研</h2><ol>
+<li><p>ProvChain[^ 1 ]</p>
+<p>云数据的溯源问题：利用区块链技术，提出了一个去中心化和可信云数据溯源架构，将数据嵌入到区块链交易中，达到(1)溯源元数据采集(2)溯源元数据存储(3)溯源元数据验证。结果证明ProvChain为云存储应用提供了很多安全特性：包括防篡改来源，用户隐私和可靠性。</p>
+</li>
+<li><p>Blockchain as a Service for IoT [^ 2 ]<br>利用区块链的分布式和去中心化特征，区块链用于管理设备配置、存储传感器用于微支付。部署区块链技术的关键挑战是托管位置。 本文评估了作为托管平台的云和fog服务。</p>
+</li>
+</ol>
+<p>[^ 1 ]: <a href="https://www.researchgate.net/profile/Sachin_Shetty11/publication/317182541_ProvChain_A_Blockchain-Based_Data_Provenance_Architecture_in_Cloud_Environment_with_Enhanced_Privacy_and_Availability/links/5a832cd7aca272d6501c3a6f/ProvChain-A-Blockchain-Based-Data-Provenance-Architecture-in-Cloud-Environment-with-Enhanced-Privacy-and-Availability.pdf" target="_blank" rel="noopener">ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</a><br>[^ 2 ]: [Blockchain as a Service for IoT](</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 区块链 </category>
+            
+            <category> 云计算 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 区块链 </tag>
             
         </tags>
         
