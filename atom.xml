@@ -289,6 +289,53 @@
   </entry>
   
   <entry>
+    <title>区块链和云计算</title>
+    <link href="http://www.atopos.cc/2020/02/25/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%92%8C%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    <id>http://www.atopos.cc/2020/02/25/区块链和云计算/</id>
+    <published>2020-02-25T08:09:00.000Z</published>
+    <updated>2020-02-25T04:01:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="区块链和云计算">区块链和云计算</h1><p>创建时间：2020年2月25日</p>
+<p>更新时间：2020年2月25日</p>
+<p>作者：ShizhiDeng</p>
+<p>更新内容：</p>
+<ul>
+<li><p>2020-02-25 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">阅读文献</span><br><span class="line">1. ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</span><br><span class="line">2. Blockchain as a Service for IoT</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="文献调研">文献调研</h2><ol>
+<li><p>ProvChain[^ 1 ]</p>
+<p>云数据的溯源问题：利用区块链技术，提出了一个去中心化和可信云数据溯源架构，将数据嵌入到区块链交易中，达到(1)溯源元数据采集(2)溯源元数据存储(3)溯源元数据验证。结果证明ProvChain为云存储应用提供了很多安全特性：包括防篡改来源，用户隐私和可靠性。</p>
+</li>
+<li><p>Blockchain as a Service for IoT [^ 2 ]<br>利用区块链的分布式和去中心化特征，区块链用于管理设备配置、存储传感器用于微支付。部署区块链技术的关键挑战是托管位置。 本文评估了作为托管平台的云和fog服务。</p>
+</li>
+</ol>
+<p>[^ 1 ]: <a href="https://www.researchgate.net/profile/Sachin_Shetty11/publication/317182541_ProvChain_A_Blockchain-Based_Data_Provenance_Architecture_in_Cloud_Environment_with_Enhanced_Privacy_and_Availability/links/5a832cd7aca272d6501c3a6f/ProvChain-A-Blockchain-Based-Data-Provenance-Architecture-in-Cloud-Environment-with-Enhanced-Privacy-and-Availability.pdf" target="_blank" rel="noopener">ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</a><br>[^ 2 ]: [Blockchain as a Service for IoT](</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;区块链和云计算&quot;&gt;区块链和云计算&lt;/h1&gt;&lt;p&gt;创建时间：2020年2月25日&lt;/p&gt;
+&lt;p&gt;更新时间：2020年2月25日&lt;/p&gt;
+&lt;p&gt;作者：ShizhiDeng&lt;/p&gt;
+&lt;p&gt;更新内容：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;2020-02-25 &lt;/p&gt;
+&lt;fi
+    
+    </summary>
+    
+      <category term="区块链" scheme="http://www.atopos.cc/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+      <category term="云计算" scheme="http://www.atopos.cc/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
+    
+    
+      <category term="区块链" scheme="http://www.atopos.cc/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>区块链的共识算法</title>
     <link href="http://www.atopos.cc/2020/02/25/%E5%8C%BA%E5%9D%97%E9%93%BE%E7%9A%84%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95/"/>
     <id>http://www.atopos.cc/2020/02/25/区块链的共识算法/</id>
@@ -574,53 +621,6 @@
       <category term="区块链" scheme="http://www.atopos.cc/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
       <category term="共识算法" scheme="http://www.atopos.cc/tags/%E5%85%B1%E8%AF%86%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>区块链和云计算</title>
-    <link href="http://www.atopos.cc/2020/02/25/%E5%8C%BA%E5%9D%97%E9%93%BE%E5%92%8C%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-    <id>http://www.atopos.cc/2020/02/25/区块链和云计算/</id>
-    <published>2020-02-25T08:09:00.000Z</published>
-    <updated>2020-02-25T04:01:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="区块链和云计算">区块链和云计算</h1><p>创建时间：2020年2月25日</p>
-<p>更新时间：2020年2月25日</p>
-<p>作者：ShizhiDeng</p>
-<p>更新内容：</p>
-<ul>
-<li><p>2020-02-25 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">阅读文献</span><br><span class="line">1. ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</span><br><span class="line">2. Blockchain as a Service for IoT</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="文献调研">文献调研</h2><ol>
-<li><p>ProvChain[^ 1 ]</p>
-<p>云数据的溯源问题：利用区块链技术，提出了一个去中心化和可信云数据溯源架构，将数据嵌入到区块链交易中，达到(1)溯源元数据采集(2)溯源元数据存储(3)溯源元数据验证。结果证明ProvChain为云存储应用提供了很多安全特性：包括防篡改来源，用户隐私和可靠性。</p>
-</li>
-<li><p>Blockchain as a Service for IoT [^ 2 ]<br>利用区块链的分布式和去中心化特征，区块链用于管理设备配置、存储传感器用于微支付。部署区块链技术的关键挑战是托管位置。 本文评估了作为托管平台的云和fog服务。</p>
-</li>
-</ol>
-<p>[^ 1 ]: <a href="https://www.researchgate.net/profile/Sachin_Shetty11/publication/317182541_ProvChain_A_Blockchain-Based_Data_Provenance_Architecture_in_Cloud_Environment_with_Enhanced_Privacy_and_Availability/links/5a832cd7aca272d6501c3a6f/ProvChain-A-Blockchain-Based-Data-Provenance-Architecture-in-Cloud-Environment-with-Enhanced-Privacy-and-Availability.pdf" target="_blank" rel="noopener">ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</a><br>[^ 2 ]: [Blockchain as a Service for IoT](</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;区块链和云计算&quot;&gt;区块链和云计算&lt;/h1&gt;&lt;p&gt;创建时间：2020年2月25日&lt;/p&gt;
-&lt;p&gt;更新时间：2020年2月25日&lt;/p&gt;
-&lt;p&gt;作者：ShizhiDeng&lt;/p&gt;
-&lt;p&gt;更新内容：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;2020-02-25 &lt;/p&gt;
-&lt;fi
-    
-    </summary>
-    
-      <category term="区块链" scheme="http://www.atopos.cc/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-      <category term="云计算" scheme="http://www.atopos.cc/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/%E4%BA%91%E8%AE%A1%E7%AE%97/"/>
-    
-    
-      <category term="区块链" scheme="http://www.atopos.cc/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
   </entry>
   
