@@ -3,6 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -153,23 +154,50 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="主流区块链的技术分析">主流区块链的技术分析</h1><p>创建时间：2020年2月26日</p>
-<p>更新时间：2020年2月26日</p>
-<p>作者：ShizhiDeng</p>
-<p>更新内容：</p>
-<ul>
-<li><p>2020-02-26 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Corda针对扩展性问题所做的工作</span><br><span class="line">2. Hyperledger的技术架构</span><br><span class="line">3. 闪电网络的思想和针对扩展性问题做的工作</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Corda">Corda</h2><ol>
-<li>针对扩展性问题，Corda的技术思想、解决方法和效果</li>
-</ol>
-<p><img src="Corda.png" alt="Corda"></p>
-<h2 id="Hyperledger">Hyperledger</h2><p><img src="Hyperledger.png" alt="Hyperledger"></p>
-<h2 id="Lighting_Network">Lighting Network</h2><p><img src="LightingNetwork.png" alt="LightingNetwork"></p>
-
+  <div id="pwd-gate" style="max-width:420px;margin:48px auto;text-align:center;font-family:inherit;">
+    <p style="margin-bottom:16px;color:#666;">这篇内容已加密，输入密码查看。</p>
+    <input id="pwd-gate-input" type="password" placeholder="密码" style="padding:8px 12px;width:200px;border:1px solid #ccc;border-radius:4px;">
+    <button id="pwd-gate-btn" style="padding:8px 16px;margin-left:8px;border:1px solid #333;border-radius:4px;background:#333;color:#fff;cursor:pointer;">解锁</button>
+    <p id="pwd-gate-err" style="color:#c00;margin-top:12px;display:none;">密码不对，再试一下。</p>
   </div>
+  <div id="pwd-gate-content" style="display:none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  <script>
+  (function(){
+    var CIPHER = "U2FsdGVkX1+gPvJZeYC1Y2L2dbgAElq9HwpXeyik/S+R4J5ZYbib51/tWIt1DhMrLGOQmUx05JXF+6+AKbI6iFJVGESfG67KcNYwWy1L1LmKhOEMZx7x/VWqUH48pVqMDiOFy+j/Fcr6OHDcgVcfb+lkNc0z7Xd9z3PYHPtuaMxpvRUvvJgqMVvotRqKliyXacnIwuxMGwYPSv25Ik30R71c/RDCdVi4e0MHpepvEc/RMgPAcJRctGm3tk74ScVOSqSQM/MMVfRgRX8T7Izh+FLCKCBbk53O+fqDDdlQHb5T6Zidzj9HkeAxQZVjn5cmCPjwvO/lx8akvLzCDqfJDs+Dnaz+MonxmGwtCLBWFxQNZfGUY/a2ju+G0+Oq8U3QQmDP8xqGknC4So4KqxoVqupZD+cvvfKWYxlnLD+R5ADAD4IycbHdBKgUuVfMBbcJGBjEWSEc6fxwtC6IB7RRiH1lruetvOmeM8eC/DD+bya/r/2+kCVl51KeGynChQuqfn3Yp7FHV5cYbnd8CViOFvcHAP7xsIrIQ6+nr+c0QfxOCq6eHCqpXkC8NMrgvwF7fNpOTd43620s92czxmezd4AyobceNl2lLtUHtGpX+lTRu802jDqYYNydoulC92r60gvivQ019a0eOc9yOZ+dEtNYLvHFsnWlfCx2rfZcpucOFptCd1t7lv+3ZF2DgYgMfyLRtwhoT9Q8xo1P7g/3C3KcPLSioLpzt9eFaN0YeyQNUxNVSsqR/iLkXwO3TRa0QlJXBJo9miLqB5qZPK7jz15KJ6wDjjkZc7V/X0BfLxIWp0zWZJ5YrbtEHLB2oGeOZMVTau3zRwB4NvrYqO5ivJvkM6oQQXgWzPRga5orboz/nES7IhmuwfhXWMjix+rYRbMDNRX3e2bPhGuTFGWoauDFiJrta1q/KweWdoznimj2oitei3BGOu5pAVWP67MMXzyHCdGu98peZRkly5zRI7fpMCk6nw+Qw/hfIY0bi8B6cohvEV8zmtdDdWmUkTCisUg9UplDHhvkiHGity+sCBm8lNi2/gu87HDSYqU8MN3l7Xd1S+89uCFh8GZ/IrglBZJPY8lFEs00RehpttaemCNbNnyFaHxj4Ow8txZXD6MZYoI74pBSOcOOrB1yh7+wPN/Ml7h/pQ8CdJF/Z+w8PTG+4xRrKtH9TqMbt0sHMIMFLB+CDcuTvC+76nRij0agE8q5F0qYtaEk44M6OhtnRvg3cywTfRVAxOY400rdAcccBAonrC7XMsUWIPcqK6XmWPhpiHWyhJwtpLurnVHKCzIrqONpxdmZrBA2n3nE6nZtWZlyJ0DngyqyFM5NEkNehYf4yf/pWwtpV54Z/OVFWSzt2f4A/Gi4+c3Zo48z0kRNWrxMOzLdnRQYKy31Pb7pKJu0/2aIRxinFUY3mGBxpg==";
+    var gate = document.getElementById('pwd-gate');
+    var content = document.getElementById('pwd-gate-content');
+    var input = document.getElementById('pwd-gate-input');
+    var btn = document.getElementById('pwd-gate-btn');
+    var err = document.getElementById('pwd-gate-err');
+    function tryUnlock(pwd) {
+      try {
+        var bytes = CryptoJS.AES.decrypt(CIPHER, pwd);
+        var plain = bytes.toString(CryptoJS.enc.Utf8);
+        if (!plain) throw new Error('empty');
+        content.innerHTML = plain;
+        gate.style.display = 'none';
+        content.style.display = '';
+        try { localStorage.setItem('blogArchivePwd', pwd); } catch (e) {}
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    try {
+      var saved = localStorage.getItem('blogArchivePwd');
+      if (saved && tryUnlock(saved)) return;
+    } catch (e) {}
+    btn.addEventListener('click', function(){
+      if (!tryUnlock(input.value)) {
+        err.style.display = '';
+      }
+    });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') btn.click();
+    });
+  })();
+  </script></div>
 </article>
 
 

@@ -3,6 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -77,41 +78,50 @@
 
         
         <div id="archive">
-  <ul class="post-list">
-    
-    
-    
-    
-      
-      
-      
-      
-        <h2>2019</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2019-11-06T08:04:00.000Z" itemprop="datePublished">2019-11-06</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2019/11/06/我的随笔/">我的随笔</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
-  
-
-</div>
+  <div id="pwd-gate" style="max-width:420px;margin:48px auto;text-align:center;font-family:inherit;">
+    <p style="margin-bottom:16px;color:#666;">这篇内容已加密，输入密码查看。</p>
+    <input id="pwd-gate-input" type="password" placeholder="密码" style="padding:8px 12px;width:200px;border:1px solid #ccc;border-radius:4px;">
+    <button id="pwd-gate-btn" style="padding:8px 16px;margin-left:8px;border:1px solid #333;border-radius:4px;background:#333;color:#fff;cursor:pointer;">解锁</button>
+    <p id="pwd-gate-err" style="color:#c00;margin-top:12px;display:none;">密码不对，再试一下。</p>
+  </div>
+  <div id="pwd-gate-content" style="display:none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  <script>
+  (function(){
+    var CIPHER = "U2FsdGVkX18jNAGkEdks64NvBd2yIz0DXnMGsiNNTFpZKaGvNqAeEYaKpQHcW4Daz7K+z7TN1hZ7aHQLuCqEpNXkd3KlTlkMUxiZxWuXGVkF4By37tFwrzlDzbic7t5/kX9zz/6DxIlca9OtHrxjAs1sjPsJrZMk/0gx4AnPcAuF1RnXiitPvm7Vn8XLmO98EI8YAFoFGr9j1s3Xw4+dyCyMDq5O1QG9pzY4hyDz2Zv5V1Xl/NMkbdPWMpVL7H/DUgyTPjHusRyLkI6T/piVuYP/em6IEpsfyY8OV0xkFJtCqt23u/gwfvGHmkYyFTh56ds75zgX+mVp4xlD5jzSYxKjQFyh14SyQvV8T6atclvlksTCpwoCesZ9QYEWOtUZTIEFxpQDtdt3VK4ggw/Tnw6rLtfmoKosgYjWoArCemTCXrWdFN6+fzkJBIHdEABKx0E6LbbAM+XbnKDgf0LdfL1vaVoxhokziKSRdMTwxn7ZZxEUhriEHCTxHq5ZF8fQAk3DKd6cT8eo+D3j8KQM668OZ51NED4Apsj/Va0IEylY0GHSS91HFGNlHzl5/Gg9fEUTiFTzdNQ1aU8RR4dKv5mPUWt7ONQygyol8HlbJtU=";
+    var gate = document.getElementById('pwd-gate');
+    var content = document.getElementById('pwd-gate-content');
+    var input = document.getElementById('pwd-gate-input');
+    var btn = document.getElementById('pwd-gate-btn');
+    var err = document.getElementById('pwd-gate-err');
+    function tryUnlock(pwd) {
+      try {
+        var bytes = CryptoJS.AES.decrypt(CIPHER, pwd);
+        var plain = bytes.toString(CryptoJS.enc.Utf8);
+        if (!plain) throw new Error('empty');
+        content.innerHTML = plain;
+        gate.style.display = 'none';
+        content.style.display = '';
+        try { localStorage.setItem('blogArchivePwd', pwd); } catch (e) {}
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    try {
+      var saved = localStorage.getItem('blogArchivePwd');
+      if (saved && tryUnlock(saved)) return;
+    } catch (e) {}
+    btn.addEventListener('click', function(){
+      if (!tryUnlock(input.value)) {
+        err.style.display = '';
+      }
+    });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') btn.click();
+    });
+  })();
+  </script></div>
 
         
         <footer id="footer">

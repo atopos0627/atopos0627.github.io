@@ -3,6 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -153,163 +154,50 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="Technical_Analysis_of_Hyperledger">Technical Analysis of Hyperledger</h1><p>CreateDate: 2020-02-14<br>UpdateDate: 2020-02-27<br>Author: ShizhiDeng<br>Update content:</p>
-<ul>
-<li><p>2020-02-27</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">完成Hyperledger技术分析多个主题：比如基本信息、技术架构、技术分析之解决的</span><br><span class="line">问题1：在分布式数据库中如何分享数据。</span><br><span class="line">问题2:如何实现Hyperledger的模块化特性。</span><br><span class="line">问题3：Hyperledger如何实现交易的一致性和有效性，也就是共识算法的技术细节</span><br><span class="line"></span><br><span class="line">参考文献</span><br><span class="line">1. An Introduction to Hyperledger</span><br><span class="line">2. Hyperledger Architecture, Volume 1 Introduction to Hyperledger Business Blockchain Design Philosophy and Consensus</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Some_basic_information_about_Hyperledger[^_1_][^_2_]">Some basic information about Hyperledger[^ 1 ][^ 2 ]</h2><ul>
-<li>What is Hyperledger<br>  Hyperledger is an open source collaborative effort created to advance cross-industry blockchain technologies. It is a global collaboration, hosted by The Linux Foundation, including leaders in finance, banking, Internet of Things, supply chains, manufacturing, and Technology.</li>
-<li>Some numbers about Hyperledger<br>  Hyperledger began in 2015.<br>  As of publication date, Hyperledger has more than 230 organizations as members—from Airbus to VMware—as well as 10 projects with 3.6 million lines of code, 10 active working groups, and close to 28,000 participants who have come to 110+ meetups around the world. Through 2017, the project was mentioned in the press an average of 1,500 times a month.</li>
-<li>Current Hyperledger projects: Frameworks and Tools<br>The Hyperledger greenhouse structure is shown in the figure 1 as following:<br><img src="THE HYPERLEDGER GREENHOUSE STRUCTURE.png" alt="THE HYPERLEDGER GREENHOUSE STRUCTURE" style="zoom:40%;"></li>
-<li><p>Hyperledger Design Philosophy<br>  We recognize that different enterprise scenarios have different requirements for confirmation times, decentralization, trust, and other issues, and that each issue represents a potential “optimization point” for the technology.<br>  All Hyperledger projects follow the same design philosophy. All our projects must be:</p>
-<ul>
-<li>Modular</li>
-<li>Highly secure</li>
-<li>Interoperable</li>
-<li>Cryptocurrency-agnostic</li>
-<li><p>Complete with APIs</p>
-<p><img src="THE HYPERLEDGER DESIGN PHILOSOPHY.png" alt="THE HYPERLEDGER DESIGN PHILOSOPHY" style="zoom: 50%;"></p>
-</li>
-</ul>
-</li>
-<li>Hyperledger Goals[^ 3 ]<ul>
-<li>Create enterprise grade, open source, distributed ledger frameworks &amp; code bases to support business transactions.</li>
-<li>Provide neutral, open, &amp; community-driven infrastructures supported by technical and business governance.</li>
-<li>Build technical communities to develop blockchain and shared ledger POCs, use cases, field trials and deployments.</li>
-<li>Educate the public about the market opportunity for blockchain technology.</li>
-<li>Promote our community of communities taking a toolkit approach with many platforms and frameworks.</li>
-</ul>
-</li>
-<li>Why open source for blockchain?<ul>
-<li>Competitive features and capabilities</li>
-<li>No vendor lock-in, so customers can easily switch</li>
-<li>High-quality solutions</li>
-<li>The ability to customize and fix bugs, through access to source code</li>
-<li>Lower total cost of ownership</li>
-<li>some popular open source projects:Linux,Apache web server,MySQL,Fiox</li>
-</ul>
-</li>
-<li>Application scenario of Hyperledger<ul>
-<li>Banking—applying for a loan</li>
-<li>Financial services—post-trade processing</li>
-<li>Healthcare—credentialing physicians</li>
-<li>IT—managing portable identities</li>
-<li>Supply chain management—tracking fish from ocean to table</li>
-</ul>
-</li>
-</ul>
-<h2 id="Current_Hyperledger_projects">Current Hyperledger projects</h2><ul>
-<li><p>Current Hyperledger projects: Frameworks<br>  Hyperledger incubates and promotes a range of business blockchain technologies, including:</p>
-<ul>
-<li>Distributed ledger frameworks</li>
-<li>Smart contract engines</li>
-<li>Client libraries</li>
-<li>Graphical interfaces</li>
-<li>Utility libraries</li>
-<li><p>Sample applications</p>
-<p>Summary of Hyperledger Frameworks:</p>
-<p>| Hyperledger Frameworks |                         Description                          |<br>| :——————————: | :—————————————————————————————: |<br>|   HYPERLEDGER BURROW   | A modular blockchain client with a permissioned smart contract interpreter developed in part to the specifications of the Ethereum Virtual Machine (EVM). |<br>|   HYPERLEDGER FABRIC   | A platform for building distributed ledger solutions with a modular architecture that delivers a high degree of confidentiality, flexibility, resiliency, and scalability. This enables solutions developed with Fabric to be adapted for any industry. |<br>|    HYPERLEDGER INDY    | A distributed ledger that provides tools, libraries, and reusable components purpose-built for decentralized identity. |<br>|   HYPERLEDGER IROHA    | A blockchain framework designed to be simple and easy to incorporate into enterprise infrastructure projects. |<br>|  HYPERLEDGER SAWTOOTH  | A modular platform for building, deploying, and running distributed ledgers. Sawtooth features a new type of consensus, proof of elapsed time (PoET) which consumes far fewer resources than proof of work (PoW). |</p>
-</li>
-</ul>
-</li>
-<li><p>Current Hyperledger projects: Tools<br>Hyperledger incubates and promotes a range of business blockchain technologies, including tools and utility libraries.</p>
-<p>The Hyperledger strategy encourages the re-use of common building blocks, enables rapid innovation of components, and promotes interoperability between projects.</p>
-<p>Summary of Hyperledger Tools:</p>
-<p>| Hyperledger Frameworks |                         Description                          |<br>| :——————————: | :—————————————————————————————: |<br>|  HYPERLEDGER CALIPER   | A blockchain benchmark tool that measures the performance of any blockchain by using a set of predefined use cases. |<br>|   HYPERLEDGER CELLO    | A set of tools to bring the on-demand deployment model to the blockchain ecosystem with automated ways to provision and manage blockchain operations that reduce effort. |<br>|  HYPERLEDGER COMPOSER  | An open development toolset and framework to make developing blockchain applications easier. |<br>|  HYPERLEDGER EXPLORER  | A dashboard for viewing information on the network, including blocks, node logs, statistics, smart contracts, and transactions. |<br>|   HYPERLEDGER QUILT    | A set of tools that offer interoperability by implementing ILP, which is primarily a payments protocol designed to transfer value across distributed and non-distributed ledgers. |</p>
-</li>
-</ul>
-<h2 id="Technology_of_Hyperleger">Technology of Hyperleger</h2><p>All Hyperledger projects follow a design philosophy that includes a modular extensible approach, interoperability, an emphasis on highly secure solutions, a token-agnostic approach with no native cryptocurrency, and the development of a rich and easy-to- use Application Programming Interface (API). The Hyperledger Architecture WG has distinguished the following business blockchain components:</p>
-<ul>
-<li>Consensus Layer - Responsible for generating an agreement on the order and confirming the correctness of the set of transactions that constitute a block.</li>
-<li>Smart Contract Layer - Responsible for processing transaction requests and determining if transactions are valid by executing business logic.<ul>
-<li>Hyperledger Burrow - Smart contract application engine</li>
-<li>Hyperledger Fabric - Chaincode</li>
-<li>Hyperledger Indy - None</li>
-<li>Hyperledger Iroha2 - Chaincode</li>
-<li>Hyperledger Sawtooth - Transaction familiesc</li>
-</ul>
-</li>
-<li>Communication Layer - Responsible for peer-to-peer message transport between the nodes that participate in a shared ledger instance.</li>
-<li>Data Store Abstraction - Allows different data-stores to be used by other modules.</li>
-<li>Crypto Abstraction - Allows different crypto algorithms or modules to be swapped out without affecting other modules.</li>
-<li>Identity Services - Enables the establishment of a root of trust during setup of a blockchain instance, the enrollment and registration of identities or system entities during network operation, and the management of changes like drops, adds, and revocations. Also, provides authentication and authorization.</li>
-<li>Policy Services - Responsible for policy management of various policies specified in the system, such as the endorsement policy, consensus policy, or group management policy. It interfaces and depends on other modules to enforce the various policies.</li>
-<li>APIs - Enables clients and applications to interface to blockchains.</li>
-<li><p>Interoperation - Supports the interoperation between different blockchain instances.</p>
-<p><img src="Hyperledger.png" alt="Hyperledger"></p>
-</li>
-</ul>
-<h2 id="Possible_improvement_in_Hyperledger">Possible improvement in Hyperledger</h2><ul>
-<li>The future of blockchain(Hyperledger Participants’ opinion)<ul>
-<li>modular</li>
-<li>open-source </li>
-<li>easy to use. </li>
-</ul>
-</li>
-</ul>
-<h2 id="Hyperledger_design_philosophy_for_permissioned_blockchain_networks[^_5_]">Hyperledger design philosophy for permissioned blockchain networks[^ 5 ]</h2><h2 id="Hyperledger_consensus_technical_analysis[^_5_]">Hyperledger consensus technical analysis[^ 5 ]</h2><ul>
-<li></li>
-</ul>
-<h2 id="approach_optimizes_the_development_of_flexible,_interoperable_enterprise_blockchain_technologies">approach optimizes the development of flexible, interoperable enterprise blockchain technologies</h2><h2 id="a_generalized_reference_architecture_for_consensus">a generalized reference architecture for consensus</h2><h2 id="Technical_Analysis">Technical Analysis</h2><p>The road of technical analysis accord to following route. Especially, the problems that I list below are common and basic:</p>
-<ol>
-<li>What is the problem?</li>
-<li>Technical solution of the problem.</li>
-<li>Evaluation of the solution.</li>
-<li>My solution and thinking into the problem. </li>
-</ol>
-<h3 id="Problem1:share_data_in_a_distributed_database">Problem1:share data in a distributed database</h3><ul>
-<li><p>Problem description: Many people will want to share data in a distributed database, but no single owner will be trusted by every user.</p>
-</li>
-<li><p>Solution: distributed ledger technology (DLT). </p>
-</li>
-<li><p>Difficulty: Security,privacy and performance are incompatible.So no one blockchain will work best for all applications.It suggests that we’ll need a variety of different blockchains that can all communicate and interact seamlessly. </p>
-</li>
-<li><p>The concerns according to above analysis: modular and interoperable.</p>
-</li>
-</ul>
-<h3 id="Problem2:_How_to_achieve_the_modular_feature_of_a_blockchain">Problem2: How to achieve the modular feature of a blockchain</h3><ol>
-<li>Solution1: work by Hyperledger <ul>
-<li>分层：包括共识层、智能合约层、通信层、数据存储抽象、加密抽象、认证服务、策略服务、API、交互操作等</li>
-<li>针对私有链business blockchain，hyperledger共识层也分成了两部分：1. Ordering of transactions 2. Validating transactions</li>
-</ul>
-</li>
-</ol>
-<h3 id="Problem3:_How_to_achieve_the_interoperable_feature_of_a_blockchain">Problem3: How to achieve the interoperable feature of a blockchain</h3><h3 id="Problem4:_How_to_achieve_the_agreement_of_transaction_and_validation_of_transaction_in_Hyperledger?">Problem4: How to achieve the agreement of transaction and validation of transaction in Hyperledger?</h3><ul>
-<li>Solution: Consensus in Hyperledger frameworks.</li>
-<li>Consensus(Hyperledger business blockchain frameworks) is divided to two seperate activities: <ol>
-<li>Ordering of transactions </li>
-<li>Validating transactions</li>
-</ol>
-</li>
-<li>The consensus process flow:<ol>
-<li>receiving the transactions from the client application. </li>
-<li>ordering service: order transactions<ul>
-<li>can be implemented in different ways: a centralized service(development and testing) and distributed protocols(different network and node fault models)</li>
-<li>confidentiality of the transactions: the transaction content can be hashed or encrypted.</li>
-<li>Transactions are submitted via an interface to the ordering service.</li>
-</ul>
-</li>
-<li>validate transactions: consensus depends on the smart contract layer(because it contains the business logic behind what makes a transaction valid.)<ul>
-<li>validation errors: <ol>
-<li>syntax errors: invalid inputs, unverifiable signature, and repeated transaction (due to error or replay attacks) </li>
-<li>logic errors:  policy driven whether to continue processing or not. (Example: result in double-spend or versioning control failure. )</li>
-</ol>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="Problem2:interoperability_of_different_blockchains">Problem2:interoperability of different blockchains</h3><p>Problem description: We’ll find merit in many different blockchains.In many scenarios,different blockchains need communication with each other.</p>
-<p>Solution: </p>
-<h2 id="References">References</h2><p>[^ 2 ]: <a href="https://www.hyperledger.org/wp-content/uploads/2018/08/HL_Whitepaper_IntroductiontoHyperledger.pdf" target="_blank" rel="noopener">An Introduction to Hyperledger</a>Hyperledger介绍，基本信息，目标，当前项目，应用场景等。</p>
-<p>[^ 3 ]: <a href="https://www.hyperledger.org/wp-content/uploads/2018/02/Hyperledger-Overview_February-2018-2.pdf" target="_blank" rel="noopener">Hyperledger Overview</a>介绍内容的总结PPT</p>
-<p>[^ 4 ]: <a href="https://developer.ibm.com/cn/tv/2017/blockchain-and-hyperledger/" target="_blank" rel="noopener">开源技术微讲堂：区块链和 HyperLedger 系列</a></p>
-<p>[^ 5 ]: Hyperledger Architecture, Volume 1 Introduction to Hyperledger Business Blockchain Design Philosophy and Consensus</p>
-
+  <div id="pwd-gate" style="max-width:420px;margin:48px auto;text-align:center;font-family:inherit;">
+    <p style="margin-bottom:16px;color:#666;">这篇内容已加密，输入密码查看。</p>
+    <input id="pwd-gate-input" type="password" placeholder="密码" style="padding:8px 12px;width:200px;border:1px solid #ccc;border-radius:4px;">
+    <button id="pwd-gate-btn" style="padding:8px 16px;margin-left:8px;border:1px solid #333;border-radius:4px;background:#333;color:#fff;cursor:pointer;">解锁</button>
+    <p id="pwd-gate-err" style="color:#c00;margin-top:12px;display:none;">密码不对，再试一下。</p>
   </div>
+  <div id="pwd-gate-content" style="display:none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  <script>
+  (function(){
+    var CIPHER = "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";
+    var gate = document.getElementById('pwd-gate');
+    var content = document.getElementById('pwd-gate-content');
+    var input = document.getElementById('pwd-gate-input');
+    var btn = document.getElementById('pwd-gate-btn');
+    var err = document.getElementById('pwd-gate-err');
+    function tryUnlock(pwd) {
+      try {
+        var bytes = CryptoJS.AES.decrypt(CIPHER, pwd);
+        var plain = bytes.toString(CryptoJS.enc.Utf8);
+        if (!plain) throw new Error('empty');
+        content.innerHTML = plain;
+        gate.style.display = 'none';
+        content.style.display = '';
+        try { localStorage.setItem('blogArchivePwd', pwd); } catch (e) {}
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    try {
+      var saved = localStorage.getItem('blogArchivePwd');
+      if (saved && tryUnlock(saved)) return;
+    } catch (e) {}
+    btn.addEventListener('click', function(){
+      if (!tryUnlock(input.value)) {
+        err.style.display = '';
+      }
+    });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') btn.click();
+    });
+  })();
+  </script></div>
 </article>
 
 

@@ -3,6 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -176,265 +177,50 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="区块链的共识算法">区块链的共识算法</h1><p>创建时间：2020年2月18日</p>
-<p>更新时间：2020年2月26日</p>
-<p>作者：ShizhiDeng</p>
-<p>更新内容：</p>
-<ul>
-<li><p>2020-02-25 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">重新生成每个算法的总结图，重新整理文章，并发布</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>2020-02-26</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 投票直接形成共识的BFT类</span><br><span class="line">2. 选举代理人间接参与共识的代理类</span><br><span class="line">3. DAG类共识</span><br></pre></td></tr></table></figure>
-<ul>
-<li>2020-02-27</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  1. 我的思考更新</span><br><span class="line">  2. 增加共识算法的分类方法2 更新hyperledger部分</span><br><span class="line">  3. Consensus in Hyperledger Fabric(Kafka in Fabric v1)</span><br><span class="line">4. Consensus in Hyperledger Indy (based on RBFT)</span><br><span class="line">  5. Consensus in Hyperledger Iroha(Sumeragi:based on BFT)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="我的思考（持续更）">我的思考（持续更）</h2><ul>
-<li>Why consensus?<br>The goal of consensus is to generate an agreement on the order and to validate the correctness of the set of transactions that constitute the block.<ul>
-<li>agreement of transaction</li>
-<li>validation of transaction</li>
-</ul>
-</li>
-<li>Core function of consensus<ul>
-<li>Confirms the correctness of all transactions in a proposed block.</li>
-<li>Agrees on order and correctness and hence on results of execution (implies agreement on global state).</li>
-<li>Interfaces and depends on smart-contract layer to verify correctness of an ordered set of transactions in a block.</li>
-</ul>
-</li>
-<li><p>Consensus Properties[^ 2 ]</p>
-<ul>
-<li>Safety: each node is guaranteed the same sequence of inputs and results in the same output on each node. (同一个输入，得到同一个输出)</li>
-<li>Liveness: each non-faulty node will eventually receive every submitted transaction, assuming that communication does not fail.</li>
-</ul>
-</li>
-<li><p>节点有相应的概率被选为某个区块的生产者(取得记账权)，在符合一定规则的前提下，由该节点决定区块的内容，再经其 他节点验证。生产合法区块的节点通常可以获得一定的激励。</p>
-</li>
-<li><p>共识算法：解决一致性问题</p>
-</li>
-</ul>
-<p><img src="区块链的共识算法总结_我的思考.png" alt="区块链的共识算法总结_我的思考"></p>
-<h2 id="共识算法的分类方法1">共识算法的分类方法1</h2><p>根据容错，节点参与共识过程的资格，形成共识的依据和共识的内容可以分成四类<a href="[主流区块链共识机制的简介与比较](http://pdf.dfcfw.com/pdf/H3_AP201812271279983589_1.pdf)">^ 1 </a>:</p>
-<ul>
-<li>Proof of X类</li>
-<li>投票直接形成共识的BFT类</li>
-<li>选举代理人间接参与共识的代理类</li>
-<li>舍弃传统区块概念的DAG类共识</li>
-</ul>
-<p>整体分类图见下：</p>
-<p><img src="区块链的共识算法总结-all.png" alt="区块链的共识算法总结-分成四类"></p>
-<p>共识机制的分类标准见下：</p>
-<p><img src="区块链的共识算法总结-分类标准.png" alt="区块链的共识算法总结-分类标准"></p>
-<h2 id="4类共识机制简析">4类共识机制简析</h2><ol>
-<li>Proof of X类共识机制<br>节点获得记账权的概率与该节点拥有某种资源的比例相关，并且这种资源是难以垄断的，同时需要一个能够快速验证某个节点确实拥有这部分资源的算法。<br>该类共识算法有PoW、PoS、PoA/PoSV/Casper、PoST/Proof of Authority：</li>
-</ol>
-<p><img src="区块链的共识算法总结-PoX类.png" alt="区块链的共识算法总结-PoX类"></p>
-<p>   针对PoX类共识机制，分别对上述几种算法总结如下：</p>
-<ul>
-<li><p>PoW</p>
-<p><img src="区块链的共识算法总结-PoW.png" alt="区块链的共识算法总结-PoW"></p>
-<ul>
-<li><p>PoS<br><img src="区块链的共识算法总结-PoS.png" alt="区块链的共识算法总结-PoS"></p>
-</li>
-<li><p>PoA<br><img src="区块链的共识算法总结-PoA.png" alt="区块链的共识算法总结-PoA"></p>
-</li>
-<li><p>PoA<br><img src="区块链的共识算法总结-PoA.png" alt="区块链的共识算法总结-PoA"></p>
-</li>
-<li><p>Casper<br><img src="区块链的共识算法总结-Casper.png" alt="区块链的共识算法总结-Casper"></p>
-</li>
-<li><p>Ouroboros<br><img src="区块链的共识算法总结-Ouroboros.png" alt="区块链的共识算法总结-Ouroboros"></p>
-</li>
-<li><p>PoSV<br><img src="区块链的共识算法总结-PoSV.png" alt="区块链的共识算法总结-PoSV"></p>
-</li>
-<li><p>其他PoX<br><img src="区块链的共识算法总结-otherPoX.png" alt="区块链的共识算法总结-otherPoX"></p>
-</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li><p>投票直接形成共识的BFT类</p>
-<p>该类共识算法有pBFT、dBFT和FBA：<br><img src="区块链的共识算法总结-BFT类共识机制.png" alt="区块链的共识算法总结-BFT类共识机制"></p>
-<ul>
-<li><p>pBFT</p>
-<p><img src="区块链的共识算法总结-pBFT.png" alt="区块链的共识算法总结-pBFT"></p>
-<ul>
-<li><p>1999年提出，首个高效解决拜占庭容错问题的算法</p>
-</li>
-<li><p>Hyperledger Fabric曾采用过此共识算法</p>
-</li>
-<li><p>解决的问题：分布式系统的一致性问题，拜占庭容错问题。</p>
-</li>
-<li><p>采用的方法：引入“视图”(View)和“主从节点”(Replica)的概念。 Replica 包括主节点(Primary)以及备份节点(Backups)，主节点通常在每一轮共识过程开始时随机选取或者轮流担任。“视图”表示一次主节点分发请求的过程。</p>
-<p>当一轮共识开始时，首先检查主节点的有效性。如果备份节点检测到主节点失效，需要选举出新的主节点，称为“视图更换”。共识过程分为包括预准备、准备、确认阶段，又称<strong>“</strong>三阶段协议<strong>”</strong>。</p>
-<p><img src="pBFT.png" alt="截屏2020-02-26下午4.41.24"></p>
-</li>
-<li><p>容错能力：<strong>pBFT</strong> 算法对于一个 <strong>n=3f+1</strong> 个节点组成的区块链网络，可以提供 <strong>f</strong> 的容错能力，容错能力近似为 <strong>1/3</strong>。</p>
-</li>
-<li><p>pBFT的限制：由于一轮共识过程中节点间的通信次数与𝑛^2^（n为节点数）成正比，考虑到通信延迟的存在，当节点的数量达到一定规模后，<strong>pBFT</strong> 的效率会严重下降。</p>
-</li>
-</ul>
-</li>
-<li><p>FBA（Federated Byzantine Agreement 基于联邦拜占庭协议的共识机制）<br><img src="区块链的共识算法总结-FBA.png" alt="区块链的共识算法总结-FBA"></p>
-<ul>
-<li>思想：通过一种在子网络内部形成信 任(即联邦)，将子网络作为整体视为网络的节点的协议。</li>
-<li>基于FBA的共识机制：基于 FBA 的共识机制有RPCA(瑞波共识机制)、恒星共识机制等。</li>
-<li>方法：<ul>
-<li>RPCA(瑞波共识机制)：节点分验证节点（信任节点列表：UNL Unique Node list）+非验证节点；共识过程分两个阶段：阶段1. 形成交易集的共识（对每一个交易在 UNL 中投票表决，最终得到 80% 投票的交易会被放入交易集中） 阶段2. 形成新区块的共识（广播区块的hash值，比例最高的 Hash值占比超过80%，则达成共识）</li>
-<li>恒星共识机制：与 RPCA 类似，恒星共识机制的特点是通过节点可以自由地选择要加入的“联邦”，无需中心化的组织预先选出“服务节点”。</li>
-</ul>
-</li>
-<li>容错能力：RPCA(瑞波共识机制)为1/5。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>选举代理人间接参与共识的代理类</p>
-<ul>
-<li><p>BFT类共识机制的限制：参与共识的节点数量有限制，或者参与共识的部分节点必须是可信任的。</p>
-</li>
-<li><p>目标：一些公共区块链希望尽可能多的节点参与到共识过程中去。</p>
-</li>
-<li><p>代理共识机制的思想：借鉴现实社会中的选举，网络定期按照节点的得票数选出一定数量的“共识节点”，仅由共识节点完成区块链网络的共识过程。</p>
-</li>
-<li><p>限制</p>
-<ul>
-<li>由于见证人的数量有限并且公开，攻击者想要发动DDoS攻击较为容易，见证人需要额外的保护措施，增加了运行共识节点的成本。</li>
-<li>具有投票权的节点通常有更大的话语权，甚至可以操纵投票结果。<ul>
-<li>如果限制节点的最高投票权重，也可以通过转移通证到不同的节点来规避。 </li>
-<li>如果实行“一节点一票”的机制，又会导致“女巫攻击”变得可行。</li>
-<li>寻找一个平衡安全性与非中心化的投票算法是较为困难的。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>该类共识算法有DPoS和DPoS-BFT：<br><img src="区块链的共识算法总结-代理类共识机制.png" alt="区块链的共识算法总结-代理类共识机制"></p>
-</li>
-<li><p>DPoS</p>
-<p><img src="区块链的共识算法总结-DPoS.png" alt="区块链的共识算法总结-DPoS"></p>
-<ul>
-<li>方法：<ul>
-<li>选举见证人：选票前 101 名的节点获得参与网络共识过程的资格，被称为“见证人”。</li>
-<li>每个见证人按照一定的顺序(比如随机)轮流获得生产区块的机会，再根据一定的规则对区块链达成共识。</li>
-<li>共识方法：根据类似 PoW 的最长链原则选择在高度最高的区块后添加自己的区块。</li>
-<li>注意1：各见证人的记账权利是相同的，不因获票数的多少产生区别。</li>
-<li>注意2：见证人未能履行义 务或作出不符合整体利益的行为，见证人会被取消记账权。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>DPoS-BFT</p>
-<p><img src="区块链的共识算法总结-DPoS_BFT.png" alt="区块链的共识算法总结-DPoS_BFT"></p>
-<ul>
-<li>思想：见证人根据获得获得权益支持的多少选出，见证人形成共识的算法可以是 <strong>BFT</strong> 或其他算法。</li>
-<li>方法：<ul>
-<li>EOS 使用的 DPoS-BFT 共识机制方法：<ul>
-<li>股权投票选举出见证人(<strong>EOS</strong> 称为 <strong>BP</strong>，<strong>Block Producer</strong>)的基础上</li>
-<li>使用 <strong>BFT</strong> 类算法在 <strong>BP</strong> 之间形成共识。</li>
-<li>见证人 21 名，在BFT的三阶段协议中，区块得到15个BP的确认就可最终确认。</li>
-</ul>
-</li>
-<li>NEO 的方法：主要是对见证人形成共识的BFT类算法进行改进<ul>
-<li>NEO 网络中有两种通证，管理通证 NEO 以及燃料通证 GAS。</li>
-<li>节点根据持有管理通证的份额获得相应数量的选票，选举出一定数量的见证人(共识节点)</li>
-<li>由见证人通过改进的pBFT 算法形成共识，生产区块</li>
-<li>区块中会有奖励的燃料通证，按持有 NEO 的比例分配给各节点。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>DAG类共识</p>
-<p>该类共识算法有如下特点：<br><img src="区块链的共识算法总结-DAG类共识机制.png" alt="区块链的共识算法总结-DAG类共识机制"></p>
-<ul>
-<li>思想：一般节点维护的交易历史是一个区块组成的哈希链表，特点是单向、线性。修改这种数据结构为IOTA 就是采用有向无环图 DAG (Directed Acyclic Graph)作为记录交易历史的数据结构。</li>
-<li>特点和优势：<ul>
-<li>Tangle 共识不需要专门负责记账的矿工，而是由新交易给历史交易提供验证，因此不需要交易费用。</li>
-<li>不需要将交易打包成区块，交易得到确认的速度取决于新交易 加入Tangle的速度。</li>
-</ul>
-</li>
-<li>缺点<ul>
-<li>对交易缺乏过滤机制，因此容易遭到大量垃圾交易的攻击，并且没有有效的机制过滤作恶的节点</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="共识机制对比">共识机制对比</h2><p><img src="区块链的共识算法对比.png" alt="截屏2020-02-26下午6.36.41"></p>
-<h2 id="共识算法的分类方法2[^_2_]">共识算法的分类方法2[^ 2 ]</h2><ul>
-<li>lottery-based algorithms<ul>
-<li>advantages: scale to a large number of nodes since the winner of the lottery proposes a block and transmits it to the rest<br>of the network for validation. </li>
-<li>disadvantages: lead to forking when two “winners” propose a block. fork must be resolved, which results in a longer time to finality.</li>
-</ul>
-</li>
-<li>voting-based algorithms<ul>
-<li>advantages: low-latency finality</li>
-<li>disadvantages: the more nodes that exist on the network, the more time it takes to reach consensus. This results in a trade-off between scalability and speed.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Consensus_in_Hyperledger_Fabric(Kafka_in_Fabric_v1)[^_2_][^_3_][^_4_]">Consensus in Hyperledger Fabric(Kafka in Fabric v1)[^ 2 ][^ 3 ][^ 4 ]</h2><ul>
-<li>Consensus in Hyperledger Fabric is broken out into 3 phases:<ol>
-<li>Endorsement: Endorsement is driven by policy (eg m out of n signatures) upon which participants endorse a transaction.</li>
-<li>Ordering: Ordering phase accepts the endorsed transactions and agrees to the order to be committed to the ledger.</li>
-<li>Validation: Validation takes a block of ordered transactions and validates the correctness of the results, including checking endorsement policy and double-spending.</li>
-</ol>
-</li>
-<li>ILLUSTRATION OF ONE POSSIBLE TRANSACTION FLOW(COMMON-CASE PATH) IN HYPERLEDGER FABRIC<br><img src="Consensus in Hyperledger Fabric.png" alt="截屏2020-02-27下午4.56.35"></li>
-<li>可插拔的共识服务：pluggable consensus service<ul>
-<li>the ordering service API allows plugging in BFT-based agreement algorithms</li>
-</ul>
-</li>
-<li>The ordering service API consists of two basic operations: broadcast and deliver.<ul>
-<li>broadcast(blob)</li>
-<li>deliver(seqno, prevhash, blob)</li>
-</ul>
-</li>
-<li>Multiple ordering plugins are being developed currently, including BFT Smart, Simplified Byzantine Fault Tolerance (SBFT), Honey Badger of BFT, etc.</li>
-<li>Fabric v1, Apache Kafka is provided out-of-the-box as a reference implementation.</li>
-</ul>
-<h2 id="Consensus_in_Hyperledger_Indy_(based_on_RBFT)">Consensus in Hyperledger Indy (based on RBFT)</h2><ul>
-<li>Consensus in Hyperledger Indy is based on Redundant Byzantine Fault Tolerance (RBFT)</li>
-<li>Like PBFT, RBFT needs at least 3f+1 nodes to handle f faulty nodes. </li>
-<li>RBFT overview:<br><img src="Consensus in Hyperledger Indy.png" alt="截屏2020-02-27下午5.23.15"></li>
-<li>RBFT protocol steps:<br><img src="Consensus in Hyperledger Indy2.png" alt="截屏2020-02-27下午5.24.33"></li>
-</ul>
-<h2 id="Consensus_in_Hyperledger_Iroha(Sumeragi:based_on_BFT)">Consensus in Hyperledger Iroha(Sumeragi:based on BFT)</h2><ul>
-<li>Insipered by B-Chain Algorithm described by Duan, Meling, Peisert, &amp; Zhang (2014).</li>
-<li>Concept of a global order over validating peers and sets A and B of peers, where A consists of the first 2f+1 peers and B consists of the remainder.<br><img src="Consensus in Hyperledger Iroha.png" alt="截屏2020-02-27下午5.30.17"></li>
-<li>The order of processing nodes is determined based on the server reputation system called hijiri. </li>
-<li>The case of a failure in the proxy tail is shown in Figure below<br><img src="Consensus in Hyperledger Iroha2.png" alt="截屏2020-02-27下午5.35.24"></li>
-<li>Consensus in Sumeragi is performed on individual transactions and on the global state resulting from the application of the transaction. When a validating peer receives a transaction over the network, it performs the following steps in order:<ol>
-<li>Validate the signature (or signatures, in the case of multi-signature transactions) of the transaction.</li>
-<li>Validate the contents of the transaction, where applicable. For example, transfer transactions must leave the payer’s account with a non-negative balance.</li>
-<li>Temporarily apply the transaction to the ledger. This involves updating the Merkle root of the global state.</li>
-<li>Sign the updated Merkle root and the hash of the transaction contents.</li>
-<li>Broadcast the tuple, which is a finite ordered list of transactions.</li>
-<li>When syncing nodes with each other, valid parts of the Merkle tree are shared until the roots match.</li>
-</ol>
-</li>
-</ul>
-<h2 id="Consensus_in_Hyperledger_Sawtooth(based_on_PoET)">Consensus in Hyperledger Sawtooth(based on PoET)</h2><ul>
-<li>PoET: Proof of Elapsed Time </li>
-<li>Hyperledger Sawtooth facilitates pluggable consensus for both lottery and voting algorithms. </li>
-<li>Default algorithm: lottery-based, Nakamoto consensus algorithm called PoET. </li>
-<li>PoET uses a lottery for leader election based on a guaranteed wait time provided through a Trusted Execution Environment (TEE) (Sandell, Bowman, &amp; Shah, 2016). The current implementation of Hyperledger Sawtooth builds on a TEE provided by Intel’s Software Guard Extensions (SGX). </li>
-<li>A good lottery function satisfies:<ul>
-<li>Fairness - The function should distribute leader election across the broadest possible population of participants.</li>
-<li>Investment - The cost of controlling the leader election process should be proportional to the value gained from it.</li>
-<li>Verification - It should be relatively simple for all participants to verify that the leader was legitimately selected.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Paxos">Paxos</h2><p>[^ 2 ]: Hyperledger Architecture, Volume 1 Introduction to Hyperledger Business Blockchain Design Philosophy and Consensus</p>
-<p>[^ 3 ]: <a href="https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html" target="_blank" rel="noopener">Fabric Transaction Flow</a></p>
-<p>[^ 4 ]: <a href="https://www.skcript.com/svr/consensus-hyperledger-fabric/" target="_blank" rel="noopener">The Ultimate Guide to Consensus in Hyperledger Fabric</a></p>
-
+  <div id="pwd-gate" style="max-width:420px;margin:48px auto;text-align:center;font-family:inherit;">
+    <p style="margin-bottom:16px;color:#666;">这篇内容已加密，输入密码查看。</p>
+    <input id="pwd-gate-input" type="password" placeholder="密码" style="padding:8px 12px;width:200px;border:1px solid #ccc;border-radius:4px;">
+    <button id="pwd-gate-btn" style="padding:8px 16px;margin-left:8px;border:1px solid #333;border-radius:4px;background:#333;color:#fff;cursor:pointer;">解锁</button>
+    <p id="pwd-gate-err" style="color:#c00;margin-top:12px;display:none;">密码不对，再试一下。</p>
   </div>
+  <div id="pwd-gate-content" style="display:none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  <script>
+  (function(){
+    var CIPHER = "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";
+    var gate = document.getElementById('pwd-gate');
+    var content = document.getElementById('pwd-gate-content');
+    var input = document.getElementById('pwd-gate-input');
+    var btn = document.getElementById('pwd-gate-btn');
+    var err = document.getElementById('pwd-gate-err');
+    function tryUnlock(pwd) {
+      try {
+        var bytes = CryptoJS.AES.decrypt(CIPHER, pwd);
+        var plain = bytes.toString(CryptoJS.enc.Utf8);
+        if (!plain) throw new Error('empty');
+        content.innerHTML = plain;
+        gate.style.display = 'none';
+        content.style.display = '';
+        try { localStorage.setItem('blogArchivePwd', pwd); } catch (e) {}
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    try {
+      var saved = localStorage.getItem('blogArchivePwd');
+      if (saved && tryUnlock(saved)) return;
+    } catch (e) {}
+    btn.addEventListener('click', function(){
+      if (!tryUnlock(input.value)) {
+        err.style.display = '';
+      }
+    });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') btn.click();
+    });
+  })();
+  </script></div>
 </article>
 
 

@@ -3,6 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -149,105 +150,50 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="跨链的技术实现研究">跨链的技术实现研究</h1><p>创建时间：2020年2月28日<br>更新时间：2020年2月28日<br>作者：ShizhiDeng<br>更新内容：</p>
-<ul>
-<li><p>2020-02-28 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 总结区块链扩容的三种方法：代议制、分层和分片，分片的四个难题和解决方案</span><br><span class="line">2. 区块链领域待解决的问题 Scalability Isolatability Developability  Governance  Applicability</span><br><span class="line">3. 区块链领域待解决问题的解决方案：一致性(canonicality)和有效性(validity)的分离</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="区块链的扩容方案^_1">区块链的扩容方案<a href="https://www.polkaworld.org/articles/mo-zi-chang-wen-shuo-tou-polkadotjia-gou-shang" target="_blank" rel="noopener">^ 1 </a></h2><ul>
-<li>问题描述：区块链扩容问题，指的是能不能把 DApp 和中心化互联网应用的成本差距，从 100 万倍拉近到 10 万倍，1 万倍，甚至 1 千倍。同时仍然保持去信任、无许可和抗审查这三大好处。</li>
-<li><p>答案：方法有三类，也就是区块链扩容的三个思路——代议制、分层和分片</p>
-<ul>
-<li>第一个扩容思路——代议制<ul>
-<li>原理：代议制是人民选出代表，再由代表来议定法律或者重大决议。代议制提升决策效率有两个原因，第一是参与共识的人数大为减少，第二是代表通常是专职政治家，他们有更多的资源和知识来议定国家大事。</li>
-<li>采用代议制的区块链：用代议制的方式来做区块链扩容，最典型的是采用 DPoS 共识的 EOS。EOS 通证的持有者选出超级节点，21 个超级节点轮流出块。跟以太坊相比，参与共识的计算机数量下降了 3 个数量级。</li>
-<li>如果把是大部分身家都用加密货币来做长期价值存储，我首选比特币。如果是小额支付，或者打麻将、掷骰子，用 EOS 当然也没问题。在区块链世界，从去中心化程度最高的比特币和以太坊，到中心化程度最低的 EOS 和波场。</li>
-</ul>
-</li>
-<li>第二种扩容思路 —— 分层<ul>
-<li>原理：分层也称为二层扩容或者链下扩容，就是把一部分交易放到在区块链以外执行，同时仍然保障交易安全。</li>
-<li>技术划分：分层有状态通道和侧链（实现层面很类似）两类技术。还有一类二层技术，是把计算密集型任务转移到链下执行。</li>
-<li>侧链技术<ul>
-<li>SPV 是 Simplified Payment Verification 简单支付验证的缩写。为了让计算和存储能力有限的设备能够使用比特币的问题，才有了 SPV，或者叫轻客户端或者轻节点。（比如：手机钱包就是轻节点，使用了Merkle树）</li>
-<li>侧链方案就是把主链资产通证锁定，在侧链上对应地创造出通证承兑汇票，汇票交易在侧链执行，在侧链上得到汇票的人可以兑换主链通证。</li>
-<li>举例：以太坊 Plasma MVP 侧链方案，注意侧链本也是区块链，它有自己的共识协议和矿工，侧链采用的共识是 PoA 权威证明，就是一个 Operator 说了算，由它记账出块。PoA 当然不是唯一选择，Loom 的 Plasma 侧链采用的 DPoS 共识。侧链区块的区块头，都会由 Operator 提交给主链的 Plasma 合约。不论侧链一个区块含有多少笔交易，是 1 千笔还是 1 万笔，主链只发生了记录区块头一笔交易。所以主链上的 Plasma 合约，相当于是侧链的 SPV 轻节点，它存储了区块头，从而可以验证侧链交易是否存在。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>第三种扩容思路 —— 分片<ul>
-<li>原理：别让所有的节点都执行所有的交易。把节点分成很多组，或者说分成很多片。多个分片可以并行处理交易，总体的处理能力就提高了。当然还需要一条特殊的链来看管所有的分片，这条一般称之为主链。</li>
-<li>分片扩容的基本思路非常简单，但实际做起来则面临很多复杂难题。<ul>
-<li>难题1:验证人选择。</li>
-<li>难题1的解决方案：验证人随机动态分组。<ul>
-<li>解决的方法是，分片的验证人分组不是固定的，而是随机选取，而且每隔一段时间就重新分组。这样恶意的验证人不能事先知道自己被分到哪个组，而贸然发送攻击会受到惩罚，因此系统的安全性就不会随着分片数量上升线性的下降。</li>
-<li>验证者随机动态分组的关键，是要有可靠的随机数，随机数一直是计算机科学中复杂而有趣的问题。去中心化地拜占庭容错地产生可靠随机数难度非常大，也是区块链研究的热点问题。</li>
-</ul>
-</li>
-<li>难题2:跨片交易完整性。</li>
-<li>难题2的解决方案：概率最终性==&gt;明确最终性。<ul>
-<li>分布式交易的完整性或者原子性：一个跨链交易要引起两条链乃至多条链的状态改变，而且这些改变要么都成功，要么都不成功，不存在中间状态。这跟企业计算里分布式交易的概念上非常类似。比如：从建行转账1万到农行，建行减去1万，农行增加1万，同时成功或者同时失败。</li>
-<li>这个问题在区块链中的复杂性：没有明确最终性（finality），就是交易打包到区块，有可能回滚，就是撤销。</li>
-<li>解决方法：要有机制让区块具有明确的最终性，不能含糊。</li>
-</ul>
-</li>
-<li>难题3：最终性 VS 活性</li>
-<li>难题3的解决方案：混合共识：出块和敲定（finalize）分开。<ul>
-<li>finalize 就是使区块具有最终性；liveness：出块停止了，或者说区块链丧失了活性 liveness。</li>
-<li>例如：Cosmos 的 Tentermint 共识，以太坊 2.0 和 Polkadot。</li>
-<li>解决方法：混合共识。节点可以继续出块，但没有足够的验证人，不能敲定，等达到条件再敲定。混合共识可以让个别节点轮番速度出块，敲定过程可以慢点。</li>
-</ul>
-</li>
-<li>难题4:交易有效性<ul>
-<li>交易有效性问题就是防止无效交易进入区块，成为区块链维护的历史真相的一部分。</li>
-</ul>
-</li>
-<li>难题4的解决方案：举报奖励。<br>例如：分片1上的诚实节点举报分片1上的区块B是恶意的。系统接受了举报，就会惩罚分片 1 里的恶意验证人，没收他们质押的通证，并向举报者提供奖励。所以为什么有的区块链，验证人要收回质押的通证，都需要等几个月。主要的原因就是给举报和证实举报留出足够的时间。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>三个扩容思路，每个都有多种实现，代表性项目如下。</p>
-<ul>
-<li>代议制扩容的代表是 EOS 和波场。</li>
-<li>分层扩容分为状态通道和侧链两个分支，状态通道的方案有 Celer Network、Counterfactual 等，侧链有 Loom、OmiseGo 等。</li>
-<li>分片的三个典型方案：Serenity、Polkadot 和 Cosmos 。</li>
-</ul>
-</li>
-</ul>
-<h2 id="区块链领域待解决的问题[^_2_]">区块链领域待解决的问题[^ 2 ]</h2><ol>
-<li>伸缩性(Scalability):全球范围内花费了多少计算、带宽和存储的资源，来处理单个交易?峰值情况下能处理多少交易? Polkadot</li>
-<li>隔离性(Isolatability):多参与方对于应用的差异化需求，能否在同一个框架下接近最优程度地满足? Polkadot</li>
-<li>开发性(Developability):工具的工作效果有多好?APIs是否已满足开发者的需求?教程资料是否可用?是否集成权力?</li>
-<li>治理性(Governance):网络是否保留了能够随着时间进化和适应的灵活性?制定决策能否高度地包容、合理和透明，来提供去中心化系统的高效领导力。</li>
-<li>应用性(Applicability):技术是否真的解决了用户的刚性需求?是否需要其他的中间件来嫁接真实的应用?</li>
-</ol>
-<h2 id="区块链领域待解决问题的解决方案[^_2_]">区块链领域待解决问题的解决方案[^ 2 ]</h2><ul>
-<li>波卡链的工作：针对上述问题1和问题2做了很多工作。扩展性 (extensibilty)和伸缩性(scalability)</li>
-<li>波卡认为针对一致性(canonicality)和有效性(validity)绑定的太紧密了。波卡的工作是提出了异构的多链架构，能从本质上把两者拆开。</li>
-<li>工作1:解耦底层的共识。<ul>
-<li>目标：分离一致性(canonicality)和有效性(validity)，同时保证基本功能（安全性和传输性）。或者说： 从状态转换中解耦底层的共识。</li>
-<li>方法：原生的支持内核可扩展(core extensibilty)的可行性方法。Polkadot的方法。</li>
-<li>前人方法1：更复杂的可伸缩方案：Chain fibers(by 以太坊的Max Kaye)。创造了：单个中继链(relay-chain)和多个同构链，可以透明地跨链执行的先例。退相干性(Decoherence)通过交易延迟(latency)来实现，这就使需要更长时间，来处理需要协调系统多个部分的交易。</li>
-<li>前人方法2:其他人的方法，功能性的解决而非本质层面的解决。归结为：丢弃或减少状态机全局相关性的系统、试图通过同构分片提供全局相关性的单例状态机系统、目标仅是异构性 (heterogeneity)的系统。</li>
-<li>前人工作3（没有全局状态的系统：Factom）:公证通(Factom)演示了个没有有效性的一致性系统，能够高效地记载数据。可以被看做是一个可伸缩的方案，严格上来说它只解决了很少的问题。</li>
-<li>前人工作4（没有全局状态的系统：Tangle）:Tangle 是个关于共识系统的概念性尝试。不把交易排序再打包到区块中，而是通过串联的共识得出一个全局的一致性状态改变排序，它在很大程度上抛弃了高度结构化的排序 想法，而是推出一个有向无环图</li>
-</ul>
-</li>
-<li>工作2：<ul>
-<li>目标：可伸缩性(scalability)问题</li>
-<li>思路：对这两个问题分而治之</li>
-<li>方法：通过非信任节点的激励机制，弱化他们的内生绑定关系。</li>
-<li></li>
-</ul>
-</li>
-</ul>
-<p>[^ 2 ]:POLKADOT: VISION FOR A HETEROGENEOUS MULTI-CHAIN FRAMEWORK</p>
-
+  <div id="pwd-gate" style="max-width:420px;margin:48px auto;text-align:center;font-family:inherit;">
+    <p style="margin-bottom:16px;color:#666;">这篇内容已加密，输入密码查看。</p>
+    <input id="pwd-gate-input" type="password" placeholder="密码" style="padding:8px 12px;width:200px;border:1px solid #ccc;border-radius:4px;">
+    <button id="pwd-gate-btn" style="padding:8px 16px;margin-left:8px;border:1px solid #333;border-radius:4px;background:#333;color:#fff;cursor:pointer;">解锁</button>
+    <p id="pwd-gate-err" style="color:#c00;margin-top:12px;display:none;">密码不对，再试一下。</p>
   </div>
+  <div id="pwd-gate-content" style="display:none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  <script>
+  (function(){
+    var CIPHER = "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";
+    var gate = document.getElementById('pwd-gate');
+    var content = document.getElementById('pwd-gate-content');
+    var input = document.getElementById('pwd-gate-input');
+    var btn = document.getElementById('pwd-gate-btn');
+    var err = document.getElementById('pwd-gate-err');
+    function tryUnlock(pwd) {
+      try {
+        var bytes = CryptoJS.AES.decrypt(CIPHER, pwd);
+        var plain = bytes.toString(CryptoJS.enc.Utf8);
+        if (!plain) throw new Error('empty');
+        content.innerHTML = plain;
+        gate.style.display = 'none';
+        content.style.display = '';
+        try { localStorage.setItem('blogArchivePwd', pwd); } catch (e) {}
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    try {
+      var saved = localStorage.getItem('blogArchivePwd');
+      if (saved && tryUnlock(saved)) return;
+    } catch (e) {}
+    btn.addEventListener('click', function(){
+      if (!tryUnlock(input.value)) {
+        err.style.display = '';
+      }
+    });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') btn.click();
+    });
+  })();
+  </script></div>
 </article>
 
 

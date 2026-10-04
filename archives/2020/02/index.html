@@ -3,6 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -77,161 +78,50 @@
 
         
         <div id="archive">
-  <ul class="post-list">
-    
-    
-    
-    
-      
-      
-      
-      
-        <h2>2020</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-28T01:09:00.000Z" itemprop="datePublished">2020-02-28</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/28/跨链的技术实现研究/">跨链的技术实现研究</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-26T11:21:00.000Z" itemprop="datePublished">2020-02-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/26/主流区块链的技术分析/">主流区块链的技术分析</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-25T08:09:00.000Z" itemprop="datePublished">2020-02-25</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/25/区块链和云计算/">区块链和云计算</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-25T08:09:00.000Z" itemprop="datePublished">2020-02-25</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/25/区块链的共识算法/">区块链的共识算法</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-14T11:21:00.000Z" itemprop="datePublished">2020-02-14</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/14/Technical Analysis of Hyperledger/">Technical Analysis of Hyperledger</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-07T08:09:00.000Z" itemprop="datePublished">2020-02-07</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/07/Story of Block Chain_Release/">The Story of Block Chain</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
-  
-
-</div>
+  <div id="pwd-gate" style="max-width:420px;margin:48px auto;text-align:center;font-family:inherit;">
+    <p style="margin-bottom:16px;color:#666;">这篇内容已加密，输入密码查看。</p>
+    <input id="pwd-gate-input" type="password" placeholder="密码" style="padding:8px 12px;width:200px;border:1px solid #ccc;border-radius:4px;">
+    <button id="pwd-gate-btn" style="padding:8px 16px;margin-left:8px;border:1px solid #333;border-radius:4px;background:#333;color:#fff;cursor:pointer;">解锁</button>
+    <p id="pwd-gate-err" style="color:#c00;margin-top:12px;display:none;">密码不对，再试一下。</p>
+  </div>
+  <div id="pwd-gate-content" style="display:none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  <script>
+  (function(){
+    var CIPHER = "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";
+    var gate = document.getElementById('pwd-gate');
+    var content = document.getElementById('pwd-gate-content');
+    var input = document.getElementById('pwd-gate-input');
+    var btn = document.getElementById('pwd-gate-btn');
+    var err = document.getElementById('pwd-gate-err');
+    function tryUnlock(pwd) {
+      try {
+        var bytes = CryptoJS.AES.decrypt(CIPHER, pwd);
+        var plain = bytes.toString(CryptoJS.enc.Utf8);
+        if (!plain) throw new Error('empty');
+        content.innerHTML = plain;
+        gate.style.display = 'none';
+        content.style.display = '';
+        try { localStorage.setItem('blogArchivePwd', pwd); } catch (e) {}
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    try {
+      var saved = localStorage.getItem('blogArchivePwd');
+      if (saved && tryUnlock(saved)) return;
+    } catch (e) {}
+    btn.addEventListener('click', function(){
+      if (!tryUnlock(input.value)) {
+        err.style.display = '';
+      }
+    });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') btn.click();
+    });
+  })();
+  </script></div>
 
         
         <footer id="footer">

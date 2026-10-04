@@ -3,6 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -77,185 +78,50 @@
 
         
         <div id="archive">
-  <ul class="post-list">
-    
-    
-    
-    
-      
-      
-      
-      
-        <h2>2020</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-03-19T05:50:00.000Z" itemprop="datePublished">2020-03-19</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/03/19/扩容和跨链通信协议的综述/">扩容和跨链通信协议的综述</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-28T01:09:00.000Z" itemprop="datePublished">2020-02-28</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/28/跨链的技术实现研究/">跨链的技术实现研究</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-26T11:21:00.000Z" itemprop="datePublished">2020-02-26</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/26/主流区块链的技术分析/">主流区块链的技术分析</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-25T08:09:00.000Z" itemprop="datePublished">2020-02-25</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/25/区块链和云计算/">区块链和云计算</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-25T08:09:00.000Z" itemprop="datePublished">2020-02-25</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/25/区块链的共识算法/">区块链的共识算法</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-14T11:21:00.000Z" itemprop="datePublished">2020-02-14</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/14/Technical Analysis of Hyperledger/">Technical Analysis of Hyperledger</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2020-02-07T08:09:00.000Z" itemprop="datePublished">2020-02-07</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2020/02/07/Story of Block Chain_Release/">The Story of Block Chain</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
-  
-
-</div>
+  <div id="pwd-gate" style="max-width:420px;margin:48px auto;text-align:center;font-family:inherit;">
+    <p style="margin-bottom:16px;color:#666;">这篇内容已加密，输入密码查看。</p>
+    <input id="pwd-gate-input" type="password" placeholder="密码" style="padding:8px 12px;width:200px;border:1px solid #ccc;border-radius:4px;">
+    <button id="pwd-gate-btn" style="padding:8px 16px;margin-left:8px;border:1px solid #333;border-radius:4px;background:#333;color:#fff;cursor:pointer;">解锁</button>
+    <p id="pwd-gate-err" style="color:#c00;margin-top:12px;display:none;">密码不对，再试一下。</p>
+  </div>
+  <div id="pwd-gate-content" style="display:none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  <script>
+  (function(){
+    var CIPHER = "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";
+    var gate = document.getElementById('pwd-gate');
+    var content = document.getElementById('pwd-gate-content');
+    var input = document.getElementById('pwd-gate-input');
+    var btn = document.getElementById('pwd-gate-btn');
+    var err = document.getElementById('pwd-gate-err');
+    function tryUnlock(pwd) {
+      try {
+        var bytes = CryptoJS.AES.decrypt(CIPHER, pwd);
+        var plain = bytes.toString(CryptoJS.enc.Utf8);
+        if (!plain) throw new Error('empty');
+        content.innerHTML = plain;
+        gate.style.display = 'none';
+        content.style.display = '';
+        try { localStorage.setItem('blogArchivePwd', pwd); } catch (e) {}
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    try {
+      var saved = localStorage.getItem('blogArchivePwd');
+      if (saved && tryUnlock(saved)) return;
+    } catch (e) {}
+    btn.addEventListener('click', function(){
+      if (!tryUnlock(input.value)) {
+        err.style.display = '';
+      }
+    });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') btn.click();
+    });
+  })();
+  </script></div>
 
         
         <footer id="footer">

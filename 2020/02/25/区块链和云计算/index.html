@@ -3,6 +3,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <!-- so meta -->
     <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -149,25 +150,50 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="区块链和云计算">区块链和云计算</h1><p>创建时间：2020年2月25日</p>
-<p>更新时间：2020年2月25日</p>
-<p>作者：ShizhiDeng</p>
-<p>更新内容：</p>
-<ul>
-<li><p>2020-02-25 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">阅读文献</span><br><span class="line">1. ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</span><br><span class="line">2. Blockchain as a Service for IoT</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="文献调研">文献调研</h2><ol>
-<li><p>ProvChain[^ 1 ]</p>
-<p>云数据的溯源问题：利用区块链技术，提出了一个去中心化和可信云数据溯源架构，将数据嵌入到区块链交易中，达到(1)溯源元数据采集(2)溯源元数据存储(3)溯源元数据验证。结果证明ProvChain为云存储应用提供了很多安全特性：包括防篡改来源，用户隐私和可靠性。</p>
-</li>
-<li><p>Blockchain as a Service for IoT [^ 2 ]<br>利用区块链的分布式和去中心化特征，区块链用于管理设备配置、存储传感器用于微支付。部署区块链技术的关键挑战是托管位置。 本文评估了作为托管平台的云和fog服务。</p>
-</li>
-</ol>
-<p>[^ 1 ]: <a href="https://www.researchgate.net/profile/Sachin_Shetty11/publication/317182541_ProvChain_A_Blockchain-Based_Data_Provenance_Architecture_in_Cloud_Environment_with_Enhanced_Privacy_and_Availability/links/5a832cd7aca272d6501c3a6f/ProvChain-A-Blockchain-Based-Data-Provenance-Architecture-in-Cloud-Environment-with-Enhanced-Privacy-and-Availability.pdf" target="_blank" rel="noopener">ProvChain: A Blockchain-based Data Provenance Architecture in Cloud Environment with Enhanced Privacy and Availability</a><br>[^ 2 ]: [Blockchain as a Service for IoT](</p>
-
+  <div id="pwd-gate" style="max-width:420px;margin:48px auto;text-align:center;font-family:inherit;">
+    <p style="margin-bottom:16px;color:#666;">这篇内容已加密，输入密码查看。</p>
+    <input id="pwd-gate-input" type="password" placeholder="密码" style="padding:8px 12px;width:200px;border:1px solid #ccc;border-radius:4px;">
+    <button id="pwd-gate-btn" style="padding:8px 16px;margin-left:8px;border:1px solid #333;border-radius:4px;background:#333;color:#fff;cursor:pointer;">解锁</button>
+    <p id="pwd-gate-err" style="color:#c00;margin-top:12px;display:none;">密码不对，再试一下。</p>
   </div>
+  <div id="pwd-gate-content" style="display:none;"></div>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.2.0/crypto-js.min.js"></script>
+  <script>
+  (function(){
+    var CIPHER = "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";
+    var gate = document.getElementById('pwd-gate');
+    var content = document.getElementById('pwd-gate-content');
+    var input = document.getElementById('pwd-gate-input');
+    var btn = document.getElementById('pwd-gate-btn');
+    var err = document.getElementById('pwd-gate-err');
+    function tryUnlock(pwd) {
+      try {
+        var bytes = CryptoJS.AES.decrypt(CIPHER, pwd);
+        var plain = bytes.toString(CryptoJS.enc.Utf8);
+        if (!plain) throw new Error('empty');
+        content.innerHTML = plain;
+        gate.style.display = 'none';
+        content.style.display = '';
+        try { localStorage.setItem('blogArchivePwd', pwd); } catch (e) {}
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    try {
+      var saved = localStorage.getItem('blogArchivePwd');
+      if (saved && tryUnlock(saved)) return;
+    } catch (e) {}
+    btn.addEventListener('click', function(){
+      if (!tryUnlock(input.value)) {
+        err.style.display = '';
+      }
+    });
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter') btn.click();
+    });
+  })();
+  </script></div>
 </article>
 
 
