@@ -8,107 +8,142 @@
 <link rel="shortcut icon" href="/images/favicon.ico">
 <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
 <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem('lang');
+    var lang = saved === 'en' ? 'en' : 'zh';
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+  } catch (e) {
+    document.documentElement.setAttribute('data-lang', 'zh');
+  }
+})();
+</script>
 <style>
 :root{
-  --ink:#191714; --muted:#6b6660; --line:#e7e2d8; --bg:#fdfcfa; --accent:#1f1c18;
+  --ink:#1a1816; --muted:#8a847b; --soft:#514c44; --bg:#fdfcfa;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
-  background:var(--bg); color:var(--ink);
-  font:16px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,"Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--soft);
+  font:15px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue",Arial,"Microsoft YaHei",sans-serif;
   -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:720px;margin:0 auto;padding:0 24px}
+.wrap{max-width:560px;margin:0 auto;padding:72px 24px 56px}
+@media (min-width:900px){
+  .wrap{margin:0;padding-left:14vw;padding-right:24px;max-width:660px}
+}
 
-header.site{padding:48px 0 0}
-.site-nav{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted);margin-bottom:64px}
-.site-nav a{color:var(--muted);text-decoration:none;margin-left:18px}
-.site-nav a:hover{color:var(--ink)}
-.site-nav .brand{color:var(--ink);font-weight:600;letter-spacing:.02em}
+[data-lang="zh"] .t-en,[data-lang="en"] .t-zh{display:none}
 
-.hero{padding:0 0 56px;border-bottom:1px solid var(--line)}
-.hero h1{font-size:40px;line-height:1.25;margin:0 0 14px;letter-spacing:-.01em}
-.hero p{font-size:17px;color:var(--muted);margin:0;max-width:480px}
+.topline{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px}
+.name{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:.01em}
+.langs{font-size:12px;color:var(--muted)}
+.langs button{font:inherit;color:var(--muted);background:none;border:0;cursor:pointer;padding:0}
+.langs button[aria-current="true"]{color:var(--ink);text-decoration:underline}
+.langs .sep{margin:0 6px;color:var(--muted)}
 
-section.block{padding:52px 0;border-bottom:1px solid var(--line)}
-section.block:last-of-type{border-bottom:0}
-.block-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
-.block h2{font-size:24px;margin:0 0 14px;letter-spacing:-.005em}
-.block p{margin:0 0 12px;color:#39342d}
-.block p.lede{font-size:18px;color:var(--ink)}
-.block p.cite{font-size:13px;color:var(--muted);margin-top:4px}
+.bio p{margin:0 0 20px;color:var(--soft)}
+.bio .lede-em{color:var(--ink)}
+[data-lang="zh"] .lede-em{font-weight:600}
+[data-lang="en"] .lede-em{font-style:italic;font-family:Georgia,"Times New Roman",serif}
+.bio a{color:var(--soft);text-decoration:underline;text-decoration-color:#d8d2c6;text-underline-offset:2px}
+.bio a:hover{color:var(--ink)}
+.cite{font-size:13px;color:var(--muted)}
 
-.project{border:1px solid var(--line);border-radius:10px;padding:22px 24px;margin-top:8px}
-.project .num{font-size:12px;color:var(--muted);letter-spacing:.1em}
-.project h3{font-size:19px;margin:8px 0 8px}
-.project p{color:#39342d;margin:0 0 14px}
-.project .links{display:flex;gap:16px;flex-wrap:wrap;font-size:14px}
-.project .links a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
-.project .links a:hover{border-color:var(--ink)}
-.project .empty{color:var(--muted);font-size:14px;margin-top:16px}
+.grid{display:grid;grid-template-columns:1fr;gap:40px;margin-top:56px}
+@media (min-width:520px){
+  .grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+.col-label{font-size:12px;color:var(--muted);letter-spacing:.06em;margin:0 0 16px}
+.entry{margin-bottom:28px}
+.entry:last-child{margin-bottom:0}
+.entry a.title{color:var(--ink);font-size:15px;text-decoration:underline;text-decoration-color:#d8d2c6;text-underline-offset:2px}
+.entry a.title:hover{text-decoration-color:var(--ink)}
+.entry p{margin:6px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
 
-footer.site{padding:40px 0 56px;display:flex;justify-content:space-between;align-items:baseline;
+footer.site{margin-top:88px;padding-top:24px;display:flex;justify-content:space-between;align-items:baseline;
   font-size:13px;color:var(--muted)}
 footer.site a{color:var(--muted);text-decoration:none}
 footer.site a:hover{color:var(--ink)}
 
 @media (max-width:560px){
-  .hero h1{font-size:32px}
-  header.site{padding-top:32px}
-  .site-nav{margin-bottom:44px}
+  .wrap{padding-top:48px}
+  footer.site{margin-top:64px}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <header class="site">
-    <nav class="site-nav">
-      <span class="brand">max</span>
-      <span><a href="/archives">文章</a><a href="mailto:happydsz0627@gmail.com">邮箱</a></span>
-    </nav>
-  </header>
+  <div class="topline">
+    <span class="name">max</span>
+    <span class="langs">
+      <button id="btn-zh" type="button">中</button><span class="sep">/</span><button id="btn-en" type="button">EN</button>
+    </span>
+  </div>
 
-  <section class="hero">
-    <h1>max</h1>
-    <p>交换驱动进步。</p>
-  </section>
+  <div class="bio">
+    <p class="t-zh"><span class="lede-em">交换驱动进步</span>。思想与资源的流通，让人类从个体积累走向文明的指数级跃升。<span class="cite">（灵感来自马特·里德利 Matt Ridley 的《理性乐观派》）</span></p>
+    <p class="t-en"><span class="lede-em">Exchange drives progress.</span> The flow of ideas and resources lifts humanity from individual accumulation to civilization's exponential leap. <span class="cite">(Inspired by Matt Ridley's <em>The Rational Optimist</em>)</span></p>
 
-  <section class="block">
-    <p class="block-label">理念</p>
-    <h2>交换驱动进步</h2>
-    <p class="lede">思想与资源的流通，让人类从个体积累走向文明的指数级跃升。</p>
-    <p class="cite">灵感来自马特·里德利（Matt Ridley）《理性乐观派》</p>
-  </section>
+    <p class="t-zh">希望创造的价值：分享有深度价值的观点、产品和思考——不是信息的堆砌，而是经过琢磨、能落地、值得花时间看的东西，无论是一个观点、一个产品，还是一段思考过程本身。希望我的个人分享，能够带给你一点温暖和力量，无论你在欢愉中，还是在困境中。</p>
+    <p class="t-en">The value I hope to create: sharing views, products, and thinking that are genuinely worth your time — not a pile of information, but something considered and actionable, whether it's an idea, a product, or a line of thinking itself. I hope what I share brings you a little warmth and strength, whether you're celebrating or struggling.</p>
+  </div>
 
-  <section class="block">
-    <p class="block-label">希望创造的价值</p>
-    <h2>分享有深度价值的观点、产品和思考</h2>
-    <p>不是信息的堆砌，而是经过琢磨、能落地、值得花时间看的东西——无论是一个观点、一个产品，还是一段思考过程本身。</p>
-    <p>希望我的个人分享，能够带给你一点温暖和力量，无论你在欢愉中，还是在困境中。</p>
-  </section>
-
-  <section class="block">
-    <p class="block-label">当前项目</p>
-    <h2>创造自己的空间</h2>
-    <div class="project">
-      <div class="num">01</div>
-      <h3>户型装修设计</h3>
-      <p>在 2D 平面图上摆放家具、拆改墙体、测量尺寸，一键切换到 3D 场景漫游；支持上传户型图让 AI 自动识别生成户型、用一句话描述需求让 AI 生成设计方案；每个房间按材料和面积估算装修造价。</p>
-      <div class="links">
-        <a href="https://ontic.top/yourSpace/" target="_blank" rel="noopener">在线使用 →</a>
+  <div class="grid">
+    <div>
+      <p class="col-label t-zh">当前项目</p>
+      <p class="col-label t-en">Current</p>
+      <div class="entry">
+        <a class="title" href="https://app.ontic.top/" target="_blank" rel="noopener">
+          <span class="t-zh">户型装修设计 →</span>
+          <span class="t-en">Home Renovation Designer →</span>
+        </a>
+        <p class="t-zh">在 2D 平面图上摆放家具、拆改墙体、测量尺寸，一键切换到 3D 场景漫游；支持上传户型图让 AI 自动识别生成户型、用一句话描述需求让 AI 生成设计方案；每个房间按材料和面积估算装修造价。</p>
+        <p class="t-en">Arrange furniture and measure rooms on a 2D floor plan, then switch to a 3D walkthrough in one click. Upload a floor-plan photo for AI to auto-generate the layout, or describe what you need in one sentence for AI to generate a furniture plan. Estimates renovation cost per room by material and area.</p>
+      </div>
+      <p class="col-label t-zh" style="margin-top:28px;color:var(--muted);font-weight:400">目前只有这一个，后续会陆续补充。</p>
+      <p class="col-label t-en" style="margin-top:28px;color:var(--muted);font-weight:400">Just this one for now, more to come.</p>
+    </div>
+    <div>
+      <p class="col-label t-zh">文章</p>
+      <p class="col-label t-en">Writing</p>
+      <div class="entry">
+        <a class="title" href="/archives">
+          <span class="t-zh">旧文章合集 →</span>
+          <span class="t-en">Old posts →</span>
+        </a>
+        <p class="t-zh">2017–2020 年的技术笔记和随笔，已加密保存。</p>
+        <p class="t-en">Technical notes and essays from 2017–2020, kept behind a password.</p>
       </div>
     </div>
-    <p class="empty">目前只有这一个，后续会陆续补充。</p>
-  </section>
+  </div>
 
   <footer class="site">
-    <span>© <span id="y"></span> max</span>
     <a href="mailto:happydsz0627@gmail.com">happydsz0627@gmail.com</a>
+    <span>© <span id="y"></span> max</span>
   </footer>
 
 </div>
-<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+(function(){
+  var btnZh = document.getElementById('btn-zh');
+  var btnEn = document.getElementById('btn-en');
+  function apply(lang){
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+    btnZh.setAttribute('aria-current', lang === 'zh' ? 'true' : 'false');
+    btnEn.setAttribute('aria-current', lang === 'en' ? 'true' : 'false');
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+  btnZh.addEventListener('click', function(){ apply('zh'); });
+  btnEn.addEventListener('click', function(){ apply('en'); });
+  apply(document.documentElement.getAttribute('data-lang') || 'zh');
+})();
+</script>
 </body>
 </html>
