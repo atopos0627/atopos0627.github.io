@@ -144,6 +144,15 @@ document.getElementById('y').textContent = new Date().getFullYear();
   btnEn.addEventListener('click', function(){ apply('en'); });
   apply(document.documentElement.getAttribute('data-lang') || 'zh');
 })();
+// 访问记录：GitHub Pages 本身不提供任何访问日志，这里上报到自己的后端
+// （跟 yourSpace 共用一个 PocketBase 实例），失败了就算了，不影响看博客。
+try {
+  fetch('https://api.ontic.top/api/custom/track-visit', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ path: location.pathname, referrer: document.referrer }),
+  }).catch(function(){});
+} catch (e) {}
 </script>
 </body>
 </html>
