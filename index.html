@@ -22,7 +22,7 @@
 </script>
 <style>
 :root{
-  --ink:#1a1816; --muted:#8a847b; --soft:#514c44; --bg:#fdfcfa;
+  --ink:#1a1816; --muted:#8a847b; --soft:#514c44; --bg:#fdfcfa; --line:#e9e3d6;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -36,33 +36,56 @@ body{
   .wrap{margin:0;padding-left:14vw;padding-right:24px;max-width:660px}
 }
 
-[data-lang="zh"] .t-en,[data-lang="en"] .t-zh{display:none}
+[data-lang="zh"] .t-en,[data-lang="en"] .t-zh{display:none!important}
 
-.topline{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px}
+.topline{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:56px}
 .name{font-size:16px;font-weight:600;color:var(--ink);letter-spacing:.01em}
 .langs{font-size:12px;color:var(--muted)}
 .langs button{font:inherit;color:var(--muted);background:none;border:0;cursor:pointer;padding:0}
 .langs button[aria-current="true"]{color:var(--ink);text-decoration:underline}
 .langs .sep{margin:0 6px;color:var(--muted)}
 
-.bio p{margin:0 0 20px;color:var(--soft)}
-.bio .lede-em{color:var(--ink)}
-[data-lang="zh"] .lede-em{font-weight:600}
-[data-lang="en"] .lede-em{font-style:italic;font-family:Georgia,"Times New Roman",serif}
-.bio a{color:var(--soft);text-decoration:underline;text-decoration-color:#d8d2c6;text-underline-offset:2px}
-.bio a:hover{color:var(--ink)}
-.cite{font-size:13px;color:var(--muted)}
+/* 英雄区 */
+.hero .lede{font-size:21px;line-height:1.5;color:var(--ink);margin:0 0 22px}
+[data-lang="zh"] .hero .lede{font-weight:600}
+[data-lang="en"] .hero .lede{font-style:italic;font-family:Georgia,"Times New Roman",serif;font-weight:400}
+.hero .cite{display:block;font-size:13px;color:var(--muted);margin-top:10px;font-weight:400;font-style:normal;font-family:inherit}
+.hero p.sub{margin:0;color:var(--soft)}
+.hero a{color:var(--soft);text-decoration:underline;text-decoration-color:#d8d2c6;text-underline-offset:2px}
+.hero a:hover{color:var(--ink)}
 
-.grid{display:grid;grid-template-columns:1fr;gap:40px;margin-top:56px}
+/* 分区通用 */
+section.block{margin-top:64px}
+.sec-label{font-size:12px;color:var(--muted);letter-spacing:.06em;margin:0 0 20px;text-transform:uppercase}
+
+/* 历程时间线 */
+.timeline{border-left:1px solid var(--line);margin-left:3px;padding-left:22px}
+.t-item{position:relative;padding-bottom:22px}
+.t-item:last-child{padding-bottom:0}
+.t-item::before{content:'';position:absolute;left:-27px;top:5px;width:6px;height:6px;border-radius:50%;background:var(--muted)}
+.t-year{font-size:12px;color:var(--muted);letter-spacing:.04em;margin-bottom:4px}
+.t-desc{color:var(--soft);font-size:14px;line-height:1.65;margin:0}
+
+/* 代表作 */
+.work-card{display:block;border:1px solid var(--line);border-radius:10px;padding:20px 22px;transition:border-color .15s}
+.work-card:hover{border-color:var(--ink)}
+.work-card .title{color:var(--ink);font-size:15px;text-decoration:underline;text-decoration-color:#d8d2c6;text-underline-offset:2px}
+.work-card:hover .title{text-decoration-color:var(--ink)}
+.work-card p{margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
+.work-note{margin:14px 0 0;color:var(--muted);font-size:13px}
+
+/* 文章 */
+.article-grid{display:grid;grid-template-columns:1fr;gap:14px}
 @media (min-width:520px){
-  .grid{grid-template-columns:1fr 1fr;gap:32px}
+  .article-grid{grid-template-columns:1fr 1fr 1fr;gap:16px}
 }
-.col-label{font-size:12px;color:var(--muted);letter-spacing:.06em;margin:0 0 16px}
-.entry{margin-bottom:28px}
-.entry:last-child{margin-bottom:0}
-.entry a.title{color:var(--ink);font-size:15px;text-decoration:underline;text-decoration-color:#d8d2c6;text-underline-offset:2px}
-.entry a.title:hover{text-decoration-color:var(--ink)}
-.entry p{margin:6px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
+.article-card{display:block;border-left:2px solid var(--line);padding:2px 0 2px 16px;transition:border-color .15s}
+.article-card:hover{border-color:var(--ink)}
+.article-card .a-year{font-size:12px;color:var(--muted);letter-spacing:.04em;margin-bottom:6px}
+.article-card .a-title{display:block;color:var(--ink);font-size:14px;text-decoration:underline;text-decoration-color:#d8d2c6;text-underline-offset:2px}
+.article-card:hover .a-title{text-decoration-color:var(--ink)}
+.article-card p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
+.writing-note{margin:0 0 20px;color:var(--muted);font-size:13px}
 
 footer.site{margin-top:88px;padding-top:24px;display:flex;justify-content:space-between;align-items:baseline;
   font-size:13px;color:var(--muted)}
@@ -85,42 +108,83 @@ footer.site a:hover{color:var(--ink)}
     </span>
   </div>
 
-  <div class="bio">
-    <p class="t-zh"><span class="lede-em">交换驱动进步</span>。思想与资源的流通，让人类从个体积累走向文明的指数级跃升。<span class="cite">（灵感来自马特·里德利 Matt Ridley 的《理性乐观派》）</span></p>
-    <p class="t-en"><span class="lede-em">Exchange drives progress.</span> The flow of ideas and resources lifts humanity from individual accumulation to civilization's exponential leap. <span class="cite">(Inspired by Matt Ridley's <em>The Rational Optimist</em>)</span></p>
+  <div class="hero">
+    <p class="lede t-zh">交换驱动进步。思想与资源的流通，让人类从个体积累走向文明的指数级跃升。<span class="cite">（灵感来自马特·里德利 Matt Ridley 的《理性乐观派》）</span></p>
+    <p class="lede t-en">Exchange drives progress. The flow of ideas and resources lifts humanity from individual accumulation to civilization's exponential leap.<span class="cite">(Inspired by Matt Ridley's <em>The Rational Optimist</em>)</span></p>
 
-    <p class="t-zh">希望创造的价值：分享有深度价值的观点、产品和思考——不是信息的堆砌，而是经过琢磨、能落地、值得花时间看的东西，无论是一个观点、一个产品，还是一段思考过程本身。希望我的个人分享，能够带给你一点温暖和力量，无论你在欢愉中，还是在困境中。</p>
-    <p class="t-en">The value I hope to create: sharing views, products, and thinking that are genuinely worth your time — not a pile of information, but something considered and actionable, whether it's an idea, a product, or a line of thinking itself. I hope what I share brings you a little warmth and strength, whether you're celebrating or struggling.</p>
+    <p class="sub t-zh">希望创造的价值：分享有深度价值的观点、产品和思考——不是信息的堆砌，而是经过琢磨、能落地、值得花时间看的东西，无论是一个观点、一个产品，还是一段思考过程本身。希望我的个人分享，能够带给你一点温暖和力量，无论你在欢愉中，还是在困境中。</p>
+    <p class="sub t-en">The value I hope to create: sharing views, products, and thinking that are genuinely worth your time — not a pile of information, but something considered and actionable, whether it's an idea, a product, or a line of thinking itself. I hope what I share brings you a little warmth and strength, whether you're celebrating or struggling.</p>
   </div>
 
-  <div class="grid">
-    <div>
-      <p class="col-label t-zh">当前项目</p>
-      <p class="col-label t-en">Current</p>
-      <div class="entry">
-        <a class="title" href="https://app.ontic.top/" target="_blank" rel="noopener">
-          <span class="t-zh">每个人都应该有一个自己的空间 →</span>
-          <span class="t-en">Everyone deserves a space of their own →</span>
-        </a>
-        <p class="t-zh">在 2D 平面图上摆放家具、拆改墙体、测量尺寸，一键切换到 3D 场景漫游；支持上传户型图让 AI 自动识别生成户型、用一句话描述需求让 AI 生成设计方案；每个房间按材料和面积估算装修造价。</p>
-        <p class="t-en">Arrange furniture and measure rooms on a 2D floor plan, then switch to a 3D walkthrough in one click. Upload a floor-plan photo for AI to auto-generate the layout, or describe what you need in one sentence for AI to generate a furniture plan. Estimates renovation cost per room by material and area.</p>
+  <section class="block">
+    <p class="sec-label t-zh">历程</p>
+    <p class="sec-label t-en">Timeline</p>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-year">2017</div>
+        <p class="t-desc t-zh">开始写技术笔记和生活随笔。</p>
+        <p class="t-desc t-en">Started writing technical notes and personal essays.</p>
       </div>
-      <p class="col-label t-zh" style="margin-top:28px;color:var(--muted);font-weight:400">目前只有这一个，后续会陆续补充。</p>
-      <p class="col-label t-en" style="margin-top:28px;color:var(--muted);font-weight:400">Just this one for now, more to come.</p>
-    </div>
-    <div>
-      <p class="col-label t-zh">文章</p>
-      <p class="col-label t-en">Writing</p>
-      <div class="entry">
-        <a class="title" href="/archives">
-          <span class="t-zh">旧文章合集 →</span>
-          <span class="t-en">Old posts →</span>
-        </a>
-        <p class="t-zh">2017–2020 年的技术笔记和随笔，已加密保存。</p>
-        <p class="t-en">Technical notes and essays from 2017–2020, kept behind a password.</p>
+      <div class="t-item">
+        <div class="t-year">2019</div>
+        <p class="t-desc t-zh">零散地继续记录。</p>
+        <p class="t-desc t-en">Kept writing, on and off.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2020</div>
+        <p class="t-desc t-zh">写了一组区块链技术分析文章，是目前为止最后一次高频更新。</p>
+        <p class="t-desc t-en">Wrote a cluster of blockchain technical analyses — the last stretch of frequent updates so far.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-year">2026</div>
+        <p class="t-desc t-zh">重新开始：旧文章加密保存，主页改版，做了 yourSpace。</p>
+        <p class="t-desc t-en">Came back: encrypted the old posts, redesigned this homepage, and built yourSpace.</p>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="block">
+    <p class="sec-label t-zh">代表作</p>
+    <p class="sec-label t-en">Selected work</p>
+    <a class="work-card" href="https://app.ontic.top/" target="_blank" rel="noopener">
+      <span class="title t-zh">每个人都应该有一个自己的空间 →</span>
+      <span class="title t-en">Everyone deserves a space of their own →</span>
+      <p class="t-zh">在 2D 平面图上摆放家具、拆改墙体、测量尺寸，一键切换到 3D 场景漫游；支持上传户型图让 AI 自动识别生成户型、用一句话描述需求让 AI 生成设计方案；每个房间按材料和面积估算装修造价。</p>
+      <p class="t-en">Arrange furniture and measure rooms on a 2D floor plan, then switch to a 3D walkthrough in one click. Upload a floor-plan photo for AI to auto-generate the layout, or describe what you need in one sentence for AI to generate a furniture plan. Estimates renovation cost per room by material and area.</p>
+    </a>
+    <p class="work-note t-zh">目前只有这一个，后续会陆续补充。</p>
+    <p class="work-note t-en">Just this one for now, more to come.</p>
+  </section>
+
+  <section class="block">
+    <p class="sec-label t-zh">文章</p>
+    <p class="sec-label t-en">Writing</p>
+    <p class="writing-note t-zh">2017–2020 年的技术笔记和随笔，已加密保存，点进去输入密码查看。</p>
+    <p class="writing-note t-en">Technical notes and essays from 2017–2020, kept behind a password — click through and enter it to read.</p>
+    <div class="article-grid">
+      <a class="article-card" href="/2017/09/22/%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0/">
+        <div class="a-year">2017</div>
+        <span class="a-title t-zh">我的笔记 →</span>
+        <span class="a-title t-en">我的笔记 →</span>
+        <p class="t-zh">读书笔记与项目管理笔记。</p>
+        <p class="t-en">Reading notes and project-management notes.</p>
+      </a>
+      <a class="article-card" href="/2019/11/06/%E6%88%91%E7%9A%84%E9%9A%8F%E7%AC%94/">
+        <div class="a-year">2019</div>
+        <span class="a-title t-zh">我的随笔 →</span>
+        <span class="a-title t-en">我的随笔 →</span>
+        <p class="t-zh">零散的生活记录。</p>
+        <p class="t-en">Scattered notes on everyday life.</p>
+      </a>
+      <a class="article-card" href="/archives">
+        <div class="a-year">2020</div>
+        <span class="a-title t-zh">区块链技术分析系列 →</span>
+        <span class="a-title t-en">Blockchain technical series →</span>
+        <p class="t-zh">共识算法、跨链协议、Hyperledger 等，共 7 篇。</p>
+        <p class="t-en">Consensus algorithms, cross-chain protocols, Hyperledger, and more — 7 posts.</p>
+      </a>
+    </div>
+  </section>
 
   <footer class="site">
     <a href="mailto:happydsz0627@gmail.com">happydsz0627@gmail.com</a>
