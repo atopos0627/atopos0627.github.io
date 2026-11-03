@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://app.ontic.top/",
+    "title": "每个人都应该有一个自己的空间",
+    "title_en": "Everyone deserves a space of their own",
+    "desc": "在 2D 平面图上摆放家具、拆改墙体、测量尺寸，一键切换到 3D 场景漫游；支持上传户型图让 AI 自动识别生成户型、用一句话描述需求让 AI 生成设计方案；每个房间按材料和面积估算装修造价。",
+    "desc_en": "Arrange furniture and measure rooms on a 2D floor plan, then switch to a 3D walkthrough in one click. Upload a floor-plan photo for AI to auto-generate the layout, or describe what you need in one sentence for AI to generate a furniture plan. Estimates renovation cost per room by material and area.",
+    "llms": "每个人都应该有一个自己的空间——2D 平面图摆放家具、拆改墙体、测量尺寸，一键切换 3D 漫游，支持 AI 自动识别户型图和生成设计方案"
+  },
+  {
+    "url": "https://money.ontic.top/",
+    "title": "钱花哪了，家底健不健康，总该有人盯着",
+    "title_en": "Someone should be watching whether your family's finances are actually fine",
+    "desc": "账单自动导入，自动算出净资产、资产负债率、紧急备用金覆盖率这些健康指标；指标不对劲会主动发邮件提醒，大额支出（买房换车）前还能先模拟一下对家庭财务的影响。服务器是自己买的，配置有限，欢迎自取但别拿去做压力测试。",
+    "desc_en": "Bills import automatically; it tracks net worth, debt ratio and emergency-fund coverage, emails you when something looks off, and lets you simulate a big purchase (a house, a car) before committing. Self-hosted on a small personal server — feel free to use it, just don't stress-test it.",
+    "llms": "家庭资产负债表管理——自动导入账单，计算净资产、资产负债率、紧急备用金覆盖率等健康指标，异常邮件提醒，大额支出前先模拟财务影响"
+  }
+]
