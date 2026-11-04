@@ -70,6 +70,7 @@ a.post:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-und
 .intro p.sub{margin:0;color:var(--soft)}
 .intro p.sub.gap{margin-top:14px}
 .intro p.who{color:var(--strong)}
+.intro p.goal{margin-top:16px;padding:2px 0 2px 16px;border-left:3px solid var(--strong);color:var(--strong);font-size:16px;line-height:1.8}
 .intro p.cta{margin-top:20px;color:var(--muted)}
 .intro a{text-decoration:underline;text-decoration-color:#cfc9bb;text-underline-offset:3px}
 .intro a:hover{color:var(--strong)}
