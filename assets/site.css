@@ -81,6 +81,8 @@ a.post:hover h3{text-decoration:underline;text-decoration-thickness:1px;text-und
 .pub-item:last-child{margin-bottom:0}
 .pub-item .pub-num{position:absolute;left:0;top:0;color:var(--muted);font-variant-numeric:tabular-nums}
 .pub-item .pub-meta{color:var(--muted)}
+.pub-item a{text-decoration:underline;text-decoration-color:#cfc9bb;text-underline-offset:3px}
+.pub-item a:hover{color:var(--strong)}
 
 /* 辩论日报 */
 .debate-topic .kicker{font-size:14px;color:var(--muted);margin:0 0 8px}

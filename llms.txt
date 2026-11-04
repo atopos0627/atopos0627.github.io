@@ -16,4 +16,4 @@
 - 联系邮箱：happydsz0627@gmail.com
 
 ## 文章
-- 2026-09 《AICSO AI安全官白皮书》：AICSO 人工智能安全官社区编制的 AI 安全官能力框架（V1.0），从 AI 安全官定义、个人能力、技术体系、治理合规和组织建设等维度，回答 AI 深度进入企业后该如何开展 AI 安全治理。公开文档，CC BY-NC-SA 4.0。 https://www.aicso.ai/AICSO_CF_V1.0.pdf
+- 暂无
