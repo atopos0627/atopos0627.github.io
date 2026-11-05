@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/lxgwwenkaiscreen.css">
 <link rel="stylesheet" href="/assets/site.css">
 <script>
+document.documentElement.className += ' js';
 (function(){
   try {
     var saved = localStorage.getItem('lang');
@@ -35,7 +36,7 @@
 <body>
 <header class="top">
   <div class="in">
-    <a class="brand" href="/">happymaxszdeng</a>
+    <a class="brand" href="#home">happymaxszdeng</a>
     <nav class="nav">
       <a href="#write">What I Write</a>
       <a href="#build">What I Build</a>
@@ -54,17 +55,27 @@
 </div>
 
 <main class="in">
-  <h2 class="sec-title" id="write">What I Write</h2>
-  <!-- POSTS:START 由 tools/publish_post.py 生成，不要手改 -->
+  <section class="view" id="home" data-view="home">
+    <h2 class="sec-title"><span class="t-zh">今日推荐</span><span class="t-en">Today's picks</span> · <span id="today-date"></span></h2>
+    <div id="picks">
+      <div class="card empty"><p class="t-zh">正在挑选今天的推荐…</p><p class="t-en">Picking today's recommendations…</p></div>
+    </div>
+  </section>
+
+  <section class="view" id="write" data-view="write">
+    <h2 class="sec-title">What I Write</h2>
+    <!-- POSTS:START 由 tools/publish_post.py 生成，不要手改 -->
   <div class="card empty">
     <p class="t-zh">文章正在路上。</p>
     <p class="t-en">Posts are on the way.</p>
   </div>
-  <!-- POSTS:END -->
+    <!-- POSTS:END -->
+  </section>
 
-  <h2 class="sec-title" id="build">What I Build</h2>
-  <div class="grid2">
-  <!-- PROJECTS:START 由 tools/ops.py 根据 projects.json 生成，不要手改 -->
+  <section class="view" id="build" data-view="build">
+    <h2 class="sec-title">What I Build</h2>
+    <div class="grid2">
+    <!-- PROJECTS:START 由 tools/ops.py 根据 projects.json 生成，不要手改 -->
     <a class="card post" href="https://app.ontic.top/" target="_blank" rel="noopener">
       <h3 class="t-zh">每个人都应该有一个自己的空间</h3>
       <h3 class="t-en">Everyone deserves a space of their own</h3>
@@ -79,50 +90,56 @@
       <p class="t-en">Bills import automatically; it tracks net worth, debt ratio and emergency-fund coverage, emails you when something looks off, and lets you simulate a big purchase (a house, a car) before committing. Self-hosted on a small personal server — feel free to use it, just don't stress-test it.</p>
       <p class="domain">money.ontic.top →</p>
     </a>
-  <!-- PROJECTS:END -->
-  </div>
-
-  <h2 class="sec-title" id="think">What You Think</h2>
-  <p class="sec-note t-zh">每天一个辩题，正反方都可以发言，但要写上你的依据。</p>
-  <p class="sec-note t-en">One motion a day. Argue for or against — but show your grounds.</p>
-  <div id="debate"></div>
-
-  <h2 class="sec-title" id="about">About</h2>
-  <div class="card intro">
-    <p class="lede t-zh">交换驱动进步。<span class="cite">灵感来自马特·里德利《理性乐观派》：思想与资源的流通，让个体积累汇成文明的跃升。</span></p>
-    <p class="lede t-en">Exchange drives progress.<span class="cite">From Matt Ridley's <em>The Rational Optimist</em>: the flow of ideas and resources turns individual effort into civilization's leap.</span></p>
-
-    <p class="sub who t-zh">19+ 年扎根安全与合规，历经科研国家队、互联网大厂与产业集团，专注密码学、数据安全、AI 安全和隐私合规。</p>
-    <p class="sub who t-en">19+ years in security and compliance, across national research institutes, big tech and industrial groups — cryptography, data security, AI security and privacy compliance.</p>
-    <p class="sub goal t-zh">我的目标：和重新出发的中登/老登们一起，分享想清楚的观点、能落地的产品和真实的思考过程——值得你花时间，也希望在顺境或困境中，给你一点温暖和力量。</p>
-    <p class="sub goal t-en">My goal: starting over alongside others in mid-career and beyond, to share well-considered ideas, products that actually work, and honest thinking — worth your time, and hopefully a little warmth and strength, in good times or hard ones.</p>
-    <p class="sub cta t-zh">合作或交流：<a href="mailto:happydsz0627@gmail.com">happydsz0627@gmail.com</a></p>
-    <p class="sub cta t-en">To collaborate or just talk: <a href="mailto:happydsz0627@gmail.com">happydsz0627@gmail.com</a></p>
-  </div>
-  <div class="card">
-    <div class="pub-sub">
-      <p class="pub-sub-label t-zh">论文、软著与专利</p>
-      <p class="pub-sub-label t-en">Papers, software &amp; patents</p>
-      <ol class="pub-list">
-        <li class="pub-item"><span class="pub-num">01</span>专利：《一种面向个人信息保护保险的量化风险评估方法及系统》 <span class="pub-meta">2026.07</span></li>
-        <li class="pub-item"><span class="pub-num">02</span>软件著作权：《密码算法验证系统》V1.0 <span class="pub-meta">2025.11.20</span></li>
-        <li class="pub-item"><span class="pub-num">03</span>软件著作权：《随机数检测系统》V1.0 <span class="pub-meta">2025.08.22</span></li>
-        <li class="pub-item"><span class="pub-num">04</span>Retina-inspired X-ray optoelectronic synapse for neuromorphic image recognition. <em>Adv Sci (Weinh)</em>. 2024;11(48):e2410761. doi:10.1002/advs.202410761.</li>
-      </ol>
+    <!-- PROJECTS:END -->
     </div>
+  </section>
 
-    <div class="pub-sub">
-      <p class="pub-sub-label t-zh">标准、行业指引与白皮书</p>
-      <p class="pub-sub-label t-en">Standards, industry guidelines &amp; white papers</p>
-      <ol class="pub-list">
-        <li class="pub-item"><span class="pub-num">01</span>GB/T 2026《未成年人个人信息网络保护要求》 <span class="pub-meta">待批，2026.09</span></li>
-        <li class="pub-item"><span class="pub-num">02</span><a href="https://www.aicso.ai/AICSO_CF_V1.0.pdf" target="_blank" rel="noopener">《AICSO AI安全官白皮书》V1.0</a>，AICSO 人工智能安全官社区 <span class="pub-meta">2026.09</span></li>
-        <li class="pub-item"><span class="pub-num">03</span>《生成式人工智能系统密码应用指引》，中国密码学会密评联委会 <span class="pub-meta">2026.08</span></li>
-        <li class="pub-item"><span class="pub-num">04</span>GM/T 0133-2024《关键信息基础设施密码应用要求》 <span class="pub-meta">2024.12.27</span></li>
-        <li class="pub-item"><span class="pub-num">05</span>《商用密码应用安全性评估测评工具指引》，中国密码学会密评联委会 <span class="pub-meta">2024.11</span></li>
-      </ol>
+  <section class="view" id="think" data-view="think">
+    <h2 class="sec-title">What You Think</h2>
+    <p class="sec-note t-zh">每天一个辩题，正反方都可以发言，但要写上你的依据。</p>
+    <p class="sec-note t-en">One motion a day. Argue for or against — but show your grounds.</p>
+    <div id="debate"></div>
+  </section>
+
+  <section class="view" id="about" data-view="about">
+    <h2 class="sec-title">About</h2>
+    <div class="card intro">
+      <p class="lede t-zh">交换驱动进步。<span class="cite">灵感来自马特·里德利《理性乐观派》：思想与资源的流通，让个体积累汇成文明的跃升。</span></p>
+      <p class="lede t-en">Exchange drives progress.<span class="cite">From Matt Ridley's <em>The Rational Optimist</em>: the flow of ideas and resources turns individual effort into civilization's leap.</span></p>
+
+      <p class="sub who t-zh">19+ 年扎根安全与合规，历经科研国家队、互联网大厂与产业集团，专注密码学、数据安全、AI 安全和隐私合规。</p>
+      <p class="sub who t-en">19+ years in security and compliance, across national research institutes, big tech and industrial groups — cryptography, data security, AI security and privacy compliance.</p>
+      <p class="sub goal t-zh">我的目标：和重新出发的中登/老登们一起，分享想清楚的观点、能落地的产品和真实的思考过程——值得你花时间，也希望在顺境或困境中，给你一点温暖和力量。</p>
+      <p class="sub goal t-en">My goal: starting over alongside others in mid-career and beyond, to share well-considered ideas, products that actually work, and honest thinking — worth your time, and hopefully a little warmth and strength, in good times or hard ones.</p>
+      <p class="sub cta t-zh">合作或交流：<a href="mailto:happydsz0627@gmail.com">happydsz0627@gmail.com</a></p>
+      <p class="sub cta t-en">To collaborate or just talk: <a href="mailto:happydsz0627@gmail.com">happydsz0627@gmail.com</a></p>
     </div>
-  </div>
+    <div class="card">
+      <div class="pub-sub">
+        <p class="pub-sub-label t-zh">论文、软著与专利</p>
+        <p class="pub-sub-label t-en">Papers, software &amp; patents</p>
+        <ol class="pub-list">
+          <li class="pub-item"><span class="pub-num">01</span>专利：《一种面向个人信息保护保险的量化风险评估方法及系统》 <span class="pub-meta">2026.07</span></li>
+          <li class="pub-item"><span class="pub-num">02</span>软件著作权：《密码算法验证系统》V1.0 <span class="pub-meta">2025.11.20</span></li>
+          <li class="pub-item"><span class="pub-num">03</span>软件著作权：《随机数检测系统》V1.0 <span class="pub-meta">2025.08.22</span></li>
+          <li class="pub-item"><span class="pub-num">04</span>Retina-inspired X-ray optoelectronic synapse for neuromorphic image recognition. <em>Adv Sci (Weinh)</em>. 2024;11(48):e2410761. doi:10.1002/advs.202410761.</li>
+        </ol>
+      </div>
+
+      <div class="pub-sub">
+        <p class="pub-sub-label t-zh">标准、行业指引与白皮书</p>
+        <p class="pub-sub-label t-en">Standards, industry guidelines &amp; white papers</p>
+        <ol class="pub-list">
+          <li class="pub-item"><span class="pub-num">01</span>GB/T 2026《未成年人个人信息网络保护要求》 <span class="pub-meta">待批，2026.09</span></li>
+          <li class="pub-item"><span class="pub-num">02</span><a href="https://www.aicso.ai/AICSO_CF_V1.0.pdf" target="_blank" rel="noopener">《AICSO AI安全官白皮书》V1.0</a>，AICSO 人工智能安全官社区 <span class="pub-meta">2026.09</span></li>
+          <li class="pub-item"><span class="pub-num">03</span>《生成式人工智能系统密码应用指引》，中国密码学会密评联委会 <span class="pub-meta">2026.08</span></li>
+          <li class="pub-item"><span class="pub-num">04</span>GM/T 0133-2024《关键信息基础设施密码应用要求》 <span class="pub-meta">2024.12.27</span></li>
+          <li class="pub-item"><span class="pub-num">05</span>《商用密码应用安全性评估测评工具指引》，中国密码学会密评联委会 <span class="pub-meta">2024.11</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="site in">
@@ -178,5 +195,6 @@ try {
 } catch (e) {}
 </script>
 <script src="/assets/debate.js" defer></script>
+<script src="/assets/home.js" defer></script>
 </body>
 </html>

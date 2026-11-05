@@ -128,6 +128,18 @@
     return (d.getMonth() + 1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
   }
 
+  // #think/2026-11-05 → 选中那一天的辩题
+  function topicFromHash() {
+    var m = /^#think\/(\d{4}-\d{2}-\d{2})/.exec(location.hash || '');
+    if (!m) return null;
+    for (var i = 0; i < state.topics.length; i++) if (state.topics[i].date === m[1]) return state.topics[i];
+    return null;
+  }
+  window.addEventListener('hashchange', function () {
+    var tp = topicFromHash();
+    if (tp && (!state.topic || tp.id !== state.topic.id)) { state.topic = tp; loadArgs().then(render); }
+  });
+
   function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
 
   function loadTopics(attempt) {
@@ -135,14 +147,17 @@
     return api('/api/collections/topics/records?sort=-date&perPage=7&fields=id,date,title,background,pro_label,con_label')
       .then(function (d) {
         state.topics = d.items || [];
-        state.topic = state.topics[0] || null;
+        state.topic = topicFromHash() || state.topics[0] || null;
         state.status = state.topic ? 'ready' : 'empty';
+        window.__debateTopics = state.topics;  // 给首页“每日推荐”用
+        document.dispatchEvent(new CustomEvent('debate:topics', { detail: state.topics }));
         return loadArgs();
       })
       .catch(function () {
         // 线路时通时断：间隔 2、4 秒再试两次
         if (attempt < 3) return wait(attempt * 2000).then(function () { return loadTopics(attempt + 1); });
         state.status = 'offline';
+        document.dispatchEvent(new CustomEvent('debate:topics', { detail: [] }));
       });
   }
 
@@ -252,7 +267,7 @@
     if (state.topics.length > 1) {
       root.appendChild(el('div', { 'class': 'days' }, state.topics.map(function (tp) {
         return el('button', { type: 'button', 'aria-pressed': tp.id === state.topic.id ? 'true' : 'false', text: tp.date,
-          onclick: function () { state.topic = tp; loadArgs().then(render); } });
+          onclick: function () { history.replaceState(null, '', '#think/' + tp.date); state.topic = tp; loadArgs().then(render); } });
       })));
     }
     var tp = state.topic;

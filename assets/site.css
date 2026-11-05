@@ -166,3 +166,28 @@ footer.site p{margin:0 auto}
   html{scroll-behavior:auto}
   .typed::after{animation:none}
 }
+
+/* ---- 分页视图：有 JS 时一次只显示一个 tab；无 JS 时全部显示（搜索引擎也能看到全部内容） ---- */
+html.js .view{display:none}
+html.js .view.active{display:block}
+html.js body:not([data-view="home"]) .band{display:none}
+.view > .sec-title:first-child{margin-top:24px}
+.nav a[aria-current="page"]{color:var(--strong);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+
+/* ---- 每日推荐 ---- */
+.pick-hero{border-top:3px solid var(--strong)}
+.pick-hero h3{font-size:28px}
+.pick-hero .sides-mini{display:flex;flex-wrap:wrap;gap:10px 22px;margin:14px 0 0;font-size:14px}
+.pick-hero .sides-mini .pro{color:var(--pro)}
+.pick-hero .sides-mini .con{color:var(--con)}
+.kicker{font-size:13px;color:var(--muted);margin:0 0 8px!important;letter-spacing:.04em}
+.kicker .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 9px;margin-right:8px;color:var(--soft)}
+.picks-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-bottom:28px}
+.picks-grid .card{margin-bottom:0;padding:28px 32px;display:flex;flex-direction:column}
+.picks-grid .card h3{font-size:20px}
+.picks-grid .card p.desc{flex:1}
+@media (min-width:760px){ .picks-grid{grid-template-columns:repeat(3,1fr)} }
+.picks-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.picks-foot button{font:inherit;font-size:14px;color:var(--soft);background:none;border:1px solid var(--line);border-radius:6px;padding:5px 14px;cursor:pointer}
+.picks-foot button:hover{border-color:var(--strong);color:var(--strong)}
+@media (max-width:640px){ .picks-grid .card{padding:22px 22px} .pick-hero h3{font-size:22px} }
