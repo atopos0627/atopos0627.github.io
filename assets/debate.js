@@ -14,7 +14,7 @@
   var T = {
     zh: {
       loading: '加载中…',
-      offline: '辩论日报即将上线，敬请期待。',
+      offline: '暂时连不上辩论日报的服务器（网络线路不稳定），请稍后再试。', retry: '重试',
       noTopic: '今天的辩题还没发布，晚点再来看看。',
       daily: '辩论日报',
       pro: '正方', con: '反方',
@@ -40,7 +40,7 @@
     },
     en: {
       loading: 'Loading…',
-      offline: 'The daily debate is launching soon.',
+      offline: "Can't reach the debate server right now (unstable network route). Please try again shortly.", retry: 'Retry',
       noTopic: "Today's motion hasn't been posted yet — check back later.",
       daily: 'Daily debate',
       pro: 'For', con: 'Against',
@@ -84,7 +84,8 @@
 
   function api(path, opts) {
     opts = opts || {};
-    var headers = { 'Content-Type': 'application/json' };
+    var headers = {};
+    if (opts.body) headers['Content-Type'] = 'application/json';
     if (opts.auth && state.auth) headers.Authorization = state.auth.token;
     return fetch(API + path, {
       method: opts.method || 'GET', headers: headers,
@@ -127,7 +128,10 @@
     return (d.getMonth() + 1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
   }
 
-  function loadTopics() {
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  function loadTopics(attempt) {
+    attempt = attempt || 1;
     return api('/api/collections/topics/records?sort=-date&perPage=7&fields=id,date,title,background,pro_label,con_label')
       .then(function (d) {
         state.topics = d.items || [];
@@ -135,7 +139,11 @@
         state.status = state.topic ? 'ready' : 'empty';
         return loadArgs();
       })
-      .catch(function () { state.status = 'offline'; });
+      .catch(function () {
+        // 线路时通时断：间隔 2、4 秒再试两次
+        if (attempt < 3) return wait(attempt * 2000).then(function () { return loadTopics(attempt + 1); });
+        state.status = 'offline';
+      });
   }
 
   function loadArgs() {
@@ -231,7 +239,14 @@
   function render() {
     root.textContent = '';
     if (state.status === 'loading') { root.appendChild(el('div', { 'class': 'card empty' }, [el('p', { text: t('loading') })])); return; }
-    if (state.status === 'offline') { root.appendChild(el('div', { 'class': 'card empty' }, [el('p', { text: t('offline') })])); return; }
+    if (state.status === 'offline') {
+      root.appendChild(el('div', { 'class': 'card empty' }, [
+        el('p', { text: t('offline') }),
+        el('div', { 'class': 'row', style: 'margin-top:14px' }, [el('button', { 'class': 'btn', type: 'button', text: t('retry'),
+          onclick: function () { state.status = 'loading'; render(); loadTopics().then(render); } })])
+      ]));
+      return;
+    }
     if (state.status === 'empty') { root.appendChild(el('div', { 'class': 'card empty' }, [el('p', { text: t('noTopic') })])); return; }
 
     if (state.topics.length > 1) {
