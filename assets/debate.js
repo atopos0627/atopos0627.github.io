@@ -16,7 +16,7 @@
       loading: '加载中…',
       offline: '暂时连不上辩论日报的服务器（网络线路不稳定），请稍后再试。', retry: '重试',
       noTopic: '今天的辩题还没发布，晚点再来看看。',
-      daily: '辩论日报',
+      daily: '辩论日报', poster: '生成分享海报',
       pro: '正方', con: '反方',
       none: '还没有人发言，来做第一个吧。',
       evidence: '依据：',
@@ -42,7 +42,7 @@
       loading: 'Loading…',
       offline: "Can't reach the debate server right now (unstable network route). Please try again shortly.", retry: 'Retry',
       noTopic: "Today's motion hasn't been posted yet — check back later.",
-      daily: 'Daily debate',
+      daily: 'Daily debate', poster: 'Share as poster',
       pro: 'For', con: 'Against',
       none: 'No one has spoken yet. Be the first.',
       evidence: 'Grounds: ',
@@ -138,7 +138,30 @@
   window.addEventListener('hashchange', function () {
     var tp = topicFromHash();
     if (tp && (!state.topic || tp.id !== state.topic.id)) { state.topic = tp; loadArgs().then(render); }
+    posterFromHash();
   });
+
+  // 分享海报：poster.js 按需加载（平时不下载）。#think/<日期>/poster 打开页面时自动弹出（ops.py debate poster 用）
+  var posterLoading = null;
+  function openPoster(tp) {
+    if (!posterLoading) posterLoading = new Promise(function (ok, bad) {
+      var s = document.createElement('script');
+      s.src = '/assets/poster.js';
+      s.onload = function () { window.onticPoster ? ok(window.onticPoster) : bad(); };
+      s.onerror = function () { posterLoading = null; bad(); };
+      document.head.appendChild(s);
+    });
+    posterLoading.then(function (P) {
+      P.show(tp, lang(), function () {
+        if (/\/poster$/.test(location.hash)) history.replaceState(null, '', '#think/' + tp.date);
+      });
+    }).catch(function () { setMsg(errText('generic'), true); render(); });
+  }
+  function posterFromHash() {
+    if (!/^#think\/\d{4}-\d{2}-\d{2}\/poster$/.test(location.hash || '')) return;
+    var tp = topicFromHash();
+    if (tp && !document.querySelector('.poster-overlay')) openPoster(tp);
+  }
 
   function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
 
@@ -274,7 +297,9 @@
     root.appendChild(el('div', { 'class': 'card debate-topic' }, [
       el('p', { 'class': 'kicker', text: t('daily') + ' · ' + tp.date }),
       el('h3', { text: tp.title }),
-      tp.background ? el('p', { 'class': 'bg', text: tp.background }) : null
+      tp.background ? el('p', { 'class': 'bg', text: tp.background }) : null,
+      el('div', { 'class': 'row share' }, [el('button', { 'class': 'btn', type: 'button', text: t('poster'),
+        onclick: function () { openPoster(tp); } })])
     ]));
     root.appendChild(el('div', { 'class': 'sides' }, [renderSide('pro'), renderSide('con')]));
 
@@ -337,5 +362,5 @@
   new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['data-lang'] });
 
   render();
-  refreshAuth().then(loadTopics).then(render);
+  refreshAuth().then(loadTopics).then(render).then(posterFromHash);
 })();

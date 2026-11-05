@@ -14,5 +14,13 @@
     "desc": "账单自动导入，自动算出净资产、资产负债率、紧急备用金覆盖率这些健康指标；指标不对劲会主动发邮件提醒，大额支出（买房换车）前还能先模拟一下对家庭财务的影响。服务器是自己买的，配置有限，欢迎自取但别拿去做压力测试。",
     "desc_en": "Bills import automatically; it tracks net worth, debt ratio and emergency-fund coverage, emails you when something looks off, and lets you simulate a big purchase (a house, a car) before committing. Self-hosted on a small personal server — feel free to use it, just don't stress-test it.",
     "llms": "家庭资产负债表管理——自动导入账单，计算净资产、资产负债率、紧急备用金覆盖率等健康指标，异常邮件提醒，大额支出前先模拟财务影响"
+  },
+  {
+    "url": "https://yuqing.ontic.top/",
+    "title": "海量舆情里，真正要管的就那几条",
+    "title_en": "Out of a flood of news, only a few items really need your attention",
+    "desc": "舆情监测 AI 代理：自动抓取多个数据源，用本地大模型从风险事件等级、事实确定性、情感倾向、来源可信度、传播潜力几个维度打分，过滤日常噪音，把有实质风险的事件聚成热点和时间线，每天出日报、每周出周报并邮件发送。模型跑在我自己的电脑上，注册后需要审批才能使用。",
+    "desc_en": "A public-opinion monitoring AI agent. It pulls from multiple sources, scores each item with a local LLM on risk level, factual certainty, sentiment, source credibility and spread potential, filters out everyday noise, groups real risk events into hot topics and timelines, and emails daily and weekly reports. Models run on my own computer; sign-up requires approval.",
+    "llms": "舆情HOT——舆情监测 AI 代理，多源抓取、本地大模型多维打分、过滤噪音，热点事件聚类与时间线，日报周报邮件推送"
   }
 ]
