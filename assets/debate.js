@@ -21,7 +21,10 @@
       none: '还没有人发言，来做第一个吧。',
       evidence: '依据：',
       del: '删除', delConfirm: '确定删除这条观点？',
-      loginTitle: '登录后发表你的观点',
+      loginTitle: '邮箱登录后发表观点',
+      modeGuest: '用昵称发表', modeEmail: '用邮箱登录',
+      guestTag: '游客', nickname: '昵称（1–20 字，会公开显示）',
+      guestFine: '不用登录，只在这个浏览器里能删除自己发的观点（换设备或清除浏览器数据后就删不了，可以发邮件让我删）。',
       email: '邮箱', sendCode: '发送验证码', resend: '重新发送',
       code: '验证码（6 位数字，10 分钟内有效）', login: '登录', changeEmail: '换个邮箱',
       sent: '验证码已发送，请查收邮件（也看看垃圾箱）。',
@@ -35,7 +38,7 @@
         invalid_email: '邮箱格式不对。', too_frequent: '操作太频繁，请稍后再试。', daily_limit: '今天的验证码次数用完了，明天再试。',
         send_failed: '验证码发送失败，请稍后再试。', bad_code: '验证码不对。', code_expired: '验证码已过期，请重新发送。',
         too_many_attempts: '错误次数太多，请重新发送验证码。', limit_reached: '同一辩题每方最多发表 3 条。',
-        need_text: '观点和依据都要填写。', auth: '登录已过期，请重新登录。', generic: '出错了，请稍后再试。'
+        need_text: '观点和依据都要填写。', bad_nickname: '昵称要 1–20 个字，不能含 @、*** 或保留词。', too_long: '观点最多 300 字，依据最多 2000 字。', auth: '登录已过期，请重新登录。', generic: '出错了，请稍后再试。'
       }
     },
     en: {
@@ -47,7 +50,10 @@
       none: 'No one has spoken yet. Be the first.',
       evidence: 'Grounds: ',
       del: 'Delete', delConfirm: 'Delete this argument?',
-      loginTitle: 'Sign in to share your view',
+      loginTitle: 'Sign in with email to share your view',
+      modeGuest: 'Post with a nickname', modeEmail: 'Sign in with email',
+      guestTag: 'guest', nickname: 'Nickname (1–20 characters, shown publicly)',
+      guestFine: "No sign-in needed. You can delete your posts only from this browser (after switching devices or clearing browser data, email me to remove them).",
       email: 'Email', sendCode: 'Send code', resend: 'Resend',
       code: 'Code (6 digits, valid for 10 minutes)', login: 'Sign in', changeEmail: 'Use another email',
       sent: 'Code sent — check your inbox (and spam folder).',
@@ -61,7 +67,7 @@
         invalid_email: "That email doesn't look right.", too_frequent: 'Too many requests — try again shortly.', daily_limit: 'Daily code limit reached. Try again tomorrow.',
         send_failed: "Couldn't send the code. Try again later.", bad_code: 'Wrong code.', code_expired: 'Code expired — request a new one.',
         too_many_attempts: 'Too many attempts — request a new code.', limit_reached: 'Up to 3 arguments per side per motion.',
-        need_text: 'Please fill in both your point and its grounds.', auth: 'Session expired — please sign in again.', generic: 'Something went wrong. Try again later.'
+        need_text: 'Please fill in both your point and its grounds.', bad_nickname: 'Nickname must be 1–20 characters, without @, *** or reserved words.', too_long: 'Point up to 300 characters, grounds up to 2000.', auth: 'Session expired — please sign in again.', generic: 'Something went wrong. Try again later.'
       }
     }
   };
@@ -72,6 +78,18 @@
     draft: { side: 'pro', claim: '', evidence: '' }
   };
   try { state.auth = JSON.parse(localStorage.getItem('debateAuth') || 'null'); } catch (e) {}
+  // 游客发言：mode = guest（默认）/ email；删除凭证 {观点id: token} 和昵称只存在本浏览器
+  state.mode = 'guest';
+  state.guestTokens = {};
+  state.nickname = '';
+  try { state.guestTokens = JSON.parse(localStorage.getItem('debateGuestTokens') || '{}') || {}; } catch (e) {}
+  try { state.nickname = localStorage.getItem('debateNickname') || ''; } catch (e) {}
+  function saveGuest() {
+    try {
+      localStorage.setItem('debateGuestTokens', JSON.stringify(state.guestTokens));
+      localStorage.setItem('debateNickname', state.nickname);
+    } catch (e) {}
+  }
 
   function lang() { return document.documentElement.getAttribute('data-lang') === 'en' ? 'en' : 'zh'; }
   function t(k) { return T[lang()][k]; }
@@ -188,7 +206,7 @@
     if (!state.topic) { state.args = []; return Promise.resolve(); }
     var f = encodeURIComponent('topic="' + state.topic.id + '"');
     return api('/api/collections/arguments/records?perPage=200&sort=-created&filter=' + f +
-      '&fields=id,side,claim,evidence,author,author_name,created')
+      '&fields=id,side,claim,evidence,author,author_name,guest,created')
       .then(function (d) { state.args = d.items || []; })
       .catch(function () { state.args = []; });
   }
@@ -209,14 +227,14 @@
   }
 
   function renderArg(a) {
-    var mine = state.auth && a.author === state.auth.id;
+    var mine = (state.auth && a.author && a.author === state.auth.id) || (a.guest && state.guestTokens[a.id]);
     return el('div', { 'class': 'arg' }, [
       el('p', { 'class': 'claim', text: a.claim }),
       el('p', { 'class': 'evidence' }, [el('b', { text: t('evidence') }), a.evidence]),
       el('p', { 'class': 'meta' }, [
-        el('span', { text: a.author_name || '***' }),
+        el('span', null, [a.author_name || '***', a.guest ? el('span', { 'class': 'guest-tag', text: t('guestTag') }) : null]),
         el('span', { text: fmtTime(a.created) }),
-        mine ? el('button', { type: 'button', text: t('del'), onclick: function () { delArg(a.id); } }) : null
+        mine ? el('button', { type: 'button', text: t('del'), onclick: function () { a.guest ? delGuest(a.id) : delArg(a.id); } }) : null
       ])
     ]);
   }
@@ -249,7 +267,15 @@
     return kids;
   }
 
-  function renderPost() {
+  function renderModes() {
+    function tab(m) {
+      return el('button', { type: 'button', 'aria-pressed': state.mode === m ? 'true' : 'false',
+        text: t(m === 'guest' ? 'modeGuest' : 'modeEmail'), onclick: function () { state.mode = m; setMsg(''); render(); } });
+    }
+    return el('div', { 'class': 'modes' }, [tab('guest'), tab('email')]);
+  }
+
+  function renderPost(guest) {
     var d = state.draft;
     function counter(id, max) { return el('div', { 'class': 'count', id: id + '-n', text: '0/' + max }); }
     function radio(side) {
@@ -262,16 +288,28 @@
     var c1 = counter('dbt-claim', 300), c2 = counter('dbt-ev', 2000);
     function upd() { c1.textContent = claim.value.length + '/300'; c2.textContent = ev.value.length + '/2000'; }
     upd();
-    return [
-      el('p', { 'class': 'who' }, [t('signedAs') + (state.auth.email || state.auth.name),
-        el('button', { type: 'button', text: t('logout'), onclick: function () { saveAuth(null); setMsg(''); render(); } }),
-        el('button', { type: 'button', text: t('deleteMe'), onclick: deleteMe })]),
-      el('h4', { text: t('postTitle') }),
+    var head;
+    if (guest) {
+      var nick = el('input', { type: 'text', id: 'dbt-nick', maxlength: '20', autocomplete: 'nickname', value: state.nickname,
+        oninput: function () { state.nickname = nick.value; } });
+      // 蜜罐：真人看不到，也不会被读屏器读出；机器人常会填
+      var trap = el('input', { type: 'text', id: 'dbt-website', name: 'website', tabindex: '-1', autocomplete: 'off', 'aria-hidden': 'true' });
+      head = [el('h4', { text: t('postTitle') }),
+        el('label', { 'for': 'dbt-nick', text: t('nickname') }), nick,
+        el('div', { 'class': 'hp' }, [trap])];
+    } else {
+      head = [el('p', { 'class': 'who' }, [t('signedAs') + (state.auth.email || state.auth.name),
+          el('button', { type: 'button', text: t('logout'), onclick: function () { saveAuth(null); setMsg(''); render(); } }),
+          el('button', { type: 'button', text: t('deleteMe'), onclick: deleteMe })]),
+        el('h4', { text: t('postTitle') })];
+    }
+    return head.concat([
       el('label', { text: t('side') }), el('div', { 'class': 'radio' }, [radio('pro'), radio('con')]),
       el('label', { 'for': 'dbt-claim', text: t('claim') }), claim, c1,
       el('label', { 'for': 'dbt-ev', text: t('evidenceLabel') }), ev, c2,
-      el('div', { 'class': 'row' }, [el('button', { 'class': 'btn', type: 'button', disabled: state.busy, text: t('submit'), onclick: submit })])
-    ];
+      el('div', { 'class': 'row' }, [el('button', { 'class': 'btn', type: 'button', disabled: state.busy, text: t('submit'),
+        onclick: guest ? submitGuest : submit })])
+    ]);
   }
 
   function render() {
@@ -303,9 +341,11 @@
     ]));
     root.appendChild(el('div', { 'class': 'sides' }, [renderSide('pro'), renderSide('con')]));
 
-    var box = el('div', { 'class': 'card compose' }, state.auth ? renderPost() : renderLogin());
+    var kids = state.auth ? renderPost(false)
+      : [renderModes()].concat(state.mode === 'guest' ? renderPost(true) : renderLogin());
+    var box = el('div', { 'class': 'card compose' }, kids);
     if (state.msg) box.appendChild(el('p', { 'class': 'msg' + (state.msgErr ? ' err' : ''), text: state.msg }));
-    box.appendChild(el('p', { 'class': 'fine', text: t('fine') }));
+    box.appendChild(el('p', { 'class': 'fine', text: !state.auth && state.mode === 'guest' ? t('guestFine') : t('fine') }));
     root.appendChild(box);
   }
 
@@ -340,6 +380,34 @@
       .then(function () { state.draft = { side: d.side, claim: '', evidence: '' }; setMsg(t('posted')); return loadArgs(); })
       .catch(function (e) { if (e.code === 'auth') saveAuth(null); setMsg(errText(e.code), true); })
       .then(function () { busy(false); });
+  }
+
+  function submitGuest() {
+    var d = state.draft;
+    var nick = state.nickname.trim();
+    var trap = document.getElementById('dbt-website');
+    if (!nick || nick.length > 20) { setMsg(errText('bad_nickname'), true); render(); return; }
+    if (!d.claim.trim() || !d.evidence.trim()) { setMsg(errText('need_text'), true); render(); return; }
+    busy(true);
+    api('/api/debate/guest-post', { method: 'POST',
+      body: { topic: state.topic.id, side: d.side, nickname: nick, claim: d.claim.trim(), evidence: d.evidence.trim(),
+        website: trap ? trap.value : '' } })
+      .then(function (r) {
+        if (r && r.id && r.delete_token) state.guestTokens[r.id] = r.delete_token;
+        state.nickname = nick; saveGuest();
+        state.draft = { side: d.side, claim: '', evidence: '' }; setMsg(t('posted'));
+        return loadArgs();
+      })
+      .catch(function (e) { setMsg(errText(e.code), true); })
+      .then(function () { busy(false); });
+  }
+
+  function delGuest(id) {
+    if (!confirm(t('delConfirm'))) return;
+    api('/api/debate/guest-delete', { method: 'POST', body: { id: id, delete_token: state.guestTokens[id] } })
+      .then(function () { delete state.guestTokens[id]; saveGuest(); return loadArgs(); })
+      .catch(function (e) { setMsg(errText(e.code), true); })
+      .then(render);
   }
 
   function delArg(id) {

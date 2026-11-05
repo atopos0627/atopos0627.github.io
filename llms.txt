@@ -11,7 +11,7 @@
 - 舆情HOT——舆情监测 AI 代理，多源抓取、本地大模型多维打分、过滤噪音，热点事件聚类与时间线，日报周报邮件推送：https://yuqing.ontic.top/
 
 ## 辩论日报（What You Think）
-每天发布一个辩题，访客用邮箱登录后可以发表正方或反方观点，并写上依据：https://ontic.top/#think
+每天发布一个辩题，访客填个昵称（或用邮箱登录）就可以发表正方或反方观点，并写上依据：https://ontic.top/#think
 
 ## 链接
 - 联系邮箱：happydsz0627@gmail.com

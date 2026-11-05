@@ -200,3 +200,9 @@ html.js body:not([data-view="home"]) .band{display:none}
 .poster-img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:6px;-webkit-touch-callout:default}
 .poster-body .fine{font-size:13px;color:var(--muted);margin:10px 0}
 .poster-body .msg.err{color:var(--danger)}
+/* 游客发言 */
+.compose .modes{display:flex;gap:8px;margin:0 0 18px;flex-wrap:wrap}
+.compose .modes button{font:inherit;font-size:14px;color:var(--soft);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px 14px;cursor:pointer}
+.compose .modes button[aria-pressed="true"]{border-color:var(--strong);color:var(--strong)}
+.compose .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.arg .guest-tag{margin-left:6px;font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px}
